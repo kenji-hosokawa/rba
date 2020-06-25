@@ -51,7 +51,7 @@ If build will be succeed,you can get **librba.a** and **librba.so**.
 
 ### 3-2. Windows
 
-#### 3-2-1. 開発環境
+#### 3-2-1. Environment
 
 * OS
   - Microsoft Windows 7 Professional 64bit
