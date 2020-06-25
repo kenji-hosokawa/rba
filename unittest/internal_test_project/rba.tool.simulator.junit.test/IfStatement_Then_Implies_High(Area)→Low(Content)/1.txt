@@ -1,0 +1,4 @@
+C,ON,LowContent,NORMAL
+execute
+Assert,A,LowArea,LowContent
+Assert,A,HighArea,NULL

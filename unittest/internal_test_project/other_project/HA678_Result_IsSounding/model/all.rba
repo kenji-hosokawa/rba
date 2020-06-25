@@ -1,0 +1,67 @@
+Package Outputs {
+	Zone A {
+		arbitrationPolicy: DEFAULT
+		priority: STANDARD_VALUE
+	}
+	Zone B {
+		arbitrationPolicy: DEFAULT
+		priority: < That-of A
+	}
+	Zone C {
+		arbitrationPolicy: DEFAULT
+		priority: < That-of B
+	}
+	Zone D {
+		arbitrationPolicy: DEFAULT
+		priority: < That-of C
+	}
+	Zone E {
+		arbitrationPolicy: DEFAULT
+		priority: < That-of D
+	}
+	Zone F {
+		arbitrationPolicy: DEFAULT
+		priority: < That-of E
+	}
+	SoundContent A1 {
+		loserType: NEVER_GIVEUP
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [A,B]
+	}
+	SoundContent A2 {
+		loserType: NEVER_GIVEUP
+		State NORMAL {
+			priority: 11
+		}
+		allocatable: [A]
+	}
+	SoundContent C1 {
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [C,D]
+	}
+	SoundContent E1 {
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [E,F]
+	}
+	SoundContent F1 {
+		loserType: NEVER_GIVEUP
+		State NORMAL {
+			priority: 11
+		}
+		allocatable: [F]
+	}
+	Constraint HA_678 {
+		runtime: true
+		A.isOutputted() -> B.isMuted()
+	}
+	Constraint HA_678_E1 {
+		runtime: true
+		F.isOutputted() -> E.isMuted()
+	}
+}

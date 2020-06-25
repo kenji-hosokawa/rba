@@ -1,0 +1,56 @@
+Package Model {
+	//後に要求があったコンテント（a1）が!Visibleでも評価できることを確認する
+	Constraint a1isNotVisible {
+		runtime: true
+		!a1.isSounding() 
+	}
+	Constraint エリアの調停ポリシーを上書きして後勝ちにする {
+		runtime: true
+		a1.hasComeLaterThan(a2) -> ! b1.isSounding() 
+	}
+	Zone A {
+		arbitrationPolicy: PRIORITY_FIRST_COME_FIRST
+		visibility: STANDARD_VALUE
+	}
+
+	SoundContent a1 {
+		allocatable: [ A ]
+		State NORMAL { priority: 10 }
+	}
+	SoundContent a2 {
+		allocatable: [ A ]
+		State NORMAL { priority: 10 }
+	}
+	//hasComeEarlierThanにかかる二つのオペレータの要求がない場合、制約式を評価しないことを確認する
+	SoundContent a3 {
+		allocatable: [ A ]
+		State NORMAL { priority: 10 }
+	}
+	
+	//後に要求があったコンテント（b2）が!Visibleでも評価できることを確認する
+	Constraint b21isNotVisible {
+		runtime: true
+		!b2.isSounding() 
+	}
+	Constraint エリアの調停ポリシーを上書きして後勝ちにする2 {
+		runtime: true
+		b1.hasComeLaterThan(b2) -> ! a2.isSounding() 
+	}
+	Zone B {
+		arbitrationPolicy: PRIORITY_FIRST_COME_FIRST
+		visibility: STANDARD_VALUE
+	}
+
+	SoundContent b1 {
+		allocatable: [ B ]
+		State NORMAL { priority: 10 }
+	}
+	SoundContent b2 {
+		allocatable: [ B ]
+		State NORMAL { priority: 10 }
+	}
+	SoundContent b3 {
+		allocatable: [ B ]
+		State NORMAL { priority: 10 }
+	}
+}

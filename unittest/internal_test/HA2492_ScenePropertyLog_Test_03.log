@@ -1,0 +1,687 @@
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,B1,NORMAL,0
+#Request#C,off,C1,NORMAL,0
+#Request#C,off,D1,NORMAL,0
+#Request#S,on,s1
+#Request#S,off,s2
+#Request#S,off,s3,p31:31
+#Request#S,off,s4,p41:41,p42:42
+#Constraint#START,Con1,t
+#Constraint#EXPRESSION	->#left=	(s3.get() = 111)	f
+#Constraint#EXPRESSION	->	((s3.get() = 111) -> A.isHidden())	t
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#C1,NORMAL,f
+#CanceledRequest#D1,NORMAL,f
+#Constraint#START,r3,t
+#Constraint#EXPRESSION	=>#condition:.isVisible()	C1.isVisible()	f
+#Constraint#EXPRESSION	=>	(C1.isVisible() => {p31.set(3100), s3.on()})
+#Constraint#END
+#Constraint#START,r4,t
+#Constraint#EXPRESSION	=>#condition:.isVisible()	D1.isVisible()	f
+#Constraint#EXPRESSION	=>	(D1.isVisible() => {p41.set(4100), p42.set(4200), s4.on()})
+#Constraint#END
+#Result#A,A,,f
+#Result#A,B,,f
+#Result#A,C,,f
+#Result#A,D,,f
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,B1,NORMAL,0
+#Request#C,off,C1,NORMAL,0
+#Request#C,off,D1,NORMAL,0
+#Request#S,on,s1
+#Request#S,on,s2
+#Request#S,off,s3,p31:31
+#Request#S,off,s4,p41:41,p42:42
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#C1,NORMAL,f
+#CanceledRequest#D1,NORMAL,f
+#Constraint#START,r3,t
+#Constraint#EXPRESSION	=>#condition:.isVisible()	C1.isVisible()	f
+#Constraint#EXPRESSION	=>	(C1.isVisible() => {p31.set(3100), s3.on()})
+#Constraint#END
+#Constraint#START,r4,t
+#Constraint#EXPRESSION	=>#condition:.isVisible()	D1.isVisible()	f
+#Constraint#EXPRESSION	=>	(D1.isVisible() => {p41.set(4100), p42.set(4200), s4.on()})
+#Constraint#END
+#Result#A,A,,f
+#Result#A,B,,f
+#Result#A,C,,f
+#Result#A,D,,f
+#Request#C,on,A1,NORMAL,1
+#Request#C,off,B1,NORMAL,0
+#Request#C,off,C1,NORMAL,0
+#Request#C,off,D1,NORMAL,0
+#Request#S,on,s1
+#Request#S,on,s2
+#Request#S,off,s3,p31:31
+#Request#S,off,s4,p41:41,p42:42
+#Constraint#START,Con1,t
+#Constraint#EXPRESSION	->#left=	(s3.get() = 111)	f
+#Constraint#EXPRESSION	->	((s3.get() = 111) -> A.isHidden())	t
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#C1,NORMAL,f
+#CanceledRequest#D1,NORMAL,f
+#Constraint#START,r3,t
+#Constraint#EXPRESSION	=>#condition:.isVisible()	C1.isVisible()	f
+#Constraint#EXPRESSION	=>	(C1.isVisible() => {p31.set(3100), s3.on()})
+#Constraint#END
+#Constraint#START,r4,t
+#Constraint#EXPRESSION	=>#condition:.isVisible()	D1.isVisible()	f
+#Constraint#EXPRESSION	=>	(D1.isVisible() => {p41.set(4100), p42.set(4200), s4.on()})
+#Constraint#END
+#Result#A,A,A1,f
+#Result#A,B,,f
+#Result#A,C,,f
+#Result#A,D,,f
+#Constraint#START,Con1,t
+#Constraint#EXPRESSION	->#left=	(s3.get() = 111)	f
+#Constraint#EXPRESSION	->	((s3.get() = 111) -> A.isHidden())	t
+#Constraint#END
+#PrevResult#A,A,A1,NORMAL
+#Request#C,on,A1,NORMAL,1
+#Request#C,on,B1,NORMAL,2
+#Request#C,off,C1,NORMAL,0
+#Request#C,off,D1,NORMAL,0
+#Request#S,on,s1
+#Request#S,on,s2
+#Request#S,off,s3,p31:31
+#Request#S,off,s4,p41:41,p42:42
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#C1,NORMAL,f
+#CanceledRequest#D1,NORMAL,f
+#Constraint#START,r3,t
+#Constraint#EXPRESSION	=>#condition:.isVisible()	C1.isVisible()	f
+#Constraint#EXPRESSION	=>	(C1.isVisible() => {p31.set(3100), s3.on()})
+#Constraint#END
+#Constraint#START,r4,t
+#Constraint#EXPRESSION	=>#condition:.isVisible()	D1.isVisible()	f
+#Constraint#EXPRESSION	=>	(D1.isVisible() => {p41.set(4100), p42.set(4200), s4.on()})
+#Constraint#END
+#Result#A,A,A1,f
+#Result#A,B,B1,f
+#Result#A,C,,f
+#Result#A,D,,f
+#Constraint#START,Con1,t
+#Constraint#EXPRESSION	->#left=	(s3.get() = 111)	f
+#Constraint#EXPRESSION	->	((s3.get() = 111) -> A.isHidden())	t
+#Constraint#END
+#PrevResult#A,A,A1,NORMAL
+#PrevResult#A,B,B1,NORMAL
+#Request#C,on,A1,NORMAL,1
+#Request#C,on,B1,NORMAL,2
+#Request#C,on,C1,NORMAL,3
+#Request#C,off,D1,NORMAL,0
+#Request#S,on,s1
+#Request#S,on,s2
+#Request#S,off,s3,p31:31
+#Request#S,off,s4,p41:41,p42:42
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#C1,NORMAL,f
+#CanceledRequest#D1,NORMAL,f
+#Constraint#START,r3,t
+#Constraint#EXPRESSION	=>#condition:.isVisible()	C1.isVisible()	t
+#Constraint#EXPRESSION	=>#then:SetOf#0:.set	p31.set(3100)	e
+#Constraint#EXPRESSION	=>#then:SetOf#1:.on()	s3.on()	e
+#Constraint#EXPRESSION	=>	(C1.isVisible() => {p31.set(3100), s3.on()})
+#Constraint#END
+#Constraint#START,r4,t
+#Constraint#EXPRESSION	=>#condition:.isVisible()	D1.isVisible()	f
+#Constraint#EXPRESSION	=>	(D1.isVisible() => {p41.set(4100), p42.set(4200), s4.on()})
+#Constraint#END
+#Result#A,A,A1,f
+#Result#A,B,B1,f
+#Result#A,C,C1,f
+#Result#A,D,,f
+#Constraint#START,Con1,t
+#Constraint#EXPRESSION	->#left=	(s3.get() = 111)	f
+#Constraint#EXPRESSION	->	((s3.get() = 111) -> A.isHidden())	t
+#Constraint#END
+#PrevResult#A,A,A1,NORMAL
+#PrevResult#A,B,B1,NORMAL
+#PrevResult#A,C,C1,NORMAL
+#Request#C,on,A1,NORMAL,1
+#Request#C,on,B1,NORMAL,2
+#Request#C,on,C1,NORMAL,3
+#Request#C,on,D1,NORMAL,4
+#Request#S,on,s1
+#Request#S,on,s2
+#Request#S,on,s3,p31:3100
+#Request#S,off,s4,p41:41,p42:42
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#C1,NORMAL,f
+#CanceledRequest#D1,NORMAL,f
+#Constraint#START,r3,t
+#Constraint#EXPRESSION	=>#condition:.isVisible()	C1.isVisible()	t
+#Constraint#EXPRESSION	=>#then:SetOf#0:.set	p31.set(3100)	e
+#Constraint#EXPRESSION	=>#then:SetOf#1:.on()	s3.on()	e
+#Constraint#EXPRESSION	=>	(C1.isVisible() => {p31.set(3100), s3.on()})
+#Constraint#END
+#Constraint#START,r4,t
+#Constraint#EXPRESSION	=>#condition:.isVisible()	D1.isVisible()	t
+#Constraint#EXPRESSION	=>#then:SetOf#0:.set	p41.set(4100)	e
+#Constraint#EXPRESSION	=>#then:SetOf#1:.set	p42.set(4200)	e
+#Constraint#EXPRESSION	=>#then:SetOf#2:.on()	s4.on()	e
+#Constraint#EXPRESSION	=>	(D1.isVisible() => {p41.set(4100), p42.set(4200), s4.on()})
+#Constraint#END
+#Result#A,A,A1,f
+#Result#A,B,B1,f
+#Result#A,C,C1,f
+#Result#A,D,D1,f
+#Constraint#START,Con1,t
+#Constraint#EXPRESSION	->#left=	(s3.get() = 111)	f
+#Constraint#EXPRESSION	->	((s3.get() = 111) -> A.isHidden())	t
+#Constraint#END
+----All Constraints check result----
+Total Result:true
+online  constraint[Con1] result[true]
+
+----All Constraints check result----
+Total Result:true
+online  constraint[Con1] result[true]
+
+----All Constraints check result----
+Total Result:true
+online  constraint[Con1] result[true]
+
+----All Constraints check result----
+Total Result:true
+online  constraint[Con1] result[true]
+
+----All Constraints check result----
+Total Result:true
+online  constraint[Con1] result[true]
+
+----All Constraints check result----
+Total Result:true
+online  constraint[Con1] result[true]
+
+----Request Information----
+Allocatable Count:4
+  Area[A] policy[DEFAULT] visibility[1]
+  Area[B] policy[DEFAULT] visibility[0]
+  Area[C] policy[DEFAULT] visibility[-1]
+  Area[D] policy[DEFAULT] visibility[-1]
+ContentState Count:4
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[C1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[D1::NORMAL] priority[10] isActive[false] order[0]
+Scene Count:4
+  Scene[s1] isActive[true]
+  Scene[s2] isActive[false]
+  Scene[s3] isActive[false]
+  Scene[s4] isActive[false]
+Constraint Count:1
+  Constraint[Con1] Expression[((s3.get() = 111) -> A.isHidden())] runtime[true]
+PostConstraint Count:0
+----Request Information----
+Allocatable Count:4
+  Area[A] policy[DEFAULT] visibility[1]
+  Area[B] policy[DEFAULT] visibility[0]
+  Area[C] policy[DEFAULT] visibility[-1]
+  Area[D] policy[DEFAULT] visibility[-1]
+ContentState Count:4
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[C1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[D1::NORMAL] priority[10] isActive[false] order[0]
+Scene Count:4
+  Scene[s1] isActive[true]
+  Scene[s2] isActive[true]
+  Scene[s3] isActive[false]
+  Scene[s4] isActive[false]
+Constraint Count:1
+  Constraint[Con1] Expression[((s3.get() = 111) -> A.isHidden())] runtime[true]
+PostConstraint Count:0
+----Request Information----
+Allocatable Count:4
+  Area[A] policy[DEFAULT] visibility[1]
+  Area[B] policy[DEFAULT] visibility[0]
+  Area[C] policy[DEFAULT] visibility[-1]
+  Area[D] policy[DEFAULT] visibility[-1]
+ContentState Count:4
+  ViewContent[A1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[C1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[D1::NORMAL] priority[10] isActive[false] order[0]
+Scene Count:4
+  Scene[s1] isActive[true]
+  Scene[s2] isActive[true]
+  Scene[s3] isActive[false]
+  Scene[s4] isActive[false]
+Constraint Count:1
+  Constraint[Con1] Expression[((s3.get() = 111) -> A.isHidden())] runtime[true]
+PostConstraint Count:0
+----Request Information----
+Allocatable Count:4
+  Area[A] policy[DEFAULT] visibility[1]
+  Area[B] policy[DEFAULT] visibility[0]
+  Area[C] policy[DEFAULT] visibility[-1]
+  Area[D] policy[DEFAULT] visibility[-1]
+ContentState Count:4
+  ViewContent[A1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[B1::NORMAL] priority[10] isActive[true] order[2]
+  ViewContent[C1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[D1::NORMAL] priority[10] isActive[false] order[0]
+Scene Count:4
+  Scene[s1] isActive[true]
+  Scene[s2] isActive[true]
+  Scene[s3] isActive[false]
+  Scene[s4] isActive[false]
+Constraint Count:1
+  Constraint[Con1] Expression[((s3.get() = 111) -> A.isHidden())] runtime[true]
+PostConstraint Count:0
+----Request Information----
+Allocatable Count:4
+  Area[A] policy[DEFAULT] visibility[1]
+  Area[B] policy[DEFAULT] visibility[0]
+  Area[C] policy[DEFAULT] visibility[-1]
+  Area[D] policy[DEFAULT] visibility[-1]
+ContentState Count:4
+  ViewContent[A1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[B1::NORMAL] priority[10] isActive[true] order[2]
+  ViewContent[C1::NORMAL] priority[10] isActive[true] order[3]
+  ViewContent[D1::NORMAL] priority[10] isActive[false] order[0]
+Scene Count:4
+  Scene[s1] isActive[true]
+  Scene[s2] isActive[true]
+  Scene[s3] isActive[false]
+  Scene[s4] isActive[false]
+Constraint Count:1
+  Constraint[Con1] Expression[((s3.get() = 111) -> A.isHidden())] runtime[true]
+PostConstraint Count:0
+----Request Information----
+Allocatable Count:4
+  Area[A] policy[DEFAULT] visibility[1]
+  Area[B] policy[DEFAULT] visibility[0]
+  Area[C] policy[DEFAULT] visibility[-1]
+  Area[D] policy[DEFAULT] visibility[-1]
+ContentState Count:4
+  ViewContent[A1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[B1::NORMAL] priority[10] isActive[true] order[2]
+  ViewContent[C1::NORMAL] priority[10] isActive[true] order[3]
+  ViewContent[D1::NORMAL] priority[10] isActive[true] order[4]
+Scene Count:4
+  Scene[s1] isActive[true]
+  Scene[s2] isActive[true]
+  Scene[s3] isActive[true]
+  Scene[s4] isActive[false]
+Constraint Count:1
+  Constraint[Con1] Expression[((s3.get() = 111) -> A.isHidden())] runtime[true]
+PostConstraint Count:0
+----Previous Result Information----
+Allocatable TotalCount:4
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[C1] visible[false] active[false]
+  ViewContent[D1] visible[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:4
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[C1] visible[false] active[false]
+  ViewContent[D1] visible[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:4
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[C1] visible[false] active[false]
+  ViewContent[D1] visible[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:4
+  Area[A] Content[A1::NORMAL] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[true] active[true]
+    allocated Area[A]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[C1] visible[false] active[false]
+  ViewContent[D1] visible[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:4
+  Area[A] Content[A1::NORMAL] hidden[false]
+  Area[B] Content[B1::NORMAL] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[true] active[true]
+    allocated Area[A]
+  ViewContent[B1] visible[true] active[true]
+    allocated Area[B]
+  ViewContent[C1] visible[false] active[false]
+  ViewContent[D1] visible[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:4
+  Area[A] Content[A1::NORMAL] hidden[false]
+  Area[B] Content[B1::NORMAL] hidden[false]
+  Area[C] Content[C1::NORMAL] hidden[false]
+  Area[D] Content[null] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[true] active[true]
+    allocated Area[A]
+  ViewContent[B1] visible[true] active[true]
+    allocated Area[B]
+  ViewContent[C1] visible[true] active[true]
+    allocated Area[C]
+  ViewContent[D1] visible[false] active[false]
+----Arbitrate----
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[((s3.get() = 111) -> A.isHidden())] check start
+      Property[s3::p31] get[31]
+      [(s3.get() = 111)] false
+      [((s3.get() = 111) -> A.isHidden())] true
+    constraint expression[((s3.get() = 111) -> A.isHidden())] true
+
+Area[A] displays Content[null] hidden[false]
+
+Area[B] check start
+  Content[B1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+Area[B] displays Content[null] hidden[false]
+
+Area[C] check start
+  Content[C1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+Area[C] displays Content[null] hidden[false]
+
+Area[D] check start
+  Content[D1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+Area[D] displays Content[null] hidden[false]
+
+----Arbitrate----
+----Arbitrate----
+Area[A] check start
+  Content[A1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[((s3.get() = 111) -> A.isHidden())] check start
+      Property[s3::p31] get[31]
+      [(s3.get() = 111)] false
+      [((s3.get() = 111) -> A.isHidden())] true
+    constraint expression[((s3.get() = 111) -> A.isHidden())] true
+
+Area[A] displays Content[A1::NORMAL] hidden[false]
+
+----Arbitrate----
+Area[B] check start
+  Content[B1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+Area[B] displays Content[B1::NORMAL] hidden[false]
+
+----Arbitrate----
+Area[C] check start
+  Content[C1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+Area[C] displays Content[C1::NORMAL] hidden[false]
+
+----Arbitrate----
+Area[D] check start
+  Content[D1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+Area[D] displays Content[D1::NORMAL] hidden[false]
+
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[C1::NORMAL] check start
+  Content[C1::NORMAL] is not Active skip
+Content[D1::NORMAL] check start
+  Content[D1::NORMAL] is not Active skip
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[C1::NORMAL] check start
+  Content[C1::NORMAL] is not Active skip
+Content[D1::NORMAL] check start
+  Content[D1::NORMAL] is not Active skip
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is Visible skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[C1::NORMAL] check start
+  Content[C1::NORMAL] is not Active skip
+Content[D1::NORMAL] check start
+  Content[D1::NORMAL] is not Active skip
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is Visible skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is Visible skip
+Content[C1::NORMAL] check start
+  Content[C1::NORMAL] is not Active skip
+Content[D1::NORMAL] check start
+  Content[D1::NORMAL] is not Active skip
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is Visible skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is Visible skip
+Content[C1::NORMAL] check start
+  Content[C1::NORMAL] is Visible skip
+Content[D1::NORMAL] check start
+  Content[D1::NORMAL] is not Active skip
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is Visible skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is Visible skip
+Content[C1::NORMAL] check start
+  Content[C1::NORMAL] is Visible skip
+Content[D1::NORMAL] check start
+  Content[D1::NORMAL] is Visible skip
+----Check All Constraint----
+    constraint expression[((s3.get() = 111) -> A.isHidden())] check start
+      Property[s3::p31] get[31]
+      [(s3.get() = 111)] false
+      [((s3.get() = 111) -> A.isHidden())] true
+    constraint expression[((s3.get() = 111) -> A.isHidden())] true
+
+----Check All Constraint----
+    constraint expression[((s3.get() = 111) -> A.isHidden())] check start
+      Property[s3::p31] get[31]
+      [(s3.get() = 111)] false
+      [((s3.get() = 111) -> A.isHidden())] true
+    constraint expression[((s3.get() = 111) -> A.isHidden())] true
+
+----Check All Constraint----
+    constraint expression[((s3.get() = 111) -> A.isHidden())] check start
+      Property[s3::p31] get[31]
+      [(s3.get() = 111)] false
+      [((s3.get() = 111) -> A.isHidden())] true
+    constraint expression[((s3.get() = 111) -> A.isHidden())] true
+
+----Check All Constraint----
+    constraint expression[((s3.get() = 111) -> A.isHidden())] check start
+      Property[s3::p31] get[31]
+      [(s3.get() = 111)] false
+      [((s3.get() = 111) -> A.isHidden())] true
+    constraint expression[((s3.get() = 111) -> A.isHidden())] true
+
+----Check All Constraint----
+    constraint expression[((s3.get() = 111) -> A.isHidden())] check start
+      Property[s3::p31] get[31]
+      [(s3.get() = 111)] false
+      [((s3.get() = 111) -> A.isHidden())] true
+    constraint expression[((s3.get() = 111) -> A.isHidden())] true
+
+----Check All Constraint----
+    constraint expression[((s3.get() = 111) -> A.isHidden())] check start
+      Property[s3::p31] get[3100]
+      [(s3.get() = 111)] false
+      [((s3.get() = 111) -> A.isHidden())] true
+    constraint expression[((s3.get() = 111) -> A.isHidden())] true
+
+----Run Rule----
+rule expression[(C1.isVisible() => {s3.set(3100), s3.on()})] check start
+      Content[C1] is not Visible
+rule expression[(C1.isVisible() => {s3.set(3100), s3.on()})] true
+
+rule expression[(D1.isVisible() => {s4.set(4100), s4.set(4200), s4.on()})] check start
+      Content[D1] is not Visible
+rule expression[(D1.isVisible() => {s4.set(4100), s4.set(4200), s4.on()})] true
+
+----Run Rule----
+rule expression[(C1.isVisible() => {s3.set(3100), s3.on()})] check start
+      Content[C1] is not Visible
+rule expression[(C1.isVisible() => {s3.set(3100), s3.on()})] true
+
+rule expression[(D1.isVisible() => {s4.set(4100), s4.set(4200), s4.on()})] check start
+      Content[D1] is not Visible
+rule expression[(D1.isVisible() => {s4.set(4100), s4.set(4200), s4.on()})] true
+
+----Run Rule----
+rule expression[(C1.isVisible() => {s3.set(3100), s3.on()})] check start
+      Content[C1] is not Visible
+rule expression[(C1.isVisible() => {s3.set(3100), s3.on()})] true
+
+rule expression[(D1.isVisible() => {s4.set(4100), s4.set(4200), s4.on()})] check start
+      Content[D1] is not Visible
+rule expression[(D1.isVisible() => {s4.set(4100), s4.set(4200), s4.on()})] true
+
+----Run Rule----
+rule expression[(C1.isVisible() => {s3.set(3100), s3.on()})] check start
+      Content[C1] is not Visible
+rule expression[(C1.isVisible() => {s3.set(3100), s3.on()})] true
+
+rule expression[(D1.isVisible() => {s4.set(4100), s4.set(4200), s4.on()})] check start
+      Content[D1] is not Visible
+rule expression[(D1.isVisible() => {s4.set(4100), s4.set(4200), s4.on()})] true
+
+----Run Rule----
+rule expression[(C1.isVisible() => {s3.set(3100), s3.on()})] check start
+      Content[C1::NORMAL] is Visible
+      Property[s3::p31] set[3100]
+      Scene[s3] on
+rule expression[(C1.isVisible() => {s3.set(3100), s3.on()})] true
+
+rule expression[(D1.isVisible() => {s4.set(4100), s4.set(4200), s4.on()})] check start
+      Content[D1] is not Visible
+rule expression[(D1.isVisible() => {s4.set(4100), s4.set(4200), s4.on()})] true
+
+----Run Rule----
+rule expression[(C1.isVisible() => {s3.set(3100), s3.on()})] check start
+      Content[C1::NORMAL] is Visible
+      Property[s3::p31] set[3100]
+      Scene[s3] on
+rule expression[(C1.isVisible() => {s3.set(3100), s3.on()})] true
+
+rule expression[(D1.isVisible() => {s4.set(4100), s4.set(4200), s4.on()})] check start
+      Content[D1::NORMAL] is Visible
+      Property[s4::p41] set[4100]
+      Property[s4::p42] set[4200]
+      Scene[s4] on
+rule expression[(D1.isVisible() => {s4.set(4100), s4.set(4200), s4.on()})] true
+
+----Result Information----
+Allocatable TotalCount:4
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[B1] visible[false] cancel[false]
+  ViewContent[C1] visible[false] cancel[false]
+  ViewContent[D1] visible[false] cancel[false]
+----Result Information----
+Allocatable TotalCount:4
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[B1] visible[false] cancel[false]
+  ViewContent[C1] visible[false] cancel[false]
+  ViewContent[D1] visible[false] cancel[false]
+----Result Information----
+Allocatable TotalCount:4
+  Area[A] Content[A1::NORMAL] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[true] cancel[false]
+    allocated Area[A]
+  ViewContent[B1] visible[false] cancel[false]
+  ViewContent[C1] visible[false] cancel[false]
+  ViewContent[D1] visible[false] cancel[false]
+----Result Information----
+Allocatable TotalCount:4
+  Area[A] Content[A1::NORMAL] hidden[false]
+  Area[B] Content[B1::NORMAL] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[true] cancel[false]
+    allocated Area[A]
+  ViewContent[B1] visible[true] cancel[false]
+    allocated Area[B]
+  ViewContent[C1] visible[false] cancel[false]
+  ViewContent[D1] visible[false] cancel[false]
+----Result Information----
+Allocatable TotalCount:4
+  Area[A] Content[A1::NORMAL] hidden[false]
+  Area[B] Content[B1::NORMAL] hidden[false]
+  Area[C] Content[C1::NORMAL] hidden[false]
+  Area[D] Content[null] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[true] cancel[false]
+    allocated Area[A]
+  ViewContent[B1] visible[true] cancel[false]
+    allocated Area[B]
+  ViewContent[C1] visible[true] cancel[false]
+    allocated Area[C]
+  ViewContent[D1] visible[false] cancel[false]
+----Result Information----
+Allocatable TotalCount:4
+  Area[A] Content[A1::NORMAL] hidden[false]
+  Area[B] Content[B1::NORMAL] hidden[false]
+  Area[C] Content[C1::NORMAL] hidden[false]
+  Area[D] Content[D1::NORMAL] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[true] cancel[false]
+    allocated Area[A]
+  ViewContent[B1] visible[true] cancel[false]
+    allocated Area[B]
+  ViewContent[C1] visible[true] cancel[false]
+    allocated Area[C]
+  ViewContent[D1] visible[true] cancel[false]
+    allocated Area[D]
+

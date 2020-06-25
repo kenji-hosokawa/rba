@@ -1,0 +1,103 @@
+Package Displays {
+	Display SampleDisplay{
+		sizeReference: FullScreen
+		CompositeArea Default1 {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:0
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: エリアA
+				}
+				PositionContainer {
+					x:400
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: エリアB
+				}
+				PositionContainer {
+					x:600
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: エリアC
+				}
+			}
+		}
+	}
+	Size FullScreen {width: 900 height: 200} 
+	Size エリアAサイズ {width: 400 height: 200} 
+	Size エリアBサイズ {width: 200 height: 200} 
+	Size エリアCサイズ {width: 300 height: 200} 
+	Area エリアA {
+		visibility: > That-of エリアB
+		arbitrationPolicy: DEFAULT
+		zorder: STANDARD_VALUE
+		sizeReference: エリアAサイズ
+	}
+	Area エリアB {
+		visibility: MIN_VALUE
+		arbitrationPolicy: DEFAULT
+		zorder: STANDARD_VALUE
+		sizeReference: エリアBサイズ
+	}
+	Area エリアC {
+		visibility: NONE_VALUE
+		arbitrationPolicy: DEFAULT
+		zorder: STANDARD_VALUE
+		sizeReference: エリアCサイズ
+	}
+	ViewContent コンテンツA1{
+		loserType: NEVER_GIVEUP
+		sizeReference: エリアAサイズ
+		State NORMAL {
+			priority: 15
+		}
+		allocatable: [エリアA]
+	}
+	ViewContent コンテンツB1{
+		loserType: NEVER_GIVEUP
+		sizeReference: エリアBサイズ
+		State NORMAL {
+			priority: 14
+		}
+		allocatable: [エリアB]
+	}
+	ViewContent コンテンツC1{
+		loserType: NEVER_GIVEUP
+		sizeReference: エリアBサイズ
+		State NORMAL {
+			priority: 13
+		}
+		allocatable: [エリアC]
+	}
+	ViewContent コンテンツA2{
+		loserType: NEVER_GIVEUP
+		sizeReference: エリアAサイズ
+		State NORMAL {
+			priority: 12
+		}
+		allocatable: [エリアA]
+	}
+	ViewContent コンテンツB2{
+		loserType: NEVER_GIVEUP
+		sizeReference: エリアBサイズ
+		State NORMAL {
+			priority: 11
+		}
+		allocatable: [エリアB]
+	}
+	ViewContent コンテンツC2{
+		loserType: NEVER_GIVEUP
+		sizeReference: エリアCサイズ
+		State NORMAL {
+			priority: 10
+		}
+		allocatable: [エリアC]
+	}
+	Constraint AndOperator {
+		runtime: true
+		(コンテンツA2.isActive() -> コンテンツA2.isVisible()) AND
+		(コンテンツB2.isActive() -> コンテンツB2.isVisible()) AND
+		(コンテンツC2.isActive() -> コンテンツC2.isVisible())
+	}
+}

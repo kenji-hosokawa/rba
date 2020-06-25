@@ -1,0 +1,89 @@
+Package Displays {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 600
+			height: 200
+		}
+
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: InterruptArea
+				}
+				PositionContainer {
+					x: 400
+					y: 0
+					areaReference: UserArea
+				}
+			}
+		}
+	}
+
+	Area InterruptArea {
+		arbitrationPolicy: PRIORITY_FIRST_COME_FIRST
+		sizeReference:Aサイズ
+		visibility: > That-of UserArea
+		zorder: > That-of UserArea
+	}
+	Area UserArea {
+		arbitrationPolicy: PRIORITY_FIRST_COME_FIRST
+		sizeReference:Bサイズ
+		visibility: MIN_VALUE
+		zorder: MIN_VALUE
+	}
+
+	Size Aサイズ {
+		width: 400
+		height: 200
+	}
+	Size Bサイズ {
+		width: 200
+		height: 200
+	}
+
+	ViewContent InterruptContent {
+		allocatable: [InterruptArea]
+		State HIGH {
+			priority: > That-of UserContent.HIGH
+		}
+		State LOW {
+			priority: > That-of UserContent.LOW
+		}
+		sizeReference: Aサイズ
+	}
+	ViewContent UserContent {
+		allocatable:[UserArea]
+		State HIGH {
+			priority: > That-of InterruptContent.LOW
+		}
+		State LOW {
+			priority: MIN_VALUE
+		}
+		sizeReference: Aサイズ
+	}
+
+	Constraint Constraint_Area_HideInterruptOrUserArea {
+		description: "割込みエリアとユーザ操作エリアは、優先度の高い方を表示する" 
+		runtime: true
+		IF (InterruptArea.contentValue() > UserArea.contentValue()) 
+		THEN InterruptArea.isDisplayed() -> UserArea.isHidden()
+		ELSE UserArea.isDisplayed() -> InterruptArea.isHidden()
+	}
+
+//	Constraint Constraint_Area_HideInterruptByUserArea {
+//		description: "割込みエリアとユーザ操作エリアは、優先度の高い方を表示する" 
+//		runtime: true
+//		UserArea.isDisplayed() AND (InterruptArea.contentValue() < UserArea.contentValue()) 
+//		-> InterruptArea.isHidden()
+//	}
+//
+//	Constraint Constraint_Area_HideUserAreaByInterrupt {
+//		description: "割込みエリアとユーザ操作エリアは、優先度の高い方を表示する" 
+//		runtime: true
+//		InterruptArea.isDisplayed() AND (InterruptArea.contentValue() > UserArea.contentValue()) 
+//		-> UserArea.isHidden()
+//	}
+}
+

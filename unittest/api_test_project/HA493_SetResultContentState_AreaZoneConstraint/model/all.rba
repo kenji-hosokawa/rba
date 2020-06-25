@@ -1,0 +1,137 @@
+Package Displays {
+	Display SampleDisplay{
+		sizeReference: FullScreen
+		CompositeArea Default1 {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:0
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: エリアA
+				}
+				PositionContainer {
+					x:400
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: エリアB
+				}
+			}
+		}
+	}
+	Size FullScreen {width: 900 height: 200} 
+	Size エリアAサイズ {width: 400 height: 200} 
+	Size エリアBサイズ {width: 200 height: 200}  
+	Area エリアA {
+		visibility: STANDARD_VALUE
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		zorder: MIN_VALUE
+		sizeReference: エリアAサイズ
+	}
+	Area エリアB {
+		visibility: STANDARD_VALUE
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		zorder: MIN_VALUE
+		sizeReference: エリアAサイズ
+	}
+	Zone ゾーンA {
+		priority: STANDARD_VALUE
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		attenuateValue: 1
+	}
+	Zone ゾーンB {
+		priority: STANDARD_VALUE
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		attenuateValue: 1
+	}
+	ViewContent 表示コンテンツA0{
+		loserType: NEVER_GIVEUP
+		sizeReference: エリアAサイズ
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [エリアA]
+	}
+	ViewContent 表示コンテンツA1{
+		loserType: GOOD_LOSER
+		sizeReference: エリアAサイズ
+		State NORMAL {
+			priority: 11
+		}
+		allocatable: [エリアA]
+	}
+	ViewContent 表示コンテンツA2{
+		loserType: NEVER_GIVEUP
+		sizeReference: エリアAサイズ
+		State NORMAL {
+			priority: 11
+		}
+		allocatable: [エリアA]
+	}
+	ViewContent 表示コンテンツB1{
+		loserType: NEVER_GIVEUP
+		sizeReference: エリアBサイズ
+		State NORMAL {
+			priority: MIN_VALUE
+		}
+		allocatable: [エリアB]
+	}
+	SoundContent 音コンテンツA0{
+		loserType: NEVER_GIVEUP
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [ゾーンA]
+	}
+	SoundContent 音コンテンツA1{
+		loserType: GOOD_LOSER
+		State NORMAL {
+			priority: 11
+		}
+		allocatable: [ゾーンA]
+	}
+	SoundContent 音コンテンツA2{
+		loserType: NEVER_GIVEUP
+		State NORMAL {
+			priority: 11
+		}
+		allocatable: [ゾーンA]
+	}
+	SoundContent 音コンテンツA3{
+		loserType: NEVER_GIVEUP
+		State NORMAL {
+			priority: 11
+		}
+		allocatable: [ゾーンA]
+	}
+	SoundContent 音コンテンツB1{
+		loserType: NEVER_GIVEUP
+		State NORMAL {
+			priority: MIN_VALUE
+		}
+		allocatable: [ゾーンB]
+	}
+	Scene シーン1{
+		global: true
+	}
+	Scene シーン2{
+		global: true
+	}
+	Constraint vcA2isHidden {
+		runtime: true
+		エリアA.allocatedContent() == 表示コンテンツA2 -> エリアA.isHidden()
+	}
+	Constraint scA2isMuted {
+		runtime: true
+		ゾーンA.allocatedContent() == 音コンテンツA2 -> ゾーンA.isMuted()
+	}
+	Constraint scA3isAttenuated {
+		runtime: true
+		ゾーンA.allocatedContent() == 音コンテンツA3 -> ゾーンA.isAttenuated()
+	}
+	PostConstraint PConstAreaAisDisplayed {
+		エリアA.isDisplayed() -> 表示コンテンツB1.isCanceled()
+	}
+	PostConstraint PConstZoneAisDisplayed {
+		ゾーンA.isOutputted() -> 音コンテンツB1.isCanceled()
+	}
+}

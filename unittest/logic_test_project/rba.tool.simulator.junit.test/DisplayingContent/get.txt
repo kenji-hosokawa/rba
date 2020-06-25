@@ -1,0 +1,5 @@
+C,ON,コンテンツB1,NORMAL
+execute
+
+Assert,A,エリアA,NULL
+Assert,A,エリアB,コンテンツB1

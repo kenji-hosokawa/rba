@@ -1,0 +1,16 @@
+// 先に発生した要求でも優先度が高ければ勝つ
+// 同じ優先度なら後勝ちになる
+
+C,ON,C2,CS_N
+execute
+Assert,A,A1,C2
+
+// C1を追加しても、優先度勝ち
+C,ON,C1,CS_N
+execute
+Assert,A,A1,C2
+
+// C3はC2と優先度が同じなので、後勝ち
+C,ON,C3,CS_N
+execute
+Assert,A,A1,C3

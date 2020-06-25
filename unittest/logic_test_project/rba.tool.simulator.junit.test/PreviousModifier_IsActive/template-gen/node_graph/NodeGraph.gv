@@ -1,0 +1,97 @@
+digraph rule_objects_graph {
+	rankdir = LR;
+	charset="utf-8";
+	clusterrank = global;
+	
+	node [shape = plaintext];
+	Scene -> Constraint -> "Area Set" -> Area -> "Content Set" -> Content; 
+	{ rank = same;
+		node [shape = box];
+		{
+			Area;
+			e1 [label="エリアA", fontname="Meiryo UI"];
+
+		}
+	}
+	
+	{ rank = same;
+		node [shape = ellipse];
+		{
+			Content;
+			e2 [label="コンテンツA1", fontname="Meiryo UI"];
+			e3 [label="コンテンツA2", fontname="Meiryo UI"];
+
+
+		}
+	}
+	
+	{
+		subgraph subareaset {
+			"Area Set";
+			node [shape = box, style = filled, color = lightpink];
+
+
+		}
+	}
+
+
+	
+	{
+		subgraph subcontentset {
+			"Content Set";
+			node [shape = ellipse, style = filled, color = palegreen];
+
+
+		}
+	}
+
+
+
+	e1 -> e2 [dir=none, color=red];
+	e1 -> e3 [dir=none, color=red];
+	
+
+	
+
+	
+
+	
+
+	subgraph scene { rank = same;
+		node [shape = circle, style = filled, color = lightblue];
+		{
+			"Scene";
+
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightgrey];
+		{
+			"Constraint";
+			e4 [label="PreviousModifier_IsActive", fontname="Meiryo UI"];
+		}
+	}
+	
+	{ rank = same;
+		node [shape = note, style = filled, color = lavenderblush2];
+		{
+			"Constraint";
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightpink2];
+		{
+			"Constraint";
+		}
+	}
+
+	e4 -> e2 [color=blue];
+	
+
+	
+
+	
+}
+

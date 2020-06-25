@@ -1,0 +1,126 @@
+Package SampleDisplays {
+	Display Sample_METER{
+		Size Sample_METER_FULLSCREEN {
+			width: 800
+			height: 400
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:100
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x:300
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+			}
+		}
+	}
+	Size Aサイズ {
+		width:300
+		height:200
+	}
+	Size Bサイズ {
+		width:200
+		height:100
+	}
+	Area A {
+		sizeReference:Aサイズ
+		visibility: > That-of B
+		zorder: > That-of B
+	}
+	Area B {
+		sizeReference:Bサイズ
+		visibility:  MIN_VALUE
+		zorder: MIN_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Aサイズ
+	}
+	ViewContent A2{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Aサイズ
+	}
+	ViewContent A3{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Aサイズ
+	}
+	ViewContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Bサイズ
+	}
+	ViewContent B2 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Bサイズ
+	}
+	ViewContent B3 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Bサイズ
+	}
+	Constraint Constraint1 {
+		runtime: true
+		(
+			(
+				(A.allocatedContent() == A1 OR A.allocatedContent() == A2)
+				AND
+				(B.allocatedContent() == B1)
+			)
+			OR
+			(
+				(A.allocatedContent() == A3)
+				AND
+				(B.allocatedContent() == B2 OR B.allocatedContent() == B3)
+			)
+		)
+		->
+		For-All {A, B} { x |
+			For-All {A, B} { y | 
+				(
+					x == y
+				) 
+				OR 
+				( // y.allocatedContent()の要求がx.allocatedContent()の要求より後に発生していれば真
+					y.allocatedContent().hasComeLaterThan(x.allocatedContent()) 
+					->
+					y.isHidden()
+				)
+			}
+		}
+	}	
+}

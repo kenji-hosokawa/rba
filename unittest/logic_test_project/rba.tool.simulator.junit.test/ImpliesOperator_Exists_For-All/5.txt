@@ -1,0 +1,12 @@
+// B1かC1が表示ならA1とA2は表示しない
+// 全て要求通りに表示
+C,OFF,コンテンツA1,NORMAL
+C,OFF,コンテンツB1,NORMAL
+C,OFF,コンテンツC1,NORMAL
+execute
+C,ON,コンテンツA2,NORMAL
+execute
+
+Assert,A,エリアA,コンテンツA2
+Assert,A,エリアB,NULL
+Assert,A,エリアC,NULL

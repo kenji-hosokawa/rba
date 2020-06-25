@@ -1,0 +1,22 @@
+Package Sounds {
+	Constraint const1 {
+		runtime: true
+		!(A.outputtingSound() == B.outputtingSound())
+	}
+	Zone A {
+		arbitrationPolicy: LAST_COME_FIRST
+		visibility: > That-of B
+	}
+	Zone B {
+		arbitrationPolicy: LAST_COME_FIRST
+		visibility: STANDARD_VALUE
+	}
+	SoundContent Content1 {
+		allocatable: [ A, B ]
+		State NORMAL { priority: 1 }
+	}
+	SoundContent Content2{
+		allocatable:[ A, B ]
+		State NORMAL { priority: 0 }
+	}
+}

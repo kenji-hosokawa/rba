@@ -1,0 +1,78 @@
+Package Displays {
+	Display SampleDisplay{
+		sizeReference: FullScreen
+		CompositeArea Default1 {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:0
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x:100
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+				PositionContainer {
+					x:200
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: C
+				}
+			}
+		}
+	}
+	Size FullScreen {width: 300 height: 300} 
+	Size サイズ {width: 100 height: 100} 
+	Area A {
+		visibility: STANDARD_VALUE
+		arbitrationPolicy: DEFAULT
+		zorder: STANDARD_VALUE
+		sizeReference: サイズ
+	}
+	Area B {
+		visibility: < That-of A
+		arbitrationPolicy: DEFAULT
+		zorder: STANDARD_VALUE
+		sizeReference: サイズ
+	}
+	Area C {
+		visibility:  < That-of B
+		arbitrationPolicy: DEFAULT
+		zorder: STANDARD_VALUE
+		sizeReference: サイズ
+	}
+	ViewContent A1{
+		loserType: NEVER_GIVEUP
+		sizeReference: サイズ
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [A]
+	}
+	ViewContent B1{
+		loserType: NEVER_GIVEUP
+		sizeReference: サイズ
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [B]
+	}
+	ViewContent C1{
+		loserType: NEVER_GIVEUP
+		sizeReference: サイズ
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [C]
+	}
+	Scene SCENE_X{
+		global: false
+	}
+	Constraint setModel {
+		runtime: true
+		A1.isActive() -> !B1.isActive()
+	}
+}

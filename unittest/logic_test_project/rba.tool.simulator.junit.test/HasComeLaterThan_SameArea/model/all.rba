@@ -1,0 +1,36 @@
+Package Model {
+	Constraint エリアの調停ポリシーを上書きして先勝ちにする {
+		runtime: true
+		a2.hasComeLaterThan(a1) -> ! a2.isVisible() 
+	}
+
+	Area A {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE sizeReference: size1
+	}
+
+	ViewContent a1 {
+		allocatable: [ A ] sizeReference: size1
+		State NORMAL { priority: 10 }
+	}
+	ViewContent a2 {
+		allocatable: [ A ] sizeReference: size1
+		State NORMAL { priority: 10 }
+	}
+	ViewContent a3 {
+		allocatable: [ A ] sizeReference: size1
+		State NORMAL { priority: 10 }
+	}
+
+	Display SampleDisplay {
+		Size FullScreen { width: 400 height: 200 }
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer { x: 0 y: 0 areaReference: A }
+			}
+		}
+	}
+	Size size1 { width: 200 height: 200 }
+
+}

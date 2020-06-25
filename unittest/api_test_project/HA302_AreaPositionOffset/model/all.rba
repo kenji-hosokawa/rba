@@ -1,0 +1,351 @@
+Package Displays {
+	Display Sample_METER{
+		Size Sample_METER_FULLSCREEN {
+			width:1200
+			height:1200
+		}
+		CompositeArea Default1 {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:100
+					y:200
+					basePoint: LEFT_TOP
+					areaReference: AreaA
+					Offset{
+						x:11
+						y:12
+						sizeReference:Size02
+					}
+					Offset{
+						x:12
+						y:13
+						sizeReference:Size03
+					}
+					Offset{
+						x:13
+						y:14
+						sizeReference:Size04
+					}
+					Offset{
+						x:14
+						y:15
+						sizeReference:Size05
+					}
+					Offset{
+						x:15
+						y:16
+						sizeReference:Size06
+					}
+					Offset{
+						x:16
+						y:17
+						sizeReference:Size07
+					}
+					Offset{
+						x:17
+						y:18
+						sizeReference:Size08
+					}
+					Offset{
+						x:18
+						y:19
+						sizeReference:Size09
+					}
+					Offset{
+						x:19
+						y:20
+						sizeReference:Size10
+					}
+				}
+				PositionContainer {
+					x:110
+					y:120
+					basePoint: CENTER_BOTTOM
+					areaReference: AreaB
+					Offset{
+						x:11
+						y:12
+						sizeReference:Size02
+					}
+				}
+				PositionContainer {
+					x:120
+					y:130
+					basePoint: CENTER_MIDDLE
+					areaReference: AreaC
+					Offset{
+						x:12
+						y:13
+						sizeReference:Size03
+					}
+				}
+				PositionContainer {
+					x:130
+					y:140
+					basePoint: CENTER_TOP
+					areaReference: AreaD
+					Offset{
+						x:13
+						y:14
+						sizeReference:Size04
+					}
+				}
+				PositionContainer {
+					x:140
+					y:150
+					basePoint: LEFT_BOTTOM
+					areaReference: AreaE
+					Offset{
+						x:14
+						y:15
+						sizeReference:Size05
+					}
+				}
+				PositionContainer {
+					x:150
+					y:160
+					basePoint: LEFT_MIDDLE
+					areaReference: AreaF
+					Offset{
+						x:15
+						y:16
+						sizeReference:Size06
+					}
+				}
+				PositionContainer {
+					x:160
+					y:170
+					basePoint: LEFT_TOP
+					areaReference: AreaG
+					Offset{
+						x:16
+						y:17
+						sizeReference:Size07
+					}
+				}
+				PositionContainer {
+					x:170
+					y:180
+					basePoint: RIGHT_BOTTOM
+					areaReference: AreaH
+					Offset{
+						x:17
+						y:18
+						sizeReference:Size08
+					}
+				}
+				PositionContainer {
+					x:180
+					y:190
+					basePoint: RIGHT_MIDDLE
+					areaReference: AreaI
+					Offset{
+						x:18
+						y:19
+						sizeReference:Size09
+					}
+				}
+				PositionContainer {
+					x:190
+					y:200
+					basePoint: RIGHT_TOP
+					areaReference: AreaJ
+					Offset{
+						x:19
+						y:20
+						sizeReference:Size10
+					}
+				}
+			}
+		}
+	}
+	Size Size01 {
+		width:100
+		height:200
+	}
+	Size Size02 {
+		width:150
+		height:250
+	}
+	Size Size03 {
+		width:200
+		height:300
+	}
+	Size Size04 {
+		width:250
+		height:350
+	}
+	Size Size05 {
+		width:300
+		height:400
+	}
+	Size Size06 {
+		width:350
+		height:450
+	}
+	Size Size07 {
+		width:400
+		height:500
+	}
+	Size Size08 {
+		width:450
+		height:550
+	}
+	Size Size09 {
+		width:500
+		height:600
+	}
+	Size Size10 {
+		width:550
+		height:650
+	}
+	Area AreaA {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Size01
+		sizeReference: Size02
+		sizeReference: Size03
+		sizeReference: Size04
+		sizeReference: Size05
+		sizeReference: Size06
+		sizeReference: Size07
+		sizeReference: Size08
+		sizeReference: Size09
+		sizeReference: Size10
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	Area AreaB {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Size02
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	Area AreaC {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Size03
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	Area AreaD {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Size04
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	Area AreaE {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Size05
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	Area AreaF {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Size06
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	Area AreaG {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Size07
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	Area AreaH {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Size08
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	Area AreaI {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Size09
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	Area AreaJ {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Size10
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	ViewContent Content01{
+		loserType:NEVER_GIVEUP
+		sizeReference: Size01
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [AreaA]
+	}
+	ViewContent Content02{
+		loserType:NEVER_GIVEUP
+		sizeReference: Size02
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [AreaA,AreaB]
+	}
+	ViewContent Content03{
+		loserType:NEVER_GIVEUP
+		sizeReference: Size03
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [AreaA,AreaC]
+	}
+	ViewContent Content04{
+		loserType:NEVER_GIVEUP
+		sizeReference: Size04
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [AreaA,AreaD]
+	}
+	ViewContent Content05{
+		loserType:NEVER_GIVEUP
+		sizeReference: Size05
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [AreaA,AreaE]
+	}
+	ViewContent Content06{
+		loserType:NEVER_GIVEUP
+		sizeReference: Size06
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [AreaA,AreaF]
+	}
+	ViewContent Content07{
+		loserType:NEVER_GIVEUP
+		sizeReference: Size07
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [AreaA,AreaG]
+	}
+	ViewContent Content08{
+		loserType:NEVER_GIVEUP
+		sizeReference: Size08
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [AreaA,AreaH]
+	}
+	ViewContent Content09{
+		loserType:NEVER_GIVEUP
+		sizeReference: Size09
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [AreaA,AreaI]
+	}
+	ViewContent Content10{
+		loserType:NEVER_GIVEUP
+		sizeReference: Size10
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [AreaA,AreaJ]
+	}
+}

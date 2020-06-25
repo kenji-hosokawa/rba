@@ -1,0 +1,107 @@
+digraph rule_objects_graph {
+	rankdir = LR;
+	charset="utf-8";
+	clusterrank = global;
+	
+	node [shape = plaintext];
+	Scene -> Constraint -> "Area Set" -> Area -> "Content Set" -> Content; 
+	{ rank = same;
+		node [shape = box];
+		{
+			Area;
+			e1 [label="A", fontname="Meiryo UI"];
+			e2 [label="B", fontname="Meiryo UI"];
+			e3 [label="C", fontname="Meiryo UI"];
+			e4 [label="D", fontname="Meiryo UI"];
+
+		}
+	}
+	
+	{ rank = same;
+		node [shape = ellipse];
+		{
+			Content;
+			e5 [label="A1", fontname="Meiryo UI"];
+			e6 [label="B1", fontname="Meiryo UI"];
+			e7 [label="C1", fontname="Meiryo UI"];
+			e8 [label="D1", fontname="Meiryo UI"];
+
+
+		}
+	}
+	
+	{
+		subgraph subareaset {
+			"Area Set";
+			node [shape = box, style = filled, color = lightpink];
+
+
+		}
+	}
+
+
+	
+	{
+		subgraph subcontentset {
+			"Content Set";
+			node [shape = ellipse, style = filled, color = palegreen];
+
+
+		}
+	}
+
+
+
+	e1 -> e5 [dir=none, color=red];
+	e2 -> e6 [dir=none, color=red];
+	e3 -> e7 [dir=none, color=red];
+	e4 -> e8 [dir=none, color=red];
+	
+
+	
+
+	
+
+	
+
+	subgraph scene { rank = same;
+		node [shape = circle, style = filled, color = lightblue];
+		{
+			"Scene";
+
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightgrey];
+		{
+			"Constraint";
+			e9 [label="HA763_構文の組み合わせテスト", fontname="Meiryo UI"];
+		}
+	}
+	
+	{ rank = same;
+		node [shape = note, style = filled, color = lavenderblush2];
+		{
+			"Constraint";
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightpink2];
+		{
+			"Constraint";
+		}
+	}
+
+	e9 -> e1 [color=blue];
+	e9 -> e4 [color=blue];
+	e9 -> e2 [color=blue];
+	e9 -> e3 [color=blue];
+	
+
+	
+
+	
+}
+

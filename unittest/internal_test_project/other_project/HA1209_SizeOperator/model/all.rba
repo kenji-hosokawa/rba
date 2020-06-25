@@ -1,0 +1,151 @@
+Package SampleDisplays {
+	Display Sample_METER{
+		Size Sample_METER_FULLSCREEN {
+			width: 500
+			height: 400
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:100
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x: 50
+					y: 250
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+				PositionContainer {
+					x: 50
+					y: 250
+					basePoint: LEFT_TOP
+					areaReference: C
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: X
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: XX
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: XXX
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: XXXX
+				}
+			}
+		}
+	}
+	Size サイズ {
+		width:100
+		height:100
+	}
+	Area A {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area C {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area X {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area XX {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area XXX {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area XXXX {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: 10
+		}
+		sizeReference:サイズ
+	}
+	ViewContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: 10
+		}
+		State WARNING {
+			priority: 11
+		}
+		sizeReference:サイズ
+	}
+	ViewContent C1{
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: 11
+		}
+		sizeReference:サイズ
+	}
+	ViewContent X1 {
+		allocatable: [
+			X,XX,XXX,XXXX
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+	Scene S1{}
+	Scene S2{}
+	Constraint HA1209_SizeOperator_1 {
+		runtime: true
+		ALL_VIEWCONTENTS.size() = 4 -> X.isHidden()
+	}
+	Constraint HA1209_SizeOperator_2 {
+		runtime: true
+		let sele = {A1,B1,C1}.select{x|x.isActive()}
+		{sele}.size() = 1 -> XX.isHidden()
+	}
+	Constraint HA1209_SizeOperator_3 {
+		runtime: true
+		{A1}.size() = 1 -> XXX.isHidden()
+	}
+	Constraint HA1209_SizeOperator_4 {
+		runtime: true
+		A.allocatedContent().allocatables().size() = 1 -> XXXX.isHidden()
+	}
+}

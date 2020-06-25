@@ -1,0 +1,10 @@
+C,ON,表示コンテンツA2,NORMAL
+C,ON,表示コンテンツB2,NORMAL
+C,ON,音コンテンツA2,NORMAL
+C,ON,音コンテンツB2,NORMAL
+execute
+
+Assert,A,ゾーンA,NULL
+Assert,A,エリアA,表示コンテンツA2
+Assert,A,エリアB,表示コンテンツB2
+Assert,A,ゾーンB,音コンテンツB2

@@ -1,0 +1,82 @@
+Package SampleDisplays {
+	Display Sample_METER{
+		Size Sample_METER_FULLSCREEN {
+			width: 500
+			height: 400
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:100
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: X
+				}
+			}
+		}
+	}
+	Size サイズ {
+		width:100
+		height:100
+	}
+	Area A {
+		sizeReference:サイズ
+		visibility: MAX_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area X {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+	ViewContent X1{
+		allocatable: [
+			X
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+        loserType: GOOD_LOSER
+  	}
+	ViewContent X2{
+		allocatable: [
+			X
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE+1
+		}
+		sizeReference:サイズ
+        loserType: GOOD_LOSER
+  	}
+	ViewContent X3{
+		allocatable: [
+			X
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE+2
+		}
+		sizeReference:サイズ
+        loserType: GOOD_LOSER
+  	}
+	Constraint C1 {
+		description: "Constraint_C1"
+		runtime: true
+		(IF( X.isDisplayed() ) THEN X1 ELSE X2).hasBeenDisplayed() -> A.isHidden()
+	}
+}

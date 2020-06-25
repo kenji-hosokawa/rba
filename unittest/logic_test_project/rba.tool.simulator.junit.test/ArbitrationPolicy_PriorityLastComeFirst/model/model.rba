@@ -1,0 +1,33 @@
+Package P1 {
+	Area A1 {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		sizeReference: S1 visibility: 1 zorder: 1
+	}
+	ViewContent C1 {
+		allocatable: [ A1 ]
+		State CS_N { priority: STANDARD_VALUE }
+		sizeReference: S1
+	}
+	ViewContent C2 {
+		allocatable: [ A1 ]
+		State CS_N { priority: > That-of C1.CS_N }
+		sizeReference: S1
+	}
+	ViewContent C3 {
+		allocatable: [ A1 ]
+		State CS_N { priority: That-of C2.CS_N }
+		sizeReference: S1
+	}
+
+	Size S1 { width: 1 height: 1 }
+	Display D1 {
+		Size DisplaySize { width: 500 height: 400 }
+		CompositeArea D1Composite {
+			layout: FixedPositionLayout {
+				PositionContainer { x: 0 y: 0 basePoint: LEFT_TOP
+					areaReference: A1
+				}
+			}
+		}
+	}
+}

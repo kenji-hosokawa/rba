@@ -1,0 +1,101 @@
+Package Displays {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 900
+			height: 200
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: エリアA
+				}
+				PositionContainer {
+					x: 400
+					y: 0
+					areaReference: エリアB
+				}
+				PositionContainer {
+					x: 600
+					y: 0
+					areaReference: エリアC
+				}
+			}
+		}
+	}
+
+	Area エリアA {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: エリアAサイズ
+		visibility: > That-of エリアB
+		zorder: STANDARD_VALUE
+	}
+	Area エリアB {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: エリアBサイズ
+		visibility: > That-of エリアC
+		zorder: STANDARD_VALUE
+	}
+	Area エリアC {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: エリアCサイズ
+		visibility: MIN_VALUE
+		zorder: STANDARD_VALUE
+	}
+
+	Size エリアAサイズ {
+		width: 400
+		height: 200
+	}
+	Size エリアBサイズ {
+		width: 200
+		height: 200
+	}
+	Size エリアCサイズ {
+		width: 300
+		height: 200
+	}
+
+	ViewContent コンテンツA1{
+		allocatable: [
+			エリアA,エリアC
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+		sizeReference: エリアAサイズ
+	}
+	ViewContent コンテンツB1 {
+		allocatable: [
+			エリアB,エリアC
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+		sizeReference: エリアBサイズ
+	}
+	ViewContent コンテンツA2{
+		allocatable: [
+			エリアA,エリアC
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+		sizeReference: エリアAサイズ
+	}
+	ViewContent コンテンツB2 {
+		allocatable: [
+			エリアB,エリアC
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+		sizeReference: エリアBサイズ
+	}
+
+	Constraint 高優先エリア表示時は中優先エリア用コンテンツは表示しない {
+		runtime: true
+		エリアA.isDisplayed() -> !コンテンツB1.isVisible()
+	}
+}

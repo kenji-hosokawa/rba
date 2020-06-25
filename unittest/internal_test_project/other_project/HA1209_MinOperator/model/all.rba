@@ -1,0 +1,117 @@
+Package SampleDisplays {
+	Display Sample_METER{
+		Size Sample_METER_FULLSCREEN {
+			width: 500
+			height: 400
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:100
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x: 50
+					y: 250
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: X
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: Y
+				}
+			}
+		}
+	}
+	Size サイズ {
+		width:100
+		height:100
+	}
+	Area A {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area X {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area Y {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+	ViewContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		State WARNING {
+			priority: STANDARD_VALUE + 1
+		}
+		sizeReference:サイズ
+	}
+	ViewContent X1 {
+		allocatable: [
+			X
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+	ViewContent Y1 {
+		allocatable: [
+			Y
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+	Scene S1{}
+	Scene S2{}
+	Constraint HA1209_MinOperator_1 {
+		runtime: true
+		S1.isOn() -> ALL_AREAS.min{x|x.contentValue()}.isHidden()
+	}
+	Constraint HA1209_MinOperator_2 {
+		runtime: true
+		ALL_AREAS.min{x|x.contentValue()} == B -> X.isHidden()
+	}
+	Constraint HA1209_MinOperator_3 {
+		runtime: true
+		S2.isOn() -> !{A1}.min{x|x.stateValue()}.isVisible()
+	}
+	Constraint HA1209_MinOperator_4 {
+		runtime: true
+		ALL_VIEWCONTENTS.min{x|x.stateValue()} == A1 -> Y.displayingContent().allocatables().min{y|y.contentValue()}.isHidden()
+	}
+}

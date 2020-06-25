@@ -1,0 +1,210 @@
+Package SampleDisplays {
+	Display Display1{
+		Size Sample_METER_FULLSCREEN {
+			width: 500
+			height: 400
+		}
+		CompositeArea CompositeArea1 {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:100
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+			}
+		}
+	}
+	Display Display2{
+		Size Sample_METER_FULLSCREEN {
+			width: 500
+			height: 400
+		}
+		CompositeArea CompositeArea2 {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:300
+					y:0
+					basePoint: RIGHT_TOP
+					areaReference: B
+				}
+				PositionContainer {
+					x: 50
+					y: 250
+					basePoint: RIGHT_TOP
+					areaReference: C
+				}
+			}
+		}
+	}
+	Display Display3{
+		Size Sample_METER_FULLSCREEN {
+			width: 500
+			height: 400
+		}
+		CompositeArea CompositeArea3 {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 50
+					y: 50
+					basePoint: CENTER_BOTTOM
+					areaReference: D
+				}
+				PositionContainer {
+					x: 50
+					y: 50
+					basePoint: CENTER_BOTTOM
+					areaReference: E
+				}
+				PositionContainer {
+					x: 50
+					y: 50
+					basePoint: CENTER_BOTTOM
+					areaReference: F
+				}
+			}
+		}
+	}
+	Size Aサイズ {
+		width:300
+		height:200
+	}
+	Size Bサイズ {
+		width:200
+		height:100
+	}
+	Size Cサイズ {
+		width:400
+		height:100		
+	}
+	Size Dサイズ {
+		width:100
+		height:100	
+	}
+	Size Eサイズ {
+		width:300
+		height:100
+	}
+	Size Fサイズ {
+		width:50
+		height:50
+	}
+	Area A {
+		sizeReference:Aサイズ
+		visibility: > That-of B
+		zorder: > That-of B
+	}
+	Area B {
+		sizeReference:Bサイズ
+		visibility:  > That-of C
+		zorder: > That-of C
+	}
+	Area C {
+		sizeReference:Cサイズ
+		visibility:  > That-of D
+		zorder:  > That-of D
+	}
+	Area D {
+		sizeReference:Dサイズ
+		visibility: > That-of E
+		zorder: > That-of E
+	}
+	Area E {
+		sizeReference:Eサイズ
+		visibility: > That-of F
+		zorder: > That-of F
+	}
+	Area F {
+		sizeReference:Fサイズ
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Aサイズ
+	}
+	ViewContent A2{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Aサイズ
+	}
+	ViewContent A3{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Aサイズ
+	}
+	ViewContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Bサイズ
+	}
+	ViewContent C1 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Cサイズ
+	}
+	ViewContent D1 {
+		allocatable: [
+			D
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Dサイズ
+	}
+	ViewContent E1 {
+		allocatable: [
+			E
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Eサイズ
+	}
+	Scene S1{}
+	Scene S2{}
+	Scene S3{}
+	Scene S4{}
+	Scene S5{}
+	Constraint HA1003_hasDisplayingArea1 {
+		runtime: true
+		S1.isOn() -> A.isHidden()
+	}
+	Constraint HA1003_hasDisplayingArea2 {
+		runtime: true
+		S2.isOn() -> B.isHidden()
+	}
+	Constraint HA1003_hasDisplayingArea3 {
+		runtime: true
+		S3.isOn() -> C.isHidden()
+	}
+	Constraint HA1003_hasDisplayingArea4 {
+		runtime: true
+		S4.isOn() -> D.isHidden()
+	}
+	Constraint HA1003_hasDisplayingArea5 {
+		runtime: true
+		S5.isOn() -> E.isHidden()
+	}
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groupsettingmodel:GroupSetting xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:groupsettingmodel="http://www.example.org/groupsettingmodel">
+  <groups groupName="音楽再生">
+    <targetContents contentName="オーディオ" contentStateName="NORMAL"/>
+    <targetContents contentName="音楽" contentStateName="NORMAL"/>
+  </groups>
+  <groups groupName="警告">
+    <targetContents contentName="PCS" contentStateName="ブレーキ警告"/>
+    <targetContents contentName="警告音" contentStateName="NORMAL"/>
+  </groups>
+  <groups groupName="着信">
+    <targetContents contentName="TEL" contentStateName="着信"/>
+    <targetContents contentName="着信音" contentStateName="NORMAL"/>
+  </groups>
+</groupsettingmodel:GroupSetting>

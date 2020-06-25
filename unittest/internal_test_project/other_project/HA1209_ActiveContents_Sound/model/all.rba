@@ -1,0 +1,54 @@
+Package Models {
+	Zone A1 {
+		arbitrationPolicy: DEFAULT
+		visibility: STANDARD_VALUE
+	}
+	Zone A2 {
+		arbitrationPolicy: DEFAULT
+		visibility: STANDARD_VALUE
+	}
+	Zone A3 {
+		arbitrationPolicy: DEFAULT
+		visibility: STANDARD_VALUE
+	}
+	
+	SoundContent C1 {
+		allocatable: [A1]
+		State normal {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent C2 {
+		allocatable: [A1]
+		State normal {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent C3 {
+		allocatable: [A1]
+		State normal {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent C4 {
+		allocatable: [A2]
+		State normal {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent C5 {
+		allocatable: [A3]
+		State normal {
+			priority: STANDARD_VALUE
+		}
+	}
+	
+	Constraint check_activeContents {
+		runtime: true
+		For-All A1.activeContents() { x | x.isActive() } -> A2.isMuted()
+	}
+	Constraint check_pre_activeContents {
+		runtime: true
+		For-All (pre)A1.activeContents() { x | (pre)x.isActive() } -> A3.isMuted()
+	}
+}

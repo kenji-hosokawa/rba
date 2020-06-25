@@ -1,0 +1,193 @@
+digraph rule_objects_graph {
+	rankdir = LR;
+	charset="utf-8";
+	clusterrank = global;
+	
+	node [shape = plaintext];
+	Scene -> Constraint -> "Area Set" -> Area -> "Content Set" -> Content; 
+	{ rank = same;
+		node [shape = box];
+		{
+			Area;
+			e1 [label="AreaA", fontname="Meiryo UI"];
+			e2 [label="AreaB", fontname="Meiryo UI"];
+			e3 [label="AreaC", fontname="Meiryo UI"];
+
+			e4 [label="ZoneA", fontname="Meiryo UI"];
+			e5 [label="ZoneB", fontname="Meiryo UI"];
+			e6 [label="ZoneC", fontname="Meiryo UI"];
+		}
+	}
+	
+	{ rank = same;
+		node [shape = ellipse];
+		{
+			Content;
+			e7 [label="Content1", fontname="Meiryo UI"];
+			e8 [label="Content2", fontname="Meiryo UI"];
+			e9 [label="Content3", fontname="Meiryo UI"];
+			e10 [label="WarnA", fontname="Meiryo UI"];
+			e11 [label="WarnAB", fontname="Meiryo UI"];
+			e12 [label="WarnC", fontname="Meiryo UI"];
+
+			e13 [label="SContent1", fontname="Meiryo UI"];
+			e14 [label="SContent2", fontname="Meiryo UI"];
+			e15 [label="SContent3", fontname="Meiryo UI"];
+
+		}
+	}
+	
+	{
+		subgraph subareaset {
+			"Area Set";
+			node [shape = box, style = filled, color = lightpink];
+
+
+		}
+	}
+
+
+	
+	{
+		subgraph subcontentset {
+			"Content Set";
+			node [shape = ellipse, style = filled, color = palegreen];
+
+
+		}
+	}
+
+
+
+	e1 -> e7 [dir=none, color=red];
+	e2 -> e7 [dir=none, color=red];
+	e3 -> e7 [dir=none, color=red];
+	e1 -> e8 [dir=none, color=red];
+	e2 -> e8 [dir=none, color=red];
+	e3 -> e8 [dir=none, color=red];
+	e1 -> e9 [dir=none, color=red];
+	e2 -> e9 [dir=none, color=red];
+	e3 -> e9 [dir=none, color=red];
+	e1 -> e10 [dir=none, color=red];
+	e1 -> e11 [dir=none, color=red];
+	e2 -> e11 [dir=none, color=red];
+	e3 -> e12 [dir=none, color=red];
+	
+
+	
+
+	e4 -> e13 [dir=none, color=red];
+	e5 -> e13 [dir=none, color=red];
+	e6 -> e13 [dir=none, color=red];
+	e4 -> e14 [dir=none, color=red];
+	e5 -> e14 [dir=none, color=red];
+	e6 -> e14 [dir=none, color=red];
+	e4 -> e15 [dir=none, color=red];
+	e5 -> e15 [dir=none, color=red];
+	e6 -> e15 [dir=none, color=red];
+	
+
+	
+
+	subgraph scene { rank = same;
+		node [shape = circle, style = filled, color = lightblue];
+		{
+			"Scene";
+			e16 [label="SceneAOff", fontname="Meiryo UI"];
+			e17 [label="SceneBOff", fontname="Meiryo UI"];
+			e18 [label="SceneCOff", fontname="Meiryo UI"];
+			e19 [label="HiddenMuteA", fontname="Meiryo UI"];
+			e20 [label="HiddenMuteB", fontname="Meiryo UI"];
+			e21 [label="HiddenMuteC", fontname="Meiryo UI"];
+			e22 [label="AttnA", fontname="Meiryo UI"];
+			e23 [label="AttnB", fontname="Meiryo UI"];
+			e24 [label="AttnC", fontname="Meiryo UI"];
+
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightgrey];
+		{
+			"Constraint";
+			e25 [label="AreaAOff", fontname="Meiryo UI"];
+			e26 [label="AreaBOff", fontname="Meiryo UI"];
+			e27 [label="AreaCOff", fontname="Meiryo UI"];
+			e28 [label="ZoneAOff", fontname="Meiryo UI"];
+			e29 [label="ZoneBOff", fontname="Meiryo UI"];
+			e30 [label="ZoneCOff", fontname="Meiryo UI"];
+			e31 [label="HiddenA", fontname="Meiryo UI"];
+			e32 [label="HiddenB", fontname="Meiryo UI"];
+			e33 [label="HiddenC", fontname="Meiryo UI"];
+			e34 [label="MuteA", fontname="Meiryo UI"];
+			e35 [label="MuteB", fontname="Meiryo UI"];
+			e36 [label="MuteC", fontname="Meiryo UI"];
+			e37 [label="AttenuatedA", fontname="Meiryo UI"];
+			e38 [label="AttenuatedB", fontname="Meiryo UI"];
+			e39 [label="AttenuatedC", fontname="Meiryo UI"];
+			e40 [label="DisableWarnA", fontname="Meiryo UI"];
+			e41 [label="RestrictWarnABtoAreaA", fontname="Meiryo UI"];
+		}
+	}
+	
+	{ rank = same;
+		node [shape = note, style = filled, color = lavenderblush2];
+		{
+			"Constraint";
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightpink2];
+		{
+			"Constraint";
+		}
+	}
+
+	e25 -> e1 [color=blue];
+	e25 -> e16 [color=blue];
+	e26 -> e1 [color=blue];
+	e26 -> e2 [color=blue];
+	e26 -> e17 [color=blue];
+	e27 -> e1 [color=blue];
+	e27 -> e3 [color=blue];
+	e27 -> e18 [color=blue];
+	e28 -> e1 [color=blue];
+	e28 -> e4 [color=blue];
+	e28 -> e16 [color=blue];
+	e29 -> e1 [color=blue];
+	e29 -> e5 [color=blue];
+	e29 -> e17 [color=blue];
+	e30 -> e1 [color=blue];
+	e30 -> e18 [color=blue];
+	e30 -> e6 [color=blue];
+	e31 -> e19 [color=blue];
+	e31 -> e1 [color=blue];
+	e32 -> e20 [color=blue];
+	e32 -> e2 [color=blue];
+	e33 -> e21 [color=blue];
+	e33 -> e3 [color=blue];
+	e34 -> e19 [color=blue];
+	e34 -> e4 [color=blue];
+	e35 -> e20 [color=blue];
+	e35 -> e5 [color=blue];
+	e36 -> e21 [color=blue];
+	e36 -> e6 [color=blue];
+	e37 -> e22 [color=blue];
+	e37 -> e4 [color=blue];
+	e38 -> e23 [color=blue];
+	e38 -> e5 [color=blue];
+	e39 -> e24 [color=blue];
+	e39 -> e6 [color=blue];
+	e40 -> e3 [color=blue];
+	e40 -> e10 [color=blue];
+	e41 -> e11 [color=blue];
+	e41 -> e1 [color=blue];
+	e41 -> e10 [color=blue];
+	
+
+	
+
+	
+}
+

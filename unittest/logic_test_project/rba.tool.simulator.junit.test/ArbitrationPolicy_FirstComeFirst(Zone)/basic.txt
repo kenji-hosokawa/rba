@@ -1,0 +1,20 @@
+// チェックのつけ外しをすると、ONになった順に（先勝ちで）ゾーンのコンテンツが決まる
+
+C,ON,C2,CS_N
+execute
+Assert,A,A1,C2
+
+// C1を追加しても、先勝ちなのでC2が勝つ
+C,ON,C1,CS_N
+execute
+Assert,A,A1,C2
+
+// C3を追加しても、先勝ちなのでC2が勝つ
+C,ON,C3,CS_N
+execute
+Assert,A,A1,C2
+
+// C2を外すと、次に要求のあったC1が勝つ
+C,OFF,C2,CS_N
+execute
+Assert,A,A1,C1

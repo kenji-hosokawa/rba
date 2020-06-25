@@ -1,0 +1,1713 @@
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,B1,NORMAL,0
+#Request#C,off,B1,WARNING,0
+#Request#C,off,C1,NORMAL,0
+#Request#C,on,X1,NORMAL,1
+#Request#C,off,Y1,NORMAL,0
+#Request#C,off,Y1,WARNING,0
+#Request#S,off,S1
+#Request#S,off,S2
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists	Exists {[]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_3,t
+#Constraint#EXPRESSION	.select#0=	(A1.stateValue() = 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S2.isOn()	f
+#Constraint#EXPRESSION	->	(S2.isOn() -> For All [] { x |!x.isVisible()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists	Exists {[]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists	Exists {[]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists	Exists {[]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists	Exists {[]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists	Exists {[]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_4,t
+#Constraint#EXPRESSION	.select#0>	(A1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X1.stateValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists	Exists {[]} { x |x == C1}	f
+#Constraint#EXPRESSION	->	(Exists {[]} { x |x == C1} -> For All {sele2} { z |z.isHidden()})	t
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#B1,WARNING,f
+#CanceledRequest#C1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#CanceledRequest#Y1,NORMAL,f
+#CanceledRequest#Y1,WARNING,f
+#Result#A,A,
+#Result#A,B,
+#Result#A,C,
+#Result#A,X,X1
+#Result#A,Y,
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists	Exists {[]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_3,t
+#Constraint#EXPRESSION	.select#0=	(A1.stateValue() = 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S2.isOn()	f
+#Constraint#EXPRESSION	->	(S2.isOn() -> For All [] { x |!x.isVisible()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_4,t
+#Constraint#EXPRESSION	.select#0>	(A1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X1.stateValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists	Exists {[]} { x |x == C1}	f
+#Constraint#EXPRESSION	->	(Exists {[]} { x |x == C1} -> For All {sele2} { z |z.isHidden()})	t
+#Constraint#END
+#PrevResult#A,X,X1,NORMAL
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,B1,NORMAL,0
+#Request#C,off,B1,WARNING,0
+#Request#C,on,C1,NORMAL,2
+#Request#C,on,X1,NORMAL,1
+#Request#C,off,Y1,NORMAL,0
+#Request#C,off,Y1,WARNING,0
+#Request#S,off,S1
+#Request#S,off,S2
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists	Exists {[]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_3,t
+#Constraint#EXPRESSION	.select#0=	(A1.stateValue() = 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S2.isOn()	f
+#Constraint#EXPRESSION	->	(S2.isOn() -> For All [] { x |!x.isVisible()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists	Exists {[]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	C == B	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[C]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[C]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[C]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	C == B	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[C]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[C]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[C]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	C == B	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[C]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[C]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	C == B	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[C]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[C]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[C]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_4,t
+#Constraint#EXPRESSION	.select#0>	(A1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C1.stateValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X1.stateValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	C1 == C1	t
+#Constraint#EXPRESSION	->#leftExists	Exists {[C1]} { x |x == C1}	t
+#Constraint#EXPRESSION	->	(Exists {[C1]} { x |x == C1} -> For All {sele2} { z |z.isHidden()})	skip
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#B1,WARNING,f
+#CanceledRequest#C1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#CanceledRequest#Y1,NORMAL,f
+#CanceledRequest#Y1,WARNING,f
+#Result#A,A,
+#Result#A,B,
+#Result#A,C,C1
+#Result#A,X,X1
+#Result#A,Y,
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[C]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	C == B	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[C]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[C]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_3,t
+#Constraint#EXPRESSION	.select#0=	(A1.stateValue() = 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S2.isOn()	f
+#Constraint#EXPRESSION	->	(S2.isOn() -> For All [] { x |!x.isVisible()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_4,t
+#Constraint#EXPRESSION	.select#0>	(A1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C1.stateValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X1.stateValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	C1 == C1	t
+#Constraint#EXPRESSION	->#leftExists	Exists {[C1]} { x |x == C1}	t
+#Constraint#EXPRESSION	->	(Exists {[C1]} { x |x == C1} -> For All {sele2} { z |z.isHidden()})	skip
+#Constraint#END
+#PrevResult#A,C,C1,NORMAL
+#PrevResult#A,X,X1,NORMAL
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,B1,NORMAL,0
+#Request#C,on,B1,WARNING,3
+#Request#C,on,C1,NORMAL,2
+#Request#C,on,X1,NORMAL,1
+#Request#C,off,Y1,NORMAL,0
+#Request#C,off,Y1,WARNING,0
+#Request#S,off,S1
+#Request#S,off,S2
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists	Exists {[]} { x |x == B}	f
+#Constraint#EXPRESSION	->	(Exists {[]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_3,t
+#Constraint#EXPRESSION	.select#0=	(A1.stateValue() = 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S2.isOn()	f
+#Constraint#EXPRESSION	->	(S2.isOn() -> For All [] { x |!x.isVisible()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	B == B	t
+#Constraint#EXPRESSION	->#leftExists	Exists {[B]} { x |x == B}	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->	(Exists {[B]} { x |x == B} -> X.isHidden())	skip
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[B]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	B == B	t
+#Constraint#EXPRESSION	->#leftExists#1==	C == B	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[B,C]} { x |x == B}	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->	(Exists {[B,C]} { x |x == B} -> X.isHidden())	skip
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[B,C]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	B == B	t
+#Constraint#EXPRESSION	->#leftExists#1==	C == B	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[B,C]} { x |x == B}	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->	(Exists {[B,C]} { x |x == B} -> X.isHidden())	skip
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[B,C]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	B == B	t
+#Constraint#EXPRESSION	->#leftExists#1==	C == B	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[B,C]} { x |x == B}	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->	(Exists {[B,C]} { x |x == B} -> X.isHidden())	f
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[B,C]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	B == B	t
+#Constraint#EXPRESSION	->#leftExists#1==	C == B	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[B,C]} { x |x == B}	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->	(Exists {[B,C]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[B,C]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_4,t
+#Constraint#EXPRESSION	.select#0>	(A1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B1.stateValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C1.stateValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X1.stateValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	B1 == C1	f
+#Constraint#EXPRESSION	->#leftExists#1==	C1 == C1	t
+#Constraint#EXPRESSION	->#leftExists	Exists {[B1,C1]} { x |x == C1}	t
+#Constraint#EXPRESSION	->	(Exists {[B1,C1]} { x |x == C1} -> For All {sele2} { z |z.isHidden()})	skip
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#B1,WARNING,f
+#CanceledRequest#C1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#CanceledRequest#Y1,NORMAL,f
+#CanceledRequest#Y1,WARNING,f
+#Result#A,A,
+#Result#A,B,B1
+#Result#A,C,C1
+#Result#A,X,
+#Result#A,Y,
+#Constraint#START,HA1209_SelectOperator_1,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> For All {[B,C]} { x |x.isHidden()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_2,t
+#Constraint#EXPRESSION	.select#0>	(A.contentValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C.contentValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X.contentValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y.contentValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	B == B	t
+#Constraint#EXPRESSION	->#leftExists#1==	C == B	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[B,C]} { x |x == B}	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->	(Exists {[B,C]} { x |x == B} -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_3,t
+#Constraint#EXPRESSION	.select#0=	(A1.stateValue() = 10)	skip
+#Constraint#EXPRESSION	->#left.isOn()	S2.isOn()	f
+#Constraint#EXPRESSION	->	(S2.isOn() -> For All [] { x |!x.isVisible()})	t
+#Constraint#END
+#Constraint#START,HA1209_SelectOperator_4,t
+#Constraint#EXPRESSION	.select#0>	(A1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	.select#1>	(B1.stateValue() > 10)	t
+#Constraint#EXPRESSION	.select#2>	(C1.stateValue() > 10)	t
+#Constraint#EXPRESSION	.select#3>	(X1.stateValue() > 10)	f
+#Constraint#EXPRESSION	.select#4>	(Y1.stateValue() > 10)	skip
+#Constraint#EXPRESSION	->#leftExists#0==	B1 == C1	f
+#Constraint#EXPRESSION	->#leftExists#1==	C1 == C1	t
+#Constraint#EXPRESSION	->#leftExists	Exists {[B1,C1]} { x |x == C1}	t
+#Constraint#EXPRESSION	->	(Exists {[B1,C1]} { x |x == C1} -> For All {sele2} { z |z.isHidden()})	skip
+#Constraint#END
+----Request Information----
+Allocatable Count:5
+  Area[A] policy[DEFAULT] visibility[10]
+  Area[B] policy[DEFAULT] visibility[10]
+  Area[C] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+  Area[Y] policy[DEFAULT] visibility[10]
+ContentState Count:7
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::WARNING] priority[11] isActive[false] order[0]
+  ViewContent[C1::NORMAL] priority[11] isActive[false] order[0]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[Y1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[Y1::WARNING] priority[11] isActive[false] order[0]
+Scene Count:2
+  Scene[S1] isActive[false]
+  Scene[S2] isActive[false]
+Constraint Count:4
+  Constraint[HA1209_SelectOperator_1] Expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] runtime[true]
+  Constraint[HA1209_SelectOperator_2] Expression[(Exists {sele} { x |x == B} -> X.isHidden())] runtime[true]
+  Constraint[HA1209_SelectOperator_3] Expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] runtime[true]
+  Constraint[HA1209_SelectOperator_4] Expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] runtime[true]
+----Request Information----
+Allocatable Count:5
+  Area[A] policy[DEFAULT] visibility[10]
+  Area[B] policy[DEFAULT] visibility[10]
+  Area[C] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+  Area[Y] policy[DEFAULT] visibility[10]
+ContentState Count:7
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::WARNING] priority[11] isActive[false] order[0]
+  ViewContent[C1::NORMAL] priority[11] isActive[true] order[2]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[Y1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[Y1::WARNING] priority[11] isActive[false] order[0]
+Scene Count:2
+  Scene[S1] isActive[false]
+  Scene[S2] isActive[false]
+Constraint Count:4
+  Constraint[HA1209_SelectOperator_1] Expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] runtime[true]
+  Constraint[HA1209_SelectOperator_2] Expression[(Exists {sele} { x |x == B} -> X.isHidden())] runtime[true]
+  Constraint[HA1209_SelectOperator_3] Expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] runtime[true]
+  Constraint[HA1209_SelectOperator_4] Expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] runtime[true]
+----Request Information----
+Allocatable Count:5
+  Area[A] policy[DEFAULT] visibility[10]
+  Area[B] policy[DEFAULT] visibility[10]
+  Area[C] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+  Area[Y] policy[DEFAULT] visibility[10]
+ContentState Count:7
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::WARNING] priority[11] isActive[true] order[3]
+  ViewContent[C1::NORMAL] priority[11] isActive[true] order[2]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[Y1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[Y1::WARNING] priority[11] isActive[false] order[0]
+Scene Count:2
+  Scene[S1] isActive[false]
+  Scene[S2] isActive[false]
+Constraint Count:4
+  Constraint[HA1209_SelectOperator_1] Expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] runtime[true]
+  Constraint[HA1209_SelectOperator_2] Expression[(Exists {sele} { x |x == B} -> X.isHidden())] runtime[true]
+  Constraint[HA1209_SelectOperator_3] Expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] runtime[true]
+  Constraint[HA1209_SelectOperator_4] Expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] runtime[true]
+----Previous Result Information----
+Allocatable TotalCount:5
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[X] Content[null] hidden[false]
+  Area[Y] Content[null] hidden[false]
+Content TotalCount:5
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[C1] visible[false] active[false]
+  ViewContent[X1] visible[false] active[false]
+  ViewContent[Y1] visible[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:5
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[false]
+  Area[Y] Content[null] hidden[false]
+Content TotalCount:5
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[C1] visible[false] active[false]
+  ViewContent[X1] visible[true] active[true]
+    allocated Area[X]
+  ViewContent[Y1] visible[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:5
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[C1::NORMAL] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[false]
+  Area[Y] Content[null] hidden[false]
+Content TotalCount:5
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[C1] visible[true] active[true]
+    allocated Area[C]
+  ViewContent[X1] visible[true] active[true]
+    allocated Area[X]
+  ViewContent[Y1] visible[false] active[false]
+----Arbitrate----
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+    constraint expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] check start
+      Content[A1] state value [no Content skip]
+      [(x.stateValue() = 10)] before arbitrate skip
+      {A1}.select{ x |(x.stateValue() = 10)} is []
+      let sele = {{A1}.select{ x |(x.stateValue() = 10)}} = []
+      Scene[S2] is not On
+      [(S2.isOn() -> For All sele { x |!x.isVisible()})] true
+    constraint expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] true
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+Area[A] displays Content[null] hidden[false]
+
+Area[B] check start
+  Content[B1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+Area[B] displays Content[null] hidden[false]
+
+Area[C] check start
+  Content[C1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+Area[C] displays Content[null] hidden[false]
+
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+Area[X] displays Content[X1::NORMAL] hidden[false]
+
+Area[Y] check start
+  Content[Y1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+    constraint expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] check start
+      Content[A1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      Content[B1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      Content[C1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      Content[X1] state value [NORMAL : 10]
+      [(x.stateValue() > 10)] false
+      Content[Y1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      ALL_VIEWCONTENTS.select{ x |(x.stateValue() > 10)} is []
+      let sele1 = ALL_VIEWCONTENTS.select{ x |(x.stateValue() > 10)} = []
+      Area[Y] has no Displayed Content
+      Y.displayingContent().allocatables().select{ y |(y.contentValue() > 10)} is NULL
+      let sele2 = Y.displayingContent().allocatables().select{ y |(y.contentValue() > 10)} = NULL
+      [Exists {sele1} { x |x == C1}] false
+      [(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] true
+    constraint expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] true
+
+Area[Y] displays Content[null] hidden[false]
+
+----Arbitrate----
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+    constraint expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] check start
+      Content[A1] state value [no Content skip]
+      [(x.stateValue() = 10)] before arbitrate skip
+      {A1}.select{ x |(x.stateValue() = 10)} is []
+      let sele = {{A1}.select{ x |(x.stateValue() = 10)}} = []
+      Scene[S2] is not On
+      [(S2.isOn() -> For All sele { x |!x.isVisible()})] true
+    constraint expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] true
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+Area[A] displays Content[null] hidden[false]
+
+Area[B] check start
+  Content[B1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+Area[B] displays Content[null] hidden[false]
+
+Area[C] check start
+  Content[C1::NORMAL] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [C]
+      [x == B] false
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [C]
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+Area[C] displays Content[C1::NORMAL] hidden[false]
+
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [C]
+      [x == B] false
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [C]
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [C]
+      [x == B] false
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+Area[X] displays Content[X1::NORMAL] hidden[false]
+
+Area[Y] check start
+  Content[Y1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [C]
+      [x == B] false
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [C]
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+    constraint expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] check start
+      Content[A1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      Content[B1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      Content[C1] state value [NORMAL : 11]
+      [(x.stateValue() > 10)] true
+      Content[X1] state value [NORMAL : 10]
+      [(x.stateValue() > 10)] false
+      Content[Y1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      ALL_VIEWCONTENTS.select{ x |(x.stateValue() > 10)} is [C1]
+      let sele1 = ALL_VIEWCONTENTS.select{ x |(x.stateValue() > 10)} = [C1]
+      Area[Y] has no Displayed Content
+      Y.displayingContent().allocatables().select{ y |(y.contentValue() > 10)} is NULL
+      let sele2 = Y.displayingContent().allocatables().select{ y |(y.contentValue() > 10)} = NULL
+      [x == C1] true
+      [Exists {sele1} { x |x == C1}] true
+      [(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] before arbitrate skip
+    constraint expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] before arbitrate skip
+
+Area[Y] displays Content[null] hidden[false]
+
+----Arbitrate----
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+    constraint expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] check start
+      Content[A1] state value [no Content skip]
+      [(x.stateValue() = 10)] before arbitrate skip
+      {A1}.select{ x |(x.stateValue() = 10)} is []
+      let sele = {{A1}.select{ x |(x.stateValue() = 10)}} = []
+      Scene[S2] is not On
+      [(S2.isOn() -> For All sele { x |!x.isVisible()})] true
+    constraint expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] true
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+Area[A] displays Content[null] hidden[false]
+
+Area[B] check start
+  Content[B1::WARNING] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [B1::WARNING : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[C] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [B]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [B]
+      [x == B] true
+      [Exists {sele} { x |x == B}] true
+      [X.isHidden()] before arbitrate skip
+      [(Exists {sele} { x |x == B} -> X.isHidden())] before arbitrate skip
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [B1::WARNING : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[C] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [B]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [B]
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+Area[B] displays Content[B1::WARNING] hidden[false]
+
+Area[C] check start
+  Content[C1::NORMAL] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [B1::WARNING : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [B,C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [B,C]
+      [x == B] true
+      [x == B] false
+      [Exists {sele} { x |x == B}] true
+      [X.isHidden()] before arbitrate skip
+      [(Exists {sele} { x |x == B} -> X.isHidden())] before arbitrate skip
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [B1::WARNING : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [B,C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [B,C]
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+Area[C] displays Content[C1::NORMAL] hidden[false]
+
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [B1::WARNING : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [B,C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [B,C]
+      [x == B] true
+      [x == B] false
+      [Exists {sele} { x |x == B}] true
+      [X.isHidden()] before arbitrate skip
+      [(Exists {sele} { x |x == B} -> X.isHidden())] before arbitrate skip
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [B1::WARNING : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [B,C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [B,C]
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [B1::WARNING : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [B,C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [B,C]
+      [x == B] true
+      [x == B] false
+      [Exists {sele} { x |x == B}] true
+      [X.isHidden()] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] false
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] false
+
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [B1::WARNING : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [before arbitrate skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [B,C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [B,C]
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+Area[X] change hidden
+Area[X] displays Content[X1::NORMAL] hidden[true]
+
+Area[Y] check start
+  Content[Y1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [B1::WARNING : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [B,C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [B,C]
+      [x == B] true
+      [x == B] false
+      [Exists {sele} { x |x == B}] true
+      [X.isHidden()] true
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+  check online constraints to confirm area hidden state
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [B1::WARNING : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [B,C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [B,C]
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+    constraint expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] check start
+      Content[A1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      Content[B1] state value [WARNING : 11]
+      [(x.stateValue() > 10)] true
+      Content[C1] state value [NORMAL : 11]
+      [(x.stateValue() > 10)] true
+      Content[X1] state value [NORMAL : 10]
+      [(x.stateValue() > 10)] false
+      Content[Y1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      ALL_VIEWCONTENTS.select{ x |(x.stateValue() > 10)} is [B1,C1]
+      let sele1 = ALL_VIEWCONTENTS.select{ x |(x.stateValue() > 10)} = [B1,C1]
+      Area[Y] has no Displayed Content
+      Y.displayingContent().allocatables().select{ y |(y.contentValue() > 10)} is NULL
+      let sele2 = Y.displayingContent().allocatables().select{ y |(y.contentValue() > 10)} = NULL
+      [x == C1] false
+      [x == C1] true
+      [Exists {sele1} { x |x == C1}] true
+      [(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] before arbitrate skip
+    constraint expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] before arbitrate skip
+
+Area[Y] displays Content[null] hidden[false]
+
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[B1::WARNING] check start
+  Content[B1::WARNING] is not Active skip
+Content[C1::NORMAL] check start
+  Content[C1::NORMAL] is not Active skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is Visible skip
+Content[Y1::NORMAL] check start
+  Content[Y1::NORMAL] is not Active skip
+Content[Y1::WARNING] check start
+  Content[Y1::WARNING] is not Active skip
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[B1::WARNING] check start
+  Content[B1::WARNING] is not Active skip
+Content[C1::NORMAL] check start
+  Content[C1::NORMAL] is Visible skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is Visible skip
+Content[Y1::NORMAL] check start
+  Content[Y1::NORMAL] is not Active skip
+Content[Y1::WARNING] check start
+  Content[Y1::WARNING] is not Active skip
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[B1::WARNING] check start
+  Content[B1::WARNING] is Visible skip
+Content[C1::NORMAL] check start
+  Content[C1::NORMAL] is Visible skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is not Canceled because NEVER_GIVEUP
+Content[Y1::NORMAL] check start
+  Content[Y1::NORMAL] is not Active skip
+Content[Y1::WARNING] check start
+  Content[Y1::WARNING] is not Active skip
+----Check All Constraint----
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is []
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = []
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+    constraint expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] check start
+      Content[A1] state value [no Content skip]
+      [(x.stateValue() = 10)] before arbitrate skip
+      {A1}.select{ x |(x.stateValue() = 10)} is []
+      let sele = {{A1}.select{ x |(x.stateValue() = 10)}} = []
+      Scene[S2] is not On
+      [(S2.isOn() -> For All sele { x |!x.isVisible()})] true
+    constraint expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] true
+
+    constraint expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] check start
+      Content[A1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      Content[B1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      Content[C1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      Content[X1] state value [NORMAL : 10]
+      [(x.stateValue() > 10)] false
+      Content[Y1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      ALL_VIEWCONTENTS.select{ x |(x.stateValue() > 10)} is []
+      let sele1 = ALL_VIEWCONTENTS.select{ x |(x.stateValue() > 10)} = []
+      Area[Y] has no Displayed Content
+      Y.displayingContent().allocatables().select{ y |(y.contentValue() > 10)} is NULL
+      let sele2 = Y.displayingContent().allocatables().select{ y |(y.contentValue() > 10)} = NULL
+      [Exists {sele1} { x |x == C1}] false
+      [(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] true
+    constraint expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] true
+
+----Check All Constraint----
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [C]
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [C]
+      [x == B] false
+      [Exists {sele} { x |x == B}] false
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+    constraint expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] check start
+      Content[A1] state value [no Content skip]
+      [(x.stateValue() = 10)] before arbitrate skip
+      {A1}.select{ x |(x.stateValue() = 10)} is []
+      let sele = {{A1}.select{ x |(x.stateValue() = 10)}} = []
+      Scene[S2] is not On
+      [(S2.isOn() -> For All sele { x |!x.isVisible()})] true
+    constraint expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] true
+
+    constraint expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] check start
+      Content[A1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      Content[B1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      Content[C1] state value [NORMAL : 11]
+      [(x.stateValue() > 10)] true
+      Content[X1] state value [NORMAL : 10]
+      [(x.stateValue() > 10)] false
+      Content[Y1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      ALL_VIEWCONTENTS.select{ x |(x.stateValue() > 10)} is [C1]
+      let sele1 = ALL_VIEWCONTENTS.select{ x |(x.stateValue() > 10)} = [C1]
+      Area[Y] has no Displayed Content
+      Y.displayingContent().allocatables().select{ y |(y.contentValue() > 10)} is NULL
+      let sele2 = Y.displayingContent().allocatables().select{ y |(y.contentValue() > 10)} = NULL
+      [x == C1] true
+      [Exists {sele1} { x |x == C1}] true
+      [(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] before arbitrate skip
+    constraint expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] before arbitrate skip
+
+----Check All Constraint----
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [B1::WARNING : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [B,C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [B,C]
+      Scene[S1] is not On
+      [(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+    constraint expression[(S1.isOn() -> For All {sele} { x |x.isHidden()})] true
+
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] check start
+      Allocatable[A] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      Allocatable[B] has Content Priority [B1::WARNING : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[C] has Content Priority [C1::NORMAL : 11]
+      [(x.contentValue() > 10)] true
+      Allocatable[X] has Content Priority [X1::NORMAL : 10]
+      [(x.contentValue() > 10)] false
+      Allocatable[Y] has Content Priority [no Content skip]
+      [(x.contentValue() > 10)] before arbitrate skip
+      ALL_AREAS.select{ x |(x.contentValue() > 10)} is [B,C]
+      let sele = ALL_AREAS.select{ x |(x.contentValue() > 10)} = [B,C]
+      [x == B] true
+      [x == B] false
+      [Exists {sele} { x |x == B}] true
+      [X.isHidden()] true
+      [(Exists {sele} { x |x == B} -> X.isHidden())] true
+    constraint expression[(Exists {sele} { x |x == B} -> X.isHidden())] true
+
+    constraint expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] check start
+      Content[A1] state value [no Content skip]
+      [(x.stateValue() = 10)] before arbitrate skip
+      {A1}.select{ x |(x.stateValue() = 10)} is []
+      let sele = {{A1}.select{ x |(x.stateValue() = 10)}} = []
+      Scene[S2] is not On
+      [(S2.isOn() -> For All sele { x |!x.isVisible()})] true
+    constraint expression[(S2.isOn() -> For All sele { x |!x.isVisible()})] true
+
+    constraint expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] check start
+      Content[A1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      Content[B1] state value [WARNING : 11]
+      [(x.stateValue() > 10)] true
+      Content[C1] state value [NORMAL : 11]
+      [(x.stateValue() > 10)] true
+      Content[X1] state value [NORMAL : 10]
+      [(x.stateValue() > 10)] false
+      Content[Y1] state value [no Content skip]
+      [(x.stateValue() > 10)] before arbitrate skip
+      ALL_VIEWCONTENTS.select{ x |(x.stateValue() > 10)} is [B1,C1]
+      let sele1 = ALL_VIEWCONTENTS.select{ x |(x.stateValue() > 10)} = [B1,C1]
+      Area[Y] has no Displayed Content
+      Y.displayingContent().allocatables().select{ y |(y.contentValue() > 10)} is NULL
+      let sele2 = Y.displayingContent().allocatables().select{ y |(y.contentValue() > 10)} = NULL
+      [x == C1] false
+      [x == C1] true
+      [Exists {sele1} { x |x == C1}] true
+      [(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] before arbitrate skip
+    constraint expression[(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})] before arbitrate skip
+
+----Result Information----
+Allocatable TotalCount:5
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[false]
+  Area[Y] Content[null] hidden[false]
+Content TotalCount:5
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[B1] visible[false] cancel[false]
+  ViewContent[C1] visible[false] cancel[false]
+  ViewContent[X1] visible[true] cancel[false]
+    allocated Area[X]
+  ViewContent[Y1] visible[false] cancel[false]
+----Result Information----
+Allocatable TotalCount:5
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[C1::NORMAL] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[false]
+  Area[Y] Content[null] hidden[false]
+Content TotalCount:5
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[B1] visible[false] cancel[false]
+  ViewContent[C1] visible[true] cancel[false]
+    allocated Area[C]
+  ViewContent[X1] visible[true] cancel[false]
+    allocated Area[X]
+  ViewContent[Y1] visible[false] cancel[false]
+----Result Information----
+Allocatable TotalCount:5
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[B1::WARNING] hidden[false]
+  Area[C] Content[C1::NORMAL] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[true]
+  Area[Y] Content[null] hidden[false]
+Content TotalCount:5
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[B1] visible[true] cancel[false]
+    allocated Area[B]
+  ViewContent[C1] visible[true] cancel[false]
+    allocated Area[C]
+  ViewContent[X1] visible[false] cancel[false]
+    allocated Area[X]
+  ViewContent[Y1] visible[false] cancel[false]
+

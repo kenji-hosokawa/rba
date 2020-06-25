@@ -1,0 +1,24 @@
+Package Model {
+	Constraint エリアの調停ポリシーを上書きして先勝ちにする {
+		runtime: true
+		a2.hasComeLaterThan(a1) -> ! a2.isSounding() 
+	}
+
+	Zone A {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		visibility: STANDARD_VALUE
+	}
+
+	SoundContent a1 {
+		allocatable: [ A ]
+		State NORMAL { priority: 10 }
+	}
+	SoundContent a2 {
+		allocatable: [ A ]
+		State NORMAL { priority: 10 }
+	}
+	SoundContent a3 {
+		allocatable: [ A ]
+		State NORMAL { priority: 10 }
+	}
+}

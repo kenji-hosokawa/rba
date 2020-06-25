@@ -1,0 +1,10 @@
+C,ON,コンテンツD1,NORMAL
+execute
+S,OFF,シーンA
+execute
+
+Assert,A,エリアA,NULL
+Assert,A,エリアB,NULL
+Assert,A,エリアC,NULL
+Assert,A,エリアD,NULL
+Assert,A,エリアE,NULL

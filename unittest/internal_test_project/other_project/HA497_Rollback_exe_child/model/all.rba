@@ -1,0 +1,80 @@
+Package Displays {
+	Area A {
+		arbitrationPolicy: LAST_COME_FIRST
+		Size Default {width: 1 height: 1}
+		visibility: > That-of B
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		arbitrationPolicy: LAST_COME_FIRST
+		Size Default {width: 1 height: 1}
+		visibility: > That-of C
+		zorder: STANDARD_VALUE
+	}
+	Area C {
+		arbitrationPolicy: LAST_COME_FIRST
+		Size Default {width: 1 height: 1}
+		visibility: > That-of D
+		zorder: STANDARD_VALUE
+	}
+	Area D {
+		arbitrationPolicy: LAST_COME_FIRST
+		Size Default {width: 1 height: 1}
+		visibility: > MIN_VALUE
+		zorder: STANDARD_VALUE
+	}
+
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent C1 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent D1 {
+		allocatable: [
+			D
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: 1 height: 1}
+	}
+
+	Constraint HA497_Rollback_exe_child_1 {
+		runtime: true
+		D.isDisplayed() -> !C.isDisplayed()
+	}
+	Constraint HA497_Rollback_exe_child_2 {
+		runtime: true
+		C.isDisplayed() -> !B.isDisplayed()
+	}
+	Constraint HA497_Rollback_exe_child_3 {
+		runtime: true
+		B.isDisplayed() -> !A.isDisplayed()
+	}
+	Constraint HA497_Rollback_exe_child_4 {
+		runtime: true
+		D.isDisplayed() -> B.isDisplayed() AND !(pre)A.isDisplayed()
+	}
+}

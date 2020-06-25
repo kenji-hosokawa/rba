@@ -1,0 +1,123 @@
+digraph rule_objects_graph {
+	rankdir = LR;
+	charset="utf-8";
+	clusterrank = global;
+	
+	node [shape = plaintext];
+	Scene -> Constraint -> "Area Set" -> Area -> "Content Set" -> Content; 
+	{ rank = same;
+		node [shape = box];
+		{
+			Area;
+
+			e1 [label="AllocatableA", fontname="Meiryo UI"];
+			e2 [label="AllocatableB", fontname="Meiryo UI"];
+			e3 [label="AllocatableC", fontname="Meiryo UI"];
+			e4 [label="AllocatableD", fontname="Meiryo UI"];
+			e5 [label="AllocatableE", fontname="Meiryo UI"];
+			e6 [label="AllocatableF", fontname="Meiryo UI"];
+		}
+	}
+	
+	{ rank = same;
+		node [shape = ellipse];
+		{
+			Content;
+
+			e7 [label="ContentX", fontname="Meiryo UI"];
+			e8 [label="ContentY", fontname="Meiryo UI"];
+			e9 [label="ContentZ", fontname="Meiryo UI"];
+
+		}
+	}
+	
+	{
+		subgraph subareaset {
+			"Area Set";
+			node [shape = box, style = filled, color = lightpink];
+
+			e10 [label="ZoneSetBC", fontname="Meiryo UI"];
+			e11 [label="ZoneSetABC", fontname="Meiryo UI"];
+			e12 [label="ZoneSetDE", fontname="Meiryo UI"];
+			e13 [label="ZoneSetDE2", fontname="Meiryo UI"];
+			e14 [label="ZoneSetABCDE", fontname="Meiryo UI"];
+
+		}
+	}
+
+	e10 -> e2;
+	e10 -> e3;
+	e11 -> e1;
+	e11 -> e10;
+	e12 -> e4;
+	e12 -> e5;
+	e13 -> e4;
+	e13 -> e12;
+	e14 -> e11;
+	e14 -> e13;
+
+	
+	{
+		subgraph subcontentset {
+			"Content Set";
+			node [shape = ellipse, style = filled, color = palegreen];
+
+			e15 [label="ContentSetXY", fontname="Meiryo UI"];
+
+		}
+	}
+
+	e15 -> e7;
+	e15 -> e8;
+
+
+	
+
+	
+
+	e14 -> e7 [dir=none, color=red];
+	e14 -> e8 [dir=none, color=red];
+	e14 -> e9 [dir=none, color=red];
+	
+
+	e12 -> e15 [dir=none, color=red];
+	
+
+	subgraph scene { rank = same;
+		node [shape = circle, style = filled, color = lightblue];
+		{
+			"Scene";
+
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightgrey];
+		{
+			"Constraint";
+			e16 [label="GetContentsList", fontname="Meiryo UI"];
+		}
+	}
+	
+	{ rank = same;
+		node [shape = note, style = filled, color = lavenderblush2];
+		{
+			"Constraint";
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightpink2];
+		{
+			"Constraint";
+		}
+	}
+
+	e16 -> e4 [color=blue];
+	
+
+	
+
+	
+}
+

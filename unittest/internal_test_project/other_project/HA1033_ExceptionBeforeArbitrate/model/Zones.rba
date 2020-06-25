@@ -1,0 +1,13 @@
+Package Zones {
+	
+	Zone Zone_X {
+		arbitrationPolicy: LAST_COME_FIRST
+		visibility: STANDARD_VALUE
+	}
+	
+	Zone Zone_Y {
+		arbitrationPolicy: LAST_COME_FIRST
+		visibility: < That-of Zone_X
+	}
+	
+}

@@ -1,0 +1,10 @@
+#HierarchyOfConstraint#START,HA1207_OnOutputted1,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(S1.isOn() -> X.isMuted())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left.isOn()	S1.isOn()	boolean
+#HierarchyOfConstraint#EXPRESSION	->#right.isMuted()	X.isMuted()	boolean
+#HierarchyOfConstraint#END,HA1207_OnOutputted1
+#HierarchyOfConstraint#START,HA1207_OnOutputted2,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(B.isOutputted() -> A.isMuted())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left.isOutputted()	B.isOutputted()	boolean
+#HierarchyOfConstraint#EXPRESSION	->#right.isMuted()	A.isMuted()	boolean
+#HierarchyOfConstraint#END,HA1207_OnOutputted2

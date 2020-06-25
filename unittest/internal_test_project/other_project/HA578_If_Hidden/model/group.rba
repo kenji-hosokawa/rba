@@ -1,0 +1,13 @@
+Package Grouping {
+	AreaSet 警告系エリア  {
+		target:[
+			エリアA, エリアB, エリアC
+		]
+	}
+	AreaSet 全画面除く全部のエリア {
+		target:[
+			エリアA, エリアB, エリアC,
+			その他エリア1, その他エリア2
+		]
+	}
+}

@@ -1,0 +1,167 @@
+Package Displays {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 650
+			height: 200
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: A
+				}
+				PositionContainer {
+					x: 300
+					y: 0
+					areaReference: B
+				}
+				PositionContainer {
+					x: 500
+					y: 0
+					areaReference: C
+				}
+				PositionContainer {
+					x: 600
+					y: 0
+					areaReference: D
+				}
+				PositionContainer {
+					x: 600
+					y: 0
+					areaReference: E
+				}
+			}
+		}
+	}
+
+	Area A {
+		arbitrationPolicy: DEFAULT
+		sizeReference: エリアAサイズ
+		visibility: > That-of B
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		arbitrationPolicy: DEFAULT
+		sizeReference: エリアBサイズ
+		visibility: > That-of C
+		zorder: STANDARD_VALUE
+	}
+	Area C {
+		arbitrationPolicy: DEFAULT
+		sizeReference: エリアCサイズ
+		visibility: > That-of D
+		zorder: STANDARD_VALUE
+	}
+	Area D {
+		arbitrationPolicy: DEFAULT
+		sizeReference: エリアDサイズ
+		visibility: NONE_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area E {
+		arbitrationPolicy: DEFAULT
+		sizeReference: エリアDサイズ
+		visibility: NONE_VALUE
+		zorder: STANDARD_VALUE
+	}
+
+	Size エリアAサイズ {
+		width: 300
+		height: 200
+	}
+	Size エリアBサイズ {
+		width: 200
+		height: 200
+	}
+	Size エリアCサイズ {
+		width: 100
+		height: 200
+	}
+	Size エリアDサイズ {
+		width: 50
+		height: 200
+	}
+
+	ViewContent a1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: > That-of a2.NORMAL
+		}
+		sizeReference: エリアAサイズ
+	}
+	ViewContent a2{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: エリアAサイズ
+	}
+	ViewContent b1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: > That-of b2.NORMAL
+		}
+		sizeReference: エリアBサイズ
+	}
+	ViewContent b2 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: エリアBサイズ
+	}
+	ViewContent c1 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: > That-of c2.NORMAL
+		}
+		sizeReference: エリアCサイズ
+	}
+	ViewContent c2 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: エリアCサイズ
+	}
+	ViewContent d1 {
+		allocatable: [
+			D
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: エリアDサイズ
+	}
+	ViewContent e1 {
+		allocatable: [
+			E
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: エリアDサイズ
+	}
+
+	Constraint OrOperator {
+		runtime: true
+		(A.allocatedContent() == a1) OR (B.allocatedContent() == b1) OR (C.allocatedContent() == c1) -> D.isHidden()
+	}
+	Constraint OrOperator2 {
+		runtime: true
+		!((A.allocatedContent() == a1) OR (B.allocatedContent() == b1) OR (C.allocatedContent() == c1)) -> E.isHidden()
+	}
+}

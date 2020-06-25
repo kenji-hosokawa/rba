@@ -1,0 +1,5 @@
+#HierarchyOfConstraint#START,HA1211_ContentAllocatableCollector,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(Exists {letX} { x |x.isActive()} -> X.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#leftExists	Exists {letX} { x |x.isActive()}	boolean
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()	X.isHidden()	boolean
+#HierarchyOfConstraint#END,HA1211_ContentAllocatableCollector

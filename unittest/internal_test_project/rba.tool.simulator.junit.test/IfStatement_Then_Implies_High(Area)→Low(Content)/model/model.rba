@@ -1,0 +1,41 @@
+Package models {
+	/*
+	 * IF の THEN/ELSE 内に
+	 * Implies で isHidden を定義したとき、調停が期待通りにならない不具合の確認テストパターン。
+	 * このケースでは、ELSE節はどうでもいいので、無意味な式にしている。
+	 */
+	Constraint constr {
+		runtime: true
+		IF (!Condition.isOn())
+		THEN HighArea.isDisplayed() -> !LowContent.isVisible()
+		ELSE !LowContent.isVisible()
+	}
+
+	Area LowArea {
+		visibility: 3
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST sizeReference: Size_full zorder: 1
+	}
+	Area HighArea {
+		visibility: 5
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST sizeReference: Size_mid zorder: 1
+	}
+	ViewContent LowContent {
+		allocatable:[ LowArea ] loserType:GOOD_LOSER State NORMAL { priority: STANDARD_VALUE } sizeReference: Size_full
+	}
+	ViewContent HighContent {
+		allocatable:[ HighArea ] loserType:GOOD_LOSER State NORMAL { priority: STANDARD_VALUE } sizeReference: Size_mid
+	}
+	Size Size_mid { width: 80 height: 20 }
+	Size Size_full { width: 100 height: 50 }
+	Scene Condition {}
+
+    Display MET {
+        sizeReference: Size_full
+        CompositeArea Root {
+            layout: FixedPositionLayout {
+                PositionContainer { areaReference: LowArea x: 0 y: 0 basePoint: LEFT_TOP }
+                PositionContainer { areaReference: HighArea x: 10 y: 20 basePoint: LEFT_TOP }
+            }
+        }
+    }
+}

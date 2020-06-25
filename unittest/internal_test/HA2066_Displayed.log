@@ -1,0 +1,10 @@
+#HierarchyOfConstraint#START,HA2066_Displayed1,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(X1.isActive() -> X.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left.isActive()	X1.isActive()	boolean
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()	X.isHidden()	boolean
+#HierarchyOfConstraint#END,HA2066_Displayed1
+#HierarchyOfConstraint#START,HA2066_Displayed2,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(X1.hasBeenDisplayed() -> Y.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left.hasBeenDisplayed()	X1.hasBeenDisplayed()	boolean
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()	Y.isHidden()	boolean
+#HierarchyOfConstraint#END,HA2066_Displayed2

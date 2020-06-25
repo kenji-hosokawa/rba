@@ -1,0 +1,113 @@
+Package Displays {
+	Zone ゾーンA {
+		arbitrationPolicy: DEFAULT
+		visibility: > That-of ゾーンB
+		attenuateValue:1
+	}
+	Zone ゾーンB {
+		arbitrationPolicy: DEFAULT
+		visibility: > That-of ゾーンC
+		attenuateValue:2
+	}
+	Zone ゾーンC {
+		arbitrationPolicy: DEFAULT
+		visibility: > That-of ゾーンD
+		attenuateValue:3
+	}
+	Zone ゾーンD {
+		arbitrationPolicy: DEFAULT
+		visibility: > That-of ゾーンE
+		attenuateValue:4
+	}
+	Zone ゾーンE {
+		arbitrationPolicy: DEFAULT
+		visibility: NONE_VALUE
+		attenuateValue:5
+	}
+
+	SoundContent コンテンツA1{
+		allocatable: [
+			ゾーンA
+		]
+		State NORMAL {
+			priority: > That-of コンテンツB1.NORMAL
+		}
+	}
+	SoundContent コンテンツB1 {
+		allocatable: [
+			ゾーンB
+		]
+		State NORMAL {
+			priority: > That-of コンテンツC1.NORMAL
+		}
+	}
+	SoundContent コンテンツC1 {
+		allocatable: [
+			ゾーンC
+		]
+		State NORMAL {
+			priority: > That-of コンテンツD1.NORMAL
+		}
+	}
+	SoundContent コンテンツD1 {
+		allocatable: [
+			ゾーンD
+		]
+		State NORMAL {
+			priority: > That-of コンテンツE1.NORMAL
+		}
+	}
+	SoundContent コンテンツE1 {
+		allocatable: [
+			ゾーンE
+		]
+		State NORMAL {
+			priority: > That-of コンテンツA2.NORMAL
+		}
+	}
+	SoundContent コンテンツA2{
+		allocatable: [
+			ゾーンA
+		]
+		State NORMAL {
+			priority: > That-of コンテンツB2.NORMAL
+		}
+	}
+	SoundContent コンテンツB2 {
+		allocatable: [
+			ゾーンB
+		]
+		State NORMAL {
+			priority: > That-of コンテンツC2.NORMAL
+		}
+	}
+	SoundContent コンテンツC2 {
+		allocatable: [
+			ゾーンC
+		]
+		State NORMAL {
+			priority: > That-of コンテンツD2.NORMAL
+		}
+	}
+	SoundContent コンテンツD2 {
+		allocatable: [
+			ゾーンD
+		]
+		State NORMAL {
+			priority: > That-of コンテンツE2.NORMAL
+		}
+	}
+	SoundContent コンテンツE2 {
+		allocatable: [
+			ゾーンE
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+
+	Constraint ForAllOperator {
+		runtime: true
+		For-All {コンテンツB1,コンテンツD1} { x | !x.isSounding()}
+	}
+}

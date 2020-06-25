@@ -1,0 +1,91 @@
+Package Displays {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 600
+			height: 200
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: エリアA
+				}
+				PositionContainer {
+					x: 400
+					y: 0
+					areaReference: エリアB
+				}
+			}
+		}
+	}
+
+	Area エリアA {
+		arbitrationPolicy: DEFAULT
+		sizeReference: エリアAサイズ
+		visibility: > That-of エリアB
+		zorder: STANDARD_VALUE
+	}
+	Area エリアB {
+		arbitrationPolicy: DEFAULT
+		sizeReference: エリアBサイズ
+		visibility: NONE_VALUE
+		zorder: STANDARD_VALUE
+	}
+
+	Size エリアAサイズ {
+		width: 400
+		height: 200
+	}
+	Size エリアBサイズ {
+		width: 200
+		height: 200
+	}
+
+	ViewContent コンテンツA1{
+		allocatable: [
+			エリアA
+		]
+		State NORMAL {
+			priority: > That-of コンテンツA2.NORMAL
+		}
+		sizeReference: エリアAサイズ
+	}
+	ViewContent コンテンツB1 {
+		allocatable: [
+			エリアB
+		]
+		State NORMAL {
+			priority: > That-of コンテンツB2.NORMAL
+		}
+		sizeReference: エリアBサイズ
+	}
+	ViewContent コンテンツA2{
+		allocatable: [
+			エリアA
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: エリアAサイズ
+	}
+	ViewContent コンテンツB2 {
+		allocatable: [
+			エリアB
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: エリアBサイズ
+	}
+
+	Constraint BisHidden {
+		runtime: true
+		エリアB.isHidden()
+	}
+
+	Constraint IsDisplayed {
+		runtime: true
+		エリアB.isDisplayed() -> エリアA.isHidden()
+	}
+}

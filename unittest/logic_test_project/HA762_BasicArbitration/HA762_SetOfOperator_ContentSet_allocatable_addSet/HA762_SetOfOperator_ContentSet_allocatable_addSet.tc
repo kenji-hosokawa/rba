@@ -1,0 +1,20 @@
+#start 1
+CL
+C,on,ContentC1,NORMAL
+Assert,A,AllocatableA,
+Assert,A,AllocatableB,
+Assert,A,AllocatableC,ContentC1
+Assert,A,AllocatableD,
+Assert,A,AllocatableE,
+C,on,ContentD1,NORMAL
+Assert,A,AllocatableA,
+Assert,A,AllocatableB,
+Assert,A,AllocatableC,ContentC1
+Assert,A,AllocatableD,
+Assert,A,AllocatableE,
+C,on,ContentA1,NORMAL
+Assert,A,AllocatableA,ContentA1
+Assert,A,AllocatableB,ContentA1
+Assert,A,AllocatableC,
+Assert,A,AllocatableD,ContentD1
+Assert,A,AllocatableE,ContentA1

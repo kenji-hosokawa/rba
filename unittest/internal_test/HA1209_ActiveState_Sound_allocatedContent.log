@@ -1,0 +1,330 @@
+#Request#C,off,A1,NORMAL1,0
+#Request#C,off,A1,NORMAL2,0
+#Request#C,off,A1,NORMAL3,0
+#Request#C,on,X1,NORMAL,1
+#Constraint#START,HA1209_ActiveState_3,t
+#Constraint#EXPRESSION	->#left==	A.allocatedContent().activeState() == A1.NORMAL3	f
+#Constraint#EXPRESSION	->	(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())	t
+#Constraint#END
+#Constraint#START,HA1209_ActiveState_1,t
+#Constraint#EXPRESSION	->#left==	A1.activeState() == A1.NORMAL1	f
+#Constraint#EXPRESSION	->	(A1.activeState() == A1.NORMAL1 -> X.isMuted())	t
+#Constraint#END
+#Constraint#START,HA1209_ActiveState_2,t
+#Constraint#EXPRESSION	->#left==	(pre)A1.activeState() == A1.NORMAL2	f
+#Constraint#EXPRESSION	->	((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())	t
+#Constraint#END
+#Constraint#START,HA1209_ActiveState_3,t
+#Constraint#EXPRESSION	->#left==	A.allocatedContent().activeState() == A1.NORMAL3	f
+#Constraint#EXPRESSION	->	(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())	t
+#Constraint#END
+#CanceledRequest#A1,NORMAL1,f
+#CanceledRequest#A1,NORMAL2,f
+#CanceledRequest#A1,NORMAL3,f
+#CanceledRequest#X1,NORMAL,f
+#Result#A,A,
+#Result#A,X,X1
+#Result#A,XX,X1
+#Result#A,XXX,X1
+#Constraint#START,HA1209_ActiveState_1,t
+#Constraint#EXPRESSION	->#left==	A1.activeState() == A1.NORMAL1	f
+#Constraint#EXPRESSION	->	(A1.activeState() == A1.NORMAL1 -> X.isMuted())	t
+#Constraint#END
+#Constraint#START,HA1209_ActiveState_2,t
+#Constraint#EXPRESSION	->#left==	(pre)A1.activeState() == A1.NORMAL2	f
+#Constraint#EXPRESSION	->	((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())	t
+#Constraint#END
+#Constraint#START,HA1209_ActiveState_3,t
+#Constraint#EXPRESSION	->#left==	A.allocatedContent().activeState() == A1.NORMAL3	f
+#Constraint#EXPRESSION	->	(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())	t
+#Constraint#END
+#PrevResult#A,X,X1,NORMAL
+#PrevResult#A,XX,X1,NORMAL
+#PrevResult#A,XXX,X1,NORMAL
+#Request#C,off,A1,NORMAL1,0
+#Request#C,off,A1,NORMAL2,0
+#Request#C,on,A1,NORMAL3,2
+#Request#C,on,X1,NORMAL,1
+#Constraint#START,HA1209_ActiveState_3,t
+#Constraint#EXPRESSION	->#left==	A.allocatedContent().activeState() == A1.NORMAL3	t
+#Constraint#EXPRESSION	->#right.isMuted()	XXX.isMuted()	skip
+#Constraint#EXPRESSION	->	(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())	skip
+#Constraint#END
+#Constraint#START,HA1209_ActiveState_1,t
+#Constraint#EXPRESSION	->#left==	A1.activeState() == A1.NORMAL1	f
+#Constraint#EXPRESSION	->	(A1.activeState() == A1.NORMAL1 -> X.isMuted())	t
+#Constraint#END
+#Constraint#START,HA1209_ActiveState_2,t
+#Constraint#EXPRESSION	->#left==	(pre)A1.activeState() == A1.NORMAL2	f
+#Constraint#EXPRESSION	->	((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())	t
+#Constraint#END
+#Constraint#START,HA1209_ActiveState_3,t
+#Constraint#EXPRESSION	->#left==	A.allocatedContent().activeState() == A1.NORMAL3	t
+#Constraint#EXPRESSION	->#right.isMuted()	XXX.isMuted()	f
+#Constraint#EXPRESSION	->	(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())	f
+#Constraint#END
+#CanceledRequest#A1,NORMAL1,f
+#CanceledRequest#A1,NORMAL2,f
+#CanceledRequest#A1,NORMAL3,f
+#CanceledRequest#X1,NORMAL,f
+#Result#A,A,A1
+#Result#A,X,X1
+#Result#A,XX,X1
+#Result#A,XXX,
+#Constraint#START,HA1209_ActiveState_1,t
+#Constraint#EXPRESSION	->#left==	A1.activeState() == A1.NORMAL1	f
+#Constraint#EXPRESSION	->	(A1.activeState() == A1.NORMAL1 -> X.isMuted())	t
+#Constraint#END
+#Constraint#START,HA1209_ActiveState_2,t
+#Constraint#EXPRESSION	->#left==	(pre)A1.activeState() == A1.NORMAL2	f
+#Constraint#EXPRESSION	->	((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())	t
+#Constraint#END
+#Constraint#START,HA1209_ActiveState_3,t
+#Constraint#EXPRESSION	->#left==	A.allocatedContent().activeState() == A1.NORMAL3	t
+#Constraint#EXPRESSION	->#right.isMuted()	XXX.isMuted()	t
+#Constraint#EXPRESSION	->	(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())	t
+#Constraint#END
+----Request Information----
+Allocatable Count:4
+  Zone[A] policy[DEFAULT] visibility[10]
+  Zone[X] policy[DEFAULT] visibility[10]
+  Zone[XX] policy[DEFAULT] visibility[10]
+  Zone[XXX] policy[DEFAULT] visibility[10]
+ContentState Count:4
+  SoundContent[A1::NORMAL1] priority[10] isActive[false] order[0]
+  SoundContent[A1::NORMAL2] priority[11] isActive[false] order[0]
+  SoundContent[A1::NORMAL3] priority[12] isActive[false] order[0]
+  SoundContent[X1::NORMAL] priority[10] isActive[true] order[1]
+Scene Count:0
+Constraint Count:3
+  Constraint[HA1209_ActiveState_1] Expression[(A1.activeState() == A1.NORMAL1 -> X.isMuted())] runtime[true]
+  Constraint[HA1209_ActiveState_2] Expression[((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] runtime[true]
+  Constraint[HA1209_ActiveState_3] Expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] runtime[true]
+----Request Information----
+Allocatable Count:4
+  Zone[A] policy[DEFAULT] visibility[10]
+  Zone[X] policy[DEFAULT] visibility[10]
+  Zone[XX] policy[DEFAULT] visibility[10]
+  Zone[XXX] policy[DEFAULT] visibility[10]
+ContentState Count:4
+  SoundContent[A1::NORMAL1] priority[10] isActive[false] order[0]
+  SoundContent[A1::NORMAL2] priority[11] isActive[false] order[0]
+  SoundContent[A1::NORMAL3] priority[12] isActive[true] order[2]
+  SoundContent[X1::NORMAL] priority[10] isActive[true] order[1]
+Scene Count:0
+Constraint Count:3
+  Constraint[HA1209_ActiveState_1] Expression[(A1.activeState() == A1.NORMAL1 -> X.isMuted())] runtime[true]
+  Constraint[HA1209_ActiveState_2] Expression[((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] runtime[true]
+  Constraint[HA1209_ActiveState_3] Expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] runtime[true]
+----Previous Result Information----
+Allocatable TotalCount:4
+  Zone[A] Content[null] muted[false] attenuated[false]
+  Zone[X] Content[null] muted[false] attenuated[false]
+  Zone[XX] Content[null] muted[false] attenuated[false]
+  Zone[XXX] Content[null] muted[false] attenuated[false]
+Content TotalCount:2
+  SoundContent[A1] sounding[false] active[false]
+  SoundContent[X1] sounding[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:4
+  Zone[A] Content[null] muted[false] attenuated[false]
+  Zone[X] Content[X1::NORMAL] muted[false] attenuated[false]
+  Zone[XX] Content[X1::NORMAL] muted[false] attenuated[false]
+  Zone[XXX] Content[X1::NORMAL] muted[false] attenuated[false]
+Content TotalCount:2
+  SoundContent[A1] sounding[false] active[false]
+  SoundContent[X1] sounding[true] active[true]
+    allocated Zone[X]
+    allocated Zone[XX]
+    allocated Zone[XXX]
+----Arbitrate----
+Zone[A] check start
+  Content[A1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().activeState() no Content
+      [A.allocatedContent().activeState() == A1.NORMAL3] false
+      [(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] true
+    constraint expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] true
+
+  check online constraints to confirm zone muted state
+  check online constraints to confirm zone attenuated state
+Zone[A] outputs Content[null] muted[false] attenuated[false]
+
+Zone[X] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm zone muted state
+    constraint expression[(A1.activeState() == A1.NORMAL1 -> X.isMuted())] check start
+      A1.activeState() has no Active State
+      [A1.activeState() == A1.NORMAL1] false
+      [(A1.activeState() == A1.NORMAL1 -> X.isMuted())] true
+    constraint expression[(A1.activeState() == A1.NORMAL1 -> X.isMuted())] true
+
+  check online constraints to confirm zone attenuated state
+Zone[X] outputs Content[X1::NORMAL] muted[false] attenuated[false]
+
+Zone[XX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm zone muted state
+    constraint expression[((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] check start
+      (pre)A1.activeState() has no Active State
+      [(pre)A1.activeState() == A1.NORMAL2] false
+      [((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] true
+    constraint expression[((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] true
+
+  check online constraints to confirm zone attenuated state
+Zone[XX] outputs Content[X1::NORMAL] muted[false] attenuated[false]
+
+Zone[XXX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm zone muted state
+    constraint expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().activeState() no Content
+      [A.allocatedContent().activeState() == A1.NORMAL3] false
+      [(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] true
+    constraint expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] true
+
+  check online constraints to confirm zone attenuated state
+Zone[XXX] outputs Content[X1::NORMAL] muted[false] attenuated[false]
+
+----Arbitrate----
+Zone[A] check start
+  Content[A1::NORMAL3] check online constraints start
+    constraint expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] check start
+      Allocatable[A] has Allocated Content[A1]
+      A.allocatedContent().activeState() is NORMAL3
+      [A.allocatedContent().activeState() == A1.NORMAL3] true
+      [XXX.isMuted()] before arbitrate skip
+      [(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] before arbitrate skip
+    constraint expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] before arbitrate skip
+
+  check online constraints to confirm zone muted state
+  check online constraints to confirm zone attenuated state
+Zone[A] outputs Content[A1::NORMAL3] muted[false] attenuated[false]
+
+Zone[X] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm zone muted state
+    constraint expression[(A1.activeState() == A1.NORMAL1 -> X.isMuted())] check start
+      A1.activeState() is NORMAL3
+      [A1.activeState() == A1.NORMAL1] false
+      [(A1.activeState() == A1.NORMAL1 -> X.isMuted())] true
+    constraint expression[(A1.activeState() == A1.NORMAL1 -> X.isMuted())] true
+
+  check online constraints to confirm zone attenuated state
+Zone[X] outputs Content[X1::NORMAL] muted[false] attenuated[false]
+
+Zone[XX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm zone muted state
+    constraint expression[((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] check start
+      (pre)A1.activeState() has no Active State
+      [(pre)A1.activeState() == A1.NORMAL2] false
+      [((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] true
+    constraint expression[((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] true
+
+  check online constraints to confirm zone attenuated state
+Zone[XX] outputs Content[X1::NORMAL] muted[false] attenuated[false]
+
+Zone[XXX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm zone muted state
+    constraint expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] check start
+      Allocatable[A] has Allocated Content[A1]
+      A.allocatedContent().activeState() is NORMAL3
+      [A.allocatedContent().activeState() == A1.NORMAL3] true
+      [XXX.isMuted()] false
+      [(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] false
+    constraint expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] false
+
+Zone[XXX] change muted
+  check online constraints to confirm zone attenuated state
+Zone[XXX] outputs Content[X1::NORMAL] muted[true] attenuated[false]
+
+----Cancel Request----
+Content[A1::NORMAL1] check start
+  Content[A1::NORMAL1] is not Active skip
+Content[A1::NORMAL2] check start
+  Content[A1::NORMAL2] is not Active skip
+Content[A1::NORMAL3] check start
+  Content[A1::NORMAL3] is not Active skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is Sounding skip
+----Cancel Request----
+Content[A1::NORMAL1] check start
+  Content[A1::NORMAL1] is not Active skip
+Content[A1::NORMAL2] check start
+  Content[A1::NORMAL2] is not Active skip
+Content[A1::NORMAL3] check start
+  Content[A1::NORMAL3] is Sounding skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is Sounding skip
+----Check All Constraint----
+    constraint expression[(A1.activeState() == A1.NORMAL1 -> X.isMuted())] check start
+      A1.activeState() has no Active State
+      [A1.activeState() == A1.NORMAL1] false
+      [(A1.activeState() == A1.NORMAL1 -> X.isMuted())] true
+    constraint expression[(A1.activeState() == A1.NORMAL1 -> X.isMuted())] true
+
+    constraint expression[((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] check start
+      (pre)A1.activeState() has no Active State
+      [(pre)A1.activeState() == A1.NORMAL2] false
+      [((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] true
+    constraint expression[((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] true
+
+    constraint expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().activeState() no Content
+      [A.allocatedContent().activeState() == A1.NORMAL3] false
+      [(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] true
+    constraint expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] true
+
+----Check All Constraint----
+    constraint expression[(A1.activeState() == A1.NORMAL1 -> X.isMuted())] check start
+      A1.activeState() is NORMAL3
+      [A1.activeState() == A1.NORMAL1] false
+      [(A1.activeState() == A1.NORMAL1 -> X.isMuted())] true
+    constraint expression[(A1.activeState() == A1.NORMAL1 -> X.isMuted())] true
+
+    constraint expression[((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] check start
+      (pre)A1.activeState() has no Active State
+      [(pre)A1.activeState() == A1.NORMAL2] false
+      [((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] true
+    constraint expression[((pre)A1.activeState() == A1.NORMAL2 -> XX.isMuted())] true
+
+    constraint expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] check start
+      Allocatable[A] has Allocated Content[A1]
+      A.allocatedContent().activeState() is NORMAL3
+      [A.allocatedContent().activeState() == A1.NORMAL3] true
+      [XXX.isMuted()] true
+      [(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] true
+    constraint expression[(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isMuted())] true
+
+----Result Information----
+Allocatable TotalCount:4
+  Zone[A] Content[null] muted[false] attenuated[false]
+  Zone[X] Content[X1::NORMAL] muted[false] attenuated[false]
+  Zone[XX] Content[X1::NORMAL] muted[false] attenuated[false]
+  Zone[XXX] Content[X1::NORMAL] muted[false] attenuated[false]
+Content TotalCount:2
+  SoundContent[A1] sounding[false] cancel[false]
+  SoundContent[X1] sounding[true] cancel[false]
+    allocated Zone[X]
+    allocated Zone[XX]
+    allocated Zone[XXX]
+----Result Information----
+Allocatable TotalCount:4
+  Zone[A] Content[A1::NORMAL3] muted[false] attenuated[false]
+  Zone[X] Content[X1::NORMAL] muted[false] attenuated[false]
+  Zone[XX] Content[X1::NORMAL] muted[false] attenuated[false]
+  Zone[XXX] Content[X1::NORMAL] muted[true] attenuated[false]
+Content TotalCount:2
+  SoundContent[A1] sounding[true] cancel[false]
+    allocated Zone[A]
+  SoundContent[X1] sounding[true] cancel[false]
+    allocated Zone[X]
+    allocated Zone[XX]
+    allocated Zone[XXX]
+

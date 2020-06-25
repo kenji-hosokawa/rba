@@ -1,0 +1,15 @@
+#start 1
+Assert,OK,7,A,A1,A1
+Assert,OK,8,B,B1,B1
+Assert,OK,9,C,C1,C1
+Assert,OK,10,D,D1,D1
+#start 2
+Assert,OK,17,A,,
+Assert,OK,18,B,B1,B1
+Assert,NG,19,C,,C1
+Assert,NG,20,D,D1,
+#start 3
+Assert,OK,26,A,,
+Assert,NG,27,B,,B1
+Assert,OK,28,C,C1,C1
+Assert,OK,29,D,,

@@ -1,0 +1,8 @@
+C,ON,コンテンツE1,NORMAL
+execute
+
+Assert,A,ゾーンA,NULL
+Assert,A,ゾーンB,NULL
+Assert,A,ゾーンC,NULL
+Assert,A,ゾーンD,NULL
+Assert,A,ゾーンE,コンテンツE1

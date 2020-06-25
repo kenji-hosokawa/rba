@@ -1,0 +1,13 @@
+// 左辺がtrue、右辺がfalse
+C,ON,コンテンツA1,NORMAL
+C,ON,コンテンツB1,NORMAL
+C,ON,コンテンツC1,NORMAL
+C,ON,コンテンツD1,NORMAL
+C,ON,コンテンツE1,NORMAL
+execute
+
+Assert,A,エリアA,コンテンツA1
+Assert,A,エリアB,NULL
+Assert,A,エリアC,コンテンツC1
+Assert,A,エリアD,コンテンツD1
+Assert,A,エリアE,コンテンツE1

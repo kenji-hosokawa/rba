@@ -1,0 +1,31 @@
+#start 1 OFFandOFF
+CL
+C,on,A1,NORMAL
+C,on,B1,NORMAL
+Assert,A,A,A1
+Assert,A,B,B1
+
+#start 2 ONandOFF
+CL
+S,on,S1
+C,on,A1,NORMAL
+C,on,B1,NORMAL
+Assert,A,A,A1
+Assert,A,B,B1
+
+#start 3 OFFandON
+CL
+S,on,S2
+C,on,A1,NORMAL
+C,on,B1,NORMAL
+Assert,A,A,A1
+Assert,A,B,B1
+
+#start 4 ONandON
+CL
+S,on,S1
+S,on,S2
+C,on,A1,NORMAL
+C,on,B1,NORMAL
+Assert,A,A,
+Assert,A,B,B1

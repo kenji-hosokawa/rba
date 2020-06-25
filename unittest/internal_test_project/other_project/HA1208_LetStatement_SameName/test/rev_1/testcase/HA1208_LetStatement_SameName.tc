@@ -1,0 +1,40 @@
+#start 1
+CL
+C,on,F1,NORMAL
+C,on,A2,NORMAL
+C,on,E1,NORMAL
+Assert,A,A,A2
+Assert,A,B,
+Assert,A,C,A2
+Assert,A,D,
+Assert,A,E,E1
+Assert,A,F,
+Assert,A,G,
+
+#start 2
+CL
+C,on,F1,NORMAL
+C,on,A1,NORMAL
+C,on,E1,NORMAL
+Assert,A,A,A1
+Assert,A,B,
+Assert,A,C,
+Assert,A,D,
+Assert,A,E,E1
+Assert,A,F,F1
+Assert,A,G,
+
+#start 3
+CL
+C,on,A1,NORMAL
+C,on,A2,NORMAL
+C,on,E1,NORMAL
+C,on,F1,NORMAL
+C,on,G1,NORMAL
+Assert,A,A,A1
+Assert,A,B,
+Assert,A,C,A2
+Assert,A,D,
+Assert,A,E,E1
+Assert,A,F,F1
+Assert,A,G,G1

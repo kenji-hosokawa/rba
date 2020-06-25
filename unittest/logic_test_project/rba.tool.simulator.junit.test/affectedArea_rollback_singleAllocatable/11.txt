@@ -1,0 +1,10 @@
+C,ON,C2,NORMAL
+C,ON,B2,NORMAL
+C,ON,A2,NORMAL
+C,ON,C1,NORMAL
+C,ON,B1,NORMAL
+execute
+
+Assert,A,A,A2
+Assert,A,B,B2
+Assert,A,C,C1

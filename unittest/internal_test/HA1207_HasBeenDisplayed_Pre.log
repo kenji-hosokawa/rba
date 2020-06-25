@@ -1,0 +1,5 @@
+#HierarchyOfConstraint#START,HA1207_HasBeenDisplayed_1,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	((pre)B1.hasBeenDisplayed() -> X.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left.hasBeenDisplayed()	(pre)B1.hasBeenDisplayed()	boolean
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()	X.isHidden()	boolean
+#HierarchyOfConstraint#END,HA1207_HasBeenDisplayed_1

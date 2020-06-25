@@ -1,0 +1,137 @@
+Package Displays {
+	Size サイズ{
+		width: 90
+		height: 100
+	}
+	Size FullScreen {
+		width: 1000
+		height: 1000
+	}
+	Area A {
+		visibility: STANDARD_VALUE
+		arbitrationPolicy: DEFAULT
+		zorder: STANDARD_VALUE
+		sizeReference: サイズ
+	}
+	Area B {
+		visibility: < That-of A
+		arbitrationPolicy: DEFAULT
+		zorder: STANDARD_VALUE
+		sizeReference: サイズ
+	}
+	Area C {
+		visibility: < That-of B
+		arbitrationPolicy: DEFAULT
+		zorder: STANDARD_VALUE
+		sizeReference: サイズ
+	}
+	Area D {
+		visibility: < That-of C
+		arbitrationPolicy: DEFAULT
+		zorder: STANDARD_VALUE
+		sizeReference: サイズ
+	}
+	Area E {
+		visibility: < That-of D
+		arbitrationPolicy: DEFAULT
+		zorder: STANDARD_VALUE
+		sizeReference: サイズ
+	}
+	Area F {
+		visibility: < That-of E
+		arbitrationPolicy: DEFAULT
+		zorder: STANDARD_VALUE
+		sizeReference: サイズ
+	}
+	ViewContent A1 {
+		loserType: NEVER_GIVEUP
+		sizeReference: サイズ
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [A,B]
+	}
+	ViewContent A2 {
+		loserType: NEVER_GIVEUP
+		sizeReference: サイズ
+		State NORMAL {
+			priority: 11
+		}
+		allocatable: [A]
+	}
+	ViewContent C1 {
+		loserType: NEVER_GIVEUP
+		sizeReference: サイズ
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [C,D]
+	}
+	ViewContent E1 {
+		loserType: NEVER_GIVEUP
+		sizeReference: サイズ
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [E,F]
+	}
+	ViewContent F1 {
+		loserType: NEVER_GIVEUP
+		sizeReference: サイズ
+		State NORMAL {
+			priority: 11
+		}
+		allocatable: [F]
+	}
+	Display SampleDisplay {
+		sizeReference: FullScreen
+			CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x: 100
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+				PositionContainer {
+					x: 200
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: C
+				}
+				PositionContainer {
+					x: 300
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: D
+				}
+				PositionContainer {
+					x: 400
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: E
+				}
+				PositionContainer {
+					x: 500
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: F
+				}
+			}		
+		}
+	}
+	Constraint HA_678 {
+		runtime: true
+		A.isDisplayed() -> B.isHidden()
+	}
+	Constraint HA_678_E1 {
+		runtime: true
+		F.isDisplayed() -> E.isHidden()
+	}
+}

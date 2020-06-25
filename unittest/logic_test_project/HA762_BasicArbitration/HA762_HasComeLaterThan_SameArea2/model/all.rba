@@ -1,0 +1,70 @@
+Package Model {
+	//後に要求があったコンテント（a1）が!Visibleでも評価できることを確認する
+	Constraint a1isNotVisible {
+		runtime: true
+		a1.isActive() -> !a1.isVisible() 
+	}
+	Constraint エリアの調停ポリシーを上書きして後勝ちにする {
+		runtime: true
+		a1.hasComeLaterThan(a2) -> ! b1.isVisible() 
+	}
+	Area A {
+		arbitrationPolicy: PRIORITY_FIRST_COME_FIRST
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE sizeReference: size1
+	}
+
+	ViewContent a1 {
+		allocatable: [ A ] sizeReference: size1
+		State NORMAL { priority: 10 }
+	}
+	ViewContent a2 {
+		allocatable: [ A ] sizeReference: size1
+		State NORMAL { priority: 10 }
+	}
+	//hasComeEarlierThanにかかる二つのオペレータの要求がない場合、制約式を評価しないことを確認する
+	ViewContent a3 {
+		allocatable: [ A ] sizeReference: size1
+		State NORMAL { priority: 10 }
+	}
+	
+	//後に要求があったコンテント（b2）が!Visibleでも評価できることを確認する
+	Constraint b21isNotVisible {
+		runtime: true
+		b2.isActive() -> !b2.isVisible() 
+	}
+	Constraint エリアの調停ポリシーを上書きして後勝ちにする2 {
+		runtime: true
+		b1.hasComeLaterThan(b2) -> ! a2.isVisible() 
+	}
+	Area B {
+		arbitrationPolicy: PRIORITY_FIRST_COME_FIRST
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE sizeReference: size1
+	}
+
+	ViewContent b1 {
+		allocatable: [ B ] sizeReference: size1
+		State NORMAL { priority: 10 }
+	}
+	ViewContent b2 {
+		allocatable: [ B ] sizeReference: size1
+		State NORMAL { priority: 10 }
+	}
+	ViewContent b3 {
+		allocatable: [ B ] sizeReference: size1
+		State NORMAL { priority: 10 }
+	}
+
+	Display SampleDisplay {
+		Size FullScreen { width: 400 height: 200 }
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer { x: 0 y: 0 areaReference: A }
+				PositionContainer { x: 200 y: 0 areaReference: B }
+			}
+		}
+	}
+	Size size1 { width: 200 height: 200 }
+
+}

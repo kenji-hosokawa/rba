@@ -1,0 +1,86 @@
+Package pkg1 {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 500
+			height: 200
+		}
+		CompositeArea root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: AreaA
+				}
+				PositionContainer {
+					x: 200
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: AreaB
+				}
+			}
+		}
+	}
+	Area AreaA {
+		Size SizeA {
+			width: 200
+			height: 100
+		}
+		Size SizeCommon {
+			width: 100
+			height: 200
+		}
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	Area AreaB {
+		Size SizeCommon {
+			width: 300
+			height: 200
+		}
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	ViewContent cont1 {
+		allocatable:[
+			AreaA,
+			AreaB
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size SizeA {
+			width: 100
+			height: 50
+		}
+		Size SizeCommon {
+			width: 105
+			height: 55
+		}
+	}
+	ViewContent cont2 {
+		allocatable:[
+			AreaA,
+			AreaB
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size SizeA {
+			width: 200
+			height: 300
+		}
+	}
+	ViewContent cont3 {
+		allocatable:[
+			AreaA
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size SizeA {
+			width: 50
+			height: 40
+		}
+	}
+}

@@ -1,0 +1,8 @@
+#start 1
+CL
+C,on,A1,NORMAL,continue
+C,on,B1,NORMAL,continue
+C,on,P1,NORMAL
+Assert,A,A,A1,attenuated:true
+Assert,A,B,B1
+Assert,A,P,P1

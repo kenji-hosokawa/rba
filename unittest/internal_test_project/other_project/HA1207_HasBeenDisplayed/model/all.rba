@@ -1,0 +1,112 @@
+Package SampleDisplays {
+	Display Sample_METER{
+		Size Sample_METER_FULLSCREEN {
+			width: 500
+			height: 400
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:100
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x: 50
+					y: 250
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: X
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: XX
+				}
+			}
+		}
+	}
+	Size サイズ {
+		width:100
+		height:100
+	}
+	Area A {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area X {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area XX {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+	ViewContent A2{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+	ViewContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+	ViewContent X1 {
+		allocatable: [
+			X,XX
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+	Scene S1{}
+	Constraint HA1207_HasBeenDisplayed_1 {
+		runtime: true
+		B.allocatedContent().hasBeenDisplayed() -> X.isHidden()
+	}
+	Constraint HA1207_HasBeenDisplayed_2 {
+		runtime: true
+		A.isDisplayed() -> B.isHidden()
+	}
+	PostConstraint HA1207_HasBeenDisplayed_3 {
+		S1.isOn() -> B1.isCanceled()
+	}
+	Constraint HA1207_HasBeenDisplayed_4 {
+		runtime: true
+		A2.hasBeenDisplayed() -> XX.isHidden()
+	}
+}

@@ -1,0 +1,20 @@
+#HierarchyOfConstraint#START,HA1209_SelectOperator_1,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(S1.isOn() -> For All {sele} { x |x.isHidden()})	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left.isOn()	S1.isOn()	boolean
+#HierarchyOfConstraint#EXPRESSION	->#rightFor All	For All {sele} { x |x.isHidden()}	boolean
+#HierarchyOfConstraint#END,HA1209_SelectOperator_1
+#HierarchyOfConstraint#START,HA1209_SelectOperator_2,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(Exists {sele} { x |x == B} -> X.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#leftExists	Exists {sele} { x |x == B}	boolean
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()	X.isHidden()	boolean
+#HierarchyOfConstraint#END,HA1209_SelectOperator_2
+#HierarchyOfConstraint#START,HA1209_SelectOperator_3,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(S2.isOn() -> For All sele { x |!x.isVisible()})	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left.isOn()	S2.isOn()	boolean
+#HierarchyOfConstraint#EXPRESSION	->#rightFor All	For All sele { x |!x.isVisible()}	boolean
+#HierarchyOfConstraint#END,HA1209_SelectOperator_3
+#HierarchyOfConstraint#START,HA1209_SelectOperator_4,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(Exists {sele1} { x |x == C1} -> For All {sele2} { z |z.isHidden()})	boolean
+#HierarchyOfConstraint#EXPRESSION	->#leftExists	Exists {sele1} { x |x == C1}	boolean
+#HierarchyOfConstraint#EXPRESSION	->#rightFor All	For All {sele2} { z |z.isHidden()}	boolean
+#HierarchyOfConstraint#END,HA1209_SelectOperator_4

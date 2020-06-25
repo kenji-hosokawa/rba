@@ -1,0 +1,394 @@
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,B1,NORMAL,0
+#Request#C,on,X1,NORMAL,1
+#Constraint#START,HA1211_ContentAllocatableCollector,t
+#Constraint#EXPRESSION	->#leftExists#0.isActive()	A1.isActive()	f
+#Constraint#EXPRESSION	->#leftExists#1.isActive()	B1.isActive()	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[A1,B1]} { x |x.isActive()}	f
+#Constraint#EXPRESSION	->	(Exists {[A1,B1]} { x |x.isActive()} -> X.isHidden())	t
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#Result#A,A,
+#Result#A,B,
+#Result#A,X,X1
+#Constraint#START,HA1211_ContentAllocatableCollector,t
+#Constraint#EXPRESSION	->#leftExists#0.isActive()	A1.isActive()	f
+#Constraint#EXPRESSION	->#leftExists#1.isActive()	B1.isActive()	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[A1,B1]} { x |x.isActive()}	f
+#Constraint#EXPRESSION	->	(Exists {[A1,B1]} { x |x.isActive()} -> X.isHidden())	t
+#Constraint#END
+#PrevResult#A,X,X1,NORMAL
+#Request#C,on,A1,NORMAL,2
+#Request#C,off,B1,NORMAL,0
+#Request#C,on,X1,NORMAL,1
+#Constraint#START,HA1211_ContentAllocatableCollector,t
+#Constraint#EXPRESSION	->#leftExists#0.isActive()	A1.isActive()	t
+#Constraint#EXPRESSION	->#leftExists#1.isActive()	B1.isActive()	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[A1,B1]} { x |x.isActive()}	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->	(Exists {[A1,B1]} { x |x.isActive()} -> X.isHidden())	f
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#Result#A,A,A1
+#Result#A,B,
+#Result#A,X,
+#Constraint#START,HA1211_ContentAllocatableCollector,t
+#Constraint#EXPRESSION	->#leftExists#0.isActive()	A1.isActive()	t
+#Constraint#EXPRESSION	->#leftExists#1.isActive()	B1.isActive()	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[A1,B1]} { x |x.isActive()}	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->	(Exists {[A1,B1]} { x |x.isActive()} -> X.isHidden())	t
+#Constraint#END
+#PrevResult#A,A,A1,NORMAL
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,B1,NORMAL,0
+#Request#C,on,X1,NORMAL,1
+#Constraint#START,HA1211_ContentAllocatableCollector,t
+#Constraint#EXPRESSION	->#leftExists#0.isActive()	A1.isActive()	f
+#Constraint#EXPRESSION	->#leftExists#1.isActive()	B1.isActive()	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[A1,B1]} { x |x.isActive()}	f
+#Constraint#EXPRESSION	->	(Exists {[A1,B1]} { x |x.isActive()} -> X.isHidden())	t
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#Result#A,A,
+#Result#A,B,
+#Result#A,X,X1
+#Constraint#START,HA1211_ContentAllocatableCollector,t
+#Constraint#EXPRESSION	->#leftExists#0.isActive()	A1.isActive()	f
+#Constraint#EXPRESSION	->#leftExists#1.isActive()	B1.isActive()	f
+#Constraint#EXPRESSION	->#leftExists	Exists {[A1,B1]} { x |x.isActive()}	f
+#Constraint#EXPRESSION	->	(Exists {[A1,B1]} { x |x.isActive()} -> X.isHidden())	t
+#Constraint#END
+#PrevResult#A,X,X1,NORMAL
+#Request#C,off,A1,NORMAL,0
+#Request#C,on,B1,NORMAL,2
+#Request#C,on,X1,NORMAL,1
+#Constraint#START,HA1211_ContentAllocatableCollector,t
+#Constraint#EXPRESSION	->#leftExists#0.isActive()	A1.isActive()	f
+#Constraint#EXPRESSION	->#leftExists#1.isActive()	B1.isActive()	t
+#Constraint#EXPRESSION	->#leftExists	Exists {[A1,B1]} { x |x.isActive()}	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->	(Exists {[A1,B1]} { x |x.isActive()} -> X.isHidden())	f
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#Result#A,A,
+#Result#A,B,B1
+#Result#A,X,
+#Constraint#START,HA1211_ContentAllocatableCollector,t
+#Constraint#EXPRESSION	->#leftExists#0.isActive()	A1.isActive()	f
+#Constraint#EXPRESSION	->#leftExists#1.isActive()	B1.isActive()	t
+#Constraint#EXPRESSION	->#leftExists	Exists {[A1,B1]} { x |x.isActive()}	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->	(Exists {[A1,B1]} { x |x.isActive()} -> X.isHidden())	t
+#Constraint#END
+----Request Information----
+Allocatable Count:3
+  Area[A] policy[DEFAULT] visibility[10]
+  Area[B] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+ContentState Count:3
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[1]
+Scene Count:0
+Constraint Count:1
+  Constraint[HA1211_ContentAllocatableCollector] Expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] runtime[true]
+----Request Information----
+Allocatable Count:3
+  Area[A] policy[DEFAULT] visibility[10]
+  Area[B] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+ContentState Count:3
+  ViewContent[A1::NORMAL] priority[10] isActive[true] order[2]
+  ViewContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[1]
+Scene Count:0
+Constraint Count:1
+  Constraint[HA1211_ContentAllocatableCollector] Expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] runtime[true]
+----Request Information----
+Allocatable Count:3
+  Area[A] policy[DEFAULT] visibility[10]
+  Area[B] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+ContentState Count:3
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[1]
+Scene Count:0
+Constraint Count:1
+  Constraint[HA1211_ContentAllocatableCollector] Expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] runtime[true]
+----Request Information----
+Allocatable Count:3
+  Area[A] policy[DEFAULT] visibility[10]
+  Area[B] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+ContentState Count:3
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::NORMAL] priority[10] isActive[true] order[2]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[1]
+Scene Count:0
+Constraint Count:1
+  Constraint[HA1211_ContentAllocatableCollector] Expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] runtime[true]
+----Previous Result Information----
+Allocatable TotalCount:3
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[X] Content[null] hidden[false]
+Content TotalCount:3
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[X1] visible[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:3
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[false]
+Content TotalCount:3
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[X1] visible[true] active[true]
+    allocated Area[X]
+----Previous Result Information----
+Allocatable TotalCount:3
+  Area[A] Content[A1::NORMAL] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[true]
+Content TotalCount:3
+  ViewContent[A1] visible[true] active[true]
+    allocated Area[A]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[X1] visible[false] active[true]
+    allocated Area[X]
+----Previous Result Information----
+Allocatable TotalCount:3
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[false]
+Content TotalCount:3
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[X1] visible[true] active[true]
+    allocated Area[X]
+----Arbitrate----
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+Area[A] displays Content[null] hidden[false]
+
+Area[B] check start
+  Content[B1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+Area[B] displays Content[null] hidden[false]
+
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] check start
+      let letX = {A1, B1} = [A1,B1]
+      Content[A1] is not Active
+      Content[B1] is not Active
+      [Exists {letX} { x |x.isActive()}] false
+      [(Exists {letX} { x |x.isActive()} -> X.isHidden())] true
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] true
+
+Area[X] displays Content[X1::NORMAL] hidden[false]
+
+----Arbitrate----
+Area[A] check start
+  Content[A1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+Area[A] displays Content[A1::NORMAL] hidden[false]
+
+Area[B] check start
+  Content[B1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+Area[B] displays Content[null] hidden[false]
+
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] check start
+      let letX = {A1, B1} = [A1,B1]
+      Content[A1] is Active
+      Content[B1] is not Active
+      [Exists {letX} { x |x.isActive()}] true
+      [X.isHidden()] false
+      [(Exists {letX} { x |x.isActive()} -> X.isHidden())] false
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] false
+
+Area[X] change hidden
+Area[X] displays Content[X1::NORMAL] hidden[true]
+
+----Arbitrate----
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+Area[A] displays Content[null] hidden[false]
+
+Area[B] check start
+  Content[B1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+Area[B] displays Content[null] hidden[false]
+
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] check start
+      let letX = {A1, B1} = [A1,B1]
+      Content[A1] is not Active
+      Content[B1] is not Active
+      [Exists {letX} { x |x.isActive()}] false
+      [(Exists {letX} { x |x.isActive()} -> X.isHidden())] true
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] true
+
+Area[X] displays Content[X1::NORMAL] hidden[false]
+
+----Arbitrate----
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+Area[A] displays Content[null] hidden[false]
+
+Area[B] check start
+  Content[B1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+Area[B] displays Content[B1::NORMAL] hidden[false]
+
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] check start
+      let letX = {A1, B1} = [A1,B1]
+      Content[A1] is not Active
+      Content[B1] is Active
+      [Exists {letX} { x |x.isActive()}] true
+      [X.isHidden()] false
+      [(Exists {letX} { x |x.isActive()} -> X.isHidden())] false
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] false
+
+Area[X] change hidden
+Area[X] displays Content[X1::NORMAL] hidden[true]
+
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is Visible skip
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is Visible skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is not Canceled because NEVER_GIVEUP
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is Visible skip
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is Visible skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is not Canceled because NEVER_GIVEUP
+----Check All Constraint----
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] check start
+      let letX = {A1, B1} = [A1,B1]
+      Content[A1] is not Active
+      Content[B1] is not Active
+      [Exists {letX} { x |x.isActive()}] false
+      [(Exists {letX} { x |x.isActive()} -> X.isHidden())] true
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] true
+
+----Check All Constraint----
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] check start
+      let letX = {A1, B1} = [A1,B1]
+      Content[A1] is Active
+      Content[B1] is not Active
+      [Exists {letX} { x |x.isActive()}] true
+      [X.isHidden()] true
+      [(Exists {letX} { x |x.isActive()} -> X.isHidden())] true
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] true
+
+----Check All Constraint----
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] check start
+      let letX = {A1, B1} = [A1,B1]
+      Content[A1] is not Active
+      Content[B1] is not Active
+      [Exists {letX} { x |x.isActive()}] false
+      [(Exists {letX} { x |x.isActive()} -> X.isHidden())] true
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] true
+
+----Check All Constraint----
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] check start
+      let letX = {A1, B1} = [A1,B1]
+      Content[A1] is not Active
+      Content[B1] is Active
+      [Exists {letX} { x |x.isActive()}] true
+      [X.isHidden()] true
+      [(Exists {letX} { x |x.isActive()} -> X.isHidden())] true
+    constraint expression[(Exists {letX} { x |x.isActive()} -> X.isHidden())] true
+
+----Result Information----
+Allocatable TotalCount:3
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[false]
+Content TotalCount:3
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[B1] visible[false] cancel[false]
+  ViewContent[X1] visible[true] cancel[false]
+    allocated Area[X]
+----Result Information----
+Allocatable TotalCount:3
+  Area[A] Content[A1::NORMAL] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[true]
+Content TotalCount:3
+  ViewContent[A1] visible[true] cancel[false]
+    allocated Area[A]
+  ViewContent[B1] visible[false] cancel[false]
+  ViewContent[X1] visible[false] cancel[false]
+    allocated Area[X]
+----Result Information----
+Allocatable TotalCount:3
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[false]
+Content TotalCount:3
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[B1] visible[false] cancel[false]
+  ViewContent[X1] visible[true] cancel[false]
+    allocated Area[X]
+----Result Information----
+Allocatable TotalCount:3
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[B1::NORMAL] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[true]
+Content TotalCount:3
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[B1] visible[true] cancel[false]
+    allocated Area[B]
+  ViewContent[X1] visible[false] cancel[false]
+    allocated Area[X]
+

@@ -1,0 +1,10 @@
+// コンテントXはエリアA,B,C,D,Eに表示
+C,ON,コンテントX,NORMAL
+execute
+
+Assert,A,エリアA,コンテントX
+Assert,A,エリアB,コンテントX
+Assert,A,エリアC,コンテントX
+Assert,A,エリアD,コンテントX
+Assert,A,エリアE,コンテントX
+Assert,A,エリアF,NULL

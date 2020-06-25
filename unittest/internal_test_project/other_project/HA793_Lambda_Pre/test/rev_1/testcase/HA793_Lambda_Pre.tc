@@ -1,0 +1,12 @@
+#start 1
+CL
+C,on,ViewA1,NORMAL,continue
+C,on,ViewB1,NORMAL,continue
+C,on,ViewC1,NORMAL
+Assert,A,AreaA,ViewA1
+Assert,A,AreaB,ViewB1
+Assert,A,AreaC,ViewC1
+C,on,ViewC1,NORMAL
+Assert,A,AreaA,ViewA1
+Assert,A,AreaB,ViewB1
+Assert,A,AreaC,

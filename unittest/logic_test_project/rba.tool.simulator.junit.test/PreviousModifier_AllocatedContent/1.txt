@@ -1,0 +1,44 @@
+C,ON,コンテントA1,NORMAL
+execute
+Assert,A,エリアA,コンテントA1
+Assert,A,エリアB,NULL
+Assert,A,エリアC,NULL
+
+C,ON,コンテントB2,NORMAL
+execute
+Assert,A,エリアA,コンテントA1
+Assert,A,エリアB,NULL
+Assert,A,エリアC,NULL
+
+C,ON,コンテントC2,NORMAL
+execute
+Assert,A,エリアA,コンテントA1
+Assert,A,エリアB,NULL
+Assert,A,エリアC,コンテントC2
+
+C,ON,コンテントB3,NORMAL
+execute
+Assert,A,エリアA,コンテントA1
+Assert,A,エリアB,NULL
+Assert,A,エリアC,コンテントC2
+
+// この調停でエリアBがB3を割り当てる
+C,OFF,コンテントB2,NORMAL
+execute
+Assert,A,エリアA,コンテントA1
+Assert,A,エリアB,NULL
+Assert,A,エリアC,コンテントC2
+
+// この調停で前回エリアBがB3を割り当てたと判定してエリアCが隠蔽
+C,ON,コンテントB1,NORMAL
+execute
+Assert,A,エリアA,コンテントA1
+Assert,A,エリアB,NULL
+Assert,A,エリアC,NULL
+
+// この調停で前回エリアBがB1を割り当てたと判定してエリアCが表示
+C,ON,コンテントB2,NORMAL
+execute
+Assert,A,エリアA,コンテントA1
+Assert,A,エリアB,NULL
+Assert,A,エリアC,コンテントC2

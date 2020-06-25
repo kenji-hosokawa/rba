@@ -1,0 +1,80 @@
+Package Displays {
+	Size Default {
+		width: 1
+		height: 1
+	}
+	Area A {
+		arbitrationPolicy: DEFAULT
+		sizeReference: Default
+		visibility: 3
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		arbitrationPolicy: DEFAULT
+		sizeReference: Default
+		visibility: 2
+		zorder: STANDARD_VALUE
+	}
+	Area C {
+		arbitrationPolicy: DEFAULT
+		sizeReference: Default
+		visibility: 1
+		zorder: STANDARD_VALUE
+	}
+	ViewContent A1{
+		loserType:NEVER_GIVEUP
+		sizeReference: Default
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [A]
+	}
+	ViewContent B1{
+		loserType:NEVER_GIVEUP
+		sizeReference: Default
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [B]
+	}
+	ViewContent C1{
+		loserType:NEVER_GIVEUP
+		sizeReference: Default
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [C]
+	}
+	Display DisplayA {
+		sizeReference: Default
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x: 0
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+				PositionContainer {
+					x: 0
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: C
+				}
+			}
+		}
+	}
+	Scene S{
+		global: false
+	}
+	Constraint HA497_AllocatedContent_LhsBeforeArbitrate {
+		runtime: true
+		!((IF(S.isOn())THEN A ELSE B).allocatedContent() == A1) -> C.isHidden()
+	}
+}

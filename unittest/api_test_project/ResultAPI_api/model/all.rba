@@ -1,0 +1,216 @@
+Package API_test {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 400
+			height: 200
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: AreaA
+				}
+				PositionContainer {
+					x: 200
+					y: 0
+					areaReference: AreaB
+				}
+			}
+		}
+	}
+
+	Area AreaA {
+		arbitrationPolicy: DEFAULT
+		sizeReference: SizeA
+		visibility: > That-of AreaB
+		zorder: STANDARD_VALUE
+	}
+	Area AreaB {
+		arbitrationPolicy: DEFAULT
+		sizeReference: SizeB
+		visibility: NONE_VALUE
+		zorder: STANDARD_VALUE
+	}
+	
+	Zone ZoneA {
+		 arbitrationPolicy: DEFAULT
+		 visibility: > That-of ZoneB
+         attenuateValue: 1
+	}
+	Zone ZoneB {
+		 arbitrationPolicy: DEFAULT
+		 visibility: NONE_VALUE
+         attenuateValue: 2
+	}
+
+	Size SizeA {
+		width: 200
+		height: 200
+	}
+	Size SizeB {
+		width: 200
+		height: 200
+	}
+
+	ViewContent ContentA1{
+		allocatable: [
+			AreaA
+		]
+		State NORMAL {
+			priority: > That-of ContentB1.NORMAL
+		}
+		sizeReference: SizeA
+	}
+	ViewContent ContentB1 {
+		allocatable: [
+			AreaB
+		]
+		State NORMAL {
+			priority: > That-of ContentA2.NORMAL
+		}
+		sizeReference: SizeB
+	}
+	ViewContent ContentA2{
+		allocatable: [
+			AreaA
+		]
+		State NORMAL {
+			priority: > That-of ContentB2.NORMAL
+		}
+		sizeReference: SizeA
+	}
+	ViewContent ContentB2 {
+		allocatable: [
+			AreaB
+		]
+		State NORMAL {
+			priority: > That-of ContentA3.NORMAL
+		}
+		sizeReference: SizeB
+	}
+	ViewContent ContentA3{
+		allocatable: [
+			AreaA
+		]
+		State NORMAL {
+			priority: > That-of ContentB3.NORMAL
+		}
+		sizeReference: SizeA
+	}
+	ViewContent ContentB3 {
+		allocatable: [
+			AreaB
+		]
+		State NORMAL {
+			priority: > That-of ContentC.NORMAL
+		}
+		sizeReference: SizeB
+	}
+	ViewContent ContentC {
+		allocatable: [
+			AreaA, AreaB
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: SizeA
+	}
+	
+	
+	SoundContent SContentA1 {
+		allocatable: [
+			ZoneA
+		]
+		State NORMAL {
+			priority: > That-of SContentB1.NORMAL
+		}
+	}
+	SoundContent SContentB1 {
+		allocatable: [
+			ZoneB
+		]
+		State NORMAL {
+			priority: > That-of SContentA2.NORMAL
+		}
+	}
+	SoundContent SContentA2 {
+		allocatable: [
+			ZoneA
+		]
+		State NORMAL {
+			priority: > That-of SContentB2.NORMAL
+		}
+	}
+	SoundContent SContentB2 {
+		allocatable: [
+			ZoneB
+		]
+		State NORMAL {
+			priority: > That-of SContentA3.NORMAL
+		}
+	}
+	SoundContent SContentA3 {
+		allocatable: [
+			ZoneA
+		]
+		State NORMAL {
+			priority: > That-of SContentB3.NORMAL
+		}
+	}
+	SoundContent SContentB3 {
+		allocatable: [
+			ZoneB
+		]
+		State NORMAL {
+			priority: > That-of SContentC.NORMAL
+		}
+	}
+	SoundContent SContentC {
+		allocatable: [
+			ZoneA, ZoneB
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+
+	Scene SceneA {}
+	Scene SceneB {}
+	Scene SceneCancel {}
+	
+	Constraint AllInstanceOfArea {
+		runtime: true
+		Exists ALL_AREAS { x | x.isDisplayed()}
+	}
+	Constraint AllInstanceOfZone {
+		runtime: true
+		Exists ALL_ZONES { x | x.isOutputted() }
+	}
+	Constraint Muted {
+		runtime: true
+		SceneA.isOn() -> 
+		((ZoneA.isOutputted() -> ZoneA.isMuted())
+			AND (ZoneB.isOutputted() -> ZoneB.isMuted()))
+	}
+	Constraint Attenuated {
+		runtime: true
+		SceneB.isOn() -> 
+		((ZoneA.isOutputted() -> ZoneA.isAttenuated())
+			AND (ZoneB.isOutputted() -> ZoneB.isAttenuated()))
+	}
+	Constraint Hidden {
+		runtime: true
+		SceneA.isOn() -> 
+		((AreaA.isDisplayed() -> AreaA.isHidden())
+			AND (AreaB.isDisplayed() -> AreaB.isHidden()))
+	}
+	PostConstraint sound_cancel {
+		(SContentA2.isDefeatedBy(SContentA1) -> SContentA2.isCanceled()) AND
+		(SContentA3.isDefeatedBy(SContentA1) -> SContentA3.isCanceled())
+	}
+	PostConstraint view_cancel {
+		(ContentA2.isDefeatedBy(ContentA1) -> ContentA2.isCanceled()) AND
+		(ContentA3.isDefeatedBy(ContentA1) -> ContentA3.isCanceled())
+	}
+}

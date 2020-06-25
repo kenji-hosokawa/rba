@@ -1,0 +1,134 @@
+digraph rule_objects_graph {
+	rankdir = LR;
+	charset="utf-8";
+	clusterrank = global;
+	
+	node [shape = plaintext];
+	Scene -> Constraint -> "Area Set" -> Area -> "Content Set" -> Content; 
+	{ rank = same;
+		node [shape = box];
+		{
+			Area;
+			e1 [label="A", fontname="Meiryo UI"];
+			e2 [label="B", fontname="Meiryo UI"];
+			e3 [label="C", fontname="Meiryo UI"];
+			e4 [label="D", fontname="Meiryo UI"];
+			e5 [label="E", fontname="Meiryo UI"];
+			e6 [label="F", fontname="Meiryo UI"];
+			e7 [label="G", fontname="Meiryo UI"];
+			e8 [label="P", fontname="Meiryo UI"];
+			e9 [label="Q", fontname="Meiryo UI"];
+			e10 [label="R", fontname="Meiryo UI"];
+
+		}
+	}
+	
+	{ rank = same;
+		node [shape = ellipse];
+		{
+			Content;
+			e11 [label="A1", fontname="Meiryo UI"];
+			e12 [label="B1", fontname="Meiryo UI"];
+			e13 [label="C1", fontname="Meiryo UI"];
+			e14 [label="D1", fontname="Meiryo UI"];
+			e15 [label="E1", fontname="Meiryo UI"];
+			e16 [label="F1", fontname="Meiryo UI"];
+			e17 [label="G1", fontname="Meiryo UI"];
+			e18 [label="P1", fontname="Meiryo UI"];
+			e19 [label="Q1", fontname="Meiryo UI"];
+			e20 [label="R1", fontname="Meiryo UI"];
+
+
+		}
+	}
+	
+	{
+		subgraph subareaset {
+			"Area Set";
+			node [shape = box, style = filled, color = lightpink];
+
+
+		}
+	}
+
+
+	
+	{
+		subgraph subcontentset {
+			"Content Set";
+			node [shape = ellipse, style = filled, color = palegreen];
+
+
+		}
+	}
+
+
+
+	e1 -> e11 [dir=none, color=red];
+	e2 -> e12 [dir=none, color=red];
+	e3 -> e13 [dir=none, color=red];
+	e4 -> e14 [dir=none, color=red];
+	e5 -> e15 [dir=none, color=red];
+	e6 -> e16 [dir=none, color=red];
+	e7 -> e17 [dir=none, color=red];
+	e8 -> e18 [dir=none, color=red];
+	e9 -> e19 [dir=none, color=red];
+	e10 -> e20 [dir=none, color=red];
+	
+
+	
+
+	
+
+	
+
+	subgraph scene { rank = same;
+		node [shape = circle, style = filled, color = lightblue];
+		{
+			"Scene";
+
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightgrey];
+		{
+			"Constraint";
+			e21 [label="HA1051_影響エリアの再調停テスト_1", fontname="Meiryo UI"];
+			e22 [label="HA1051_影響エリアの再調停テスト_2", fontname="Meiryo UI"];
+			e23 [label="HA1051_影響エリアの再調停テスト_3", fontname="Meiryo UI"];
+		}
+	}
+	
+	{ rank = same;
+		node [shape = note, style = filled, color = lavenderblush2];
+		{
+			"Constraint";
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightpink2];
+		{
+			"Constraint";
+		}
+	}
+
+	e21 -> e6 [color=blue];
+	e21 -> e3 [color=blue];
+	e21 -> e2 [color=blue];
+	e21 -> e7 [color=blue];
+	e21 -> e1 [color=blue];
+	e21 -> e4 [color=blue];
+	e21 -> e5 [color=blue];
+	e22 -> e8 [color=blue];
+	e22 -> e1 [color=blue];
+	e23 -> e2 [color=blue];
+	e23 -> e9 [color=blue];
+	
+
+	
+
+	
+}
+

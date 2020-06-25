@@ -1,0 +1,12 @@
+#start 1
+CL
+C,on,a1,S3
+C,on,c1,S1
+C,on,a1,S2
+Assert,A,A,a1
+Assert,A,B,
+Assert,A,C,
+Assert,C,isCanceled,a1,false
+Assert,C,isCanceled,a2,false
+Assert,C,isCanceled,b1,false
+Assert,C,isCanceled,c1,false

@@ -1,0 +1,134 @@
+Package HA1009_clear {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 600
+			height: 200
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: AreaA
+				}
+				PositionContainer {
+					x: 200
+					y: 0
+					areaReference: AreaB
+				}
+				PositionContainer {
+					x: 400
+					y: 0
+					areaReference: AreaC
+				}
+			}
+		}
+	}
+
+	Area AreaA {
+		arbitrationPolicy: DEFAULT
+		sizeReference: SizeA
+		visibility: > That-of AreaB
+		zorder: STANDARD_VALUE
+	}
+	Area AreaB {
+		arbitrationPolicy: DEFAULT
+		sizeReference: SizeB
+		visibility: > That-of AreaC
+		zorder: STANDARD_VALUE
+	}
+	Area AreaC {
+		arbitrationPolicy: DEFAULT
+		sizeReference: SizeC
+		visibility: NONE_VALUE
+		zorder: STANDARD_VALUE
+	}
+	
+	Zone ZoneA {
+		 arbitrationPolicy: DEFAULT
+		 visibility: > That-of ZoneB
+         attenuateValue: 1
+	}
+	Zone ZoneB {
+		 arbitrationPolicy: DEFAULT
+		 visibility: > That-of ZoneC
+         attenuateValue: 2
+	}
+	Zone ZoneC {
+		 arbitrationPolicy: DEFAULT
+		 visibility: NONE_VALUE
+         attenuateValue: 3
+	}
+	Size SizeA {
+		width: 200
+		height: 200
+	}
+	Size SizeB {
+		width: 200
+		height: 200
+	}
+	Size SizeC {
+		width: 200
+		height: 200
+	}
+
+	ViewContent VContentA{
+		allocatable: [
+			AreaA
+		]
+		State NORMAL {
+			priority: > That-of VContentA.INT
+		}
+		State INT {
+			priority: > That-of VContentB.NORMAL
+		}
+		sizeReference: SizeA
+	}
+	ViewContent VContentB {
+		allocatable: [
+			AreaB
+		]
+		State NORMAL {
+			priority: > That-of VContentC.NORMAL
+		}
+		sizeReference: SizeB
+	}
+	ViewContent VContentC{
+		allocatable: [
+			AreaC
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: SizeC
+	}
+	
+	SoundContent SContentA {
+		allocatable: [
+			ZoneA
+		]
+		State NORMAL {
+			priority: > That-of SContentA.INT
+		}
+		State INT {
+			priority: > That-of SContentB.NORMAL
+		}
+	}
+	SoundContent SContentB {
+		allocatable: [
+			ZoneB
+		]
+		State NORMAL {
+			priority: > That-of SContentC.NORMAL
+		}
+	}
+	SoundContent SContentC {
+		allocatable: [
+			ZoneC
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+
+}

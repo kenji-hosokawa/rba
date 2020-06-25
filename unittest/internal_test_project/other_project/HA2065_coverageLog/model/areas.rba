@@ -1,0 +1,20 @@
+Package Areas {
+	Area area1 {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: size1
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	Area area2 {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: size1
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	Area area3 {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: size1
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+}

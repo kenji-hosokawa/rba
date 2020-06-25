@@ -1,0 +1,102 @@
+Package Outputs {
+	Zone A {
+		arbitrationPolicy: DEFAULT
+		visibility: > That-of B
+	}
+	Zone B {
+		arbitrationPolicy: DEFAULT
+		visibility: > That-of BB
+	}
+	Zone BB {
+		arbitrationPolicy: DEFAULT
+		visibility: > That-of C
+	}
+	Zone C {
+		arbitrationPolicy: LAST_COME_FIRST
+		visibility: > That-of D
+	}
+	Zone D {
+		arbitrationPolicy: DEFAULT
+		visibility: MIN_VALUE
+	}
+
+	SoundContent A1{
+		allocatable: [
+			A
+		]
+		State StateA1 {
+			priority: > That-of StateA2
+		}
+		State StateA2 {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent A2{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent B1 {
+		loserType:GOOD_LOSER
+		allocatable: [
+			B, BB
+		]
+		State StateB2 {
+			priority: STANDARD_VALUE
+		}
+		State StateB1 {
+			priority: > That-of StateB2
+		}
+	}
+	SoundContent B2 {
+		allocatable: [
+			B, BB
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent C1 {
+		loserType:DO_NOT_GIVEUP_UNTIL_WIN
+		allocatable: [
+			C
+		]
+		State StateC1 {
+			priority: STANDARD_VALUE
+		}
+		State StateC2 {
+			priority: > That-of StateC1
+		}
+	}
+	SoundContent C2 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent D1 {
+		loserType:NEVER_GIVEUP
+		allocatable: [
+			D
+		]
+		State StateD1 {
+			priority: > That-of StateD2
+		}
+		State StateD2 {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent D2 {
+		allocatable: [
+			D
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+}

@@ -1,0 +1,222 @@
+Package Displays {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 900
+			height: 200
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: エリアA
+				}
+				PositionContainer {
+					x: 400
+					y: 0
+					areaReference: エリアB
+				}
+				PositionContainer {
+					x: 600
+					y: 0
+					areaReference: エリアC
+				}
+			}
+		}
+	}
+
+	Area エリアA {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: エリアAサイズ
+		visibility: > That-of エリアB
+		zorder: STANDARD_VALUE
+	}
+	Area エリアB {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: エリアBサイズ
+		visibility: > That-of エリアC
+		zorder: STANDARD_VALUE
+	}
+	Area エリアC {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: エリアCサイズ
+		visibility: 8
+		zorder: STANDARD_VALUE
+	}
+
+	Size エリアAサイズ {
+		width: 400
+		height: 200
+	}
+	Size エリアBサイズ {
+		width: 200
+		height: 200
+	}
+	Size エリアCサイズ {
+		width: 300
+		height: 200
+	}
+
+	ViewContent コンテンツA1{
+		allocatable: [
+			エリアA
+		]
+		State NORMAL {
+			priority: > That-of コンテンツB1.NORMAL
+		}
+		sizeReference: エリアAサイズ
+	}
+	ViewContent コンテンツB1 {
+		allocatable: [
+			エリアB
+		]
+		State NORMAL {
+			priority: > That-of コンテンツC1.NORMAL
+		}
+		sizeReference: エリアBサイズ
+	}
+	ViewContent コンテンツC1 {
+		allocatable: [
+			エリアC
+		]
+		State NORMAL {
+			priority: > That-of コンテンツA2.NORMAL
+		}
+		sizeReference: エリアCサイズ
+	}
+	ViewContent コンテンツA2{
+		allocatable: [
+			エリアA
+		]
+		State NORMAL {
+			priority: > That-of コンテンツB2.NORMAL
+		}
+		sizeReference: エリアAサイズ
+	}
+	ViewContent コンテンツB2 {
+		allocatable: [
+			エリアB
+		]
+		State NORMAL {
+			priority: > That-of コンテンツC2.NORMAL
+		}
+		sizeReference: エリアBサイズ
+	}
+	ViewContent コンテンツC2 {
+		allocatable: [
+			エリアC
+		]
+		State NORMAL {
+			priority: MIN_VALUE
+		}
+		sizeReference: エリアCサイズ
+	}
+
+//	Constraint 高優先エリア表示時は中優先エリアは表示しない {
+//		runtime: true
+//		エリアA.isDisplayed() -> !エリアB.isDisplayed()
+//	}
+//	Constraint 中優先エリア表示時は低優先エリアは表示しない {
+//		runtime: true
+//		エリアB.isDisplayed() -> !エリアC.isDisplayed()
+//	}
+
+//	Constraint 高優先エリア表示時は低優先エリアは表示しない {
+//		runtime: true
+//		エリアA.isDisplayed() -> !エリアC.isDisplayed()
+//	}
+//	Constraint 低優先エリア表示時は中優先エリアは表示しない {
+//		runtime: true
+//		エリアC.isDisplayed() -> !エリアB.isDisplayed()
+//	}
+
+	Constraint 中優先エリア表示時は高優先エリアは表示しない {
+		runtime: true
+		エリアB.isDisplayed() -> !エリアA.isDisplayed()
+	}
+	Constraint 高優先エリア表示時は低優先エリアは表示しない {
+		runtime: true
+		エリアA.isDisplayed() -> !エリアC.isDisplayed()
+	}
+
+//	Constraint 中優先エリア表示時は低優先エリアは表示しない {
+//		runtime: true
+//		エリアB.isDisplayed() -> !エリアC.isDisplayed()
+//	}
+//	Constraint 低優先エリア表示時は高優先エリアは表示しない {
+//		runtime: true
+//		エリアC.isDisplayed() -> !エリアA.isDisplayed()
+//	}
+
+//	Constraint 低優先エリア表示時は高優先エリアは表示しない {
+//		runtime: true
+//		エリアC.isDisplayed() -> !エリアA.isDisplayed()
+//	}
+//	Constraint 高優先エリア表示時は中優先エリアは表示しない {
+//		runtime: true
+//		エリアA.isDisplayed() -> !エリアB.isDisplayed()
+//	}
+
+//	Constraint 低優先エリア表示時は中優先エリアは表示しない {
+//		runtime: true
+//		エリアC.isDisplayed() -> !エリアB.isDisplayed()
+//	}
+//	Constraint 中優先エリア表示時は高優先エリアは表示しない {
+//		runtime: true
+//		エリアB.isDisplayed() -> !エリアA.isDisplayed()
+//	}
+
+//	Constraint 高優先エリア用コンテンツ表示時は中優先用コンテンツ表示時は表示しない {
+//		runtime: true
+//		コンテンツA1.isVisible() -> !コンテンツB1.isVisible()
+//	}
+//	Constraint 中優先エリア用コンテンツ表示時は低優先エリア用コンテンツは表示しない {
+//		runtime: true
+//		コンテンツB1.isVisible() -> !コンテンツC1.isVisible()
+//	}
+
+//	Constraint 高優先エリア用コンテンツ表示時は低優先用コンテンツ表示時は表示しない {
+//		runtime: true
+//		コンテンツA1.isVisible() -> !コンテンツC1.isVisible()
+//	}
+//	Constraint 低優先エリア用コンテンツ表示時は中優先エリア用コンテンツは表示しない {
+//		runtime: true
+//		コンテンツC1.isVisible() -> !コンテンツB1.isVisible()
+//	}
+
+//	Constraint 中優先エリア用コンテンツ表示時は高優先用コンテンツ表示時は表示しない {
+//		runtime: true
+//		コンテンツB1.isVisible() -> !コンテンツA1.isVisible()
+//	}
+//	Constraint 高優先エリア用コンテンツ表示時は低優先エリア用コンテンツは表示しない {
+//		runtime: true
+//		コンテンツA1.isVisible() -> !コンテンツC1.isVisible()
+//	}
+
+//	Constraint 中優先エリア用コンテンツ表示時は低優先用コンテンツ表示時は表示しない {
+//		runtime: true
+//		コンテンツB1.isVisible() -> !コンテンツC1.isVisible()
+//	}
+//	Constraint 低優先エリア用コンテンツ表示時は高優先エリア用コンテンツは表示しない {
+//		runtime: true
+//		コンテンツC1.isVisible() -> !コンテンツA1.isVisible()
+//	}
+
+//	Constraint 低優先エリア用コンテンツ表示時は高優先用コンテンツ表示時は表示しない {
+//		runtime: true
+//		コンテンツC1.isVisible() -> !コンテンツA1.isVisible()
+//	}
+//	Constraint 高優先エリア用コンテンツ表示時は中優先エリア用コンテンツは表示しない {
+//		runtime: true
+//		コンテンツA1.isVisible() -> !コンテンツB1.isVisible()
+//	}
+
+//	Constraint 低優先エリア用コンテンツ表示時は中優先用コンテンツ表示時は表示しない {
+//		runtime: true
+//		コンテンツC1.isVisible() -> !コンテンツB1.isVisible()
+//	}
+//	Constraint 中優先エリア用コンテンツ表示時は高優先エリア用コンテンツは表示しない {
+//		runtime: true
+//		コンテンツB1.isVisible() -> !コンテンツA1.isVisible()
+//	}
+}

@@ -1,0 +1,37 @@
+#start 1
+CL
+C,on,A1,NORMAL,continue
+C,on,B1,NORMAL,continue
+C,on,C1,NORMAL,continue
+C,on,D1,NORMAL,continue
+C,on,E1,NORMAL,continue
+C,on,F1,NORMAL,continue
+C,on,G1,NORMAL,continue
+C,on,P1,NORMAL
+Assert,A,A,
+Assert,A,B,B1
+Assert,A,C,C1
+Assert,A,D,D1
+Assert,A,E,E1
+Assert,A,F,
+Assert,A,G,G1
+Assert,A,P,P1
+
+#start 2
+CL
+C,on,A1,NORMAL,continue
+C,on,B1,NORMAL,continue
+C,on,C1,NORMAL,continue
+C,on,D1,NORMAL,continue
+C,on,E1,NORMAL,continue
+C,on,F1,NORMAL,continue
+C,on,G1,NORMAL,continue
+C,on,Q1,NORMAL
+Assert,A,A,A1
+Assert,A,B,
+Assert,A,C,C1
+Assert,A,D,
+Assert,A,E,E1
+Assert,A,F,F1
+Assert,A,G,G1
+Assert,A,Q,Q1

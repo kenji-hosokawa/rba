@@ -1,0 +1,16 @@
+C,ON,音コンテンツA1,NORMAL
+C,ON,音コンテンツA2,NORMAL
+execute
+C,OFF,表示コンテンツA1,NORMAL
+execute
+C,ON,表示コンテンツA2,NORMAL
+C,ON,表示コンテンツB1,NORMAL
+C,ON,表示コンテンツB2,NORMAL
+C,ON,音コンテンツB1,NORMAL
+C,ON,音コンテンツB2,NORMAL
+execute
+
+Assert,A,ゾーンA,音コンテンツA2
+Assert,A,エリアA,表示コンテンツA2
+Assert,A,エリアB,表示コンテンツB1
+Assert,A,ゾーンB,音コンテンツB1

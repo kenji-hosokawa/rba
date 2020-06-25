@@ -1,0 +1,11 @@
+C,ON,コンテンツA1,NORMAL
+execute
+Assert,A,エリアA,コンテンツA1
+
+C,ON,コンテンツA1,NORMAL
+execute
+Assert,A,エリアA,NULL
+
+C,ON,コンテンツA1,NORMAL
+execute
+Assert,A,エリアA,コンテンツA1

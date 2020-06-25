@@ -1,0 +1,132 @@
+digraph rule_objects_graph {
+	rankdir = LR;
+	charset="utf-8";
+	clusterrank = global;
+	
+	node [shape = plaintext];
+	Scene -> Constraint -> "Area Set" -> Area -> "Content Set" -> Content; 
+	{ rank = same;
+		node [shape = box];
+		{
+			Area;
+			e1 [label="エリアA", fontname="Meiryo UI"];
+			e2 [label="エリアB", fontname="Meiryo UI"];
+			e3 [label="エリアC", fontname="Meiryo UI"];
+			e4 [label="エリアD", fontname="Meiryo UI"];
+			e5 [label="エリアE", fontname="Meiryo UI"];
+			e6 [label="エリアF", fontname="Meiryo UI"];
+
+		}
+	}
+	
+	{ rank = same;
+		node [shape = ellipse];
+		{
+			Content;
+			e7 [label="コンテンツA1", fontname="Meiryo UI"];
+			e8 [label="コンテンツB1", fontname="Meiryo UI"];
+			e9 [label="コンテンツC1", fontname="Meiryo UI"];
+			e10 [label="コンテンツD1", fontname="Meiryo UI"];
+			e11 [label="コンテンツE1", fontname="Meiryo UI"];
+			e12 [label="コンテンツF1", fontname="Meiryo UI"];
+			e13 [label="コンテンツA2", fontname="Meiryo UI"];
+			e14 [label="コンテンツB2", fontname="Meiryo UI"];
+			e15 [label="コンテンツC2", fontname="Meiryo UI"];
+			e16 [label="コンテンツD2", fontname="Meiryo UI"];
+			e17 [label="コンテンツE2", fontname="Meiryo UI"];
+			e18 [label="コンテンツF2", fontname="Meiryo UI"];
+
+
+		}
+	}
+	
+	{
+		subgraph subareaset {
+			"Area Set";
+			node [shape = box, style = filled, color = lightpink];
+
+
+		}
+	}
+
+
+	
+	{
+		subgraph subcontentset {
+			"Content Set";
+			node [shape = ellipse, style = filled, color = palegreen];
+
+
+		}
+	}
+
+
+
+	e1 -> e7 [dir=none, color=red];
+	e2 -> e8 [dir=none, color=red];
+	e3 -> e9 [dir=none, color=red];
+	e4 -> e10 [dir=none, color=red];
+	e5 -> e11 [dir=none, color=red];
+	e6 -> e12 [dir=none, color=red];
+	e1 -> e13 [dir=none, color=red];
+	e2 -> e14 [dir=none, color=red];
+	e3 -> e15 [dir=none, color=red];
+	e4 -> e16 [dir=none, color=red];
+	e5 -> e17 [dir=none, color=red];
+	e6 -> e18 [dir=none, color=red];
+	
+
+	
+
+	
+
+	
+
+	subgraph scene { rank = same;
+		node [shape = circle, style = filled, color = lightblue];
+		{
+			"Scene";
+
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightgrey];
+		{
+			"Constraint";
+			e19 [label="Aが表示中はBを隠蔽する", fontname="Meiryo UI"];
+			e20 [label="Bのコンテントの価値がCより大きければCを隠蔽する", fontname="Meiryo UI"];
+			e21 [label="Fが表示中はEを隠蔽する", fontname="Meiryo UI"];
+			e22 [label="Eのコンテントの価値がDより大きければDを隠蔽する", fontname="Meiryo UI"];
+		}
+	}
+	
+	{ rank = same;
+		node [shape = note, style = filled, color = lavenderblush2];
+		{
+			"Constraint";
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightpink2];
+		{
+			"Constraint";
+		}
+	}
+
+	e19 -> e1 [color=blue];
+	e19 -> e2 [color=blue];
+	e20 -> e3 [color=blue];
+	e20 -> e2 [color=blue];
+	e21 -> e6 [color=blue];
+	e21 -> e5 [color=blue];
+	e22 -> e5 [color=blue];
+	e22 -> e4 [color=blue];
+	
+
+	
+
+	
+}
+

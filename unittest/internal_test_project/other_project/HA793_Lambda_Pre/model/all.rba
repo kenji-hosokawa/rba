@@ -1,0 +1,75 @@
+Package Displays {
+	Display DisplayA{
+		sizeReference: DisplayASize
+		CompositeArea Default1 {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:0
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: AreaA
+				}
+				PositionContainer {
+					x:300
+					y:300
+					basePoint: LEFT_TOP
+					areaReference: AreaB
+				}
+				PositionContainer {
+					x:600
+					y:600
+					basePoint: LEFT_TOP
+					areaReference: AreaC
+				}
+			}
+		}
+	}
+	Size DisplayASize {width: 1000 height: 1000} 
+	Size AreaSize {width: 300 height: 300}
+	Area AreaA {
+		sizeReference: AreaSize
+		visibility: > That-of AreaB
+		zorder: STANDARD_VALUE
+	}
+	Area AreaB {
+		sizeReference: AreaSize
+		visibility: > That-of AreaC
+		zorder: STANDARD_VALUE
+	}
+	Area AreaC {
+		sizeReference: AreaSize
+		visibility: MIN_VALUE
+		zorder: STANDARD_VALUE
+	}
+	ViewContent ViewA1{
+		allocatable: [
+			AreaA
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: AreaSize
+	}
+	ViewContent ViewB1 {
+		allocatable: [
+			AreaB
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE +1
+		}
+		sizeReference: AreaSize
+	}
+	ViewContent ViewC1 {
+		allocatable: [
+			AreaC
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: AreaSize
+	}
+	Constraint HA793_Lambda_Pre {
+		runtime: true
+		For-All {AreaA,AreaB}{x|(pre)x.isDisplayed()}->AreaC.isHidden()
+	}
+}

@@ -1,0 +1,13 @@
+#start let
+CL
+C,on,X1,NORMAL
+Assert,A,X,X1
+C,on,A1,NORMAL
+Assert,A,X,
+Assert,A,A,A1
+C,off,A1,NORMAL
+Assert,A,X,X1
+Assert,A,A,
+C,on,B1,NORMAL
+Assert,A,X,
+Assert,A,B,B1

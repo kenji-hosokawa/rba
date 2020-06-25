@@ -1,0 +1,80 @@
+Package SampleDisplays {
+	Display Sample_METER{
+		Size Sample_METER_FULLSCREEN {
+			width: 500
+			height: 400
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:100
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x:300
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+				PositionContainer {
+					x: 50
+					y: 250
+					basePoint: LEFT_TOP
+					areaReference: BB
+				}
+			}
+		}
+	}
+	Size Aサイズ {
+		width:300
+		height:200
+	}
+	Size Bサイズ {
+		width:200
+		height:100
+	}
+	Size BBサイズ {
+		width:400
+		height:100		
+	}
+	Area A {
+		sizeReference:Aサイズ
+		visibility: > That-of B
+		zorder: > That-of B
+	}
+	Area B {
+		sizeReference:Bサイズ
+		visibility:  > That-of BB
+		zorder: > That-of BB	
+	}
+	Area BB {
+		sizeReference:BBサイズ
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Aサイズ
+	}
+	ViewContent B1 {
+		allocatable: [
+			B,BB
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Bサイズ
+		sizeReference:BBサイズ
+	}
+	Constraint HA763_述語の再調停テスト {
+		runtime: true
+		B.allocatedContent()== BB.allocatedContent() -> A.isHidden()
+	}
+}

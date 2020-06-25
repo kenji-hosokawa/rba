@@ -1,0 +1,89 @@
+Package Displays {
+	Display DisplayA{
+		Size Default1 {width: 0 height: 0} 
+		CompositeArea Default1 {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:0
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+			}
+		}
+	}
+	Display DisplayB{
+		Size Default2 {width: 10000 height: 20000} 
+		CompositeArea Default2 {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:0
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+				PositionContainer {
+					x:0
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: C
+				}
+			}
+		}
+	}
+	Display DisplayC{
+		Size Default3 {width: -100 height: -200} 
+		CompositeArea Default3 {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:0
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: C
+				}
+			}
+		}
+	}
+	Area A {
+		Size Default {width: 0 height: 0}
+		visibility: > That-of B
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		Size Default {width: 1 height: 1}
+		visibility: > That-of C
+		zorder: STANDARD_VALUE
+	}
+	Area C {
+		Size Default {width: 1 height: 1}
+		visibility: MIN_VALUE
+		zorder: STANDARD_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE + 1
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE + 1
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent C1 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: -100 height: -200}
+	}
+}

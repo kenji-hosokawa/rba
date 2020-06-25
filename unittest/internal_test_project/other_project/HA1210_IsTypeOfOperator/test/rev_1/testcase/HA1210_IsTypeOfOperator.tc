@@ -1,0 +1,60 @@
+#start forViewContent
+CL
+C,on,A1,NORMAL
+C,on,X1,NORMAL
+C,on,Y1,NORMAL
+Assert,A,A,A1
+Assert,A,X,X1
+Assert,A,Y,
+C,on,A2,NORMAL
+Assert,A,A,A2
+Assert,A,X,
+Assert,A,Y,Y1
+
+#start forSoundContent
+CL
+C,on,B1,NORMAL
+C,on,X1,NORMAL
+C,on,Y1,NORMAL
+Assert,A,B,B1
+Assert,A,XX,
+Assert,A,YY,Y1
+C,on,B2,NORMAL
+Assert,A,B,B2
+Assert,A,XX,X1
+Assert,A,YY,
+
+#start forArea
+CL
+C,on,X1,NORMAL
+C,on,Y1,NORMAL
+Assert,A,XXX,X1
+Assert,A,YYY,
+C,on,C1,NORMAL
+Assert,A,C,C1
+Assert,A,XXX,
+Assert,A,YYY,Y1
+
+#start forZone
+CL
+C,on,X1,NORMAL
+C,on,Y1,NORMAL
+Assert,A,XXXX,
+Assert,A,YYYY,Y1
+C,on,F1,NORMAL
+Assert,A,F,F1
+Assert,A,XXXX,X1
+Assert,A,YYYY,
+
+#start forMultiTag
+CL
+C,on,I1,NORMAL
+C,on,X1,NORMAL
+C,on,Y1,NORMAL
+Assert,A,I,I1
+Assert,A,XXXXX,X1
+Assert,A,YYYYY,Y1
+C,on,I2,NORMAL
+Assert,A,I,I2
+Assert,A,XXXXX,
+Assert,A,YYYYY,

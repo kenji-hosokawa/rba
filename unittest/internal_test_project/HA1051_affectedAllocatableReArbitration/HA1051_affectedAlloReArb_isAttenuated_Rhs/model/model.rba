@@ -1,0 +1,43 @@
+Package SampleOutputs {
+	Zone A {
+		visibility: > That-of B
+	}
+	Zone B {
+		visibility:  > That-of P
+	}
+	Zone P {
+		visibility: NONE_VALUE
+	}
+	SoundContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent P1 {
+		allocatable: [
+			P
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	Constraint HA1051_影響エリアの再調停テスト_1 {
+		runtime: true
+		A.isOutputted() -> B.isAttenuated()
+	}
+	Constraint HA1051_影響エリアの再調停テスト_2 {
+		runtime: true
+		P.isOutputted() -> !A.isOutputted()
+	}
+}

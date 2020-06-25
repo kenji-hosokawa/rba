@@ -1,0 +1,180 @@
+Package Displays {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 700
+			height: 200
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: エリアA
+				}
+				PositionContainer {
+					x: 400
+					y: 0
+					areaReference: エリアB
+				}
+				PositionContainer {
+					x: 600
+					y: 0
+					areaReference: エリアC
+				}
+			}
+		}
+	}
+
+	Area エリアA {
+		arbitrationPolicy: DEFAULT
+		sizeReference: エリアAサイズ
+		visibility: > That-of エリアB
+		zorder: STANDARD_VALUE
+	}
+	Area エリアB {
+		arbitrationPolicy: DEFAULT
+		sizeReference: エリアBサイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area エリアC {
+		arbitrationPolicy: DEFAULT
+		sizeReference: エリアCサイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+
+	AreaSet エリアAとエリアB {
+		target:[エリアA,エリアB]
+	}
+	AreaSet エリアAとエリアC {
+		target:[エリアA,エリアC]
+	}
+	AreaSet エリアBとエリアC {
+		target:[エリアB,エリアC]
+	}
+	AreaSet 全エリア {
+		target:[エリアAとエリアB, エリアAとエリアC, エリアBとエリアC]
+	}
+
+	Size エリアAサイズ {
+		width: 400
+		height: 200
+	}
+	Size エリアBサイズ {
+		width: 200
+		height: 200
+	}
+	Size エリアCサイズ { 
+		width: 100
+		height: 200
+	}
+
+	ViewContent コンテントA1{
+		allocatable: [
+			エリアA
+		]
+		State NORMAL {
+			priority: > That-of コンテントB1.NORMAL
+		}
+		sizeReference: エリアAサイズ
+	}
+	ViewContent コンテントB1 {
+		allocatable: [
+			エリアB
+		]
+		State NORMAL {
+			priority: > That-of コンテントC1.NORMAL
+		}
+		sizeReference: エリアBサイズ
+	}
+	ViewContent コンテントC1 {
+		allocatable: [
+			エリアC
+		]
+		State NORMAL {
+			priority: > That-of コンテントA2.NORMAL
+		}
+		sizeReference: エリアCサイズ
+	}
+	ViewContent コンテントA2{
+		allocatable: [
+			エリアA
+		]
+		State NORMAL {
+			priority: > That-of コンテントB2.NORMAL
+		}
+		sizeReference: エリアAサイズ
+	}
+	ViewContent コンテントB2 {
+		allocatable: [
+			エリアB
+		]
+		State NORMAL {
+			priority: > That-of コンテントC2.NORMAL
+		}
+		sizeReference: エリアBサイズ
+	}
+	ViewContent コンテントC2 {
+		allocatable: [
+			エリアC
+		]
+		State NORMAL {
+			priority: > That-of コンテントA3.NORMAL
+		}
+		sizeReference: エリアCサイズ
+	}
+	ViewContent コンテントA3{
+		allocatable: [
+			エリアA
+		]
+		State NORMAL {
+			priority: > That-of コンテントB3.NORMAL
+		}
+		sizeReference: エリアAサイズ
+	}
+	ViewContent コンテントB3 {
+		allocatable: [
+			エリアB
+		]
+		State NORMAL {
+			priority: > That-of コンテントC3.NORMAL
+		}
+		sizeReference: エリアBサイズ
+	}
+	ViewContent コンテントC3 {
+		allocatable: [
+			エリアC
+		]
+		State NORMAL {
+			priority: MIN_VALUE
+		}
+		sizeReference: エリアCサイズ
+	}
+
+	ViewContentSet コンテントAとコンテントB {
+		target:[コンテントA1, コンテントB1]
+	}
+	ViewContentSet コンテントAとコンテントC {
+		target:[コンテントA1,コンテントC1]
+	}
+	ViewContentSet コンテントBとコンテントC {
+		target:[コンテントB1,コンテントC1]
+	}
+	ViewContentSet 全コンテント {
+		target:[コンテントAとコンテントB,コンテントAとコンテントC,コンテントBとコンテントC]
+	}
+
+	Constraint エリアAがエリアBより価値の高いコンテントを表示しているならエリアBを隠蔽する {
+		runtime: true
+		エリアA.contentValue() > エリアB.contentValue() -> エリアB.isHidden()
+	}
+	Constraint 前回エリアBがコンテントB3を割り当てているならエリアCを隠蔽する {
+		runtime: true
+		(pre)エリアB.allocatedContent() == コンテントB3 -> エリアC.isHidden()
+	}
+	Constraint エリアCがエリアBより価値の高いコンテントを表示しているならエリアBを隠蔽する {
+		runtime: true
+		エリアC.contentValue() > エリアB.contentValue() -> エリアB.isHidden()
+	}
+}

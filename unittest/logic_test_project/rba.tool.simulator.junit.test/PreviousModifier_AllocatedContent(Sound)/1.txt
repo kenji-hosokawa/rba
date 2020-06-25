@@ -1,0 +1,11 @@
+// 前回コンテントを参照できること
+C,ON,ContentA1,NORMAL
+C,ON,ContentB1,NORMAL
+execute
+Assert,A,AllocatableA,ContentA1
+Assert,A,AllocatableB,ContentB1
+
+C,ON,ContentA2,NORMAL
+execute
+Assert,A,AllocatableA,ContentA2
+Assert,A,AllocatableB,NULL

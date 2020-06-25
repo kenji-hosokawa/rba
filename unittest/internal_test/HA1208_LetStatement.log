@@ -1,0 +1,132 @@
+#HierarchyOfConstraint#START,新規メッセージエリア間の調停,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	For All	For All 新規メッセージエリアG { x |For All 新規メッセージエリアG { y |(!x == y -> (((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> y.isHidden()))}}	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All	For All 新規メッセージエリアG { y |(!A == y -> (((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> y.isHidden()))}	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->	(!A == A -> (((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> A.isHidden()))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->#left!	!A == A	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->#left!#==	A == A	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->#right->	(((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> A.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->#right->#leftOR	((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent)))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->#right->#leftOR#0>	(xContent.stateValue() > yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->#right->#leftOR#0>#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->#right->#leftOR#0>#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->#right->#leftOR#1AND	((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->#right->#leftOR#1AND#0=	(xContent.stateValue() = yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->#right->#leftOR#1AND#0=#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->#right->#leftOR#1AND#0=#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->#right->#leftOR#1AND#1.hasComeEarlierThan	xContent.hasComeEarlierThan(yContent)	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#0->#right->#right.isHidden()	A.isHidden()	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->	(!A == B -> (((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> B.isHidden()))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->#left!	!A == B	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->#left!#==	A == B	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->#right->	(((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> B.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->#right->#leftOR	((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent)))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->#right->#leftOR#0>	(xContent.stateValue() > yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->#right->#leftOR#0>#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->#right->#leftOR#0>#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->#right->#leftOR#1AND	((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->#right->#leftOR#1AND#0=	(xContent.stateValue() = yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->#right->#leftOR#1AND#0=#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->#right->#leftOR#1AND#0=#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->#right->#leftOR#1AND#1.hasComeEarlierThan	xContent.hasComeEarlierThan(yContent)	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#1->#right->#right.isHidden()	B.isHidden()	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->	(!A == C -> (((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> C.isHidden()))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->#left!	!A == C	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->#left!#==	A == C	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->#right->	(((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> C.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->#right->#leftOR	((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent)))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->#right->#leftOR#0>	(xContent.stateValue() > yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->#right->#leftOR#0>#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->#right->#leftOR#0>#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->#right->#leftOR#1AND	((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->#right->#leftOR#1AND#0=	(xContent.stateValue() = yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->#right->#leftOR#1AND#0=#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->#right->#leftOR#1AND#0=#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->#right->#leftOR#1AND#1.hasComeEarlierThan	xContent.hasComeEarlierThan(yContent)	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#0For All#2->#right->#right.isHidden()	C.isHidden()	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All	For All 新規メッセージエリアG { y |(!B == y -> (((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> y.isHidden()))}	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->	(!B == A -> (((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> A.isHidden()))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->#left!	!B == A	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->#left!#==	B == A	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->#right->	(((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> A.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->#right->#leftOR	((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent)))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->#right->#leftOR#0>	(xContent.stateValue() > yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->#right->#leftOR#0>#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->#right->#leftOR#0>#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->#right->#leftOR#1AND	((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->#right->#leftOR#1AND#0=	(xContent.stateValue() = yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->#right->#leftOR#1AND#0=#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->#right->#leftOR#1AND#0=#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->#right->#leftOR#1AND#1.hasComeEarlierThan	xContent.hasComeEarlierThan(yContent)	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#0->#right->#right.isHidden()	A.isHidden()	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->	(!B == B -> (((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> B.isHidden()))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->#left!	!B == B	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->#left!#==	B == B	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->#right->	(((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> B.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->#right->#leftOR	((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent)))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->#right->#leftOR#0>	(xContent.stateValue() > yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->#right->#leftOR#0>#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->#right->#leftOR#0>#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->#right->#leftOR#1AND	((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->#right->#leftOR#1AND#0=	(xContent.stateValue() = yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->#right->#leftOR#1AND#0=#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->#right->#leftOR#1AND#0=#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->#right->#leftOR#1AND#1.hasComeEarlierThan	xContent.hasComeEarlierThan(yContent)	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#1->#right->#right.isHidden()	B.isHidden()	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->	(!B == C -> (((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> C.isHidden()))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->#left!	!B == C	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->#left!#==	B == C	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->#right->	(((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> C.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->#right->#leftOR	((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent)))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->#right->#leftOR#0>	(xContent.stateValue() > yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->#right->#leftOR#0>#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->#right->#leftOR#0>#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->#right->#leftOR#1AND	((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->#right->#leftOR#1AND#0=	(xContent.stateValue() = yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->#right->#leftOR#1AND#0=#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->#right->#leftOR#1AND#0=#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->#right->#leftOR#1AND#1.hasComeEarlierThan	xContent.hasComeEarlierThan(yContent)	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#1For All#2->#right->#right.isHidden()	C.isHidden()	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All	For All 新規メッセージエリアG { y |(!C == y -> (((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> y.isHidden()))}	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->	(!C == A -> (((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> A.isHidden()))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->#left!	!C == A	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->#left!#==	C == A	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->#right->	(((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> A.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->#right->#leftOR	((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent)))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->#right->#leftOR#0>	(xContent.stateValue() > yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->#right->#leftOR#0>#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->#right->#leftOR#0>#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->#right->#leftOR#1AND	((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->#right->#leftOR#1AND#0=	(xContent.stateValue() = yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->#right->#leftOR#1AND#0=#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->#right->#leftOR#1AND#0=#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->#right->#leftOR#1AND#1.hasComeEarlierThan	xContent.hasComeEarlierThan(yContent)	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#0->#right->#right.isHidden()	A.isHidden()	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->	(!C == B -> (((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> B.isHidden()))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->#left!	!C == B	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->#left!#==	C == B	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->#right->	(((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> B.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->#right->#leftOR	((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent)))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->#right->#leftOR#0>	(xContent.stateValue() > yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->#right->#leftOR#0>#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->#right->#leftOR#0>#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->#right->#leftOR#1AND	((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->#right->#leftOR#1AND#0=	(xContent.stateValue() = yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->#right->#leftOR#1AND#0=#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->#right->#leftOR#1AND#0=#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->#right->#leftOR#1AND#1.hasComeEarlierThan	xContent.hasComeEarlierThan(yContent)	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#1->#right->#right.isHidden()	B.isHidden()	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->	(!C == C -> (((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> C.isHidden()))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->#left!	!C == C	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->#left!#==	C == C	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->#right->	(((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))) -> C.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->#right->#leftOR	((xContent.stateValue() > yContent.stateValue()) OR ((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent)))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->#right->#leftOR#0>	(xContent.stateValue() > yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->#right->#leftOR#0>#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->#right->#leftOR#0>#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->#right->#leftOR#1AND	((xContent.stateValue() = yContent.stateValue()) AND xContent.hasComeEarlierThan(yContent))	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->#right->#leftOR#1AND#0=	(xContent.stateValue() = yContent.stateValue())	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->#right->#leftOR#1AND#0=#0.stateValue()	xContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->#right->#leftOR#1AND#0=#1.stateValue()	yContent.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->#right->#leftOR#1AND#1.hasComeEarlierThan	xContent.hasComeEarlierThan(yContent)	boolean
+#HierarchyOfConstraint#EXPRESSION	For All#2For All#2->#right->#right.isHidden()	C.isHidden()	boolean
+#HierarchyOfConstraint#END,新規メッセージエリア間の調停

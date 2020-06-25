@@ -1,0 +1,96 @@
+Package Displaying {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 300
+			height: 300
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: AreaA
+				}
+				PositionContainer {
+					x: 100
+					y: 0
+					areaReference: AreaB
+				}
+				PositionContainer {
+					x: 200
+					y: 0
+					areaReference: AreaC
+				}
+			}
+		}
+	}
+
+	Area AreaA {
+		arbitrationPolicy: DEFAULT
+		sizeReference: サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area AreaB {
+		arbitrationPolicy: DEFAULT
+		sizeReference: サイズ
+		visibility: < That-of AreaA
+		zorder: STANDARD_VALUE
+	}
+	Area AreaC {
+		arbitrationPolicy: DEFAULT
+		sizeReference: サイズ
+		visibility: < That-of AreaB
+		zorder: STANDARD_VALUE
+	}
+
+	Size サイズ {
+		width: 100
+		height: 100
+	}
+
+	ViewContent ViewA1{
+		allocatable: [
+			AreaA
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: サイズ
+	}
+	ViewContent ViewA2{
+		allocatable: [
+			AreaA
+		]
+		State NORMAL {
+			priority: MIN_VALUE
+		}
+		sizeReference: サイズ
+	}
+	ViewContent ViewB1{
+		allocatable: [
+			AreaB
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: サイズ
+	}
+	ViewContent ViewC1{
+		allocatable: [
+			AreaC
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: サイズ
+	}
+	Scene S1{}
+	Constraint AreaBisHidden {
+		runtime: true
+		AreaB.isHidden()
+	}
+	PostConstraint ViewA2isCanceled {
+		(S1.isOn() AND !ViewA2.isVisible()) -> ViewA2.isCanceled()
+	}
+}

@@ -1,0 +1,48 @@
+Package SampleDisplays {
+	Display Sample_METER {
+		Size Sample_METER_FULLSCREEN {
+			width: 300
+			height: 150
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: 全画面
+				}
+				PositionContainer {
+					x: 0
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: エリアA
+				}
+				PositionContainer {
+					x: 100
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: エリアB
+				}
+				PositionContainer {
+					x: 200
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: エリアC
+				}
+				PositionContainer {
+					x: 0
+					y: 100
+					basePoint: LEFT_TOP
+					areaReference: その他エリア1
+				}
+				PositionContainer {
+					x: 50
+					y: 100
+					basePoint: LEFT_TOP
+					areaReference: その他エリア2
+				}	
+			}
+		}
+	}
+}

@@ -1,0 +1,7 @@
+#start 1 content1.NORMAL,content2.NORMAL
+CL
+C,on,content1,NORMAL
+C,on,content2,NORMAL,continue
+C,on,content3,NORMAL
+
+

@@ -1,0 +1,307 @@
+#Request#C,on,B1,NORMAL,1
+#Request#C,off,X1,NORMAL,0
+#Request#S,off,S1
+#Constraint#START,HA1207_HasBeenDisplayed_1,t
+#Constraint#EXPRESSION	->#left.hasBeenDisplayed()	(pre)B1.hasBeenDisplayed()	f
+#Constraint#EXPRESSION	->	((pre)B1.hasBeenDisplayed() -> X.isHidden())	t
+#Constraint#END
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#Constraint#START,HA1207_HasBeenDisplayed_3,t
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> B1.isCanceled())	t
+#Constraint#END
+#Result#A,B,B1
+#Result#A,X,
+#Constraint#START,HA1207_HasBeenDisplayed_1,t
+#Constraint#EXPRESSION	->#left.hasBeenDisplayed()	(pre)B1.hasBeenDisplayed()	f
+#Constraint#EXPRESSION	->	((pre)B1.hasBeenDisplayed() -> X.isHidden())	t
+#Constraint#END
+#PrevResult#A,B,B1,NORMAL
+#Request#C,on,B1,NORMAL,1
+#Request#C,on,X1,NORMAL,2
+#Request#S,off,S1
+#Constraint#START,HA1207_HasBeenDisplayed_1,t
+#Constraint#EXPRESSION	->#left.hasBeenDisplayed()	(pre)B1.hasBeenDisplayed()	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->	((pre)B1.hasBeenDisplayed() -> X.isHidden())	f
+#Constraint#END
+#Constraint#START,HA1207_HasBeenDisplayed_3,t
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> B1.isCanceled())	t
+#Constraint#END
+#Constraint#START,HA1207_HasBeenDisplayed_3,t
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> B1.isCanceled())	t
+#Constraint#END
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#Constraint#START,HA1207_HasBeenDisplayed_3,t
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> B1.isCanceled())	t
+#Constraint#END
+#Result#A,B,B1
+#Result#A,X,
+#Constraint#START,HA1207_HasBeenDisplayed_1,t
+#Constraint#EXPRESSION	->#left.hasBeenDisplayed()	(pre)B1.hasBeenDisplayed()	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->	((pre)B1.hasBeenDisplayed() -> X.isHidden())	t
+#Constraint#END
+#PrevResult#A,B,B1,NORMAL
+#Request#C,on,B1,NORMAL,1
+#Request#C,on,X1,NORMAL,2
+#Request#S,on,S1
+#Constraint#START,HA1207_HasBeenDisplayed_1,t
+#Constraint#EXPRESSION	->#left.hasBeenDisplayed()	(pre)B1.hasBeenDisplayed()	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->	((pre)B1.hasBeenDisplayed() -> X.isHidden())	f
+#Constraint#END
+#Constraint#START,HA1207_HasBeenDisplayed_3,t
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	t
+#Constraint#EXPRESSION	->#right.isCanceled()	B1.isCanceled()	skip
+#Constraint#EXPRESSION	->	(S1.isOn() -> B1.isCanceled())	skip
+#Constraint#END
+#Constraint#START,HA1207_HasBeenDisplayed_3,t
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	t
+#Constraint#EXPRESSION	->#right.isCanceled()	B1.isCanceled()	skip
+#Constraint#EXPRESSION	->	(S1.isOn() -> B1.isCanceled())	skip
+#Constraint#END
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#Constraint#START,HA1207_HasBeenDisplayed_3,t
+#Constraint#EXPRESSION	->#left.isOn()	S1.isOn()	t
+#Constraint#EXPRESSION	->#right.isCanceled()	B1.isCanceled()	f
+#Constraint#EXPRESSION	->	(S1.isOn() -> B1.isCanceled())	f
+#Constraint#END
+#Result#A,B,B1
+#Result#A,X,
+#Constraint#START,HA1207_HasBeenDisplayed_1,t
+#Constraint#EXPRESSION	->#left.hasBeenDisplayed()	(pre)B1.hasBeenDisplayed()	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->	((pre)B1.hasBeenDisplayed() -> X.isHidden())	t
+#Constraint#END
+----All Constraints check result----
+Total Result:true
+online  constraint[HA1207_HasBeenDisplayed_1] result[true]
+cancel  constraint[HA1207_HasBeenDisplayed_3] result[true]
+----All Constraints check result----
+Total Result:true
+online  constraint[HA1207_HasBeenDisplayed_1] result[true]
+cancel  constraint[HA1207_HasBeenDisplayed_3] result[true]
+----All Constraints check result----
+Total Result:false
+online  constraint[HA1207_HasBeenDisplayed_1] result[true]
+cancel  constraint[HA1207_HasBeenDisplayed_3] result[false]
+----Request Information----
+Allocatable Count:2
+  Area[B] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+ContentState Count:2
+  ViewContent[B1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[X1::NORMAL] priority[10] isActive[false] order[0]
+Scene Count:1
+  Scene[S1] isActive[false]
+Constraint Count:1
+  Constraint[HA1207_HasBeenDisplayed_1] Expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] runtime[true]
+PostConstraint Count:1
+  PostConstraint[HA1207_HasBeenDisplayed_3] Expression[(S1.isOn() -> B1.isCanceled())]
+----Request Information----
+Allocatable Count:2
+  Area[B] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+ContentState Count:2
+  ViewContent[B1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[2]
+Scene Count:1
+  Scene[S1] isActive[false]
+Constraint Count:1
+  Constraint[HA1207_HasBeenDisplayed_1] Expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] runtime[true]
+PostConstraint Count:1
+  PostConstraint[HA1207_HasBeenDisplayed_3] Expression[(S1.isOn() -> B1.isCanceled())]
+----Request Information----
+Allocatable Count:2
+  Area[B] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+ContentState Count:2
+  ViewContent[B1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[2]
+Scene Count:1
+  Scene[S1] isActive[true]
+Constraint Count:1
+  Constraint[HA1207_HasBeenDisplayed_1] Expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] runtime[true]
+PostConstraint Count:1
+  PostConstraint[HA1207_HasBeenDisplayed_3] Expression[(S1.isOn() -> B1.isCanceled())]
+----Previous Result Information----
+Allocatable TotalCount:2
+  Area[B] Content[null] hidden[false]
+  Area[X] Content[null] hidden[false]
+Content TotalCount:2
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[X1] visible[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:2
+  Area[B] Content[B1::NORMAL] hidden[false]
+  Area[X] Content[null] hidden[false]
+Content TotalCount:2
+  ViewContent[B1] visible[true] active[true]
+    allocated Area[B]
+  ViewContent[X1] visible[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:2
+  Area[B] Content[B1::NORMAL] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[true]
+Content TotalCount:2
+  ViewContent[B1] visible[true] active[true]
+    allocated Area[B]
+  ViewContent[X1] visible[false] active[true]
+    allocated Area[X]
+----Arbitrate----
+Area[B] check start
+  Content[B1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+Area[B] displays Content[B1::NORMAL] hidden[false]
+
+Area[X] check start
+  Content[X1::NORMAL] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] check start
+      Content[B1].hasBeenDisplayed() false
+      [((pre)B1.hasBeenDisplayed() -> X.isHidden())] true
+    constraint expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] true
+
+Area[X] displays Content[null] hidden[false]
+
+    constraint expression[(S1.isOn() -> B1.isCanceled())] check start
+      Scene[S1] is not On
+      [(S1.isOn() -> B1.isCanceled())] true
+    constraint expression[(S1.isOn() -> B1.isCanceled())] true
+
+----Arbitrate----
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] check start
+      Content[B1].hasBeenDisplayed() true
+      [X.isHidden()] false
+      [((pre)B1.hasBeenDisplayed() -> X.isHidden())] false
+    constraint expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] false
+
+Area[X] change hidden
+Area[X] displays Content[X1::NORMAL] hidden[true]
+
+    constraint expression[(S1.isOn() -> B1.isCanceled())] check start
+      Scene[S1] is not On
+      [(S1.isOn() -> B1.isCanceled())] true
+    constraint expression[(S1.isOn() -> B1.isCanceled())] true
+
+----Arbitrate----
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] check start
+      Content[B1].hasBeenDisplayed() true
+      [X.isHidden()] false
+      [((pre)B1.hasBeenDisplayed() -> X.isHidden())] false
+    constraint expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] false
+
+Area[X] change hidden
+Area[X] displays Content[X1::NORMAL] hidden[true]
+
+    constraint expression[(S1.isOn() -> B1.isCanceled())] check start
+      Scene[S1] is On
+      [B1.isCanceled()] false
+      [(S1.isOn() -> B1.isCanceled())] false
+    constraint expression[(S1.isOn() -> B1.isCanceled())] false
+
+----Cancel Request----
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is Visible skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is not Active skip
+----Cancel Request----
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is Visible skip
+Content[X1::NORMAL] check start
+  check wait of request
+    constraint expression[(S1.isOn() -> B1.isCanceled())] check start
+      Scene[S1] is not On
+      [(S1.isOn() -> B1.isCanceled())] true
+    constraint expression[(S1.isOn() -> B1.isCanceled())] true
+
+  check cancel of request
+    constraint expression[(S1.isOn() -> B1.isCanceled())] check start
+      Scene[S1] is not On
+      [(S1.isOn() -> B1.isCanceled())] true
+    constraint expression[(S1.isOn() -> B1.isCanceled())] true
+
+  Content[X1::NORMAL] is not Canceled because NEVER_GIVEUP
+----Cancel Request----
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is Visible skip
+Content[X1::NORMAL] check start
+  check wait of request
+    constraint expression[(S1.isOn() -> B1.isCanceled())] check start
+      Scene[S1] is On
+      B1.isCanceled()] before arbitrate skip
+      [(S1.isOn() -> B1.isCanceled())] before arbitrate skip
+    constraint expression[(S1.isOn() -> B1.isCanceled())] before arbitrate skip
+
+  check cancel of request
+    constraint expression[(S1.isOn() -> B1.isCanceled())] check start
+      Scene[S1] is On
+      B1.isCanceled()] before arbitrate skip
+      [(S1.isOn() -> B1.isCanceled())] before arbitrate skip
+    constraint expression[(S1.isOn() -> B1.isCanceled())] before arbitrate skip
+
+  Content[X1::NORMAL] is not Canceled because NEVER_GIVEUP
+----Check All Constraint----
+    constraint expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] check start
+      Content[B1].hasBeenDisplayed() false
+      [((pre)B1.hasBeenDisplayed() -> X.isHidden())] true
+    constraint expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] true
+
+----Check All Constraint----
+    constraint expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] check start
+      Content[B1].hasBeenDisplayed() true
+      [X.isHidden()] true
+      [((pre)B1.hasBeenDisplayed() -> X.isHidden())] true
+    constraint expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] true
+
+----Check All Constraint----
+    constraint expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] check start
+      Content[B1].hasBeenDisplayed() true
+      [X.isHidden()] true
+      [((pre)B1.hasBeenDisplayed() -> X.isHidden())] true
+    constraint expression[((pre)B1.hasBeenDisplayed() -> X.isHidden())] true
+
+----Run Rule----
+----Run Rule----
+----Run Rule----
+----Result Information----
+Allocatable TotalCount:2
+  Area[B] Content[B1::NORMAL] hidden[false]
+  Area[X] Content[null] hidden[false]
+Content TotalCount:2
+  ViewContent[B1] visible[true] cancel[false]
+    allocated Area[B]
+  ViewContent[X1] visible[false] cancel[false]
+----Result Information----
+Allocatable TotalCount:2
+  Area[B] Content[B1::NORMAL] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[true]
+Content TotalCount:2
+  ViewContent[B1] visible[true] cancel[false]
+    allocated Area[B]
+  ViewContent[X1] visible[false] cancel[false]
+    allocated Area[X]
+----Result Information----
+Allocatable TotalCount:2
+  Area[B] Content[B1::NORMAL] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[true]
+Content TotalCount:2
+  ViewContent[B1] visible[true] cancel[false]
+    allocated Area[B]
+  ViewContent[X1] visible[false] cancel[false]
+    allocated Area[X]
+

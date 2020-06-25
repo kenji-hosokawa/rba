@@ -1,0 +1,251 @@
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,B1,NORMAL,0
+#Request#C,off,B1,WARNING,0
+#Request#C,off,C1,NORMAL,0
+#Request#C,on,X1,NORMAL,1
+#Request#S,off,S1
+#Request#S,off,S2
+#Constraint#START,HA1209_SizeOperator_4,t
+#Constraint#EXPRESSION	->#left=	(A.allocatedContent().allocatables().size() = 1)	skip
+#Constraint#EXPRESSION	->#right.isHidden()	XXXX.isHidden()	skip
+#Constraint#EXPRESSION	->	((A.allocatedContent().allocatables().size() = 1) -> XXXX.isHidden())	skip
+#Constraint#END
+#Constraint#START,HA1209_SizeOperator_1,t
+#Constraint#EXPRESSION	->#left=	(ALL_VIEWCONTENTS.size() = 4)	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->	((ALL_VIEWCONTENTS.size() = 4) -> X.isHidden())	f
+#Constraint#END
+#Constraint#START,HA1209_SizeOperator_2,t
+#Constraint#EXPRESSION	.select#0.isActive()	A1.isActive()	f
+#Constraint#EXPRESSION	.select#1.isActive()	B1.isActive()	f
+#Constraint#EXPRESSION	.select#2.isActive()	C1.isActive()	f
+#Constraint#EXPRESSION	->#left=	({[]}.size() = 1)	f
+#Constraint#EXPRESSION	->	(({[]}.size() = 1) -> XX.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SizeOperator_3,t
+#Constraint#EXPRESSION	->#left=	({A1}.size() = 1)	t
+#Constraint#EXPRESSION	->#right.isHidden()	XXX.isHidden()	f
+#Constraint#EXPRESSION	->	(({A1}.size() = 1) -> XXX.isHidden())	f
+#Constraint#END
+#Constraint#START,HA1209_SizeOperator_4,t
+#Constraint#EXPRESSION	->#left=	(A.allocatedContent().allocatables().size() = 1)	skip
+#Constraint#EXPRESSION	->#right.isHidden()	XXXX.isHidden()	f
+#Constraint#EXPRESSION	->	((A.allocatedContent().allocatables().size() = 1) -> XXXX.isHidden())	skip
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#B1,WARNING,f
+#CanceledRequest#C1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#Result#A,A,
+#Result#A,B,
+#Result#A,C,
+#Result#A,X,
+#Result#A,XX,X1
+#Result#A,XXX,
+#Result#A,XXXX,X1
+#Constraint#START,HA1209_SizeOperator_1,t
+#Constraint#EXPRESSION	->#left=	(ALL_VIEWCONTENTS.size() = 4)	t
+#Constraint#EXPRESSION	->#right.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->	((ALL_VIEWCONTENTS.size() = 4) -> X.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SizeOperator_2,t
+#Constraint#EXPRESSION	.select#0.isActive()	A1.isActive()	f
+#Constraint#EXPRESSION	.select#1.isActive()	B1.isActive()	f
+#Constraint#EXPRESSION	.select#2.isActive()	C1.isActive()	f
+#Constraint#EXPRESSION	->#left=	({[]}.size() = 1)	f
+#Constraint#EXPRESSION	->	(({[]}.size() = 1) -> XX.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SizeOperator_3,t
+#Constraint#EXPRESSION	->#left=	({A1}.size() = 1)	t
+#Constraint#EXPRESSION	->#right.isHidden()	XXX.isHidden()	t
+#Constraint#EXPRESSION	->	(({A1}.size() = 1) -> XXX.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1209_SizeOperator_4,t
+#Constraint#EXPRESSION	->#left=	(A.allocatedContent().allocatables().size() = 1)	skip
+#Constraint#EXPRESSION	->#right.isHidden()	XXXX.isHidden()	f
+#Constraint#EXPRESSION	->	((A.allocatedContent().allocatables().size() = 1) -> XXXX.isHidden())	skip
+#Constraint#END
+----Request Information----
+Allocatable Count:7
+  Area[A] policy[DEFAULT] visibility[10]
+  Area[B] policy[DEFAULT] visibility[10]
+  Area[C] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+  Area[XX] policy[DEFAULT] visibility[10]
+  Area[XXX] policy[DEFAULT] visibility[10]
+  Area[XXXX] policy[DEFAULT] visibility[10]
+ContentState Count:5
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::WARNING] priority[11] isActive[false] order[0]
+  ViewContent[C1::NORMAL] priority[11] isActive[false] order[0]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[1]
+Scene Count:2
+  Scene[S1] isActive[false]
+  Scene[S2] isActive[false]
+Constraint Count:4
+  Constraint[HA1209_SizeOperator_1] Expression[((ALL_VIEWCONTENTS.size() = 4) -> X.isHidden())] runtime[true]
+  Constraint[HA1209_SizeOperator_2] Expression[(({sele}.size() = 1) -> XX.isHidden())] runtime[true]
+  Constraint[HA1209_SizeOperator_3] Expression[(({A1}.size() = 1) -> XXX.isHidden())] runtime[true]
+  Constraint[HA1209_SizeOperator_4] Expression[((A.allocatedContent().allocatables().size() = 1) -> XXXX.isHidden())] runtime[true]
+----Previous Result Information----
+Allocatable TotalCount:7
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[X] Content[null] hidden[false]
+  Area[XX] Content[null] hidden[false]
+  Area[XXX] Content[null] hidden[false]
+  Area[XXXX] Content[null] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[C1] visible[false] active[false]
+  ViewContent[X1] visible[false] active[false]
+----Arbitrate----
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((A.allocatedContent().allocatables().size() = 1) -> XXXX.isHidden())] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().allocatables().size() is -99
+      [(A.allocatedContent().allocatables().size() = 1)] before arbitrate skip
+      [XXXX.isHidden()] before arbitrate skip
+      [((A.allocatedContent().allocatables().size() = 1) -> XXXX.isHidden())] before arbitrate skip
+    constraint expression[((A.allocatedContent().allocatables().size() = 1) -> XXXX.isHidden())] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[A] displays Content[null] hidden[false]
+
+Area[B] check start
+  Content[B1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+Area[B] displays Content[null] hidden[false]
+
+Area[C] check start
+  Content[C1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+Area[C] displays Content[null] hidden[false]
+
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[((ALL_VIEWCONTENTS.size() = 4) -> X.isHidden())] check start
+      ALL_VIEWCONTENTS.size() is 4
+      [(ALL_VIEWCONTENTS.size() = 4)] true
+      [X.isHidden()] false
+      [((ALL_VIEWCONTENTS.size() = 4) -> X.isHidden())] false
+    constraint expression[((ALL_VIEWCONTENTS.size() = 4) -> X.isHidden())] false
+
+Area[X] change hidden
+Area[X] displays Content[X1::NORMAL] hidden[true]
+
+Area[XX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[(({sele}.size() = 1) -> XX.isHidden())] check start
+      Content[A1] is not Active
+      Content[B1] is not Active
+      Content[C1] is not Active
+      {A1, B1, C1}.select{ x |x.isActive()} is []
+      let sele = {A1, B1, C1}.select{ x |x.isActive()} = []
+      {sele}.size() is 0
+      [({sele}.size() = 1)] false
+      [(({sele}.size() = 1) -> XX.isHidden())] true
+    constraint expression[(({sele}.size() = 1) -> XX.isHidden())] true
+
+Area[XX] displays Content[X1::NORMAL] hidden[false]
+
+Area[XXX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[(({A1}.size() = 1) -> XXX.isHidden())] check start
+      {A1}.size() is 1
+      [({A1}.size() = 1)] true
+      [XXX.isHidden()] false
+      [(({A1}.size() = 1) -> XXX.isHidden())] false
+    constraint expression[(({A1}.size() = 1) -> XXX.isHidden())] false
+
+Area[XXX] change hidden
+Area[XXX] displays Content[X1::NORMAL] hidden[true]
+
+Area[XXXX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[((A.allocatedContent().allocatables().size() = 1) -> XXXX.isHidden())] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().allocatables().size() is -99
+      [(A.allocatedContent().allocatables().size() = 1)] before arbitrate skip
+      [XXXX.isHidden()] false
+      [((A.allocatedContent().allocatables().size() = 1) -> XXXX.isHidden())] before arbitrate skip
+    constraint expression[((A.allocatedContent().allocatables().size() = 1) -> XXXX.isHidden())] before arbitrate skip
+
+Area[XXXX] displays Content[X1::NORMAL] hidden[false]
+
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[B1::WARNING] check start
+  Content[B1::WARNING] is not Active skip
+Content[C1::NORMAL] check start
+  Content[C1::NORMAL] is not Active skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is Visible skip
+----Check All Constraint----
+    constraint expression[((ALL_VIEWCONTENTS.size() = 4) -> X.isHidden())] check start
+      ALL_VIEWCONTENTS.size() is 4
+      [(ALL_VIEWCONTENTS.size() = 4)] true
+      [X.isHidden()] true
+      [((ALL_VIEWCONTENTS.size() = 4) -> X.isHidden())] true
+    constraint expression[((ALL_VIEWCONTENTS.size() = 4) -> X.isHidden())] true
+
+    constraint expression[(({sele}.size() = 1) -> XX.isHidden())] check start
+      Content[A1] is not Active
+      Content[B1] is not Active
+      Content[C1] is not Active
+      {A1, B1, C1}.select{ x |x.isActive()} is []
+      let sele = {A1, B1, C1}.select{ x |x.isActive()} = []
+      {sele}.size() is 0
+      [({sele}.size() = 1)] false
+      [(({sele}.size() = 1) -> XX.isHidden())] true
+    constraint expression[(({sele}.size() = 1) -> XX.isHidden())] true
+
+    constraint expression[(({A1}.size() = 1) -> XXX.isHidden())] check start
+      {A1}.size() is 1
+      [({A1}.size() = 1)] true
+      [XXX.isHidden()] true
+      [(({A1}.size() = 1) -> XXX.isHidden())] true
+    constraint expression[(({A1}.size() = 1) -> XXX.isHidden())] true
+
+    constraint expression[((A.allocatedContent().allocatables().size() = 1) -> XXXX.isHidden())] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().allocatables().size() is -99
+      [(A.allocatedContent().allocatables().size() = 1)] before arbitrate skip
+      [XXXX.isHidden()] false
+      [((A.allocatedContent().allocatables().size() = 1) -> XXXX.isHidden())] before arbitrate skip
+    constraint expression[((A.allocatedContent().allocatables().size() = 1) -> XXXX.isHidden())] before arbitrate skip
+
+----Result Information----
+Allocatable TotalCount:7
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[true]
+  Area[XX] Content[X1::NORMAL] hidden[false]
+  Area[XXX] Content[X1::NORMAL] hidden[true]
+  Area[XXXX] Content[X1::NORMAL] hidden[false]
+Content TotalCount:4
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[B1] visible[false] cancel[false]
+  ViewContent[C1] visible[false] cancel[false]
+  ViewContent[X1] visible[true] cancel[false]
+    allocated Area[X]
+    allocated Area[XX]
+    allocated Area[XXX]
+    allocated Area[XXXX]
+

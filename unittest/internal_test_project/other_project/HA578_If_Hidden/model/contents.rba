@@ -1,0 +1,151 @@
+Package Contents {
+	
+	ViewContent オープニング {
+		allocatable: [
+			全画面
+		]
+		State NORMAL {
+			priority: 100
+		}
+		Size Def {
+			height:150
+			width:300
+		}
+	}
+	ViewContent ダイアグ {
+		allocatable: [
+			全画面
+		]
+		State NORMAL {
+			priority: 200
+		}
+		Size Def {
+			height:150
+			width:300
+		}
+	}
+	
+	ViewContent a1 {
+		allocatable: [
+			エリアA
+		]
+		State NORMAL {
+			priority: 101
+		}
+		Size Def {
+			height:100
+			width:100
+		}
+	}
+
+	ViewContent a2 {
+		allocatable: [
+			エリアA
+		]
+		State NORMAL {
+			priority: 100
+		}
+		Size Def {
+			height:100
+			width:100
+		}
+	}
+	ViewContent a3 {
+		allocatable: [
+			エリアA
+		]
+		State NORMAL {
+			priority: 99
+		}
+		Size Def {
+			height:100
+			width:100
+		}
+	}
+
+	ViewContent b1 {
+		allocatable: [
+			エリアB
+		]
+		State NORMAL {
+			priority: 101
+		}
+		Size Def {
+			height:100
+			width:100
+		}
+	}
+	ViewContent b2 {
+		allocatable: [
+			エリアB
+		]
+		State NORMAL {
+			priority: 100
+		}
+		Size Def {
+			height:100
+			width:100
+		}
+	}
+	ViewContent b3 {
+		allocatable: [
+			エリアB
+		]
+		State NORMAL {
+			priority: 99
+		}
+		Size Def {
+			height:100
+			width:100
+		}
+	}
+	
+	ViewContent c1 {
+		allocatable: [
+			エリアC
+		]
+		State NORMAL {
+			priority: 101
+		}
+		Size Def {
+			height:100
+			width:100
+		}
+	}
+	ViewContent c2 {
+		allocatable: [
+			エリアC
+		]
+		State NORMAL {
+			priority: 99
+		}
+		Size Def {
+			height:100
+			width:100
+		}
+	}
+	ViewContent その他1 {
+		allocatable: [
+			その他エリア1
+		]
+		State NORMAL {
+			priority: 99
+		}
+		Size Def {
+			height:50
+			width:50
+		}
+	}
+	ViewContent その他2 {
+		allocatable: [
+			その他エリア2
+		]
+		State NORMAL {
+			priority: 99
+		}
+		Size Def {
+			height:50
+			width:50
+		}
+	}
+}

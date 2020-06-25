@@ -1,0 +1,87 @@
+Package Displays {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 300
+			height: 300
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: A
+				}
+				PositionContainer {
+					x: 100
+					y: 0
+					areaReference: B
+				}
+				PositionContainer {
+					x: 200
+					y: 0
+					areaReference: C
+				}
+			}
+		}
+	}
+
+	Area A {
+		arbitrationPolicy: DEFAULT
+		sizeReference: サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		arbitrationPolicy: DEFAULT
+		sizeReference: サイズ
+		visibility: < That-of A
+		zorder: STANDARD_VALUE
+	}
+	Area C {
+		arbitrationPolicy: DEFAULT
+		sizeReference: サイズ
+		visibility: < That-of B
+		zorder: STANDARD_VALUE
+	}
+
+	Size サイズ {
+		width: 100
+		height: 100
+	}
+
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: サイズ
+	}
+	ViewContent B1{
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: サイズ
+	}
+	ViewContent C1{
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: サイズ
+	}
+	Scene シーン {}
+	
+	Constraint HA793_PreviousModifier_InIfStatement_Lhs {
+		runtime:true
+		(IF((pre)A1.isActive()) 
+		 THEN B
+		 ELSE C).isHidden()
+	}
+}

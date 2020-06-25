@@ -1,0 +1,7 @@
+#start 1
+CL
+C,on,A1,NORMAL
+C,on,B1,NORMAL
+Assert,A,A,A1
+Assert,A,B,
+Assert,A,C,

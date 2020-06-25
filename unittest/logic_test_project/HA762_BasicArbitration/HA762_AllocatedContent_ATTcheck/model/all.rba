@@ -1,0 +1,76 @@
+Package Displays {
+	Zone A {
+		arbitrationPolicy: DEFAULT
+		visibility: > That-of B
+		attenuateValue:1
+	}
+	Zone B {
+		arbitrationPolicy: DEFAULT
+		visibility: > That-of C
+		attenuateValue:2
+	}
+	Zone C {
+		arbitrationPolicy: DEFAULT
+		visibility: NONE_VALUE
+		attenuateValue:2
+	}
+
+	SoundContent a1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: > That-of a2.NORMAL
+		}
+	}
+	SoundContent a2{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent b1{
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: > That-of b2.NORMAL
+		}
+	}
+	SoundContent b2 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent c1{
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: > That-of c2.NORMAL
+		}
+	}
+	SoundContent c2 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+
+	Constraint IsAttenuated {
+		runtime: true
+		A.isOutputted() -> B.isAttenuated()
+	}
+
+	Constraint ATTZone_AllocatedContent {
+		runtime: true
+		(B.allocatedContent()== b1) -> C.isMuted()
+	}
+}

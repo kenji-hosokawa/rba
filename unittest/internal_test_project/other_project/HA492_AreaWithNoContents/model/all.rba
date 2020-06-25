@@ -1,0 +1,59 @@
+Package Displays {
+	Size DisplaySize {
+		width: 500
+		height: 400
+	}
+	Size S1 {
+		width: 1
+		height: 1
+	}
+	Area A {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: S1
+		visibility: 1
+		zorder: 1
+	}
+	Area B {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: S1
+		visibility: 1
+		zorder: 1
+	}
+	ViewContent A1{
+		loserType:NEVER_GIVEUP
+		sizeReference: S1
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [A]
+	}
+	ViewContent A2{
+		loserType:NEVER_GIVEUP
+		sizeReference: S1
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [A]
+	}
+	ViewContent A3{
+		loserType:NEVER_GIVEUP
+		sizeReference: S1
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [A]
+	}
+	Display D1 {
+		sizeReference: DisplaySize
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+			}
+		}
+	}
+}

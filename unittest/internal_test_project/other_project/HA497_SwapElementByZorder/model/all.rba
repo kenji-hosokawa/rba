@@ -1,0 +1,58 @@
+Package Displays {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 300
+			height: 300
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: A
+				}
+				PositionContainer {
+					x: 100
+					y: 0
+					areaReference: B
+				}
+				PositionContainer {
+					x: 200
+					y: 0
+					areaReference: C
+				}
+			}
+		}
+	}
+	Area A {
+		arbitrationPolicy: DEFAULT
+		sizeReference: サイズ
+		visibility: STANDARD_VALUE
+		zorder: 10
+	}
+	Area B {
+		arbitrationPolicy: DEFAULT
+		sizeReference: サイズ
+		visibility: STANDARD_VALUE
+		zorder: 9
+	}
+	Area C {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: サイズ
+		visibility: STANDARD_VALUE
+		zorder: 11
+	}
+	Size サイズ {
+		width: 100
+		height: 100
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: サイズ
+	}
+}

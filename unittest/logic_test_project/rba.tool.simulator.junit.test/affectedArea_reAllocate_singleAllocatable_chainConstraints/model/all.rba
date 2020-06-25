@@ -1,0 +1,161 @@
+Package Displays {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 1600
+			height: 200
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: A
+				}
+				PositionContainer {
+					x: 400
+					y: 0
+					areaReference: B
+				}
+				PositionContainer {
+					x: 600
+					y: 0
+					areaReference: C
+				}
+				PositionContainer {
+					x: 900
+					y: 0
+					areaReference: D
+				}
+			}
+		}
+	}
+
+	Area A {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Aサイズ
+		visibility: > That-of B
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Bサイズ
+		visibility: > That-of C
+		zorder: STANDARD_VALUE
+	}
+	Area C {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Cサイズ
+		visibility: > That-of D
+		zorder: STANDARD_VALUE
+	}
+	Area D {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Dサイズ
+		visibility: MIN_VALUE
+		zorder: STANDARD_VALUE
+	}
+
+	Size Aサイズ {
+		width: 400
+		height: 200
+	}
+	Size Bサイズ {
+		width: 200
+		height: 200
+	}
+	Size Cサイズ {
+		width: 300
+		height: 200
+	}
+	Size Dサイズ {
+		width: 400
+		height: 200
+	}
+
+
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+		sizeReference: Aサイズ
+	}
+	ViewContent A2{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+		sizeReference: Aサイズ
+	}
+	ViewContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+		sizeReference: Bサイズ
+	}
+	ViewContent B2 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+		sizeReference: Bサイズ
+	}
+	ViewContent C1 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+		sizeReference: Cサイズ
+	}
+	ViewContent C2 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+		sizeReference: Cサイズ
+	}
+	ViewContent D1 {
+		allocatable: [
+			D
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+		sizeReference: Dサイズ
+	}
+	ViewContent D2 {
+		allocatable: [
+			D
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+		sizeReference: Dサイズ
+	}
+
+	Constraint No1 {
+		runtime: true
+		A2.isVisible() -> !B2.isVisible()
+	}
+	Constraint No2 {
+		runtime: true
+		!B2.isVisible() -> !C2.isVisible()
+	}
+	Constraint No3 {
+		runtime: true
+		D2.isVisible() -> !A2.isVisible()
+	}
+}

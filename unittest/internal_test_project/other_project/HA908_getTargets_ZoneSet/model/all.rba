@@ -1,0 +1,41 @@
+Package Outputs {
+	Zone A {
+		arbitrationPolicy: DEFAULT
+		visibility: STANDARD_VALUE
+	}
+	Zone B {
+		arbitrationPolicy: DEFAULT
+		visibility: < That-of A
+	}
+	Zone C {
+		arbitrationPolicy: DEFAULT
+		visibility: < That-of B
+	}
+	ZoneSet ABSet {
+		target:[A,B]
+	}
+	SoundContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent B1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent C1{
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+}

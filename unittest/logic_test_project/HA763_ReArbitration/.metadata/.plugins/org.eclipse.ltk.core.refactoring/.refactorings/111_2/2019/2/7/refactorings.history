@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;111_2/test/rev_1/testcase/HA763_ReArbitration_111.tc&apos; to &apos;HA763_ReArbitration_111_2.tc&apos;" description="Rename resource &apos;HA763_ReArbitration_111.tc&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="test/rev_1/testcase/HA763_ReArbitration_111.tc" name="HA763_ReArbitration_111_2.tc" stamp="1549850060486" updateReferences="true"/>
+</session>

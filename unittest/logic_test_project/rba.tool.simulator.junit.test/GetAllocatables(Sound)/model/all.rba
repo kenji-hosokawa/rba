@@ -1,0 +1,19 @@
+Package Model {
+	Constraint GetAllocatables {
+		runtime: true
+		For-All ContentA1.allocatables() { x | x.isOutputted() }
+	}
+
+	Zone AllocatableA {
+		arbitrationPolicy: DEFAULT
+		visibility: STANDARD_VALUE
+	}
+	Zone AllocatableB {
+		arbitrationPolicy: DEFAULT
+		visibility: STANDARD_VALUE
+	}
+	SoundContent ContentA1{
+		allocatable: [ AllocatableA, AllocatableB ]
+		State NORMAL { priority: STANDARD_VALUE }
+	}
+}

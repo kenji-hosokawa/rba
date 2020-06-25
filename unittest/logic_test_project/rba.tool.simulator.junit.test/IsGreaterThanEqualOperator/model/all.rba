@@ -1,0 +1,76 @@
+Package All {
+	Display 基本制約確認モニタ {
+		Size FullScreen {
+			width: 400
+			height: 400
+		}
+		CompositeArea SampleCompositeArea1 {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: 優先度（低）エリア
+				}
+				PositionContainer {
+					x: 200
+					y: 100
+					basePoint: LEFT_TOP
+					areaReference: 優先度（高）エリア
+				}
+			}
+		}
+	}
+	Area 優先度（低）エリア {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		sizeReference:優先度（低）エリアサイズ
+		visibility: MIN_VALUE
+		zorder: MIN_VALUE
+	}
+	Area 優先度（高）エリア {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		sizeReference:優先度（高）エリアサイズ
+		visibility: > That-of 優先度（低）エリア
+		zorder: MIN_VALUE
+	}
+
+	ViewContent コンテンツ優先度（低） {
+		allocatable: [
+			優先度（低）エリア
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		State WARNING {
+			priority: > That-of コンテンツ優先度（低）.NORMAL
+		}
+		sizeReference:優先度（低）エリアサイズ
+	}
+	ViewContent コンテンツ優先度（高） {
+		allocatable: [
+			優先度（高）エリア
+		]
+		State NORMAL {
+			priority: > That-of コンテンツ優先度（低）.NORMAL
+		}
+		State WARNING {
+			priority: MIN_VALUE
+		}		
+		sizeReference:優先度（高）エリアサイズ
+	}
+
+	Size 優先度（低）エリアサイズ {
+		width:200
+		height:100
+	}
+	Size 優先度（高）エリアサイズ {
+		width:100
+		height:100
+	}
+
+	Constraint Test_IsGreaterThanEqualOperator {
+		runtime: true
+		優先度（低）エリア.contentValue() >= 優先度（高）エリア.contentValue() -> 優先度（低）エリア.isHidden()
+	}
+
+}

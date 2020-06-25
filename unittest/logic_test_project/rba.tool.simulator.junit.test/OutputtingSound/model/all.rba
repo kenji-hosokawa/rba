@@ -1,0 +1,59 @@
+Package Displays {
+	Zone ゾーンA {
+		arbitrationPolicy: DEFAULT
+		visibility: > That-of ゾーンB
+		attenuateValue:1
+	}
+	Zone ゾーンB {
+		arbitrationPolicy: DEFAULT
+		visibility: NONE_VALUE
+		attenuateValue:2
+	}
+
+	Size ゾーンAサイズ {
+		width: 400
+		height: 200
+	}
+	Size ゾーンBサイズ {
+		width: 200
+		height: 200
+	}
+
+	SoundContent コンテンツA1{
+		allocatable: [
+			ゾーンA
+		]
+		State NORMAL {
+			priority: > That-of コンテンツA2.NORMAL
+		}
+	}
+	SoundContent コンテンツB1 {
+		allocatable: [
+			ゾーンB
+		]
+		State NORMAL {
+			priority: > That-of コンテンツB2.NORMAL
+		}
+	}
+	SoundContent コンテンツA2{
+		allocatable: [
+			ゾーンA
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent コンテンツB2 {
+		allocatable: [
+			ゾーンB
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+
+	Constraint OutputtingSound {
+		runtime: true
+		ゾーンB.outputtingSound() == コンテンツB1
+	}
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:TCSetting xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:model="http://www.example.org/model">
+  <settings name="New Setting" r="1">
+    <areas name="A" state="true"/>
+    <areas name="X"/>
+    <areas name="XX"/>
+    <areas name="XXX"/>
+    <contents name="A1" state="true" contentStateName="NORMAL1" allocatables="//@settings.0/@areas.0"/>
+    <contents name="A1" contentStateName="NORMAL2" allocatables="//@settings.0/@areas.0"/>
+    <contents name="A1" contentStateName="NORMAL3" allocatables="//@settings.0/@areas.0"/>
+    <contents name="X1" contentStateName="NORMAL4" allocatables="//@settings.0/@areas.1"/>
+    <contents name="X1" contentStateName="NORMAL5" allocatables="//@settings.0/@areas.1"/>
+    <contents name="X1" contentStateName="NORMAL6" allocatables="//@settings.0/@areas.1"/>
+  </settings>
+</model:TCSetting>

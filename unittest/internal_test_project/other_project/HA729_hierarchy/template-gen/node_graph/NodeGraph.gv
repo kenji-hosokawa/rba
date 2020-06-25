@@ -1,0 +1,112 @@
+digraph rule_objects_graph {
+	rankdir = LR;
+	charset="utf-8";
+	clusterrank = global;
+	
+	node [shape = plaintext];
+	Scene -> Constraint -> "Area Set" -> Area -> "Content Set" -> Content; 
+	{ rank = same;
+		node [shape = box];
+		{
+			Area;
+			e1 [label="area1", fontname="Meiryo UI"];
+			e2 [label="area2", fontname="Meiryo UI"];
+			e3 [label="area3", fontname="Meiryo UI"];
+			e4 [label="area4", fontname="Meiryo UI"];
+			e5 [label="area5", fontname="Meiryo UI"];
+
+		}
+	}
+	
+	{ rank = same;
+		node [shape = ellipse];
+		{
+			Content;
+			e6 [label="C1", fontname="Meiryo UI"];
+			e7 [label="C2", fontname="Meiryo UI"];
+			e8 [label="C3", fontname="Meiryo UI"];
+			e9 [label="C4", fontname="Meiryo UI"];
+			e10 [label="C5", fontname="Meiryo UI"];
+
+
+		}
+	}
+	
+	{
+		subgraph subareaset {
+			"Area Set";
+			node [shape = box, style = filled, color = lightpink];
+			e11 [label="その他のエリア", fontname="Meiryo UI"];
+
+
+		}
+	}
+	e11 -> e1;
+	e11 -> e2;
+
+
+	
+	{
+		subgraph subcontentset {
+			"Content Set";
+			node [shape = ellipse, style = filled, color = palegreen];
+
+
+		}
+	}
+
+
+
+	e1 -> e6 [dir=none, color=red];
+	e2 -> e7 [dir=none, color=red];
+	e3 -> e8 [dir=none, color=red];
+	e4 -> e9 [dir=none, color=red];
+	e5 -> e10 [dir=none, color=red];
+	
+
+	
+
+	
+
+	
+
+	subgraph scene { rank = same;
+		node [shape = circle, style = filled, color = lightblue];
+		{
+			"Scene";
+			e12 [label="自動運転シーン", fontname="Meiryo UI"];
+			e13 [label="HUDオフシーン", fontname="Meiryo UI"];
+
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightgrey];
+		{
+			"Constraint";
+			e14 [label="PCSの割込時における非表示エリア制約", fontname="Meiryo UI"];
+		}
+	}
+	
+	{ rank = same;
+		node [shape = note, style = filled, color = lavenderblush2];
+		{
+			"Constraint";
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightpink2];
+		{
+			"Constraint";
+		}
+	}
+
+	e14 -> e10 [color=blue];
+	
+
+	
+
+	
+}
+

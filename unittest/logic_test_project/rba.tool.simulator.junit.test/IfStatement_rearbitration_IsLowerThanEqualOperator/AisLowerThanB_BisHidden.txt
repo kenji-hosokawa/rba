@@ -1,0 +1,6 @@
+C,ON,A_LOW,NORMAL
+C,ON,B_HIGH,NORMAL
+execute
+
+Assert,A,A,A_LOW
+Assert,A,B,NULL

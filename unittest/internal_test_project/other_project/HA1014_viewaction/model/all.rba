@@ -1,0 +1,79 @@
+Package HA1014_viewaction {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 400
+			height: 200
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: AreaA
+				}
+				PositionContainer {
+					x: 200
+					y: 0
+					areaReference: AreaB
+				}
+			}
+		}
+	}
+
+	Area AreaA {
+		arbitrationPolicy: DEFAULT
+		sizeReference: SizeA
+		visibility: > That-of AreaB
+		zorder: STANDARD_VALUE
+	}
+	Area AreaB {
+		arbitrationPolicy: DEFAULT
+		sizeReference: SizeB
+		visibility: NONE_VALUE
+		zorder: STANDARD_VALUE
+	}
+
+	Size SizeA {
+		width: 200
+		height: 200
+	}
+	Size SizeB {
+		width: 200
+		height: 200
+	}
+
+	ViewContent cont1{
+		allocatable: [
+			AreaA, AreaB
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: SizeA
+	}
+	ViewContent cont2 {
+		loserType: GOOD_LOSER
+		allocatable: [
+			AreaB
+		]
+		State NORMAL {
+			priority: > That-of cont1.NORMAL
+		}
+		sizeReference: SizeB
+	}
+	ViewContent cont3{
+		allocatable: [
+			AreaA
+		]
+		State NORMAL {
+			priority: > That-of cont2.NORMAL
+		}
+		sizeReference: SizeA
+	}
+	
+	Constraint cont2cancel {
+		runtime: true
+		cont3.isActive() -> !cont2.isVisible()
+	}
+
+}

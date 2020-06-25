@@ -1,0 +1,25 @@
+#start 1
+CL
+C,on,b1,NORMAL
+C,on,a1,NORMAL
+Assert,A,A,,attenuated:false
+Assert,A,B,b1,attenuated:false
+
+#start 2
+CL
+C,on,a1,NORMAL
+C,on,b1,NORMAL
+Assert,A,A,a1,attenuated:false
+Assert,A,B,,attenuated:false
+
+#start 3
+CL
+C,on,b1,NORMAL
+Assert,A,A,,attenuated:false
+Assert,A,B,b1,attenuated:false
+
+#start 4
+CL
+C,on,a1,NORMAL
+Assert,A,A,a1,attenuated:false
+Assert,A,B,,attenuated:false

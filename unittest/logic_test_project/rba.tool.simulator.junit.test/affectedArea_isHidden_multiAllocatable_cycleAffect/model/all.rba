@@ -1,0 +1,101 @@
+Package Displays {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 900
+			height: 200
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: A
+				}
+				PositionContainer {
+					x: 400
+					y: 0
+					areaReference: B
+				}
+				PositionContainer {
+					x: 600
+					y: 0
+					areaReference: C
+				}
+			}
+		}
+	}
+
+	Area A {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Aサイズ
+		visibility: > That-of B
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Bサイズ
+		visibility: > That-of C
+		zorder: STANDARD_VALUE
+	}
+	Area C {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Cサイズ
+		visibility: MIN_VALUE
+		zorder: STANDARD_VALUE
+	}
+
+	Size Aサイズ {
+		width: 400
+		height: 200
+	}
+	Size Bサイズ {
+		width: 200
+		height: 200
+	}
+	Size Cサイズ {
+		width: 300
+		height: 200
+	}
+
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: Aサイズ
+	}
+	ViewContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: Bサイズ
+	}
+	ViewContent C1 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: MAX_VALUE
+		}
+		sizeReference: Cサイズ
+	}
+	ViewContent C2 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: MIN_VALUE
+		}
+		sizeReference: Cサイズ
+	}
+
+	Constraint 影響エリアの無限ループ制約式 {
+		runtime: true
+		For-All{A,B}{x|C.contentValue()>x.contentValue()}-> For-All {A,B} {x|x.isHidden()}
+	}
+}

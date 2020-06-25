@@ -1,0 +1,38 @@
+Package pkg1 {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 100
+			height: 100
+		}
+		CompositeArea root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: AreaA
+				}
+			}
+		}
+	}
+	Area AreaA {
+		Size SizeA {
+			width: 100
+			height: 100
+		}
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	ViewContent コンテンツA1 {
+		allocatable:[
+			AreaA
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size SizeA {
+			width: 100
+			height: 100
+		}
+	}
+}

@@ -1,0 +1,105 @@
+Package SampleDisplays {
+	Display Sample_METER{
+		Size Sample_METER_FULLSCREEN {
+			width: 800
+			height: 400
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:300
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+				PositionContainer {
+					x:400
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: C
+				}
+			}
+		}
+	}
+	Size Bサイズ {
+		width:200
+		height:100
+	}
+	Size Cサイズ {
+		width:200
+		height:100
+	}
+	Zone A {
+		visibility: > That-of B
+	}
+	Area B {
+		sizeReference:Bサイズ
+		visibility:  > That-of C
+		zorder: > That-of C
+	}
+	Area C {
+		sizeReference:Cサイズ
+		visibility:  > That-of P
+		zorder: > That-of P
+	}
+	Zone P {
+		visibility: NONE_VALUE
+	}
+	Zone Q {
+		visibility: NONE_VALUE
+	}
+	SoundContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	ViewContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Bサイズ
+	}
+	ViewContent C1 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Cサイズ
+	}
+	SoundContent P1 {
+		allocatable: [
+			P
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent Q1 {
+		allocatable: [
+			Q
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	Constraint HA1051_影響エリアの再調停テスト_1 {
+		runtime: true
+		A.isOutputted() -> Exists ALL_AREAS{ x|!x.isDisplayed() } 
+	}
+	Constraint HA1051_影響エリアの再調停テスト_2 {
+		runtime: true
+		P.isOutputted() -> !A.isOutputted()
+	}
+	Constraint HA1051_影響エリアの再調停テスト_3 {
+		runtime: true
+		Q.isOutputted() -> !B.isDisplayed()
+	}
+}

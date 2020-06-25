@@ -1,0 +1,8 @@
+C,ON,コンテンツA1,NORMAL
+C,ON,コンテンツB1,NORMAL
+C,ON,コンテンツC1,NORMAL
+execute
+
+Assert,A,ゾーンA,コンテンツA1
+Assert,A,ゾーンB,NULL
+Assert,A,ゾーンC,コンテンツC1

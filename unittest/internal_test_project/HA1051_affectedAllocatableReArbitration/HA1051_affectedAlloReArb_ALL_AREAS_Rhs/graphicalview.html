@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+
+<head>
+    <script src=".RBATool/graphicalview/lib/three.min.js"></script>
+    <script src=".RBATool/graphicalview/lib/OrbitControls.js"></script>
+    <script src=".RBATool/graphicalview/lib/DefaultRotationControls.js"></script>
+    <script src=".RBATool/graphicalview/lib/DefaultDragControls.js"></script>
+    <script src=".RBATool/graphicalview/lib/LabelControls.js"></script>
+    <script src=".RBATool/graphicalview/lib/dat.gui.min.js"></script>
+    <script src=".RBATool/graphicalview/data/data.js"></script>
+
+    <style>
+        body {
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .unselectable {
+            -moz-user-select: -moz-none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+        #canvasWrapper {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvasWrapper"></div>
+</body>
+<script>
+    var scene, camera, renderer;
+    var layerGroup;
+    var objects = [];
+    var layerColor = 0x4CD9E2;
+    var areaColor = 0x124F76;
+    var layerObjects = [];
+    var layerWidthArr = [];
+    var layerHeightArr = [];
+    var displayNameGUI = null;
+    var currentDisplayName;
+    var displayStates = [];
+    var labelControls;
+
+    var gui = new dat.GUI();
+    var Configuration = function () {
+        this.color = layerColor;
+        this.layerDistance = 60;
+        this.showAreaName = true;
+    }
+    var conf = new Configuration();
+    var layerColorControl = gui.addColor(conf, 'color').name('Layer Color');
+    layerColorControl.onChange(function (colorValue) {
+        layerColor = colorValue;
+        for (l in layerObjects) {
+            layerObjects[l].material.color.setHex(colorValue);
+        }
+    });
+
+    gui.add(conf, 'layerDistance', 0, 100).name('Layer Distance');
+
+    function clearScene() {
+        if (scene) {
+            scene.traverse ( function( child ) {
+                if ( child instanceof THREE.Mesh && !child.userData.keepMe === true ) {
+                    scene.remove( child );
+                 }
+            } );
+        }
+        layerGroup = null;
+        objects = [];
+        var canvasElements = document.getElementsByTagName('canvas');
+        for (canvasElement of canvasElements) {
+            canvasElement.parentNode.removeChild(canvasElement);
+        }
+    }
+    displayControl(jsonData);
+
+    function displayControl(jsonContent) {
+      if(displayNameGUI !== null){
+        gui.remove(displayNameGUI);
+      }
+      var displays = jsonContent.root.displays;
+      var displayNameArray = [];
+      var displayObj = {};
+      setup(displays[0].layers);
+      for (var d in displays) {
+        displayNameArray.push(displays[d].name);
+      }
+      var control = new function () {
+        this.displayName = displayNameArray[0];
+      };
+      currentDisplayName = displayNameArray[0];
+      displayNameGUI = gui.add(control, 'displayName', displayNameArray).name('Display Name').onChange(function(value) {
+        clearScene();
+        for(var d in displays){
+          if(value === displays[d].name){
+            currentDisplayName = value;
+            setup(displays[d].layers);
+          }
+        }
+      });
+    }
+
+    function setup(layers) {
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(10, window.innerWidth / window.innerHeight, 1, 50000);
+        camera.lookAt(scene.position);
+        renderer = new THREE.WebGLRenderer({
+            antialias: true
+        });
+        rendererDomElement = renderer.domElement;
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        var canvasWrapper = document.getElementById('canvasWrapper');
+        canvasWrapper.appendChild(renderer.domElement);
+
+        layerGroup = new THREE.Group();
+
+        var previousLayer = null;
+        var totalWidth = 0;
+        var totalHeight = 0;
+        var totalDepth = 0;
+        var layer0 = layers[0];
+        var layerDepth = (layer0.width + layer0.height) * 0.05;
+
+        totalWidth += layer0.width + (layer0.x * 2);
+        totalHeight += layer0.height + (layer0.y * 2);
+        totalDepth = (layers.length - 1) * layerDepth;
+
+        for (var l in layers) {
+          layerWidthArr.push(layers[l].width);
+          layerHeightArr.push(layers[l].height);
+          var layerMesh = createMesh(layers[l].x, layers[l].y, 0, layers[l].width, layers[l].height, 'layer', layers[l].name);
+          layerMesh.position.set(0, 0, 0 - (l * layerDepth));
+          layerMesh.material.color.setHex(layerColor);
+          scene.add(layerMesh);
+          layerGroup.add(layerMesh);
+          objects.push(layerMesh);
+          layerObjects.push(layerMesh);
+
+          var areas = layers[l].areas;
+          for (var a in areas) {
+            var areaMesh = createMesh(layers[l].x + areas[a].x, layers[l].y + areas[a].y, 0, areas[a].width, areas[a].height, 'area', areas[a].name);
+            areaMesh.position.set(0, 0, 0 - (l * layerDepth));
+            areaMesh.material.color.setHex(areaColor + (a * 30));
+            areaMesh.parentLayer = layerMesh;
+            scene.add(areaMesh);
+            layerGroup.add(areaMesh);
+            objects.push(areaMesh);
+          }
+        }
+
+        for (var i = 0; i < objects.length; i++) {
+            var xTranslation = - (totalWidth + (2 * objects[i].position.x)) / 2;
+            var yTranslation = - (totalHeight + (2 * objects[i].position.y)) / 2;
+            var zTranslation = (totalDepth + (2 * objects[i].position.z)) / 2;
+            objects[i].geometry.applyMatrix(new THREE.Matrix4().makeTranslation(xTranslation, -yTranslation,
+                totalDepth / 2));
+        }
+
+        scene.add(layerGroup);
+        layerGroup.rotation.y = -0.9;
+        layerGroup.scale.set(1, 1, 1);
+        layerGroup.scale.z = conf.layerDistance *  0.2;
+
+
+        if (displayStates[currentDisplayName]) {
+            var state = displayStates[currentDisplayName];
+            if (state) {
+                restorePreviousState(state);
+            }
+        }
+
+        var maxWidth = layerWidthArr.reduce(function (a, b) {
+            return Math.max(a, b);
+        });
+
+        var maxHeight = layerHeightArr.reduce(function (a, b) {
+            return Math.max(a, b);
+        });
+
+
+        // factors are empirical value based on manual adjusting
+        camera.position.set(-11.25 * maxWidth, 19.32 * maxHeight, 53 * maxHeight);
+
+        var controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableRotate = false;
+
+        var defaultRotateControls = new THREE.DefaultRotationControls(layerGroup, renderer.domElement);
+        var defaultDragControls = new THREE.DefaultDragControls(layerGroup, camera, renderer.domElement);
+
+        defaultDragControls.addEventListener('dragstart', function (event) {
+            controls.enabled = false;
+        });
+
+        defaultDragControls.addEventListener('dragend', function (event) {
+            controls.enabled = true;
+        });
+
+        defaultRotateControls.addEventListener('rotatestart', function (event) {
+            controls.enabled = false;
+        });
+
+        defaultRotateControls.addEventListener('rotateend', function (event) {
+            controls.enabled = true;
+        });
+
+        labelControls = new THREE.LabelControls(objects, camera, renderer.domElement);
+
+        window.addEventListener('mousedown', function (event) {
+            switch (event.which) {
+                case 1:
+                    defaultRotateControls.enabled = true;
+                    defaultDragControls.enabled = false;
+                    break;
+                case 2:
+                    defaultRotateControls.enabled = false;
+                    defaultDragControls.enabled = false;
+                    break;
+                case 3:
+                    defaultDragControls.enabled = true;
+                    defaultRotateControls.enabled = false;
+                    break;
+                default:
+            }
+        });
+
+        window.addEventListener('resize', onWindowResize, false);
+        render();
+    }
+
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    function createMesh(x, y, z, width, height, type, name) {
+        var rectangle = new THREE.Geometry();
+        rectangle.vertices.push(new THREE.Vector3(x, -y, 0.0));
+        rectangle.vertices.push(new THREE.Vector3(x + width, -y, 0.0));
+        rectangle.vertices.push(new THREE.Vector3(x + width, -(y + height), 0.0));
+        rectangle.vertices.push(new THREE.Vector3(x, -(y + height), 0.0));
+
+        rectangle.faces.push(new THREE.Face3(0, 1, 2));
+        rectangle.faces.push(new THREE.Face3(0, 2, 3));
+
+        var mesh = new THREE.Mesh(rectangle, new THREE.MeshBasicMaterial({
+            transparent: true,
+            side: THREE.DoubleSide,
+            depthWrite: false
+        }));
+
+        mesh.type = type;
+        mesh.name = name;
+
+        return mesh;
+    }
+
+    function render() {
+      layerGroup.scale.z = conf.layerDistance * 0.2;
+      saveCurrentState();
+      requestAnimationFrame(render);
+      renderer.render(scene, camera);
+    }
+
+    function saveCurrentState() {
+        if (currentDisplayName) {
+            displayStates[currentDisplayName] = {
+               position: layerGroup.position,
+               rotation: layerGroup.rotation,
+               scale: layerGroup.scale,
+               cameraPosition: camera.position,
+               cameraRotation: camera.rotation,
+               cameraScale: camera.scale
+            };
+        }
+    }
+
+    function restorePreviousState(state) {
+        layerGroup.position.copy(state.position);
+        layerGroup.rotation.copy(state.rotation);
+        layerGroup.scale.copy(state.scale);
+        camera.position.copy(state.cameraPosition);
+        camera.rotation.copy(state.cameraRotation);
+        camera.scale.copy(state.cameraScale);
+    }
+</script>
+</html>

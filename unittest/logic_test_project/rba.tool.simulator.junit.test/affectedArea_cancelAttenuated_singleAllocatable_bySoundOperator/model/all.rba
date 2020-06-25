@@ -1,0 +1,75 @@
+Package Displays {
+	Zone A {
+		arbitrationPolicy: LAST_COME_FIRST
+		visibility: > That-of B
+		attenuateValue:1
+	}
+	Zone B {
+		arbitrationPolicy: LAST_COME_FIRST
+		visibility: > That-of C
+		attenuateValue:2
+	}
+	Zone C {
+		arbitrationPolicy: LAST_COME_FIRST
+		visibility: MIN_VALUE
+		attenuateValue:3
+	}
+
+	SoundContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+	}
+	SoundContent A2{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+	}
+	SoundContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+	}
+	SoundContent B2 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+	}
+	SoundContent C1 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+	}
+	SoundContent C2 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: NONE_VALUE
+		}
+	}
+
+	Constraint No1 {
+		runtime: true
+		A2.isSounding() -> B.isAttenuated()
+	}
+	Constraint No2 {
+		runtime: true
+		C2.isSounding() -> !A2.isSounding()
+	}
+}

@@ -1,0 +1,119 @@
+digraph rule_objects_graph {
+	rankdir = LR;
+	charset="utf-8";
+	clusterrank = global;
+	
+	node [shape = plaintext];
+	Scene -> Constraint -> "Area Set" -> Area -> "Content Set" -> Content; 
+	{ rank = same;
+		node [shape = box];
+		{
+			Area;
+			e1 [label="A", fontname="Meiryo UI"];
+			e2 [label="B", fontname="Meiryo UI"];
+			e3 [label="C", fontname="Meiryo UI"];
+			e4 [label="D", fontname="Meiryo UI"];
+
+		}
+	}
+	
+	{ rank = same;
+		node [shape = ellipse];
+		{
+			Content;
+			e5 [label="A1", fontname="Meiryo UI"];
+			e6 [label="A2", fontname="Meiryo UI"];
+			e7 [label="B1", fontname="Meiryo UI"];
+			e8 [label="B2", fontname="Meiryo UI"];
+			e9 [label="C1", fontname="Meiryo UI"];
+			e10 [label="C2", fontname="Meiryo UI"];
+			e11 [label="D1", fontname="Meiryo UI"];
+			e12 [label="D2", fontname="Meiryo UI"];
+
+
+		}
+	}
+	
+	{
+		subgraph subareaset {
+			"Area Set";
+			node [shape = box, style = filled, color = lightpink];
+
+
+		}
+	}
+
+
+	
+	{
+		subgraph subcontentset {
+			"Content Set";
+			node [shape = ellipse, style = filled, color = palegreen];
+
+
+		}
+	}
+
+
+
+	e1 -> e5 [dir=none, color=red];
+	e1 -> e6 [dir=none, color=red];
+	e2 -> e7 [dir=none, color=red];
+	e2 -> e8 [dir=none, color=red];
+	e3 -> e9 [dir=none, color=red];
+	e3 -> e10 [dir=none, color=red];
+	e4 -> e11 [dir=none, color=red];
+	e4 -> e12 [dir=none, color=red];
+	
+
+	
+
+	
+
+	
+
+	subgraph scene { rank = same;
+		node [shape = circle, style = filled, color = lightblue];
+		{
+			"Scene";
+
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightgrey];
+		{
+			"Constraint";
+			e13 [label="No1", fontname="Meiryo UI"];
+			e14 [label="No2", fontname="Meiryo UI"];
+			e15 [label="No3", fontname="Meiryo UI"];
+		}
+	}
+	
+	{ rank = same;
+		node [shape = note, style = filled, color = lavenderblush2];
+		{
+			"Constraint";
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightpink2];
+		{
+			"Constraint";
+		}
+	}
+
+	e13 -> e8 [color=blue];
+	e13 -> e6 [color=blue];
+	e14 -> e8 [color=blue];
+	e14 -> e10 [color=blue];
+	e15 -> e6 [color=blue];
+	e15 -> e12 [color=blue];
+	
+
+	
+
+	
+}
+

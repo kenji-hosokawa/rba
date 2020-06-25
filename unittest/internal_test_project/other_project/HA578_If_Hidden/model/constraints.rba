@@ -1,0 +1,128 @@
+Package Constraints {
+
+
+//	Constraint 比較 {
+//		runtime: true
+//		(エリアA.contentValue() > エリアB.contentValue()) -> エリアB.isHidden()
+//	}
+
+
+	Constraint 比較1 {
+		runtime: true
+		IF (エリアA.contentValue() > エリアB.contentValue())
+		THEN エリアB.isHidden()
+		ELSE エリアA.isHidden()
+	}
+
+//	Constraint 優先度調停1 {
+//		runtime: true
+//		(エリアA.contentValue() > エリアB.contentValue())
+//		 -> !(エリアB.allocatedContent()).isVisible()
+//	}
+//
+//	Constraint 優先度調停2 {
+//		runtime: true
+//		(エリアA.contentValue() < エリアB.contentValue())
+//		 -> !(エリアA.allocatedContent()).isVisible()
+//	}
+//	Constraint 優先度調停3 {
+//		runtime: true
+//		(エリアB.contentValue() > エリアC.contentValue())
+//		 -> !(エリアC.allocatedContent()).isVisible()
+//	}
+//
+//	Constraint 優先度調停4 {
+//		runtime: true
+//		(エリアB.contentValue() < エリアC.contentValue())
+//		 -> !(エリアB.allocatedContent()).isVisible()
+//	}
+//	Constraint 優先度調停5 {
+//		runtime: true
+//		(エリアA.contentValue() > エリアC.contentValue())
+//		 -> !(エリアC.allocatedContent()).isVisible()
+//	}
+//	Constraint 優先度調停6 {
+//		runtime: true
+//		(エリアA.contentValue() < エリアC.contentValue())
+//		 -> !(エリアA.allocatedContent()).isVisible()
+//	}	
+//	Constraint AAA {
+//		runtime: true
+//		その他エリア2.isDisplayed() -> !a2.isVisible()
+//	}
+
+//	Constraint ALL {
+//		runtime: true
+//		全画面.isDisplayed() -> For-All 全画面除く全部のエリア { x | x.isHidden() }
+//	}
+//
+//	Constraint 異なる優先度1 {
+//		runtime: true
+//		(エリアA.contentValue() > エリアB.contentValue())
+//	    -> エリアB.isHidden()
+//	}
+//	
+//	Constraint 異なる優先度2 {
+//		runtime: true
+//		(エリアA.contentValue() < エリアB.contentValue())
+//	    -> エリアA.isHidden()
+//	}
+	
+//	Constraint 同じ優先度1 {
+//		runtime: true
+//		((エリアA.contentValue() = エリアB.contentValue()) AND
+//		(pre)エリアA.isDisplayed())
+//		 -> エリアB.isHidden()
+//	}
+//
+//	Constraint 同じ優先度2 {
+//		runtime: true
+//		((エリアA.contentValue() = エリアB.contentValue()) AND
+//		(pre)エリアB.isDisplayed())
+//		 -> エリアA.isHidden()
+//	}
+
+//	Constraint aa1 {
+//		runtime: true
+//		((エリアA.contentValue() = エリアB.contentValue()) AND
+//		(pre)エリアA.allocatedContent().isActive())
+//		 -> エリアB.isHidden()
+//	}
+//
+//	Constraint aa2 {
+//		runtime: true
+//		((エリアA.contentValue() = エリアB.contentValue()) AND
+//		(pre)エリアB.allocatedContent().isActive())
+//		 -> エリアA.isHidden()
+//	}
+
+}
+
+
+//	Constraint 全画面コンテンツ表示中は全画面以外のコテントは出ない {
+//		description:"重畳しない全画面系（オープニングなど）とは他のと同時に出ない"
+//		runtime: true
+//		
+////		全画面.isDisplayed() 
+////		  -> For-All 全画面除く全部のエリア { x | x.isHidden() }
+////全画面.isDisplayed() -> 
+//	
+//	// OR (x.contentValue() < 全画面.contentValue())
+//	
+//	IF (Exists 警告系エリア { x | x.isDisplayed() AND (x.contentValue() < 全画面.contentValue())})
+//	THEN 全画面.isHidden()
+//	ELSE 全画面.isDisplayed() -> For-All 全画面除く全部のエリア { x | x.isHidden() }
+//	}
+//}		
+////		全画面.isDisplayed() AND
+////		(For-All 警告系エリア { x | !x.isDisplayed() OR (x.contentValue() < 全画面.contentValue())})
+////		  -> For-All 全画面除く全部のエリア { x | x.isHidden() }
+////	}
+////	
+////	Constraint ぶつかる系によるオープニングキャンセル {
+////		description:"オープニング中でも緊急性の高いぶつかる系コンテンツは優先して表示される"
+////		runtime: true
+////		
+////		(Exists 警告系エリア { x | x.isDisplayed() AND (x.contentValue() > 全画面.contentValue())})
+////		  -> 全画面.isHidden()
+////	}

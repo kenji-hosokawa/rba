@@ -1,0 +1,18 @@
+Package P1 {
+	Zone A1 {
+		arbitrationPolicy: LAST_COME_FIRST
+		visibility: 1
+	}
+	SoundContent C1 {
+		allocatable: [ A1 ]
+		State CS_N { priority: STANDARD_VALUE }
+	}
+	SoundContent C2 {
+		allocatable: [ A1 ]
+		State CS_N { priority: STANDARD_VALUE }
+	}
+	SoundContent C3 {
+		allocatable: [ A1 ]
+		State CS_N { priority: STANDARD_VALUE }
+	}
+}

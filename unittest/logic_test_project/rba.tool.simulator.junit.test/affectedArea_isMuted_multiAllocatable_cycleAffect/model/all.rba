@@ -1,0 +1,40 @@
+Package Displays {
+	Zone A {
+		arbitrationPolicy: PRIORITY_FIRST_COME_FIRST
+		visibility: 12
+	}
+	Zone B {
+		arbitrationPolicy: PRIORITY_FIRST_COME_FIRST
+		visibility: 11
+	}
+	Zone C {
+		arbitrationPolicy: LAST_COME_FIRST
+		visibility: 3
+	}
+
+	SoundContent A1{
+		allocatable: [C, A]
+		State NORMAL {
+			priority: 0
+		}
+	}
+	SoundContent A2{
+		allocatable:[C, A]
+		State NORMAL {
+			priority: 1
+		}
+	}
+
+	Scene S {
+	}
+
+	Constraint No1 {
+		runtime: true
+		A1.isActive() -> !A2.isSounding()
+	}
+
+	Constraint No2 {
+		runtime: true
+		S.isOn() -> (A.isMuted() AND B.isMuted())
+	}
+}

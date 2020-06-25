@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>affectedArea_cancelHidden_singleAllocatable_byContentOperator</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>rba.tool.RBAToolBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.xtext.ui.shared.xtextBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>.applied</name>
+			<type>2</type>
+			<location>C:/eclipse/workspace/.metadata/rba.tool.editor.ui/affectedArea_cancelHidden_singleAllocatable_byContentOperator/.applied</location>
+		</link>
+	</linkedResources>
+</projectDescription>

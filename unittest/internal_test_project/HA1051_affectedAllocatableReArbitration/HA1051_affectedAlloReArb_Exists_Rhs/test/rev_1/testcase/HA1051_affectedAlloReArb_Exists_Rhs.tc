@@ -1,0 +1,21 @@
+#start 1
+CL
+C,on,A1,NORMAL,continue
+C,on,B1,NORMAL,continue
+C,on,C1,NORMAL,continue
+C,on,P1,NORMAL
+Assert,A,A,
+Assert,A,B,B1
+Assert,A,C,C1
+Assert,A,P,P1
+
+#start 2
+CL
+C,on,A1,NORMAL,continue
+C,on,B1,NORMAL,continue
+C,on,C1,NORMAL,continue
+C,on,Q1,NORMAL
+Assert,A,A,A1
+Assert,A,B,
+Assert,A,C,C1
+Assert,A,Q,Q1

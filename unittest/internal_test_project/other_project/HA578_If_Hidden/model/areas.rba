@@ -1,0 +1,52 @@
+Package Areas {
+	Area エリアA {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		sizeReference: スピードメーターサイズ
+		visibility: 9
+		zorder: MIN_VALUE
+	}
+	Area エリアB {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		sizeReference: スピードメーターサイズ
+		visibility: 5
+		zorder: MIN_VALUE
+	}
+	
+	Area エリアC {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		sizeReference: スピードメーターサイズ
+		visibility: 1
+		zorder: MIN_VALUE
+	}
+	
+	Area その他エリア1 {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		Size Def {
+			width:50
+			height:50
+		}
+		visibility: 1
+		zorder: MIN_VALUE
+	}
+
+	Area その他エリア2 {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		Size Def {
+			width:50
+			height:50
+		}
+		visibility: 8
+		zorder: MIN_VALUE
+	}
+	
+	
+	Area 全画面 {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		Size Sample_METER_FULLSCREEN1 {
+			width: 300
+			height: 150
+		}
+		visibility: 10
+		zorder: 10
+	}
+}

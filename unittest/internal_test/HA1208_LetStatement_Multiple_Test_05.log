@@ -1,0 +1,1465 @@
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,A2,NORMAL,0
+#Request#C,off,B1,NORMAL,0
+#Request#C,off,B2,NORMAL,0
+#Request#C,off,C2,NORMAL,0
+#Request#C,on,D1,NORMAL,1
+#Request#C,off,X1,NORMAL,0
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	f
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	f
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	f
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	f
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	f
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#A2,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#B2,NORMAL,f
+#CanceledRequest#C2,NORMAL,f
+#CanceledRequest#D1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#Result#A,A,
+#Result#A,B,
+#Result#A,C,
+#Result#A,D,D1
+#Result#A,X,
+#Result#A,Y,
+#Result#A,Z,
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	f
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#PrevResult#A,D,D1,NORMAL
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,A2,NORMAL,0
+#Request#C,off,B1,NORMAL,0
+#Request#C,off,B2,NORMAL,0
+#Request#C,on,C2,NORMAL,2
+#Request#C,on,D1,NORMAL,1
+#Request#C,off,X1,NORMAL,0
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	f
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	f
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	f
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	f
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	f
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	f
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	t
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	t
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#A2,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#B2,NORMAL,f
+#CanceledRequest#C2,NORMAL,f
+#CanceledRequest#D1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#Result#A,A,
+#Result#A,B,
+#Result#A,C,C2
+#Result#A,D,D1
+#Result#A,X,
+#Result#A,Y,
+#Result#A,Z,
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	t
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	t
+#Constraint#END
+#PrevResult#A,C,C2,NORMAL
+#PrevResult#A,D,D1,NORMAL
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,A2,NORMAL,0
+#Request#C,off,B1,NORMAL,0
+#Request#C,off,B2,NORMAL,0
+#Request#C,on,C2,NORMAL,2
+#Request#C,on,D1,NORMAL,1
+#Request#C,on,X1,NORMAL,3
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	skip
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	f
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	f
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	f
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	f
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	skip
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	skip
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	skip
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	f
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	f
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	f
+#Constraint#END
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	t
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	t
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#A2,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#B2,NORMAL,f
+#CanceledRequest#C2,NORMAL,f
+#CanceledRequest#D1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#Result#A,A,
+#Result#A,B,
+#Result#A,C,C2
+#Result#A,D,D1
+#Result#A,X,
+#Result#A,Y,
+#Result#A,Z,
+#Constraint#START,HA1208_LetStatement_Multiple,t
+#Constraint#EXPRESSION	->#left>#IF#condition:==	aContent == A1	f
+#Constraint#EXPRESSION	->#left>	(IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue())	t
+#Constraint#EXPRESSION	->#rightFor All#0.isHidden()	X.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#1.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All#2.isHidden()	Z.isHidden()	t
+#Constraint#EXPRESSION	->#rightFor All	For All [X,Y,Z] { x |x.isHidden()}	t
+#Constraint#EXPRESSION	->	((IF(aContent == A1) THEN bContent ELSE C2.stateValue() > D1.stateValue()) -> For All [X,Y,Z] { x |x.isHidden()})	t
+#Constraint#END
+----Request Information----
+Allocatable Count:7
+  Area[A] policy[DEFAULT] visibility[3]
+  Area[B] policy[DEFAULT] visibility[2]
+  Area[C] policy[DEFAULT] visibility[1]
+  Area[D] policy[DEFAULT] visibility[0]
+  Area[X] policy[DEFAULT] visibility[0]
+  Area[Y] policy[DEFAULT] visibility[0]
+  Area[Z] policy[DEFAULT] visibility[0]
+ContentState Count:7
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[A2::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B2::NORMAL] priority[11] isActive[false] order[0]
+  ViewContent[C2::NORMAL] priority[11] isActive[false] order[0]
+  ViewContent[D1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[X1::NORMAL] priority[10] isActive[false] order[0]
+Scene Count:0
+Constraint Count:1
+  Constraint[HA1208_LetStatement_Multiple] Expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] runtime[true]
+----Request Information----
+Allocatable Count:7
+  Area[A] policy[DEFAULT] visibility[3]
+  Area[B] policy[DEFAULT] visibility[2]
+  Area[C] policy[DEFAULT] visibility[1]
+  Area[D] policy[DEFAULT] visibility[0]
+  Area[X] policy[DEFAULT] visibility[0]
+  Area[Y] policy[DEFAULT] visibility[0]
+  Area[Z] policy[DEFAULT] visibility[0]
+ContentState Count:7
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[A2::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B2::NORMAL] priority[11] isActive[false] order[0]
+  ViewContent[C2::NORMAL] priority[11] isActive[true] order[2]
+  ViewContent[D1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[X1::NORMAL] priority[10] isActive[false] order[0]
+Scene Count:0
+Constraint Count:1
+  Constraint[HA1208_LetStatement_Multiple] Expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] runtime[true]
+----Request Information----
+Allocatable Count:7
+  Area[A] policy[DEFAULT] visibility[3]
+  Area[B] policy[DEFAULT] visibility[2]
+  Area[C] policy[DEFAULT] visibility[1]
+  Area[D] policy[DEFAULT] visibility[0]
+  Area[X] policy[DEFAULT] visibility[0]
+  Area[Y] policy[DEFAULT] visibility[0]
+  Area[Z] policy[DEFAULT] visibility[0]
+ContentState Count:7
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[A2::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[B2::NORMAL] priority[11] isActive[false] order[0]
+  ViewContent[C2::NORMAL] priority[11] isActive[true] order[2]
+  ViewContent[D1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[3]
+Scene Count:0
+Constraint Count:1
+  Constraint[HA1208_LetStatement_Multiple] Expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] runtime[true]
+----Previous Result Information----
+Allocatable TotalCount:7
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+  Area[X] Content[null] hidden[false]
+  Area[Y] Content[null] hidden[false]
+  Area[Z] Content[null] hidden[false]
+Content TotalCount:7
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[A2] visible[false] active[false]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[B2] visible[false] active[false]
+  ViewContent[C2] visible[false] active[false]
+  ViewContent[D1] visible[false] active[false]
+  ViewContent[X1] visible[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:7
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[D1::NORMAL] hidden[false]
+  Area[X] Content[null] hidden[false]
+  Area[Y] Content[null] hidden[false]
+  Area[Z] Content[null] hidden[false]
+Content TotalCount:7
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[A2] visible[false] active[false]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[B2] visible[false] active[false]
+  ViewContent[C2] visible[false] active[false]
+  ViewContent[D1] visible[true] active[true]
+    allocated Area[D]
+  ViewContent[X1] visible[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:7
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[C2::NORMAL] hidden[false]
+  Area[D] Content[D1::NORMAL] hidden[false]
+  Area[X] Content[null] hidden[true]
+  Area[Y] Content[null] hidden[true]
+  Area[Z] Content[null] hidden[true]
+Content TotalCount:7
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[A2] visible[false] active[false]
+  ViewContent[B1] visible[false] active[false]
+  ViewContent[B2] visible[false] active[false]
+  ViewContent[C2] visible[true] active[true]
+    allocated Area[C]
+  ViewContent[D1] visible[true] active[true]
+    allocated Area[D]
+  ViewContent[X1] visible[false] active[false]
+----Arbitrate----
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[A2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] is before arbitrate skip
+      let bContent = B.allocatedContent() = before arbitrate skip
+      Allocatable[C] is before arbitrate skip
+      let cContent = C.allocatedContent() = before arbitrate skip
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [before arbitrate skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] before arbitrate skip
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[A] displays Content[null] hidden[false]
+
+Area[B] check start
+  Content[B1] is not Active skip
+  Content[B2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] is before arbitrate skip
+      let cContent = C.allocatedContent() = before arbitrate skip
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [before arbitrate skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] before arbitrate skip
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[B] displays Content[null] hidden[false]
+
+Area[C] check start
+  Content[C2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has no Allocated Content
+      let cContent = C.allocatedContent() = NULL
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [no Content skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] before arbitrate skip
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[C] displays Content[null] hidden[false]
+
+Area[D] check start
+  Content[D1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+Area[D] displays Content[D1::NORMAL] hidden[false]
+
+Area[X] check start
+  Content[X1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has no Allocated Content
+      let cContent = C.allocatedContent() = NULL
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [no Content skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] before arbitrate skip
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has no Allocated Content
+      let cContent = C.allocatedContent() = NULL
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [no Content skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] false
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] false
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+Area[X] displays Content[null] hidden[false]
+
+Area[Y] check start
+  Content[X1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has no Allocated Content
+      let cContent = C.allocatedContent() = NULL
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [no Content skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] false
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] false
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has no Allocated Content
+      let cContent = C.allocatedContent() = NULL
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [no Content skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] false
+      [Y.isHidden()] false
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] false
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+Area[Y] displays Content[null] hidden[false]
+
+Area[Z] check start
+  Content[X1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has no Allocated Content
+      let cContent = C.allocatedContent() = NULL
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [no Content skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] false
+      [Y.isHidden()] false
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] false
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has no Allocated Content
+      let cContent = C.allocatedContent() = NULL
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [no Content skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] false
+      [Y.isHidden()] false
+      [Z.isHidden()] false
+      [For All x1Allo { x |x.isHidden()}] false
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+Area[Z] displays Content[null] hidden[false]
+
+----Arbitrate----
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[A2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] is before arbitrate skip
+      let bContent = B.allocatedContent() = before arbitrate skip
+      Allocatable[C] is before arbitrate skip
+      let cContent = C.allocatedContent() = before arbitrate skip
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [before arbitrate skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] before arbitrate skip
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[A] displays Content[null] hidden[false]
+
+Area[B] check start
+  Content[B1] is not Active skip
+  Content[B2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] is before arbitrate skip
+      let cContent = C.allocatedContent() = before arbitrate skip
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [before arbitrate skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] before arbitrate skip
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[B] displays Content[null] hidden[false]
+
+Area[C] check start
+  Content[C2::NORMAL] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] before arbitrate skip
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[C] displays Content[C2::NORMAL] hidden[false]
+
+Area[D] check start
+  Content[D1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+Area[D] displays Content[D1::NORMAL] hidden[false]
+
+Area[X] check start
+  Content[X1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] before arbitrate skip
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] false
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] false
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] false
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] false
+
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+Area[X] change hidden
+Area[X] displays Content[null] hidden[true]
+
+Area[Y] check start
+  Content[X1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] false
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] false
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] false
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] false
+
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] true
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+Area[Y] change hidden
+Area[Y] displays Content[null] hidden[true]
+
+Area[Z] check start
+  Content[X1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] true
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] true
+      [Z.isHidden()] false
+      [For All x1Allo { x |x.isHidden()}] false
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] false
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] false
+
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] true
+      [Z.isHidden()] true
+      [For All x1Allo { x |x.isHidden()}] true
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] true
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] true
+
+Area[Z] change hidden
+Area[Z] displays Content[null] hidden[true]
+
+----Arbitrate----
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[A2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] is before arbitrate skip
+      let bContent = B.allocatedContent() = before arbitrate skip
+      Allocatable[C] is before arbitrate skip
+      let cContent = C.allocatedContent() = before arbitrate skip
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [before arbitrate skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] before arbitrate skip
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[A] displays Content[null] hidden[false]
+
+Area[B] check start
+  Content[B1] is not Active skip
+  Content[B2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] is before arbitrate skip
+      let cContent = C.allocatedContent() = before arbitrate skip
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [before arbitrate skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] before arbitrate skip
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[B] displays Content[null] hidden[false]
+
+Area[C] check start
+  Content[C2::NORMAL] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] before arbitrate skip
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[C] displays Content[C2::NORMAL] hidden[false]
+
+Area[D] check start
+  Content[D1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+Area[D] displays Content[D1::NORMAL] hidden[false]
+
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] before arbitrate skip
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] false
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] false
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] false
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] false
+
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+Area[X] change hidden
+Area[X] displays Content[X1::NORMAL] hidden[true]
+
+Area[Y] check start
+  Content[X1::NORMAL] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] before arbitrate skip
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] false
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] false
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] false
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] false
+
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] true
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+Area[Y] change hidden
+Area[Y] displays Content[X1::NORMAL] hidden[true]
+
+Area[Z] check start
+  Content[X1::NORMAL] check online constraints start
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] true
+      [Z.isHidden()] before arbitrate skip
+      [For All x1Allo { x |x.isHidden()}] before arbitrate skip
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] true
+      [Z.isHidden()] false
+      [For All x1Allo { x |x.isHidden()}] false
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] false
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] false
+
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] true
+      [Z.isHidden()] true
+      [For All x1Allo { x |x.isHidden()}] true
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] true
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] true
+
+Area[Z] change hidden
+Area[Z] displays Content[X1::NORMAL] hidden[true]
+
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[A2::NORMAL] check start
+  Content[A2::NORMAL] is not Active skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[B2::NORMAL] check start
+  Content[B2::NORMAL] is not Active skip
+Content[C2::NORMAL] check start
+  Content[C2::NORMAL] is not Active skip
+Content[D1::NORMAL] check start
+  Content[D1::NORMAL] is Visible skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is not Active skip
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[A2::NORMAL] check start
+  Content[A2::NORMAL] is not Active skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[B2::NORMAL] check start
+  Content[B2::NORMAL] is not Active skip
+Content[C2::NORMAL] check start
+  Content[C2::NORMAL] is Visible skip
+Content[D1::NORMAL] check start
+  Content[D1::NORMAL] is Visible skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is not Active skip
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[A2::NORMAL] check start
+  Content[A2::NORMAL] is not Active skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[B2::NORMAL] check start
+  Content[B2::NORMAL] is not Active skip
+Content[C2::NORMAL] check start
+  Content[C2::NORMAL] is Visible skip
+Content[D1::NORMAL] check start
+  Content[D1::NORMAL] is Visible skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is not Canceled because NEVER_GIVEUP
+----Check All Constraint----
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has no Allocated Content
+      let cContent = C.allocatedContent() = NULL
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[NULL] state value [no Content skip]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] before arbitrate skip
+      [X.isHidden()] false
+      [Y.isHidden()] false
+      [Z.isHidden()] false
+      [For All x1Allo { x |x.isHidden()}] false
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] before arbitrate skip
+
+----Check All Constraint----
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] true
+      [Z.isHidden()] true
+      [For All x1Allo { x |x.isHidden()}] true
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] true
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] true
+
+----Check All Constraint----
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] check start
+      let a1Content = A1 = A1
+      Allocatable[A] has no Allocated Content
+      let aContent = A.allocatedContent() = NULL
+      Allocatable[B] has no Allocated Content
+      let bContent = B.allocatedContent() = NULL
+      Allocatable[C] has Allocated Content[C2]
+      let cContent = C.allocatedContent() = C2
+      let x1Allo = X1.allocatables() = [X,Y,Z]
+      [aContent == a1Content] false
+      Content[C2] state value [NORMAL : 11]
+      Content[D1] state value [NORMAL : 10]
+      [(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())] true
+      [X.isHidden()] true
+      [Y.isHidden()] true
+      [Z.isHidden()] true
+      [For All x1Allo { x |x.isHidden()}] true
+      [((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] true
+    constraint expression[((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})] true
+
+----Result Information----
+Allocatable TotalCount:7
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[D1::NORMAL] hidden[false]
+  Area[X] Content[null] hidden[false]
+  Area[Y] Content[null] hidden[false]
+  Area[Z] Content[null] hidden[false]
+Content TotalCount:7
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[A2] visible[false] cancel[false]
+  ViewContent[B1] visible[false] cancel[false]
+  ViewContent[B2] visible[false] cancel[false]
+  ViewContent[C2] visible[false] cancel[false]
+  ViewContent[D1] visible[true] cancel[false]
+    allocated Area[D]
+  ViewContent[X1] visible[false] cancel[false]
+----Result Information----
+Allocatable TotalCount:7
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[C2::NORMAL] hidden[false]
+  Area[D] Content[D1::NORMAL] hidden[false]
+  Area[X] Content[null] hidden[true]
+  Area[Y] Content[null] hidden[true]
+  Area[Z] Content[null] hidden[true]
+Content TotalCount:7
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[A2] visible[false] cancel[false]
+  ViewContent[B1] visible[false] cancel[false]
+  ViewContent[B2] visible[false] cancel[false]
+  ViewContent[C2] visible[true] cancel[false]
+    allocated Area[C]
+  ViewContent[D1] visible[true] cancel[false]
+    allocated Area[D]
+  ViewContent[X1] visible[false] cancel[false]
+----Result Information----
+Allocatable TotalCount:7
+  Area[A] Content[null] hidden[false]
+  Area[B] Content[null] hidden[false]
+  Area[C] Content[C2::NORMAL] hidden[false]
+  Area[D] Content[D1::NORMAL] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[true]
+  Area[Y] Content[X1::NORMAL] hidden[true]
+  Area[Z] Content[X1::NORMAL] hidden[true]
+Content TotalCount:7
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[A2] visible[false] cancel[false]
+  ViewContent[B1] visible[false] cancel[false]
+  ViewContent[B2] visible[false] cancel[false]
+  ViewContent[C2] visible[true] cancel[false]
+    allocated Area[C]
+  ViewContent[D1] visible[true] cancel[false]
+    allocated Area[D]
+  ViewContent[X1] visible[false] cancel[false]
+    allocated Area[X]
+    allocated Area[Y]
+    allocated Area[Z]
+

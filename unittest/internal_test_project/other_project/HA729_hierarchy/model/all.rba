@@ -1,0 +1,150 @@
+Package Displays {
+	Size size1 {
+		width: 300
+		height: 200
+	}
+	Size size2 {
+		width: 200
+		height: 100
+	}
+	Size size3 {
+		width: 300
+		height: 200
+	}
+	Size size4 {
+		width: 200
+		height: 100
+	}
+	Size size5 {
+		width: 300
+		height: 200
+	}
+	Size Sample_METER_FULLSCREEN {
+		width: 620
+		height: 450
+	}
+	Area area1{
+		visibility: NONE_VALUE
+		arbitrationPolicy: LAST_COME_FIRST
+		zorder: MIN_VALUE
+		sizeReference: size1
+	}
+	Area area2{
+		visibility: NONE_VALUE
+		arbitrationPolicy: LAST_COME_FIRST
+		zorder: MIN_VALUE
+		sizeReference: size2
+	}
+	Area area3{
+		visibility: NONE_VALUE
+		arbitrationPolicy: LAST_COME_FIRST
+		zorder: MIN_VALUE
+		sizeReference: size3
+	}
+	Area area4{
+		visibility: NONE_VALUE
+		arbitrationPolicy: LAST_COME_FIRST
+		zorder: MIN_VALUE
+		sizeReference: size4
+	}
+	Area area5{
+		visibility: NONE_VALUE
+		arbitrationPolicy: LAST_COME_FIRST
+		zorder: MIN_VALUE
+		sizeReference: size5
+	}
+	ViewContent C1 {
+		loserType: NEVER_GIVEUP
+		sizeReference: size1
+		State NORMAL {
+			priority: 14
+		}
+		allocatable: [area1]
+	}
+	ViewContent C2 {
+		loserType: NEVER_GIVEUP
+		sizeReference: size2
+		State NORMAL {
+			priority: 13
+		}
+		allocatable: [area2]
+	}
+	ViewContent C3 {
+		loserType: NEVER_GIVEUP
+		sizeReference: size3
+		State NORMAL {
+			priority: 12
+		}
+		allocatable: [area3]
+	}
+	ViewContent C4 {
+		loserType: NEVER_GIVEUP
+		sizeReference: size4
+		State NORMAL {
+			priority: 11
+		}
+		allocatable: [area4]
+	}
+	ViewContent C5 {
+		loserType: NEVER_GIVEUP
+		sizeReference: size5
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		allocatable: [area5]
+	}
+	Display Sample_METER {
+		sizeReference: Sample_METER_FULLSCREEN
+		CompositeArea Default {
+			layout: FixedPositionLayout{
+				PositionContainer {
+					x: 0
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: area1
+				}
+				PositionContainer {
+					x: 310
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: area2
+				}
+				PositionContainer {
+					x: 310
+					y: 220
+					basePoint: LEFT_TOP
+					areaReference: area3
+				}
+				PositionContainer {
+					x: 310
+					y: 110
+					basePoint: LEFT_TOP
+					areaReference: area4
+				}
+				PositionContainer {
+					x: 0
+					y: 210
+					basePoint: LEFT_TOP
+					areaReference: area5
+				}
+			}
+		}
+	}
+	AreaSet その他のエリア {
+		target: [area1,area2]
+	}
+	Scene 自動運転シーン {
+		global: false
+	}
+	Scene HUDオフシーン {
+		global: false
+	}
+	Constraint PCSの割込時における非表示エリア制約 {
+		runtime: true
+		C5.isVisible()
+	}
+	Event eventA{}
+	EventProcessing 操作権 {
+		IF(area2.contentValue() > area3.contentValue()) THEN area2 ELSE area3
+	}
+}

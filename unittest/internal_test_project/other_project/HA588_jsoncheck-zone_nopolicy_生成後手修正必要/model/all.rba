@@ -1,0 +1,60 @@
+Package Outputs {
+	Zone ゾーンA {
+		arbitrationPolicy: DEFAULT
+		priority: > That-of ゾーンB
+		attenuateValue: 1
+	}
+	Zone ゾーンB {
+		arbitrationPolicy: DEFAULT
+		priority: MIN_VALUE
+		attenuateValue: 2
+	}
+	Zone ゾーンC {
+		arbitrationPolicy: DEFAULT
+		priority: NONE_VALUE
+		attenuateValue: 3
+	}
+	SoundContent コンテンツA1 {
+		loserType: NEVER_GIVEUP
+		State NORMAL {
+			priority: 15
+		}
+		allocatable: [ゾーンA]
+	}
+	SoundContent コンテンツB1 {
+		State NORMAL {
+			priority: 14
+		}
+		allocatable: [ゾーンB]
+	}
+	SoundContent コンテンツC1 {
+		State NORMAL {
+			priority: 13
+		}
+		allocatable: [ゾーンC]
+	}
+	SoundContent コンテンツA2 {
+		loserType: NEVER_GIVEUP
+		State NORMAL {
+			priority: 12
+		}
+		allocatable: [ゾーンA]
+	}
+	SoundContent コンテンツB2 {
+		State NORMAL {
+			priority: 11
+		}
+		allocatable: [ゾーンB]
+	}
+	SoundContent コンテンツC2 {
+		State NORMAL {
+			priority: 10
+		}
+		allocatable: [ゾーンC]
+	}
+	Constraint AllInstanceOfContent {
+		runtime: true
+		Exists ALL_SOUNDCONTENTS{x|x.isSounding()
+		}
+	}
+}

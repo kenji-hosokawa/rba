@@ -1,0 +1,81 @@
+Package Displays {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 300
+			height: 300
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: A
+				}
+				PositionContainer {
+					x: 100
+					y: 0
+					areaReference: B
+				}
+				PositionContainer {
+					x: 200
+					y: 0
+					areaReference: C
+				}
+			}
+		}
+	}
+	Area A {
+		arbitrationPolicy: DEFAULT
+		sizeReference: サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		arbitrationPolicy: DEFAULT
+		sizeReference: サイズ
+		visibility: < That-of A
+		zorder: STANDARD_VALUE
+	}
+	Area C {
+		arbitrationPolicy: DEFAULT
+		sizeReference: サイズ
+		visibility: < That-of B
+		zorder: STANDARD_VALUE
+	}
+	Size サイズ {
+		width: 100
+		height: 100
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: サイズ
+	}
+	ViewContent A2{
+		allocatable: [
+			A,B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: サイズ
+	}
+	ViewContent B1{
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: サイズ
+	}
+	Constraint ChangeableAreaSet {
+		runtime: true
+		!C.isDisplayed() ->
+		For-All { A.allocatedContent().allocatables() } { x | x.isHidden() }
+	}
+}

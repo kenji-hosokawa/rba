@@ -1,0 +1,14 @@
+#start 1
+CL
+C,on,a1,NORMAL
+C,on,b1,NORMAL
+C,on,c1,NORMAL
+Assert,A,A,a1,attenuated:false
+Assert,A,B,,attenuated:false
+Assert,A,C,c1,attenuated:false
+Assert,C,isCanceled,a1,false
+Assert,C,isCanceled,a2,false
+Assert,C,isCanceled,b1,false
+Assert,C,isCanceled,b2,false
+Assert,C,isCanceled,c1,false
+Assert,C,isCanceled,c2,false

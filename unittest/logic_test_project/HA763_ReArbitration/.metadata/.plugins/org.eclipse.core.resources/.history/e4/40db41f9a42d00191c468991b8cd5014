@@ -1,0 +1,12 @@
+#start 1
+CL
+C,on,A1,NORMAL
+Assert,A,A,A1
+Assert,A,B,
+Assert,C,isCanceled,A1,false
+Assert,C,isCanceled,B1,false
+C,on,B1,NORMAL
+Assert,A,A,A1
+Assert,A,B,B1
+Assert,C,isCanceled,A1,false
+Assert,C,isCanceled,B1,false

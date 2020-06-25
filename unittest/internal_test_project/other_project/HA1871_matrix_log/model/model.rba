@@ -1,0 +1,42 @@
+Package Models {
+	Size size1 { width: 100 height: 100 }
+	Display D1 {
+		sizeReference: size1
+		CompositeArea CA {
+			layout: FixedPositionLayout {
+				PositionContainer {x: 0 y: 0 areaReference: AreaA}
+			}
+		}
+	}
+	Area AreaA {
+		arbitrationPolicy: DEFAULT
+		sizeReference: size1
+		priority: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	
+	ViewContent VContentA {
+		allocatable: [AreaA]
+		sizeReference: size1
+		State NORMAL { priority: STANDARD_VALUE }
+	}
+	ViewContent VContentB {
+		allocatable: [AreaA]
+		sizeReference: size1
+		State NORMAL { priority: STANDARD_VALUE }
+	}
+
+	Zone ZoneA {
+		arbitrationPolicy: DEFAULT
+		priority: STANDARD_VALUE
+	}
+	
+	SoundContent SContentA {
+		allocatable: [ZoneA]
+		State NORMAL { priority: STANDARD_VALUE }
+	}
+	SoundContent SContentB {
+		allocatable: [ZoneA]
+		State NORMAL { priority: STANDARD_VALUE }
+	}
+}

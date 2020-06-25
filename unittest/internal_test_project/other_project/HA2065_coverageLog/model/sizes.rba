@@ -1,0 +1,11 @@
+Package MET_Sizes {
+	Size size1 {
+		width:300
+		height:200
+	}
+	Size size2 {
+		width:200
+		height:100
+	}
+}
+

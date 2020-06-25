@@ -1,0 +1,14 @@
+C,ON,コンテンツA1,NORMAL
+execute
+Assert,A,エリアA,コンテンツA1
+Assert,A,エリアB,NULL
+
+C,ON,コンテンツB1,NORMAL
+execute
+Assert,A,エリアA,NULL
+Assert,A,エリアB,NULL
+
+C,ON,コンテンツB1,NORMAL
+execute
+Assert,A,エリアA,コンテンツA1
+Assert,A,エリアB,コンテンツB1

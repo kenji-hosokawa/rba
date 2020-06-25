@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groupsettingmodel:GroupSetting xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:groupsettingmodel="http://www.example.org/groupsettingmodel">
+  <groups groupName="Group1">
+    <targetContents contentName="a1" contentStateName="NORMAL"/>
+    <targetContents contentName="b1" contentStateName="NORMAL"/>
+  </groups>
+</groupsettingmodel:GroupSetting>

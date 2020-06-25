@@ -1,0 +1,70 @@
+Package Model {
+	Zone AllocatableA {
+		arbitrationPolicy: DEFAULT
+		visibility: STANDARD_VALUE
+	}
+	Zone AllocatableB {
+		arbitrationPolicy: DEFAULT
+		visibility: STANDARD_VALUE
+	}
+	Zone AllocatableC {
+		arbitrationPolicy: DEFAULT
+		visibility: STANDARD_VALUE
+	}
+	Zone AllocatableD {
+		arbitrationPolicy: DEFAULT
+		visibility: STANDARD_VALUE
+	}
+	Zone AllocatableE {
+		arbitrationPolicy: DEFAULT
+		visibility: STANDARD_VALUE
+	}
+	Zone AllocatableF {
+		arbitrationPolicy: DEFAULT
+		visibility: STANDARD_VALUE
+	}
+	ZoneSet ZoneSetBC{
+		target: [AllocatableB,AllocatableC]
+	}
+	ZoneSet ZoneSetABC{
+		target: [AllocatableA,ZoneSetBC]
+	}
+	ZoneSet ZoneSetDE{
+		target: [AllocatableD,AllocatableE]
+	}
+	ZoneSet ZoneSetDE2{
+		target: [AllocatableD,ZoneSetDE]
+	}
+	ZoneSet ZoneSetABCDE{
+		target: [ZoneSetABC,ZoneSetDE2]
+	}
+	
+	SoundContent ContentX{
+		allocatable: [ ZoneSetABCDE ]
+		State NORMAL { priority: STANDARD_VALUE }
+	}
+	SoundContent ContentY{
+		allocatable: [ ZoneSetABCDE ]
+		State NORMAL { priority: STANDARD_VALUE }
+	}
+	SoundContent ContentZ{
+		allocatable: [ ZoneSetABCDE ]
+		State NORMAL { priority: STANDARD_VALUE }
+	}
+	SoundContentSet ContentSetXY {
+		target: [ContentX, ContentY]
+		allocatable: [ZoneSetDE]
+	}
+	
+	Constraint GetContentsList {
+		runtime: true
+		For-All AllocatableD.contentsList() { x | !x.isSounding() }
+	}
+
+	//制約式GetContentsListは以下3つの制約式と同義
+//		!ContentX.isSounding()
+//		!ContentY.isSounding()
+//		!ContentZ.isSounding()
+
+
+}

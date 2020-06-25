@@ -1,0 +1,39 @@
+Package SampleOutputs {
+	Zone A {
+		priority: > That-of B
+	}
+	Zone B {
+		priority: > That-of C
+	}
+	Zone C {
+		priority: NONE_VALUE
+	}
+	SoundContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent C1 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	Constraint HA763_述語の再調停テスト {
+		runtime: true
+		C.isOutputted() -> B1.hasComeEarlierThan(A1)
+	}
+}

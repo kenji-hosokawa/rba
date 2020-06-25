@@ -1,0 +1,116 @@
+Package Displays {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 900
+			height: 200
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: A
+				}
+				PositionContainer {
+					x: 200
+					y: 0
+					areaReference: B
+				}
+				PositionContainer {
+					x: 400
+					y: 0
+					areaReference: C
+				}
+				PositionContainer {
+					x: 700
+					y: 0
+					areaReference: D
+				}
+			}
+		}
+	}
+
+	Area A {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Aサイズ
+		visibility: > That-of B
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Bサイズ
+		visibility: > That-of C
+		zorder: STANDARD_VALUE
+	}
+	Area C {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Cサイズ
+		visibility: MIN_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area D {
+		arbitrationPolicy: LAST_COME_FIRST
+		sizeReference: Aサイズ
+		visibility: MIN_VALUE
+		zorder: STANDARD_VALUE
+	}
+
+	Size Aサイズ {
+		width: 200
+		height: 200
+	}
+	Size Bサイズ {
+		width: 200
+		height: 200
+	}
+	Size Cサイズ {
+		width: 300
+		height: 200
+	}
+
+	ViewContent a1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: Aサイズ
+	}
+	ViewContent b1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: 9
+		}
+		sizeReference: Bサイズ
+	}
+	ViewContent c1 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: < That-of b1.NORMAL
+		}
+		sizeReference: Cサイズ
+	}
+	ViewContent d1{
+		allocatable: [
+			D
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: Aサイズ
+	}
+
+	Constraint IsGreaterThanOperator_exeption {
+		runtime: true
+		(A.contentValue() = B.contentValue()) -> C.isHidden()
+	}
+	Constraint IsGreaterThanEqualOperator_exeption {
+		runtime: true
+		!(A.contentValue() = B.contentValue()) -> D.isHidden()
+	}
+}

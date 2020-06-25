@@ -1,0 +1,69 @@
+#PrevResult#A,AreaA,VContentB,NORMAL
+#PrevResult#A,ZoneA,SContentA,NORMAL
+#Request#C,on,VContentA,NORMAL,2
+#Request#C,on,VContentB,NORMAL,1
+#Request#C,on,SContentA,NORMAL,1
+#Request#C,off,SContentB,NORMAL,0
+#CanceledRequest#VContentA,NORMAL,f
+#CanceledRequest#VContentB,NORMAL,f
+#CanceledRequest#SContentA,NORMAL,f
+#CanceledRequest#SContentB,NORMAL,f
+#Result#A,AreaA,VContentA
+#Result#A,ZoneA,SContentA
+----Request Information----
+Allocatable Count:2
+  Area[AreaA] policy[DEFAULT] visibility[10]
+  Zone[ZoneA] policy[DEFAULT] visibility[10]
+ContentState Count:4
+  ViewContent[VContentA::NORMAL] priority[10] isActive[true] order[2]
+  ViewContent[VContentB::NORMAL] priority[10] isActive[true] order[1]
+  SoundContent[SContentA::NORMAL] priority[10] isActive[true] order[1]
+  SoundContent[SContentB::NORMAL] priority[10] isActive[false] order[0]
+Scene Count:0
+Constraint Count:0
+----Previous Result Information----
+Allocatable TotalCount:2
+  Area[AreaA] Content[VContentB::NORMAL] hidden[false]
+  Zone[ZoneA] Content[SContentA::NORMAL] muted[false] attenuated[false]
+Content TotalCount:4
+  ViewContent[VContentA] visible[false] active[false]
+  ViewContent[VContentB] visible[true] active[true]
+    allocated Area[AreaA]
+  SoundContent[SContentA] sounding[true] active[true]
+    allocated Zone[ZoneA]
+  SoundContent[SContentB] sounding[false] active[false]
+----Arbitrate----
+Area[AreaA] check start
+  Content[VContentA::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+Area[AreaA] displays Content[VContentA::NORMAL] hidden[false]
+
+Zone[ZoneA] check start
+  Content[SContentB] is not Active skip
+  Content[SContentA::NORMAL] check online constraints start
+  check online constraints to confirm zone muted state
+  check online constraints to confirm zone attenuated state
+Zone[ZoneA] outputs Content[SContentA::NORMAL] muted[false] attenuated[false]
+
+----Cancel Request----
+Content[VContentA::NORMAL] check start
+  Content[VContentA::NORMAL] is Visible skip
+Content[VContentB::NORMAL] check start
+  Content[VContentB::NORMAL] is not Canceled because NEVER_GIVEUP
+Content[SContentA::NORMAL] check start
+  Content[SContentA::NORMAL] is Sounding skip
+Content[SContentB::NORMAL] check start
+  Content[SContentB::NORMAL] is not Active skip
+----Check All Constraint----
+----Result Information----
+Allocatable TotalCount:2
+  Area[AreaA] Content[VContentA::NORMAL] hidden[false]
+  Zone[ZoneA] Content[SContentA::NORMAL] muted[false] attenuated[false]
+Content TotalCount:4
+  ViewContent[VContentA] visible[true] cancel[false]
+    allocated Area[AreaA]
+  ViewContent[VContentB] visible[false] cancel[false]
+  SoundContent[SContentA] sounding[true] cancel[false]
+    allocated Zone[ZoneA]
+  SoundContent[SContentB] sounding[false] cancel[false]
+

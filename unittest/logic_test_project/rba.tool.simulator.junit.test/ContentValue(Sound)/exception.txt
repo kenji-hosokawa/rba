@@ -1,0 +1,6 @@
+C,ON,コンテンツ優先度（高）,NORMAL
+C,ON,コンテンツ優先度（低）,WARNING
+execute
+
+Assert,A,優先度（高）ゾーン,コンテンツ優先度（高）
+Assert,A,優先度（低）ゾーン,NULL

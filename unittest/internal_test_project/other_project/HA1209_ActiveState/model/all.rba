@@ -1,0 +1,96 @@
+Package SampleDisplays {
+	Display Sample_METER{
+		Size Sample_METER_FULLSCREEN {
+			width: 500
+			height: 400
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:100
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: X
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: XX
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: XXX
+				}
+			}
+		}
+	}
+	Size サイズ {
+		width:100
+		height:100
+	}
+	Area A {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area X {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area XX {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area XXX {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL1 {
+			priority: STANDARD_VALUE
+		}
+		State NORMAL2 {
+			priority: STANDARD_VALUE + 1
+		}
+		State NORMAL3 {
+			priority: STANDARD_VALUE + 2
+		}
+		sizeReference:サイズ
+	}
+	ViewContent X1 {
+		allocatable: [
+			X,XX,XXX
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+	Constraint HA1209_ActiveState_1 {
+		runtime: true
+		A1.activeState() == A1.NORMAL1 -> X.isHidden()
+	}
+	Constraint HA1209_ActiveState_2 {
+		runtime: true
+		(pre)A1.activeState() == A1.NORMAL2 -> XX.isHidden()
+	}
+	Constraint HA1209_ActiveState_3 {
+		runtime: true
+		A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isHidden()
+	}
+}

@@ -1,0 +1,40 @@
+#start 1
+CL
+C,on,B1,NORMAL
+C,on,A1,NORMAL
+Assert,A,A,,attenuated:false
+Assert,A,B,B1,attenuated:false
+Assert,A,C,,attenuated:false
+Assert,C,isCanceled,A1,false
+Assert,C,isCanceled,A2,false
+Assert,C,isCanceled,B1,false
+Assert,C,isCanceled,B2,false
+Assert,C,isCanceled,C1,false
+Assert,C,isCanceled,C2,false
+
+#start 2
+CL
+C,on,A1,NORMAL
+Assert,A,A,A1,attenuated:false
+Assert,A,B,,attenuated:false
+Assert,A,C,,attenuated:false
+Assert,C,isCanceled,A1,false
+Assert,C,isCanceled,A2,false
+Assert,C,isCanceled,B1,false
+Assert,C,isCanceled,B2,false
+Assert,C,isCanceled,C1,false
+Assert,C,isCanceled,C2,false
+
+#start 3
+CL
+C,on,A1,NORMAL
+C,on,B1,NORMAL
+Assert,A,A,,attenuated:false
+Assert,A,B,B1,attenuated:false
+Assert,A,C,,attenuated:false
+Assert,C,isCanceled,A1,false
+Assert,C,isCanceled,A2,false
+Assert,C,isCanceled,B1,false
+Assert,C,isCanceled,B2,false
+Assert,C,isCanceled,C1,false
+Assert,C,isCanceled,C2,false

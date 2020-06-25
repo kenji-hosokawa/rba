@@ -1,0 +1,46 @@
+#start 1
+CL
+C,on,コンテンツA1,NORMAL
+Assert,A,エリアA,コンテンツA1
+Assert,A,エリアB,
+Assert,A,エリアC,
+Assert,A,エリアD,
+Assert,A,エリアE,
+
+#start 2
+CL
+C,on,コンテンツB1,NORMAL
+Assert,A,エリアA,
+Assert,A,エリアB,
+Assert,A,エリアC,
+Assert,A,エリアD,
+Assert,A,エリアE,
+
+#start 3
+CL
+C,on,コンテンツA2,NORMAL
+Assert,A,エリアA,コンテンツA2
+Assert,A,エリアB,
+Assert,A,エリアC,
+Assert,A,エリアD,
+Assert,A,エリアE,
+
+#start 4
+CL
+C,on,コンテンツB2,NORMAL
+Assert,A,エリアA,
+Assert,A,エリアB,コンテンツB2
+Assert,A,エリアC,
+Assert,A,エリアD,
+Assert,A,エリアE,
+
+#start 5
+CL
+C,on,コンテンツC1,NORMAL
+C,on,コンテンツD1,NORMAL
+C,on,コンテンツE1,NORMAL
+Assert,A,エリアA,
+Assert,A,エリアB,
+Assert,A,エリアC,コンテンツC1
+Assert,A,エリアD,コンテンツD1
+Assert,A,エリアE,コンテンツE1

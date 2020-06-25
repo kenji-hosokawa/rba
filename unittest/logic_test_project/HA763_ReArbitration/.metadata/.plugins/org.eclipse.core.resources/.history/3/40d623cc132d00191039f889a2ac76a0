@@ -1,0 +1,5 @@
+#start 1
+Assert,NG,7,A,,A1
+Assert,OK,8,B,B1,B1
+Assert,NG,9,C,C1,
+Assert,NG,10,D,D1,

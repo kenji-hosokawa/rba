@@ -1,0 +1,18 @@
+#HierarchyOfConstraint#START,HA1209_ActiveState_1,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(A1.activeState() == A1.NORMAL1 -> X.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left==	A1.activeState() == A1.NORMAL1	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left==#left.activeState()	A1.activeState()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()	X.isHidden()	boolean
+#HierarchyOfConstraint#END,HA1209_ActiveState_1
+#HierarchyOfConstraint#START,HA1209_ActiveState_2,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	((pre)A1.activeState() == A1.NORMAL2 -> XX.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left==	(pre)A1.activeState() == A1.NORMAL2	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left==#left.activeState()	(pre)A1.activeState()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()	XX.isHidden()	boolean
+#HierarchyOfConstraint#END,HA1209_ActiveState_2
+#HierarchyOfConstraint#START,HA1209_ActiveState_3,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(A.allocatedContent().activeState() == A1.NORMAL3 -> XXX.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left==	A.allocatedContent().activeState() == A1.NORMAL3	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left==#left.activeState()	A.allocatedContent().activeState()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()	XXX.isHidden()	boolean
+#HierarchyOfConstraint#END,HA1209_ActiveState_3

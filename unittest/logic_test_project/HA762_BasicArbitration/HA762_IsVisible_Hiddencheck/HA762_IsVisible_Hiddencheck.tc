@@ -1,0 +1,10 @@
+#start 1
+CL
+C,on,コンテンツB1,NORMAL
+C,on,コンテンツA1,NORMAL
+Assert,A,エリアA,コンテンツA1
+Assert,A,エリアB,
+Assert,C,isCanceled,コンテンツA1,false
+Assert,C,isCanceled,コンテンツB1,false
+Assert,C,isCanceled,コンテンツA2,false
+Assert,C,isCanceled,コンテンツB2,false

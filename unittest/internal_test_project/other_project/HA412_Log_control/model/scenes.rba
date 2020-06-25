@@ -1,0 +1,7 @@
+Package Scenes {
+	Scene globalscene{
+		global: true
+	}
+	Scene 自動運転シーン{}
+	Scene HUDオフシーン{}
+}

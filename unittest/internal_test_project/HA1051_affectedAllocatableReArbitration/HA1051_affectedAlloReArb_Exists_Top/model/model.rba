@@ -1,0 +1,77 @@
+Package SampleDisplays {
+	Display Sample_METER{
+		Size Sample_METER_FULLSCREEN {
+			width: 800
+			height: 400
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:100
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+			}
+		}
+	}
+	Size Aサイズ {
+		width:300
+		height:200
+	}
+	Area A {
+		sizeReference:Aサイズ
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	Zone B {
+		visibility:  > That-of C
+	}
+	Zone C {
+		visibility:  > That-of P
+	}
+	Zone P {
+		visibility: NONE_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Aサイズ
+	}
+	SoundContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent C1 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent P1 {
+		allocatable: [
+			P
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	Constraint HA1051_影響エリアの再調停テスト_1 {
+		runtime: true
+		Exists ALL_AREAS{ x|x.isDisplayed() -> For-All ALL_ZONES{y|y.isAttenuated() } }
+	}
+	Constraint HA1051_影響エリアの再調停テスト_2 {
+		runtime: true
+		P.isOutputted() -> !A.isDisplayed()
+	}
+}

@@ -1,0 +1,151 @@
+Package Displays {
+	Display DisplayA{
+		Size Default {width: 1 height: 1} 
+		CompositeArea Default {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:0
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x:0
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+				PositionContainer {
+					x:0
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: BB
+				}
+				PositionContainer {
+					x:0
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: C
+				}
+			}
+		}
+	}
+	Area A {
+		arbitrationPolicy: DEFAULT
+		Size Default {width: 1 height: 1}
+		visibility: > That-of B
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		arbitrationPolicy: DEFAULT
+		Size Default {width: 1 height: 1}
+		visibility: > That-of BB
+		zorder: STANDARD_VALUE
+	}
+	Area BB {
+		arbitrationPolicy: DEFAULT
+		Size Default {width: 1 height: 1}
+		visibility: > That-of C
+		zorder: STANDARD_VALUE
+	}
+	Area C {
+		arbitrationPolicy: LAST_COME_FIRST
+		Size Default {width: 1 height: 1}
+		visibility: > That-of D
+		zorder: STANDARD_VALUE
+	}
+	Area D {
+		arbitrationPolicy: DEFAULT
+		Size Default {width: 1 height: 1}
+		visibility: MIN_VALUE
+		zorder: STANDARD_VALUE
+	}
+
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State StateA1 {
+			priority: > That-of StateA2
+		}
+		State StateA2 {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent A2{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent B1 {
+		loserType:GOOD_LOSER
+		allocatable: [
+			B, BB
+		]
+		State StateB2 {
+			priority: STANDARD_VALUE
+		}
+		State StateB1 {
+			priority: > That-of StateB2
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent B2 {
+		allocatable: [
+			B, BB
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent C1 {
+		loserType:DO_NOT_GIVEUP_UNTIL_WIN
+		allocatable: [
+			C
+		]
+		State StateC1 {
+			priority: STANDARD_VALUE
+		}
+		State StateC2 {
+			priority: > That-of StateC1
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent C2 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent D1 {
+		loserType:NEVER_GIVEUP
+		allocatable: [
+			D
+		]
+		State StateD1 {
+			priority: > That-of StateD2
+		}
+		State StateD2 {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent D2 {
+		allocatable: [
+			D
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: 1 height: 1}
+	}
+}

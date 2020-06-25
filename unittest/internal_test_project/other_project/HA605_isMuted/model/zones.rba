@@ -1,0 +1,22 @@
+Package Zones {
+	Zone フロント {
+		arbitrationPolicy: DEFAULT
+		priority: MIN_VALUE
+		attenuateValue: 10
+	}
+	Zone リア {
+		arbitrationPolicy: DEFAULT
+		priority: MIN_VALUE
+		attenuateValue: 20
+	}
+	Zone メインスピーカー {
+		arbitrationPolicy: DEFAULT
+		priority: MIN_VALUE
+		attenuateValue: 30
+	}
+	Zone サブスピーカー {
+		arbitrationPolicy: DEFAULT
+		priority: MIN_VALUE
+		attenuateValue: 40
+	}
+}

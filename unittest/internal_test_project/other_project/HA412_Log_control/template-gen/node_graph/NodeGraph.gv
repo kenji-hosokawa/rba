@@ -1,0 +1,183 @@
+digraph rule_objects_graph {
+	rankdir = LR;
+	charset="utf-8";
+	clusterrank = global;
+	
+	node [shape = plaintext];
+	Scene -> Constraint -> "Area Set" -> Area -> "Content Set" -> Content; 
+	{ rank = same;
+		node [shape = box];
+		{
+			Area;
+			e1 [label="スピードメーターエリア", fontname="Meiryo UI"];
+			e2 [label="タコメーターエリア", fontname="Meiryo UI"];
+			e3 [label="割込みメッセージエリア", fontname="Meiryo UI"];
+			e4 [label="外気温エリア", fontname="Meiryo UI"];
+			e5 [label="オーディオエリア", fontname="Meiryo UI"];
+			e6 [label="HUD_外気温エリア", fontname="Meiryo UI"];
+			e7 [label="HUD_スピードメーターエリア", fontname="Meiryo UI"];
+			e8 [label="HUD_タコメーターエリア", fontname="Meiryo UI"];
+			e9 [label="HUD_割込みメッセージエリア", fontname="Meiryo UI"];
+
+			e10 [label="割込音声出力ゾーン", fontname="Meiryo UI"];
+			e11 [label="基本音声出力ゾーン", fontname="Meiryo UI"];
+		}
+	}
+	
+	{ rank = same;
+		node [shape = ellipse];
+		{
+			Content;
+			e12 [label="スピードメーター", fontname="Meiryo UI"];
+			e13 [label="タコメーター", fontname="Meiryo UI"];
+			e14 [label="外気温", fontname="Meiryo UI"];
+			e15 [label="路面凍結表示", fontname="Meiryo UI"];
+			e16 [label="PCS", fontname="Meiryo UI"];
+			e17 [label="TEL", fontname="Meiryo UI"];
+			e18 [label="インフラ協調", fontname="Meiryo UI"];
+			e19 [label="天気予報", fontname="Meiryo UI"];
+			e20 [label="オーディオ", fontname="Meiryo UI"];
+
+			e21 [label="案内音声", fontname="Meiryo UI"];
+			e22 [label="音楽", fontname="Meiryo UI"];
+			e23 [label="着信音", fontname="Meiryo UI"];
+			e24 [label="警告音", fontname="Meiryo UI"];
+
+		}
+	}
+	
+	{
+		subgraph subareaset {
+			"Area Set";
+			node [shape = box, style = filled, color = lightpink];
+			e25 [label="その他のエリア", fontname="Meiryo UI"];
+			e26 [label="HUD全エリア", fontname="Meiryo UI"];
+			e27 [label="スピードメーターエリア群", fontname="Meiryo UI"];
+			e28 [label="タコメーターエリア群", fontname="Meiryo UI"];
+			e29 [label="外気温エリア群", fontname="Meiryo UI"];
+			e30 [label="割込みメッセージエリア群", fontname="Meiryo UI"];
+
+
+		}
+	}
+	e25 -> e4;
+	e25 -> e1;
+	e25 -> e2;
+	e26 -> e7;
+	e26 -> e6;
+	e26 -> e8;
+	e26 -> e9;
+	e27 -> e1;
+	e27 -> e7;
+	e28 -> e2;
+	e28 -> e8;
+	e29 -> e4;
+	e29 -> e6;
+	e30 -> e3;
+	e30 -> e9;
+
+
+	
+	{
+		subgraph subcontentset {
+			"Content Set";
+			node [shape = ellipse, style = filled, color = palegreen];
+			e31 [label="割込みコンテンツ群", fontname="Meiryo UI"];
+
+			e32 [label="割込み音声コンテンツ群", fontname="Meiryo UI"];
+
+		}
+	}
+	e31 -> e16;
+	e31 -> e17;
+	e31 -> e18;
+	e31 -> e19;
+
+	e32 -> e21;
+	e32 -> e23;
+	e32 -> e24;
+
+
+	e27 -> e12 [dir=none, color=red];
+	e28 -> e13 [dir=none, color=red];
+	e29 -> e14 [dir=none, color=red];
+	e4 -> e15 [dir=none, color=red];
+	e5 -> e20 [dir=none, color=red];
+	
+
+	e30 -> e31 [dir=none, color=red];
+	
+
+	e11 -> e22 [dir=none, color=red];
+	
+
+	e10 -> e32 [dir=none, color=red];
+	
+
+	subgraph scene { rank = same;
+		node [shape = circle, style = filled, color = lightblue];
+		{
+			"Scene";
+			e33 [label="globalscene", fontname="Meiryo UI"];
+			e34 [label="自動運転シーン", fontname="Meiryo UI"];
+			e35 [label="HUDオフシーン", fontname="Meiryo UI"];
+
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightgrey];
+		{
+			"Constraint";
+			e36 [label="PCSの割込時における非表示エリア制約", fontname="Meiryo UI"];
+			e37 [label="外気温の重複制約", fontname="Meiryo UI"];
+			e38 [label="HUDオフによるHUD非表示制約", fontname="Meiryo UI"];
+			e39 [label="ナビ音声・着信音優先制約", fontname="Meiryo UI"];
+			e40 [label="警告音最優先制約", fontname="Meiryo UI"];
+			e41 [label="表示と音の同期制約", fontname="Meiryo UI"];
+			e42 [label="意図しない振舞を検出するオフライン制約", fontname="Meiryo UI"];
+		}
+	}
+	
+	{ rank = same;
+		node [shape = note, style = filled, color = lavenderblush2];
+		{
+			"Constraint";
+			e43 [label="test", fontname="Meiryo UI"];
+			e44 [label="インフラ協調を待機させる後処理制約", fontname="Meiryo UI"];
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightpink2];
+		{
+			"Constraint";
+			e45 [label="r1", fontname="Meiryo UI"];
+		}
+	}
+
+	e36 -> e16 [color=blue];
+	e36 -> e25 [color=blue];
+	e37 -> e6 [color=blue];
+	e37 -> e4 [color=blue];
+	e38 -> e26 [color=blue];
+	e38 -> e35 [color=blue];
+	e39 -> e23 [color=blue];
+	e39 -> e21 [color=blue];
+	e39 -> e11 [color=blue];
+	e40 -> e24 [color=blue];
+	e40 -> e11 [color=blue];
+	e41 -> e20 [color=blue];
+	e41 -> e22 [color=blue];
+	
+
+	e43 -> e31 [color=blue];
+	e44 -> e18 [color=blue];
+	e44 -> e17 [color=blue];
+	
+
+	e45 -> e33 [color=blue];
+	e45 -> e35 [color=blue];
+	
+}
+

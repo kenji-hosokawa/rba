@@ -1,0 +1,82 @@
+Package Displays {
+	Display DisplayA{
+		Size Default {width: 1000 height: 1000} 
+		CompositeArea Default1 {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:0
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x:100
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+				PositionContainer {
+					x:200
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: C
+				}
+			}
+		}
+	}
+	Area A {
+		Size Default {width: 10 height: 10}
+		visibility: > That-of B
+		zorder: STANDARD_VALUE
+	}
+	Area B {
+		Size Default {width: 10 height: 10}
+		visibility: > That-of C
+		zorder: STANDARD_VALUE
+	}
+	Area C {
+		Size Default {width: 10 height: 10}
+		visibility: MIN_VALUE
+		zorder: STANDARD_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE + 1
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent A2{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: 1 height: 1}
+	}
+	ViewContent C1 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		Size Default {width: -100 height: -200}
+	}
+	Constraint HA497_HasComeLaterThan_Pre {
+		runtime: true
+		(pre)B.allocatedContent().hasComeLaterThan((pre)C.allocatedContent()) -> A.isHidden()
+	}
+}

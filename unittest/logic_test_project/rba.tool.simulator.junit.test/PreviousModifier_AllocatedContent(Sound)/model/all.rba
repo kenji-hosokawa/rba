@@ -1,0 +1,28 @@
+Package Model {
+	Constraint PreviousModifier_allocatable {
+		runtime: true
+		(pre)AllocatableA.allocatedContent() == ContentA1 -> AllocatableB.isMuted()
+	}
+
+	Zone AllocatableA {
+		arbitrationPolicy: LAST_COME_FIRST
+		visibility: > That-of AllocatableB
+	}
+	Zone AllocatableB {
+		arbitrationPolicy: DEFAULT
+		visibility: STANDARD_VALUE
+	}
+	SoundContent ContentA1{
+		allocatable: [ AllocatableA ]
+		State NORMAL { priority: STANDARD_VALUE }
+	}
+	SoundContent ContentB1 {
+		allocatable: [ AllocatableB ]
+		State NORMAL { priority: < That-of ContentA1.NORMAL }
+	}
+	SoundContent ContentA2 {
+		allocatable: [ AllocatableA ]
+		State NORMAL { priority: < That-of ContentB1.NORMAL }
+	}
+
+}

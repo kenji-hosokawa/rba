@@ -1,0 +1,118 @@
+Package HA864_covlog {
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 400
+			height: 200
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: Area1
+				}
+				PositionContainer {
+					x: 200
+					y: 0
+					areaReference: Area2
+				}
+			}
+		}
+	}
+
+	Area Area1 {
+		arbitrationPolicy: DEFAULT
+		sizeReference: Size1
+		visibility: NONE_VALUE
+		zorder: STANDARD_VALUE
+	}
+	
+	Area Area2 {
+		arbitrationPolicy: DEFAULT
+		sizeReference: Size1
+		visibility: NONE_VALUE
+		zorder: STANDARD_VALUE
+	}
+	
+	Size Size1 {
+		width: 200
+		height: 200
+	}
+	
+	Zone Zone1 {
+		 arbitrationPolicy: DEFAULT
+		 visibility: > That-of Zone2
+         attenuateValue: 1
+	}
+	Zone Zone2 {
+		 arbitrationPolicy: DEFAULT
+		 visibility: NONE_VALUE
+         attenuateValue: 2
+	}
+
+	ViewContent Content1{
+		allocatable: [
+			Area1
+		]
+		State State1 {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: Size1
+	}
+	ViewContent Content2 {
+		allocatable: [
+			Area1
+		]
+		State State2 {
+			priority: > That-of Content1.State1
+		}
+		sizeReference: Size1
+	}
+	ViewContent Content3 {
+		allocatable: [
+			Area1
+		]
+		State State3 {
+			priority: < That-of Content1.State1
+		}
+		sizeReference: Size1
+	}
+	ViewContent Content4 {
+		allocatable: [
+			Area2
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: Size1
+	}
+	SoundContent SContent1 {
+		allocatable: [
+			Zone1
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent SContent2 {
+		allocatable: [
+			Zone2
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+
+	Constraint AllInstanceOfArea {
+		runtime: true
+		Exists ALL_AREAS { x | x.isDisplayed()}
+	}
+	Constraint HiddenArea1 {
+		runtime: true
+		Content4.isVisible() -> Area1.isHidden()
+	}
+	Constraint MuteZone1 {
+		runtime: true
+		SContent2.isActive() -> Zone1.isMuted()
+	}
+}

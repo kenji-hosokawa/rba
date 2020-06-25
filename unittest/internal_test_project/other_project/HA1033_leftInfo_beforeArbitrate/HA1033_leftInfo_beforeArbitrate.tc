@@ -1,0 +1,29 @@
+#start HA1033_leftInfo_beforeArbitrate_allcatedContent
+CL
+C,on,a1,NORMAL
+Assert,A,Area_A,
+Assert,A,Area_C,
+
+C,on,c1,NORMAL
+Assert,A,Area_A,a1
+Assert,A,Area_C,c1
+
+#start HA1033_LeftInfo_beforeArbitrate_displayingContent
+CL
+C,on,b1,NORMAL
+Assert,A,Area_B,
+Assert,A,Area_C,
+
+C,on,c1,NORMAL
+Assert,A,Area_B,b1
+Assert,A,Area_C,c1
+
+#start HA1033_leftInfo_beforeArbitrate_outputtingSound
+CL
+C,on,x1,NORMAL
+Assert,A,Zone_X,,attenuated:false
+Assert,A,Zone_Y,,attenuated:false
+
+C,on,y1,NORMAL
+Assert,A,Zone_X,x1,attenuated:false
+Assert,A,Zone_Y,y1,attenuated:false

@@ -1,0 +1,334 @@
+Package SampleDisplays {
+	Display Sample_METER{
+		Size Sample_METER_FULLSCREEN {
+			width: 500
+			height: 400
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:100
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x: 50
+					y: 250
+					basePoint: LEFT_TOP
+					areaReference: C
+				}
+				PositionContainer {
+					x: 50
+					y: 50
+					basePoint: LEFT_TOP
+					areaReference: D
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: E
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: X
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: Y
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: XX
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: YY
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: XXX
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: YYY
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: XXXX
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: YYYY
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: XXXXX
+				}
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: YYYYY
+				}
+			}
+		}
+	}
+	Size サイズ {
+		width:100
+		height:100
+	}
+	Area A {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Zone B {
+		priority: STANDARD_VALUE
+	}
+	Area C {
+		sizeReference:サイズ
+		visibility:  > That-of D
+		zorder:  > That-of D
+	}
+	Area D {
+		<<hogeタグA>>
+		sizeReference:サイズ
+		visibility:  > That-of E
+		zorder:  > That-of E
+	}
+	Area E {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Zone F {
+		priority: STANDARD_VALUE
+	}
+	Zone G {
+		priority: STANDARD_VALUE
+	}
+	Zone H {
+		<<hogeタグZ>>
+		priority: STANDARD_VALUE
+	}
+	Zone I {
+		priority: STANDARD_VALUE
+	}
+	Area X {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area Y {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area XX {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area YY {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area XXX {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area YYY {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area XXXX {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area YYYY {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area XXXXX {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	Area YYYYY {
+		sizeReference:サイズ
+		visibility: STANDARD_VALUE
+		zorder: STANDARD_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+	ViewContent A2{
+		<<hogeタグV>>
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE + 1
+		}
+		sizeReference:サイズ
+	}
+	SoundContent B1 {
+		<<hogeタグS>>
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent B2 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE + 1
+		}
+	}
+	ViewContent C1 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+	SoundContent F1 {
+		allocatable: [
+			F
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent I1 {
+		allocatable: [
+			I
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+	SoundContent I2 {
+		<<hogeタグM1>>
+		<<hogeタグM2>>
+		allocatable: [
+			I
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE + 1
+		}
+	}
+	ViewContent X1 {
+		allocatable: [
+			X,XX,XXX,XXXX,XXXXX
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+	ViewContent Y1 {
+		allocatable: [
+			Y,YY,YYY,YYYY,YYYYY
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:サイズ
+	}
+
+	// 定義されていても定義されていなくてもよい確認
+	Stereotype<ViewContent> hogeタグV () @BEGIN@ @END@
+	
+	// ViewContentのタグ有効確認
+	Constraint HA1210_IsTypeOfOperator_V {
+		runtime: true
+		IF(A.allocatedContent().isTypeOf("hogeタグV"))
+//		IF(A.allocatedContent() == A2)
+		THEN X.isHidden()
+		ELSE Y.isHidden()
+	}
+	// SoundContentのタグ有効確認
+	Constraint HA1210_IsTypeOfOperator_S {
+		runtime: true
+		IF(B.allocatedContent().isTypeOf("hogeタグS"))
+//		IF(B.allocatedContent() == B1)
+		THEN XX.isHidden()
+		ELSE YY.isHidden()
+	}
+	// Areaのタグ有効確認
+	Constraint HA1210_IsTypeOfOperator_A {
+		runtime: true
+		IF(
+			(IF(C.isDisplayed())
+			THEN D
+			ELSE E)
+				.isTypeOf("hogeタグA")
+//				== D
+		)
+		THEN XXX.isHidden()
+		ELSE YYY.isHidden()
+	}
+	// Zoneのタグ有効確認
+	Constraint HA1210_IsTypeOfOperator_Z {
+		runtime: true
+		IF(
+			(IF(F.isOutputted())
+			THEN G
+			ELSE H)
+				.isTypeOf("hogeタグZ")
+//				== H
+		)
+		THEN XXXX.isHidden()
+		ELSE YYYY.isHidden()
+	}
+	// 複数のタグ定義がある場合の確認
+	Constraint HA1210_IsTypeOfOperator_M1 {
+		runtime: true
+		I.allocatedContent().isTypeOf("hogeタグM1") -> XXXXX.isHidden()
+//		I.allocatedContent() == I2 -> XXXXX.isHidden()
+	}
+	// 複数のタグ定義がある場合の確認
+	Constraint HA1210_IsTypeOfOperator_M2 {
+		runtime: true
+		I.allocatedContent().isTypeOf("hogeタグM2") -> YYYYY.isHidden()
+//		I.allocatedContent() == I2 -> YYYYY.isHidden()
+	}
+}

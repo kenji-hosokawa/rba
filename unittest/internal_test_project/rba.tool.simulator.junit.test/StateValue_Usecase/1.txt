@@ -1,0 +1,4 @@
+// テスト手順的な意味で入れている。特に内容に意味はない。
+C,ON,Winner,HIGH
+execute
+Assert,A,A,Winner

@@ -1,0 +1,66 @@
+Package SampleDisplays {
+	Display Sample_METER{
+		Size Sample_METER_FULLSCREEN {
+			width: 500
+			height: 400
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:100
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x:300
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+			}
+		}
+	}
+	Size Aサイズ {
+		width:300
+		height:200
+	}
+	Size Bサイズ {
+		width:200
+		height:100
+	}
+	Area A {
+		sizeReference:Aサイズ
+		visibility: > That-of B
+		zorder: MIN_VALUE
+	}
+	Area B {
+		sizeReference:Bサイズ
+		visibility: NONE_VALUE
+		zorder: MIN_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Aサイズ
+	}
+	ViewContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Bサイズ
+	}
+	Scene S1{}
+	Scene S2{}
+	Constraint HA789_シーンで切り替える非表示エリアを調停しないようにする {
+		runtime: true
+		S1.isOn() -> (S2.isOn() -> A.isHidden())
+	}
+}

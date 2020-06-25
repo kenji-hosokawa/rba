@@ -1,0 +1,17 @@
+### Release Note
+- v0.1 (2019/02/15)
+    - first release
+- v0.2 (2019/02/19)
+    - Fixed bug: Output correct z-order, visibility and priority value
+- v0.3 (2019/02/19)
+    - Refactoring
+    - Support Linux
+- v0.4
+    - Fixed bug: Enable to run on any directory
+    - Remove *.java file after finising to create JSON
+- v0.5
+    - Support to set output directory
+- v0.6
+    - Support to output compile error
+- v0.7
+    - Support exit code

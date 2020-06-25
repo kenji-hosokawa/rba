@@ -1,0 +1,4 @@
+C,ON,a1,NORMAL
+C,ON,a2,NORMAL
+execute
+Assert,A,A,a1

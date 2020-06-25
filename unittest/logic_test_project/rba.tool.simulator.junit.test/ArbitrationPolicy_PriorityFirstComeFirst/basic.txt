@@ -1,0 +1,21 @@
+// 後から発生した要求でも優先度が高ければ勝つ
+// 同じ優先度なら先勝ちになる
+
+C,ON,C1,CS_N
+execute
+Assert,A,A1,C1
+
+// C2を追加すると、優先度が高いのでC2が勝つ
+C,ON,C2,CS_N
+execute
+Assert,A,A1,C2
+
+// C3はC2と優先度が同じなので、先勝ちとなりC2が勝つ
+C,ON,C3,CS_N
+execute
+Assert,A,A1,C2
+
+// C2を外すと、次に要求のあったC3が勝つ
+C,OFF,C2,CS_N
+execute
+Assert,A,A1,C3

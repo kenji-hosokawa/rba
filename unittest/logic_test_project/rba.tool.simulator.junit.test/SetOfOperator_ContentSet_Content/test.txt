@@ -1,0 +1,16 @@
+// 制約を満たす(true)
+C,ON,ContentA1,NORMAL
+C,ON,ContentB1,NORMAL
+execute
+
+Assert,A,AllocatableA,ContentA1
+Assert,A,AllocatableB,ContentB1
+Assert,A,AllocatableC,NULL
+
+// C1を割り当てると制約を満たせない(false)ので、Cは空のまま
+C,ON,ContentC1,NORMAL
+execute
+
+Assert,A,AllocatableA,ContentA1
+Assert,A,AllocatableB,ContentB1
+Assert,A,AllocatableC,NULL

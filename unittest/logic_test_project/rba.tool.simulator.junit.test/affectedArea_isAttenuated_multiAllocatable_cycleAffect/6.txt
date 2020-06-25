@@ -1,0 +1,11 @@
+C,ON,C2,NORMAL
+C,ON,B1,NORMAL
+execute
+
+Assert,A,A,NULL
+Assert,A,B,B1
+Assert,A,C,C2
+
+Assert,ATTENUATE,A,false
+Assert,ATTENUATE,B,false
+Assert,ATTENUATE,C,false

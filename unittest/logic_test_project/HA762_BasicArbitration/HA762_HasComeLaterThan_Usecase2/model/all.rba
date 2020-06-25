@@ -1,0 +1,40 @@
+Package Model {
+	Constraint 異なるエリア間で同じ優先度コンテントのうち要求順が遅いほうを隠す_より実際の用途に近い版 {
+		runtime: true
+		(A.contentValue() = B.contentValue())
+			-> IF (B.displayingContent().hasComeLaterThan(A.displayingContent()))
+			THEN B.isHidden()
+			ELSE A.isHidden()
+	}
+	Area A {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		visibility: > That-of B
+		zorder: STANDARD_VALUE sizeReference: size1
+	}
+	Area B {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		visibility: MIN_VALUE
+		zorder: STANDARD_VALUE sizeReference: size1
+	}
+
+	ViewContent a1 {
+		allocatable: [ A ] sizeReference: size1
+		State NORMAL { priority: 10 }
+	}
+	ViewContent b1 {
+		allocatable: [ B ] sizeReference: size1
+		State NORMAL { priority: 10 }
+	}
+
+	Display SampleDisplay {
+		Size FullScreen { width: 400 height: 200 }
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer { x: 0 y: 0 areaReference: A }
+				PositionContainer { x: 200 y: 0 areaReference: B }
+			}
+		}
+	}
+	Size size1 { width: 200 height: 200 }
+
+}

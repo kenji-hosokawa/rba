@@ -1,0 +1,163 @@
+{
+"root":{
+	"displays":[
+		{"name":"MET", "x":0, "y":0, "width":1920, "height":720,
+		"areas":[
+  			{"name":"MetBackgroundArea", "x":0, "y":0, "z":0,
+  			"size":[
+				{"name":"displaySize", "width":1920, "height":720}
+			]
+			},
+  			{"name":"DigitalSpeedArea", "x":0, "y":0, "z":1,
+  			"size":[
+				{"name":"displaySize", "width":1920, "height":720}
+			]
+			},
+  			{"name":"ShiftByWireArea", "x":0, "y":0, "z":1,
+  			"size":[
+				{"name":"displaySize", "width":1920, "height":720}
+			]
+			},
+  			{"name":"TellTaleArea", "x":0, "y":0, "z":1,
+  			"size":[
+				{"name":"displaySize", "width":1920, "height":720}
+			]
+			},
+  			{"name":"FuelH2GaugeArea", "x":0, "y":0, "z":1,
+  			"size":[
+				{"name":"displaySize", "width":1920, "height":720}
+			]
+			},
+  			{"name":"TurnHazardLampArea", "x":0, "y":0, "z":1,
+  			"size":[
+				{"name":"displaySize", "width":1920, "height":720}
+			]
+			},
+  			{"name":"OdoTripArea", "x":0, "y":0, "z":1,
+  			"size":[
+				{"name":"displaySize", "width":1920, "height":720}
+			]
+			},
+  			{"name":"WarningArea", "x":0, "y":0, "z":100,
+  			"size":[
+				{"name":"displaySize", "width":1920, "height":720}
+			]
+			}
+		]
+		},
+		{"name":"HUD", "x":0, "y":0, "width":1920, "height":720,
+		"areas":[
+  			{"name":"HudDigitalSpeedArea", "x":0, "y":0, "z":1,
+  			"size":[
+				{"name":"displaySize", "width":1920, "height":720}
+			]
+			}
+		]
+		}
+	],
+	"contents":[
+		{"name":"MetBackgroundApplication",
+  		"size":[
+			{"name":"displaySize", "width":1920, "height":720}
+  		],
+  		"contentStates":[
+  			{"name":"NORMAL", "value":10}
+  		],
+		"allocatable":[
+			"MetBackgroundArea"
+		]
+		},
+		{"name":"DigitalSpeedApplication",
+  		"size":[
+			{"name":"displaySize", "width":1920, "height":720}
+  		],
+  		"contentStates":[
+  			{"name":"NORMAL", "value":10}
+  		],
+		"allocatable":[
+			"DigitalSpeedArea"
+		]
+		},
+		{"name":"ShiftByWireApplication",
+  		"size":[
+			{"name":"displaySize", "width":1920, "height":720}
+  		],
+  		"contentStates":[
+  			{"name":"NORMAL", "value":10}
+  		],
+		"allocatable":[
+			"ShiftByWireArea"
+		]
+		},
+		{"name":"TellTaleApplication",
+  		"size":[
+			{"name":"displaySize", "width":1920, "height":720}
+  		],
+  		"contentStates":[
+  			{"name":"NORMAL", "value":10}
+  		],
+		"allocatable":[
+			"TellTaleArea"
+		]
+		},
+		{"name":"FuelH2GaugeApplication",
+  		"size":[
+			{"name":"displaySize", "width":1920, "height":720}
+  		],
+  		"contentStates":[
+  			{"name":"NORMAL", "value":10}
+  		],
+		"allocatable":[
+			"FuelH2GaugeArea"
+		]
+		},
+		{"name":"TurnHazardLampApplication",
+  		"size":[
+			{"name":"displaySize", "width":1920, "height":720}
+  		],
+  		"contentStates":[
+  			{"name":"NORMAL", "value":10}
+  		],
+		"allocatable":[
+			"TurnHazardLampArea"
+		]
+		},
+		{"name":"OdoTripApplication",
+  		"size":[
+			{"name":"displaySize", "width":1920, "height":720}
+  		],
+  		"contentStates":[
+  			{"name":"NORMAL", "value":10}
+  		],
+		"allocatable":[
+			"OdoTripArea"
+		]
+		},
+		{"name":"HudDigitalSpeedApplication",
+  		"size":[
+			{"name":"displaySize", "width":1920, "height":720}
+  		],
+  		"contentStates":[
+  			{"name":"NORMAL", "value":10}
+  		],
+		"allocatable":[
+			"HudDigitalSpeedArea"
+		]
+		},
+		{"name":"WarningMessageApplication",
+  		"size":[
+			{"name":"displaySize", "width":1920, "height":720}
+  		],
+  		"contentStates":[
+  			{"name":"NORMAL", "value":10}
+  		],
+		"allocatable":[
+			"WarningArea"
+		]
+		}
+	],
+	"scenes":[
+		{"name": "IG"}
+	]
+}
+}

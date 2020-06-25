@@ -1,0 +1,2301 @@
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,A2,NORMAL,0
+#Request#C,off,C1,NORMAL,0
+#Request#C,on,X1,NORMAL,1
+#Request#C,off,Y1,NORMAL,0
+#Request#C,off,B1,NORMAL,0
+#Request#C,off,B2,NORMAL,0
+#Request#C,off,F1,NORMAL,0
+#Request#C,off,I1,NORMAL,0
+#Request#C,off,I2,NORMAL,0
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	skip
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	skip
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	skip
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	skip
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	skip
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	skip
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M1,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM1)	I.allocatedContent().isTypeOf(hogeタグM1)	skip
+#Constraint#EXPRESSION	->#right.isHidden()	XXXXX.isHidden()	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M2,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM2)	I.allocatedContent().isTypeOf(hogeタグM2)	skip
+#Constraint#EXPRESSION	->#right.isHidden()	YYYYY.isHidden()	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M1,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM1)	I.allocatedContent().isTypeOf(hogeタグM1)	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M2,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM2)	I.allocatedContent().isTypeOf(hogeタグM2)	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())	t
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#A2,NORMAL,f
+#CanceledRequest#C1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#CanceledRequest#Y1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#B2,NORMAL,f
+#CanceledRequest#F1,NORMAL,f
+#CanceledRequest#I1,NORMAL,f
+#CanceledRequest#I2,NORMAL,f
+#Result#A,A,
+#Result#A,C,
+#Result#A,D,
+#Result#A,E,
+#Result#A,X,X1
+#Result#A,Y,
+#Result#A,XX,X1
+#Result#A,YY,
+#Result#A,XXX,X1
+#Result#A,YYY,
+#Result#A,XXXX,
+#Result#A,YYYY,
+#Result#A,XXXXX,X1
+#Result#A,YYYYY,
+#Result#A,B,
+#Result#A,F,
+#Result#A,G,
+#Result#A,H,
+#Result#A,I,
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M1,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM1)	I.allocatedContent().isTypeOf(hogeタグM1)	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M2,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM2)	I.allocatedContent().isTypeOf(hogeタグM2)	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())	t
+#Constraint#END
+#PrevResult#A,X,X1,NORMAL
+#PrevResult#A,XX,X1,NORMAL
+#PrevResult#A,XXX,X1,NORMAL
+#PrevResult#A,XXXXX,X1,NORMAL
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,A2,NORMAL,0
+#Request#C,off,C1,NORMAL,0
+#Request#C,on,X1,NORMAL,1
+#Request#C,on,Y1,NORMAL,2
+#Request#C,off,B1,NORMAL,0
+#Request#C,off,B2,NORMAL,0
+#Request#C,off,F1,NORMAL,0
+#Request#C,off,I1,NORMAL,0
+#Request#C,off,I2,NORMAL,0
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	skip
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	skip
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	skip
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	skip
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	skip
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	skip
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M1,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM1)	I.allocatedContent().isTypeOf(hogeタグM1)	skip
+#Constraint#EXPRESSION	->#right.isHidden()	XXXXX.isHidden()	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M2,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM2)	I.allocatedContent().isTypeOf(hogeタグM2)	skip
+#Constraint#EXPRESSION	->#right.isHidden()	YYYYY.isHidden()	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M1,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM1)	I.allocatedContent().isTypeOf(hogeタグM1)	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M2,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM2)	I.allocatedContent().isTypeOf(hogeタグM2)	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())	t
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#A2,NORMAL,f
+#CanceledRequest#C1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#CanceledRequest#Y1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#B2,NORMAL,f
+#CanceledRequest#F1,NORMAL,f
+#CanceledRequest#I1,NORMAL,f
+#CanceledRequest#I2,NORMAL,f
+#Result#A,A,
+#Result#A,C,
+#Result#A,D,
+#Result#A,E,
+#Result#A,X,X1
+#Result#A,Y,
+#Result#A,XX,X1
+#Result#A,YY,
+#Result#A,XXX,X1
+#Result#A,YYY,
+#Result#A,XXXX,
+#Result#A,YYYY,Y1
+#Result#A,XXXXX,X1
+#Result#A,YYYYY,Y1
+#Result#A,B,
+#Result#A,F,
+#Result#A,G,
+#Result#A,H,
+#Result#A,I,
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	t
+#Constraint#EXPRESSION	IF#then:.isHidden()	XXXX.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M1,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM1)	I.allocatedContent().isTypeOf(hogeタグM1)	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M2,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM2)	I.allocatedContent().isTypeOf(hogeタグM2)	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())	t
+#Constraint#END
+#PrevResult#A,X,X1,NORMAL
+#PrevResult#A,XX,X1,NORMAL
+#PrevResult#A,XXX,X1,NORMAL
+#PrevResult#A,YYYY,Y1,NORMAL
+#PrevResult#A,XXXXX,X1,NORMAL
+#PrevResult#A,YYYYY,Y1,NORMAL
+#Request#C,off,A1,NORMAL,0
+#Request#C,off,A2,NORMAL,0
+#Request#C,off,C1,NORMAL,0
+#Request#C,on,X1,NORMAL,1
+#Request#C,on,Y1,NORMAL,2
+#Request#C,off,B1,NORMAL,0
+#Request#C,off,B2,NORMAL,0
+#Request#C,on,F1,NORMAL,1
+#Request#C,off,I1,NORMAL,0
+#Request#C,off,I2,NORMAL,0
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	skip
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	skip
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	skip
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	skip
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	skip
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	skip
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	skip
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M1,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM1)	I.allocatedContent().isTypeOf(hogeタグM1)	skip
+#Constraint#EXPRESSION	->#right.isHidden()	XXXXX.isHidden()	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M2,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM2)	I.allocatedContent().isTypeOf(hogeタグM2)	skip
+#Constraint#EXPRESSION	->#right.isHidden()	YYYYY.isHidden()	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())	skip
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	f
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	f
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M1,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM1)	I.allocatedContent().isTypeOf(hogeタグM1)	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M2,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM2)	I.allocatedContent().isTypeOf(hogeタグM2)	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())	t
+#Constraint#END
+#CanceledRequest#A1,NORMAL,f
+#CanceledRequest#A2,NORMAL,f
+#CanceledRequest#C1,NORMAL,f
+#CanceledRequest#X1,NORMAL,f
+#CanceledRequest#Y1,NORMAL,f
+#CanceledRequest#B1,NORMAL,f
+#CanceledRequest#B2,NORMAL,f
+#CanceledRequest#F1,NORMAL,f
+#CanceledRequest#I1,NORMAL,f
+#CanceledRequest#I2,NORMAL,f
+#Result#A,A,
+#Result#A,C,
+#Result#A,D,
+#Result#A,E,
+#Result#A,X,X1
+#Result#A,Y,
+#Result#A,XX,X1
+#Result#A,YY,
+#Result#A,XXX,X1
+#Result#A,YYY,
+#Result#A,XXXX,X1
+#Result#A,YYYY,
+#Result#A,XXXXX,X1
+#Result#A,YYYYY,Y1
+#Result#A,B,
+#Result#A,F,F1
+#Result#A,G,
+#Result#A,H,
+#Result#A,I,
+#Constraint#START,HA1210_IsTypeOfOperator_V,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグV)	A.allocatedContent().isTypeOf(hogeタグV)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	Y.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_S,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグS)	B.allocatedContent().isTypeOf(hogeタグS)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_A,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)#IF#condition:.isDisplayed()	C.isDisplayed()	f
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグA)	IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_Z,t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)#IF#condition:.isOutputted()	F.isOutputted()	t
+#Constraint#EXPRESSION	IF#condition:.isTypeOf(hogeタグZ)	IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)	f
+#Constraint#EXPRESSION	IF#else:.isHidden()	YYYY.isHidden()	t
+#Constraint#EXPRESSION	IF	IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M1,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM1)	I.allocatedContent().isTypeOf(hogeタグM1)	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())	t
+#Constraint#END
+#Constraint#START,HA1210_IsTypeOfOperator_M2,t
+#Constraint#EXPRESSION	->#left.isTypeOf(hogeタグM2)	I.allocatedContent().isTypeOf(hogeタグM2)	f
+#Constraint#EXPRESSION	->	(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())	t
+#Constraint#END
+----Request Information----
+Allocatable Count:19
+  Area[A] policy[DEFAULT] visibility[10]
+  Area[C] policy[DEFAULT] visibility[12]
+  Area[D] policy[DEFAULT] visibility[11]
+  Area[E] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+  Area[Y] policy[DEFAULT] visibility[10]
+  Area[XX] policy[DEFAULT] visibility[10]
+  Area[YY] policy[DEFAULT] visibility[10]
+  Area[XXX] policy[DEFAULT] visibility[10]
+  Area[YYY] policy[DEFAULT] visibility[10]
+  Area[XXXX] policy[DEFAULT] visibility[10]
+  Area[YYYY] policy[DEFAULT] visibility[10]
+  Area[XXXXX] policy[DEFAULT] visibility[10]
+  Area[YYYYY] policy[DEFAULT] visibility[10]
+  Zone[B] policy[DEFAULT] visibility[10]
+  Zone[F] policy[DEFAULT] visibility[10]
+  Zone[G] policy[DEFAULT] visibility[10]
+  Zone[H] policy[DEFAULT] visibility[10]
+  Zone[I] policy[DEFAULT] visibility[10]
+ContentState Count:10
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[A2::NORMAL] priority[11] isActive[false] order[0]
+  ViewContent[C1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[Y1::NORMAL] priority[10] isActive[false] order[0]
+  SoundContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  SoundContent[B2::NORMAL] priority[11] isActive[false] order[0]
+  SoundContent[F1::NORMAL] priority[10] isActive[false] order[0]
+  SoundContent[I1::NORMAL] priority[10] isActive[false] order[0]
+  SoundContent[I2::NORMAL] priority[11] isActive[false] order[0]
+Scene Count:0
+Constraint Count:6
+  Constraint[HA1210_IsTypeOfOperator_V] Expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_S] Expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_A] Expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_Z] Expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_M1] Expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_M2] Expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] runtime[true]
+----Request Information----
+Allocatable Count:19
+  Area[A] policy[DEFAULT] visibility[10]
+  Area[C] policy[DEFAULT] visibility[12]
+  Area[D] policy[DEFAULT] visibility[11]
+  Area[E] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+  Area[Y] policy[DEFAULT] visibility[10]
+  Area[XX] policy[DEFAULT] visibility[10]
+  Area[YY] policy[DEFAULT] visibility[10]
+  Area[XXX] policy[DEFAULT] visibility[10]
+  Area[YYY] policy[DEFAULT] visibility[10]
+  Area[XXXX] policy[DEFAULT] visibility[10]
+  Area[YYYY] policy[DEFAULT] visibility[10]
+  Area[XXXXX] policy[DEFAULT] visibility[10]
+  Area[YYYYY] policy[DEFAULT] visibility[10]
+  Zone[B] policy[DEFAULT] visibility[10]
+  Zone[F] policy[DEFAULT] visibility[10]
+  Zone[G] policy[DEFAULT] visibility[10]
+  Zone[H] policy[DEFAULT] visibility[10]
+  Zone[I] policy[DEFAULT] visibility[10]
+ContentState Count:10
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[A2::NORMAL] priority[11] isActive[false] order[0]
+  ViewContent[C1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[Y1::NORMAL] priority[10] isActive[true] order[2]
+  SoundContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  SoundContent[B2::NORMAL] priority[11] isActive[false] order[0]
+  SoundContent[F1::NORMAL] priority[10] isActive[false] order[0]
+  SoundContent[I1::NORMAL] priority[10] isActive[false] order[0]
+  SoundContent[I2::NORMAL] priority[11] isActive[false] order[0]
+Scene Count:0
+Constraint Count:6
+  Constraint[HA1210_IsTypeOfOperator_V] Expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_S] Expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_A] Expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_Z] Expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_M1] Expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_M2] Expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] runtime[true]
+----Request Information----
+Allocatable Count:19
+  Area[A] policy[DEFAULT] visibility[10]
+  Area[C] policy[DEFAULT] visibility[12]
+  Area[D] policy[DEFAULT] visibility[11]
+  Area[E] policy[DEFAULT] visibility[10]
+  Area[X] policy[DEFAULT] visibility[10]
+  Area[Y] policy[DEFAULT] visibility[10]
+  Area[XX] policy[DEFAULT] visibility[10]
+  Area[YY] policy[DEFAULT] visibility[10]
+  Area[XXX] policy[DEFAULT] visibility[10]
+  Area[YYY] policy[DEFAULT] visibility[10]
+  Area[XXXX] policy[DEFAULT] visibility[10]
+  Area[YYYY] policy[DEFAULT] visibility[10]
+  Area[XXXXX] policy[DEFAULT] visibility[10]
+  Area[YYYYY] policy[DEFAULT] visibility[10]
+  Zone[B] policy[DEFAULT] visibility[10]
+  Zone[F] policy[DEFAULT] visibility[10]
+  Zone[G] policy[DEFAULT] visibility[10]
+  Zone[H] policy[DEFAULT] visibility[10]
+  Zone[I] policy[DEFAULT] visibility[10]
+ContentState Count:10
+  ViewContent[A1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[A2::NORMAL] priority[11] isActive[false] order[0]
+  ViewContent[C1::NORMAL] priority[10] isActive[false] order[0]
+  ViewContent[X1::NORMAL] priority[10] isActive[true] order[1]
+  ViewContent[Y1::NORMAL] priority[10] isActive[true] order[2]
+  SoundContent[B1::NORMAL] priority[10] isActive[false] order[0]
+  SoundContent[B2::NORMAL] priority[11] isActive[false] order[0]
+  SoundContent[F1::NORMAL] priority[10] isActive[true] order[1]
+  SoundContent[I1::NORMAL] priority[10] isActive[false] order[0]
+  SoundContent[I2::NORMAL] priority[11] isActive[false] order[0]
+Scene Count:0
+Constraint Count:6
+  Constraint[HA1210_IsTypeOfOperator_V] Expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_S] Expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_A] Expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_Z] Expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_M1] Expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] runtime[true]
+  Constraint[HA1210_IsTypeOfOperator_M2] Expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] runtime[true]
+----Previous Result Information----
+Allocatable TotalCount:19
+  Area[A] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+  Area[E] Content[null] hidden[false]
+  Area[X] Content[null] hidden[false]
+  Area[Y] Content[null] hidden[false]
+  Area[XX] Content[null] hidden[false]
+  Area[YY] Content[null] hidden[false]
+  Area[XXX] Content[null] hidden[false]
+  Area[YYY] Content[null] hidden[false]
+  Area[XXXX] Content[null] hidden[false]
+  Area[YYYY] Content[null] hidden[false]
+  Area[XXXXX] Content[null] hidden[false]
+  Area[YYYYY] Content[null] hidden[false]
+  Zone[B] Content[null] muted[false] attenuated[false]
+  Zone[F] Content[null] muted[false] attenuated[false]
+  Zone[G] Content[null] muted[false] attenuated[false]
+  Zone[H] Content[null] muted[false] attenuated[false]
+  Zone[I] Content[null] muted[false] attenuated[false]
+Content TotalCount:10
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[A2] visible[false] active[false]
+  ViewContent[C1] visible[false] active[false]
+  ViewContent[X1] visible[false] active[false]
+  ViewContent[Y1] visible[false] active[false]
+  SoundContent[B1] sounding[false] active[false]
+  SoundContent[B2] sounding[false] active[false]
+  SoundContent[F1] sounding[false] active[false]
+  SoundContent[I1] sounding[false] active[false]
+  SoundContent[I2] sounding[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:19
+  Area[A] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+  Area[E] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[false]
+  Area[Y] Content[null] hidden[true]
+  Area[XX] Content[X1::NORMAL] hidden[false]
+  Area[YY] Content[null] hidden[true]
+  Area[XXX] Content[X1::NORMAL] hidden[false]
+  Area[YYY] Content[null] hidden[true]
+  Area[XXXX] Content[X1::NORMAL] hidden[true]
+  Area[YYYY] Content[null] hidden[false]
+  Area[XXXXX] Content[X1::NORMAL] hidden[false]
+  Area[YYYYY] Content[null] hidden[false]
+  Zone[B] Content[null] muted[false] attenuated[false]
+  Zone[F] Content[null] muted[false] attenuated[false]
+  Zone[G] Content[null] muted[false] attenuated[false]
+  Zone[H] Content[null] muted[false] attenuated[false]
+  Zone[I] Content[null] muted[false] attenuated[false]
+Content TotalCount:10
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[A2] visible[false] active[false]
+  ViewContent[C1] visible[false] active[false]
+  ViewContent[X1] visible[true] active[true]
+    allocated Area[X]
+    allocated Area[XX]
+    allocated Area[XXX]
+    allocated Area[XXXX]
+    allocated Area[XXXXX]
+  ViewContent[Y1] visible[false] active[false]
+  SoundContent[B1] sounding[false] active[false]
+  SoundContent[B2] sounding[false] active[false]
+  SoundContent[F1] sounding[false] active[false]
+  SoundContent[I1] sounding[false] active[false]
+  SoundContent[I2] sounding[false] active[false]
+----Previous Result Information----
+Allocatable TotalCount:19
+  Area[A] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+  Area[E] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[false]
+  Area[Y] Content[Y1::NORMAL] hidden[true]
+  Area[XX] Content[X1::NORMAL] hidden[false]
+  Area[YY] Content[Y1::NORMAL] hidden[true]
+  Area[XXX] Content[X1::NORMAL] hidden[false]
+  Area[YYY] Content[Y1::NORMAL] hidden[true]
+  Area[XXXX] Content[X1::NORMAL] hidden[true]
+  Area[YYYY] Content[Y1::NORMAL] hidden[false]
+  Area[XXXXX] Content[X1::NORMAL] hidden[false]
+  Area[YYYYY] Content[Y1::NORMAL] hidden[false]
+  Zone[B] Content[null] muted[false] attenuated[false]
+  Zone[F] Content[null] muted[false] attenuated[false]
+  Zone[G] Content[null] muted[false] attenuated[false]
+  Zone[H] Content[null] muted[false] attenuated[false]
+  Zone[I] Content[null] muted[false] attenuated[false]
+Content TotalCount:10
+  ViewContent[A1] visible[false] active[false]
+  ViewContent[A2] visible[false] active[false]
+  ViewContent[C1] visible[false] active[false]
+  ViewContent[X1] visible[true] active[true]
+    allocated Area[X]
+    allocated Area[XX]
+    allocated Area[XXX]
+    allocated Area[XXXX]
+    allocated Area[XXXXX]
+  ViewContent[Y1] visible[true] active[true]
+    allocated Area[Y]
+    allocated Area[YY]
+    allocated Area[YYY]
+    allocated Area[YYYY]
+    allocated Area[YYYYY]
+  SoundContent[B1] sounding[false] active[false]
+  SoundContent[B2] sounding[false] active[false]
+  SoundContent[F1] sounding[false] active[false]
+  SoundContent[I1] sounding[false] active[false]
+  SoundContent[I2] sounding[false] active[false]
+----Arbitrate----
+Area[C] check start
+  Content[C1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[C] displays Content[null] hidden[false]
+
+Area[D] check start
+  Content[null] check online constraints start
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+Area[D] displays Content[null] hidden[false]
+
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[A2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] before arbitrate skip
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[A] displays Content[null] hidden[false]
+
+Area[E] check start
+  Content[null] check online constraints start
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+Area[E] displays Content[null] hidden[false]
+
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] before arbitrate skip
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] before arbitrate skip
+
+Area[X] displays Content[X1::NORMAL] hidden[false]
+
+Area[Y] check start
+  Content[Y1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] false
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] false
+
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] true
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] true
+
+Area[Y] change hidden
+Area[Y] displays Content[null] hidden[true]
+
+Area[XX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] is before arbitrate skip
+      B.allocatedContent().isTypeOf(hogeタグS) before arbitrate skip
+      [YY.isHidden()] before arbitrate skip
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] before arbitrate skip
+
+Area[XX] displays Content[X1::NORMAL] hidden[false]
+
+Area[YY] check start
+  Content[Y1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] is before arbitrate skip
+      B.allocatedContent().isTypeOf(hogeタグS) before arbitrate skip
+      [YY.isHidden()] false
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] before arbitrate skip
+
+Area[YY] displays Content[null] hidden[false]
+
+Area[XXX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+Area[XXX] displays Content[X1::NORMAL] hidden[false]
+
+Area[YYY] check start
+  Content[Y1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] false
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] false
+
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] true
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] true
+
+Area[YYY] change hidden
+Area[YYY] displays Content[null] hidden[true]
+
+Area[XXXX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is before arbitrate skip
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) before arbitrate skip
+      [YYYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] before arbitrate skip
+
+Area[XXXX] displays Content[X1::NORMAL] hidden[false]
+
+Area[YYYY] check start
+  Content[Y1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is before arbitrate skip
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) before arbitrate skip
+      [YYYY.isHidden()] false
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] before arbitrate skip
+
+Area[YYYY] displays Content[null] hidden[false]
+
+Area[XXXXX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] check start
+      Allocatable[I] is before arbitrate skip
+      I.allocatedContent().isTypeOf(hogeタグM1) before arbitrate skip
+      [XXXXX.isHidden()] false
+      [(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] before arbitrate skip
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] before arbitrate skip
+
+Area[XXXXX] displays Content[X1::NORMAL] hidden[false]
+
+Area[YYYYY] check start
+  Content[Y1] is not Active skip
+  Content[null] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] check start
+      Allocatable[I] is before arbitrate skip
+      I.allocatedContent().isTypeOf(hogeタグM2) before arbitrate skip
+      [YYYYY.isHidden()] false
+      [(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] before arbitrate skip
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] before arbitrate skip
+
+Area[YYYYY] displays Content[null] hidden[false]
+
+Zone[B] check start
+  Content[B1] is not Active skip
+  Content[B2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] has no Allocated Content
+      B.allocatedContent().isTypeOf(hogeタグS) false
+      [YY.isHidden()] false
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] false
+
+    Area[YY] revisit allocatable check start
+      Content[Y1] is not Active skip
+      Content[null] check online constraints start
+      check online constraints to confirm area hidden state
+        constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+          Allocatable[B] has no Allocated Content
+          B.allocatedContent().isTypeOf(hogeタグS) false
+          [YY.isHidden()] false
+        constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] false
+
+        constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+          Allocatable[B] has no Allocated Content
+          B.allocatedContent().isTypeOf(hogeタグS) false
+          [YY.isHidden()] true
+        constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] true
+
+    Area[YY] change hidden
+    Area[YY] displays Content[null] hidden[true]
+
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] has no Allocated Content
+      B.allocatedContent().isTypeOf(hogeタグS) false
+      [YY.isHidden()] true
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] true
+
+  check online constraints to confirm zone muted state
+  check online constraints to confirm zone attenuated state
+Zone[B] outputs Content[null] muted[false] attenuated[false]
+
+Zone[F] check start
+  Content[F1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] false
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] false
+
+    Area[XXXX] revisit allocatable check start
+      Content[X1::NORMAL] check online constraints start
+      check online constraints to confirm area hidden state
+        constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+          Zone[F] is not Outputted
+          IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+          [XXXX.isHidden()] false
+        constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] false
+
+        constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+          Zone[F] is not Outputted
+          IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+          [XXXX.isHidden()] true
+        constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+    Area[XXXX] change hidden
+    Area[XXXX] displays Content[X1::NORMAL] hidden[true]
+
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone muted state
+  check online constraints to confirm zone attenuated state
+Zone[F] outputs Content[null] muted[false] attenuated[false]
+
+Zone[G] check start
+  Content[null] check online constraints start
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone muted state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone attenuated state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+Zone[G] outputs Content[null] muted[false] attenuated[false]
+
+Zone[H] check start
+  Content[null] check online constraints start
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone muted state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone attenuated state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+Zone[H] outputs Content[null] muted[false] attenuated[false]
+
+Zone[I] check start
+  Content[I1] is not Active skip
+  Content[I2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] check start
+      Allocatable[I] has no Allocated Content
+      I.allocatedContent().isTypeOf(hogeタグM1) false
+      [(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] true
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] true
+
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] check start
+      Allocatable[I] has no Allocated Content
+      I.allocatedContent().isTypeOf(hogeタグM2) false
+      [(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] true
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] true
+
+  check online constraints to confirm zone muted state
+  check online constraints to confirm zone attenuated state
+Zone[I] outputs Content[null] muted[false] attenuated[false]
+
+----Arbitrate----
+Area[C] check start
+  Content[C1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[C] displays Content[null] hidden[false]
+
+Area[D] check start
+  Content[null] check online constraints start
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+Area[D] displays Content[null] hidden[false]
+
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[A2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] before arbitrate skip
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[A] displays Content[null] hidden[false]
+
+Area[E] check start
+  Content[null] check online constraints start
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+Area[E] displays Content[null] hidden[false]
+
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] before arbitrate skip
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] before arbitrate skip
+
+Area[X] displays Content[X1::NORMAL] hidden[false]
+
+Area[Y] check start
+  Content[Y1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] false
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] false
+
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] true
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] true
+
+Area[Y] change hidden
+Area[Y] displays Content[Y1::NORMAL] hidden[true]
+
+Area[XX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] is before arbitrate skip
+      B.allocatedContent().isTypeOf(hogeタグS) before arbitrate skip
+      [YY.isHidden()] before arbitrate skip
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] before arbitrate skip
+
+Area[XX] displays Content[X1::NORMAL] hidden[false]
+
+Area[YY] check start
+  Content[Y1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] is before arbitrate skip
+      B.allocatedContent().isTypeOf(hogeタグS) before arbitrate skip
+      [YY.isHidden()] false
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] before arbitrate skip
+
+Area[YY] displays Content[Y1::NORMAL] hidden[false]
+
+Area[XXX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+Area[XXX] displays Content[X1::NORMAL] hidden[false]
+
+Area[YYY] check start
+  Content[Y1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] false
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] false
+
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] true
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] true
+
+Area[YYY] change hidden
+Area[YYY] displays Content[Y1::NORMAL] hidden[true]
+
+Area[XXXX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is before arbitrate skip
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) before arbitrate skip
+      [YYYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] before arbitrate skip
+
+Area[XXXX] displays Content[X1::NORMAL] hidden[false]
+
+Area[YYYY] check start
+  Content[Y1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is before arbitrate skip
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) before arbitrate skip
+      [YYYY.isHidden()] false
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] before arbitrate skip
+
+Area[YYYY] displays Content[Y1::NORMAL] hidden[false]
+
+Area[XXXXX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] check start
+      Allocatable[I] is before arbitrate skip
+      I.allocatedContent().isTypeOf(hogeタグM1) before arbitrate skip
+      [XXXXX.isHidden()] false
+      [(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] before arbitrate skip
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] before arbitrate skip
+
+Area[XXXXX] displays Content[X1::NORMAL] hidden[false]
+
+Area[YYYYY] check start
+  Content[Y1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] check start
+      Allocatable[I] is before arbitrate skip
+      I.allocatedContent().isTypeOf(hogeタグM2) before arbitrate skip
+      [YYYYY.isHidden()] false
+      [(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] before arbitrate skip
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] before arbitrate skip
+
+Area[YYYYY] displays Content[Y1::NORMAL] hidden[false]
+
+Zone[B] check start
+  Content[B1] is not Active skip
+  Content[B2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] has no Allocated Content
+      B.allocatedContent().isTypeOf(hogeタグS) false
+      [YY.isHidden()] false
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] false
+
+    Area[YY] revisit allocatable check start
+      Content[Y1::NORMAL] check online constraints start
+      check online constraints to confirm area hidden state
+        constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+          Allocatable[B] has no Allocated Content
+          B.allocatedContent().isTypeOf(hogeタグS) false
+          [YY.isHidden()] false
+        constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] false
+
+        constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+          Allocatable[B] has no Allocated Content
+          B.allocatedContent().isTypeOf(hogeタグS) false
+          [YY.isHidden()] true
+        constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] true
+
+    Area[YY] change hidden
+    Area[YY] displays Content[Y1::NORMAL] hidden[true]
+
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] has no Allocated Content
+      B.allocatedContent().isTypeOf(hogeタグS) false
+      [YY.isHidden()] true
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] true
+
+  check online constraints to confirm zone muted state
+  check online constraints to confirm zone attenuated state
+Zone[B] outputs Content[null] muted[false] attenuated[false]
+
+Zone[F] check start
+  Content[F1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] false
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] false
+
+    Area[XXXX] revisit allocatable check start
+      Content[X1::NORMAL] check online constraints start
+      check online constraints to confirm area hidden state
+        constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+          Zone[F] is not Outputted
+          IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+          [XXXX.isHidden()] false
+        constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] false
+
+        constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+          Zone[F] is not Outputted
+          IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+          [XXXX.isHidden()] true
+        constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+    Area[XXXX] change hidden
+    Area[XXXX] displays Content[X1::NORMAL] hidden[true]
+
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone muted state
+  check online constraints to confirm zone attenuated state
+Zone[F] outputs Content[null] muted[false] attenuated[false]
+
+Zone[G] check start
+  Content[null] check online constraints start
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone muted state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone attenuated state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+Zone[G] outputs Content[null] muted[false] attenuated[false]
+
+Zone[H] check start
+  Content[null] check online constraints start
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone muted state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone attenuated state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+Zone[H] outputs Content[null] muted[false] attenuated[false]
+
+Zone[I] check start
+  Content[I1] is not Active skip
+  Content[I2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] check start
+      Allocatable[I] has no Allocated Content
+      I.allocatedContent().isTypeOf(hogeタグM1) false
+      [(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] true
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] true
+
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] check start
+      Allocatable[I] has no Allocated Content
+      I.allocatedContent().isTypeOf(hogeタグM2) false
+      [(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] true
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] true
+
+  check online constraints to confirm zone muted state
+  check online constraints to confirm zone attenuated state
+Zone[I] outputs Content[null] muted[false] attenuated[false]
+
+----Arbitrate----
+Area[C] check start
+  Content[C1] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[C] displays Content[null] hidden[false]
+
+Area[D] check start
+  Content[null] check online constraints start
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+Area[D] displays Content[null] hidden[false]
+
+Area[A] check start
+  Content[A1] is not Active skip
+  Content[A2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] before arbitrate skip
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+Area[A] displays Content[null] hidden[false]
+
+Area[E] check start
+  Content[null] check online constraints start
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+Area[E] displays Content[null] hidden[false]
+
+Area[X] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] before arbitrate skip
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] before arbitrate skip
+
+Area[X] displays Content[X1::NORMAL] hidden[false]
+
+Area[Y] check start
+  Content[Y1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] false
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] false
+
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] true
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] true
+
+Area[Y] change hidden
+Area[Y] displays Content[Y1::NORMAL] hidden[true]
+
+Area[XX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] is before arbitrate skip
+      B.allocatedContent().isTypeOf(hogeタグS) before arbitrate skip
+      [YY.isHidden()] before arbitrate skip
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] before arbitrate skip
+
+Area[XX] displays Content[X1::NORMAL] hidden[false]
+
+Area[YY] check start
+  Content[Y1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] is before arbitrate skip
+      B.allocatedContent().isTypeOf(hogeタグS) before arbitrate skip
+      [YY.isHidden()] false
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] before arbitrate skip
+
+Area[YY] displays Content[Y1::NORMAL] hidden[false]
+
+Area[XXX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] before arbitrate skip
+
+Area[XXX] displays Content[X1::NORMAL] hidden[false]
+
+Area[YYY] check start
+  Content[Y1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] false
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] false
+
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] true
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] true
+
+Area[YYY] change hidden
+Area[YYY] displays Content[Y1::NORMAL] hidden[true]
+
+Area[XXXX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is before arbitrate skip
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) before arbitrate skip
+      [YYYY.isHidden()] before arbitrate skip
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] before arbitrate skip
+
+Area[XXXX] displays Content[X1::NORMAL] hidden[false]
+
+Area[YYYY] check start
+  Content[Y1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is before arbitrate skip
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) before arbitrate skip
+      [YYYY.isHidden()] false
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] before arbitrate skip
+
+Area[YYYY] displays Content[Y1::NORMAL] hidden[false]
+
+Area[XXXXX] check start
+  Content[X1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] check start
+      Allocatable[I] is before arbitrate skip
+      I.allocatedContent().isTypeOf(hogeタグM1) before arbitrate skip
+      [XXXXX.isHidden()] false
+      [(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] before arbitrate skip
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] before arbitrate skip
+
+Area[XXXXX] displays Content[X1::NORMAL] hidden[false]
+
+Area[YYYYY] check start
+  Content[Y1::NORMAL] check online constraints start
+  check online constraints to confirm area hidden state
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] check start
+      Allocatable[I] is before arbitrate skip
+      I.allocatedContent().isTypeOf(hogeタグM2) before arbitrate skip
+      [YYYYY.isHidden()] false
+      [(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] before arbitrate skip
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] before arbitrate skip
+
+Area[YYYYY] displays Content[Y1::NORMAL] hidden[false]
+
+Zone[B] check start
+  Content[B1] is not Active skip
+  Content[B2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] has no Allocated Content
+      B.allocatedContent().isTypeOf(hogeタグS) false
+      [YY.isHidden()] false
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] false
+
+    Area[YY] revisit allocatable check start
+      Content[Y1::NORMAL] check online constraints start
+      check online constraints to confirm area hidden state
+        constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+          Allocatable[B] has no Allocated Content
+          B.allocatedContent().isTypeOf(hogeタグS) false
+          [YY.isHidden()] false
+        constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] false
+
+        constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+          Allocatable[B] has no Allocated Content
+          B.allocatedContent().isTypeOf(hogeタグS) false
+          [YY.isHidden()] true
+        constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] true
+
+    Area[YY] change hidden
+    Area[YY] displays Content[Y1::NORMAL] hidden[true]
+
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] has no Allocated Content
+      B.allocatedContent().isTypeOf(hogeタグS) false
+      [YY.isHidden()] true
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] true
+
+  check online constraints to confirm zone muted state
+  check online constraints to confirm zone attenuated state
+Zone[B] outputs Content[null] muted[false] attenuated[false]
+
+Zone[F] check start
+  Content[F1::NORMAL] check online constraints start
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is Outputted Content[F1::NORMAL]
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) false
+      [YYYY.isHidden()] false
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] false
+
+    Area[YYYY] revisit allocatable check start
+      Content[Y1::NORMAL] check online constraints start
+      check online constraints to confirm area hidden state
+        constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+          Zone[F] is Outputted Content[F1::NORMAL]
+          IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) false
+          [YYYY.isHidden()] false
+        constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] false
+
+        constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+          Zone[F] is Outputted Content[F1::NORMAL]
+          IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) false
+          [YYYY.isHidden()] true
+        constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+    Area[YYYY] change hidden
+    Area[YYYY] displays Content[Y1::NORMAL] hidden[true]
+
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is Outputted Content[F1::NORMAL]
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) false
+      [YYYY.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone muted state
+  check online constraints to confirm zone attenuated state
+Zone[F] outputs Content[F1::NORMAL] muted[false] attenuated[false]
+
+Zone[G] check start
+  Content[null] check online constraints start
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is Outputted Content[F1::NORMAL]
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) false
+      [YYYY.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone muted state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is Outputted Content[F1::NORMAL]
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) false
+      [YYYY.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone attenuated state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is Outputted Content[F1::NORMAL]
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) false
+      [YYYY.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+Zone[G] outputs Content[null] muted[false] attenuated[false]
+
+Zone[H] check start
+  Content[null] check online constraints start
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is Outputted Content[F1::NORMAL]
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) false
+      [YYYY.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone muted state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is Outputted Content[F1::NORMAL]
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) false
+      [YYYY.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+  check online constraints to confirm zone attenuated state
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is Outputted Content[F1::NORMAL]
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) false
+      [YYYY.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+Zone[H] outputs Content[null] muted[false] attenuated[false]
+
+Zone[I] check start
+  Content[I1] is not Active skip
+  Content[I2] is not Active skip
+  Content[null] check online constraints start
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] check start
+      Allocatable[I] has no Allocated Content
+      I.allocatedContent().isTypeOf(hogeタグM1) false
+      [(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] true
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] true
+
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] check start
+      Allocatable[I] has no Allocated Content
+      I.allocatedContent().isTypeOf(hogeタグM2) false
+      [(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] true
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] true
+
+  check online constraints to confirm zone muted state
+  check online constraints to confirm zone attenuated state
+Zone[I] outputs Content[null] muted[false] attenuated[false]
+
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[A2::NORMAL] check start
+  Content[A2::NORMAL] is not Active skip
+Content[C1::NORMAL] check start
+  Content[C1::NORMAL] is not Active skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is Visible skip
+Content[Y1::NORMAL] check start
+  Content[Y1::NORMAL] is not Active skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[B2::NORMAL] check start
+  Content[B2::NORMAL] is not Active skip
+Content[F1::NORMAL] check start
+  Content[F1::NORMAL] is not Active skip
+Content[I1::NORMAL] check start
+  Content[I1::NORMAL] is not Active skip
+Content[I2::NORMAL] check start
+  Content[I2::NORMAL] is not Active skip
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[A2::NORMAL] check start
+  Content[A2::NORMAL] is not Active skip
+Content[C1::NORMAL] check start
+  Content[C1::NORMAL] is not Active skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is Visible skip
+Content[Y1::NORMAL] check start
+  Content[Y1::NORMAL] is Visible skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[B2::NORMAL] check start
+  Content[B2::NORMAL] is not Active skip
+Content[F1::NORMAL] check start
+  Content[F1::NORMAL] is not Active skip
+Content[I1::NORMAL] check start
+  Content[I1::NORMAL] is not Active skip
+Content[I2::NORMAL] check start
+  Content[I2::NORMAL] is not Active skip
+----Cancel Request----
+Content[A1::NORMAL] check start
+  Content[A1::NORMAL] is not Active skip
+Content[A2::NORMAL] check start
+  Content[A2::NORMAL] is not Active skip
+Content[C1::NORMAL] check start
+  Content[C1::NORMAL] is not Active skip
+Content[X1::NORMAL] check start
+  Content[X1::NORMAL] is Visible skip
+Content[Y1::NORMAL] check start
+  Content[Y1::NORMAL] is Visible skip
+Content[B1::NORMAL] check start
+  Content[B1::NORMAL] is not Active skip
+Content[B2::NORMAL] check start
+  Content[B2::NORMAL] is not Active skip
+Content[F1::NORMAL] check start
+  Content[F1::NORMAL] is Sounding skip
+Content[I1::NORMAL] check start
+  Content[I1::NORMAL] is not Active skip
+Content[I2::NORMAL] check start
+  Content[I2::NORMAL] is not Active skip
+----Check All Constraint----
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] true
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] true
+
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] has no Allocated Content
+      B.allocatedContent().isTypeOf(hogeタグS) false
+      [YY.isHidden()] true
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] true
+
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] true
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] true
+
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] check start
+      Allocatable[I] has no Allocated Content
+      I.allocatedContent().isTypeOf(hogeタグM1) false
+      [(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] true
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] true
+
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] check start
+      Allocatable[I] has no Allocated Content
+      I.allocatedContent().isTypeOf(hogeタグM2) false
+      [(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] true
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] true
+
+----Check All Constraint----
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] true
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] true
+
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] has no Allocated Content
+      B.allocatedContent().isTypeOf(hogeタグS) false
+      [YY.isHidden()] true
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] true
+
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] true
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] true
+
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is not Outputted
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) true
+      [XXXX.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] check start
+      Allocatable[I] has no Allocated Content
+      I.allocatedContent().isTypeOf(hogeタグM1) false
+      [(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] true
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] true
+
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] check start
+      Allocatable[I] has no Allocated Content
+      I.allocatedContent().isTypeOf(hogeタグM2) false
+      [(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] true
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] true
+
+----Check All Constraint----
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] check start
+      Allocatable[A] has no Allocated Content
+      A.allocatedContent().isTypeOf(hogeタグV) false
+      [Y.isHidden()] true
+    constraint expression[IF(A.allocatedContent().isTypeOf(hogeタグV)) THEN X.isHidden() ELSE Y.isHidden()] true
+
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] check start
+      Allocatable[B] has no Allocated Content
+      B.allocatedContent().isTypeOf(hogeタグS) false
+      [YY.isHidden()] true
+    constraint expression[IF(B.allocatedContent().isTypeOf(hogeタグS)) THEN XX.isHidden() ELSE YY.isHidden()] true
+
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] check start
+      Area[C] is not Displayed
+      IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA) false
+      [YYY.isHidden()] true
+    constraint expression[IF(IF(C.isDisplayed()) THEN D ELSE E.isTypeOf(hogeタグA)) THEN XXX.isHidden() ELSE YYY.isHidden()] true
+
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] check start
+      Zone[F] is Outputted Content[F1::NORMAL]
+      IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ) false
+      [YYYY.isHidden()] true
+    constraint expression[IF(IF(F.isOutputted()) THEN G ELSE H.isTypeOf(hogeタグZ)) THEN XXXX.isHidden() ELSE YYYY.isHidden()] true
+
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] check start
+      Allocatable[I] has no Allocated Content
+      I.allocatedContent().isTypeOf(hogeタグM1) false
+      [(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] true
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM1) -> XXXXX.isHidden())] true
+
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] check start
+      Allocatable[I] has no Allocated Content
+      I.allocatedContent().isTypeOf(hogeタグM2) false
+      [(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] true
+    constraint expression[(I.allocatedContent().isTypeOf(hogeタグM2) -> YYYYY.isHidden())] true
+
+----Result Information----
+Allocatable TotalCount:19
+  Area[A] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+  Area[E] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[false]
+  Area[Y] Content[null] hidden[true]
+  Area[XX] Content[X1::NORMAL] hidden[false]
+  Area[YY] Content[null] hidden[true]
+  Area[XXX] Content[X1::NORMAL] hidden[false]
+  Area[YYY] Content[null] hidden[true]
+  Area[XXXX] Content[X1::NORMAL] hidden[true]
+  Area[YYYY] Content[null] hidden[false]
+  Area[XXXXX] Content[X1::NORMAL] hidden[false]
+  Area[YYYYY] Content[null] hidden[false]
+  Zone[B] Content[null] muted[false] attenuated[false]
+  Zone[F] Content[null] muted[false] attenuated[false]
+  Zone[G] Content[null] muted[false] attenuated[false]
+  Zone[H] Content[null] muted[false] attenuated[false]
+  Zone[I] Content[null] muted[false] attenuated[false]
+Content TotalCount:10
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[A2] visible[false] cancel[false]
+  ViewContent[C1] visible[false] cancel[false]
+  ViewContent[X1] visible[true] cancel[false]
+    allocated Area[X]
+    allocated Area[XX]
+    allocated Area[XXX]
+    allocated Area[XXXX]
+    allocated Area[XXXXX]
+  ViewContent[Y1] visible[false] cancel[false]
+  SoundContent[B1] sounding[false] cancel[false]
+  SoundContent[B2] sounding[false] cancel[false]
+  SoundContent[F1] sounding[false] cancel[false]
+  SoundContent[I1] sounding[false] cancel[false]
+  SoundContent[I2] sounding[false] cancel[false]
+----Result Information----
+Allocatable TotalCount:19
+  Area[A] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+  Area[E] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[false]
+  Area[Y] Content[Y1::NORMAL] hidden[true]
+  Area[XX] Content[X1::NORMAL] hidden[false]
+  Area[YY] Content[Y1::NORMAL] hidden[true]
+  Area[XXX] Content[X1::NORMAL] hidden[false]
+  Area[YYY] Content[Y1::NORMAL] hidden[true]
+  Area[XXXX] Content[X1::NORMAL] hidden[true]
+  Area[YYYY] Content[Y1::NORMAL] hidden[false]
+  Area[XXXXX] Content[X1::NORMAL] hidden[false]
+  Area[YYYYY] Content[Y1::NORMAL] hidden[false]
+  Zone[B] Content[null] muted[false] attenuated[false]
+  Zone[F] Content[null] muted[false] attenuated[false]
+  Zone[G] Content[null] muted[false] attenuated[false]
+  Zone[H] Content[null] muted[false] attenuated[false]
+  Zone[I] Content[null] muted[false] attenuated[false]
+Content TotalCount:10
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[A2] visible[false] cancel[false]
+  ViewContent[C1] visible[false] cancel[false]
+  ViewContent[X1] visible[true] cancel[false]
+    allocated Area[X]
+    allocated Area[XX]
+    allocated Area[XXX]
+    allocated Area[XXXX]
+    allocated Area[XXXXX]
+  ViewContent[Y1] visible[true] cancel[false]
+    allocated Area[Y]
+    allocated Area[YY]
+    allocated Area[YYY]
+    allocated Area[YYYY]
+    allocated Area[YYYYY]
+  SoundContent[B1] sounding[false] cancel[false]
+  SoundContent[B2] sounding[false] cancel[false]
+  SoundContent[F1] sounding[false] cancel[false]
+  SoundContent[I1] sounding[false] cancel[false]
+  SoundContent[I2] sounding[false] cancel[false]
+----Result Information----
+Allocatable TotalCount:19
+  Area[A] Content[null] hidden[false]
+  Area[C] Content[null] hidden[false]
+  Area[D] Content[null] hidden[false]
+  Area[E] Content[null] hidden[false]
+  Area[X] Content[X1::NORMAL] hidden[false]
+  Area[Y] Content[Y1::NORMAL] hidden[true]
+  Area[XX] Content[X1::NORMAL] hidden[false]
+  Area[YY] Content[Y1::NORMAL] hidden[true]
+  Area[XXX] Content[X1::NORMAL] hidden[false]
+  Area[YYY] Content[Y1::NORMAL] hidden[true]
+  Area[XXXX] Content[X1::NORMAL] hidden[false]
+  Area[YYYY] Content[Y1::NORMAL] hidden[true]
+  Area[XXXXX] Content[X1::NORMAL] hidden[false]
+  Area[YYYYY] Content[Y1::NORMAL] hidden[false]
+  Zone[B] Content[null] muted[false] attenuated[false]
+  Zone[F] Content[F1::NORMAL] muted[false] attenuated[false]
+  Zone[G] Content[null] muted[false] attenuated[false]
+  Zone[H] Content[null] muted[false] attenuated[false]
+  Zone[I] Content[null] muted[false] attenuated[false]
+Content TotalCount:10
+  ViewContent[A1] visible[false] cancel[false]
+  ViewContent[A2] visible[false] cancel[false]
+  ViewContent[C1] visible[false] cancel[false]
+  ViewContent[X1] visible[true] cancel[false]
+    allocated Area[X]
+    allocated Area[XX]
+    allocated Area[XXX]
+    allocated Area[XXXX]
+    allocated Area[XXXXX]
+  ViewContent[Y1] visible[true] cancel[false]
+    allocated Area[Y]
+    allocated Area[YY]
+    allocated Area[YYY]
+    allocated Area[YYYY]
+    allocated Area[YYYYY]
+  SoundContent[B1] sounding[false] cancel[false]
+  SoundContent[B2] sounding[false] cancel[false]
+  SoundContent[F1] sounding[true] cancel[false]
+    allocated Zone[F]
+  SoundContent[I1] sounding[false] cancel[false]
+  SoundContent[I2] sounding[false] cancel[false]
+

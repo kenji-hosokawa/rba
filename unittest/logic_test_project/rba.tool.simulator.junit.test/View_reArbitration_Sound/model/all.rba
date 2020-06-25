@@ -1,0 +1,132 @@
+Package Displays {
+	Zone ゾーンA {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		visibility: > That-of エリアA
+		attenuateValue:1
+	}
+	Zone ゾーンB {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		visibility: MIN_VALUE
+		attenuateValue:1
+	}
+
+	SoundContent 音コンテンツA1{
+		allocatable: [
+			ゾーンA
+		]
+		State NORMAL {
+			priority: > That-of 音コンテンツA2.NORMAL
+		}
+	}
+	SoundContent 音コンテンツA2{
+		allocatable: [
+			ゾーンA
+		]
+		State NORMAL {
+			priority: MIN_VALUE
+		}
+	}
+
+	SoundContent 音コンテンツB1{
+		allocatable: [
+			ゾーンB
+		]
+		State NORMAL {
+			priority: > That-of 音コンテンツB2.NORMAL
+		}
+	}
+	SoundContent 音コンテンツB2{
+		allocatable: [
+			ゾーンB
+		]
+		State NORMAL {
+			priority: MIN_VALUE
+		}
+	}
+
+	Display SampleDisplay {
+		Size FullScreen {
+			width: 900
+			height: 200
+		}
+		CompositeArea SampleCompositeArea {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 0
+					y: 0
+					areaReference: エリアA
+				}
+				PositionContainer {
+					x: 400
+					y: 0
+					areaReference: エリアB
+				}
+			}
+		}
+	}
+
+	Area エリアA {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		sizeReference: エリアAサイズ
+		visibility: STANDARD_VALUE
+		zorder: MIN_VALUE
+	}
+	Area エリアB {
+		arbitrationPolicy: PRIORITY_LAST_COME_FIRST
+		sizeReference: エリアBサイズ
+		visibility: That-of エリアA
+		zorder: MIN_VALUE
+	}
+
+	Size エリアAサイズ {
+		width: 400
+		height: 200
+	}
+	Size エリアBサイズ {
+		width: 200
+		height: 200
+	}
+
+	ViewContent 表示コンテンツA1{
+		allocatable: [
+			エリアA
+		]
+		State NORMAL {
+			priority: > That-of 表示コンテンツA2.NORMAL
+		}
+		sizeReference: エリアAサイズ
+	}
+	ViewContent 表示コンテンツA2{
+		allocatable: [
+			エリアA
+		]
+		State NORMAL {
+			priority: MIN_VALUE
+		}
+		sizeReference: エリアAサイズ
+	}
+
+	ViewContent 表示コンテンツB1{
+		allocatable: [
+			エリアB
+		]
+		State NORMAL {
+			priority: > That-of 表示コンテンツB2.NORMAL
+		}
+		sizeReference: エリアBサイズ
+	}
+	ViewContent 表示コンテンツB2{
+		allocatable: [
+			エリアB
+		]
+		State NORMAL {
+			priority: MIN_VALUE
+		}
+		sizeReference: エリアBサイズ
+	}
+
+	Constraint 表示コンテンツA2が表示中は音コンテンツA2は出力しない {
+		runtime: true
+		(表示コンテンツA2.isVisible() AND 音コンテンツA2.isActive()) -> !音コンテンツA2.isSounding()
+	}
+}

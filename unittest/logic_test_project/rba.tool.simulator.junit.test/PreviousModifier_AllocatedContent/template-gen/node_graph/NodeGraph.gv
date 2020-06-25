@@ -1,0 +1,147 @@
+digraph rule_objects_graph {
+	rankdir = LR;
+	charset="utf-8";
+	clusterrank = global;
+	
+	node [shape = plaintext];
+	Scene -> Constraint -> "Area Set" -> Area -> "Content Set" -> Content; 
+	{ rank = same;
+		node [shape = box];
+		{
+			Area;
+			e1 [label="エリアA", fontname="Meiryo UI"];
+			e2 [label="エリアB", fontname="Meiryo UI"];
+			e3 [label="エリアC", fontname="Meiryo UI"];
+
+		}
+	}
+	
+	{ rank = same;
+		node [shape = ellipse];
+		{
+			Content;
+			e4 [label="コンテントA1", fontname="Meiryo UI"];
+			e5 [label="コンテントB1", fontname="Meiryo UI"];
+			e6 [label="コンテントC1", fontname="Meiryo UI"];
+			e7 [label="コンテントA2", fontname="Meiryo UI"];
+			e8 [label="コンテントB2", fontname="Meiryo UI"];
+			e9 [label="コンテントC2", fontname="Meiryo UI"];
+			e10 [label="コンテントA3", fontname="Meiryo UI"];
+			e11 [label="コンテントB3", fontname="Meiryo UI"];
+			e12 [label="コンテントC3", fontname="Meiryo UI"];
+
+
+		}
+	}
+	
+	{
+		subgraph subareaset {
+			"Area Set";
+			node [shape = box, style = filled, color = lightpink];
+			e13 [label="エリアAとエリアB", fontname="Meiryo UI"];
+			e14 [label="エリアAとエリアC", fontname="Meiryo UI"];
+			e15 [label="エリアBとエリアC", fontname="Meiryo UI"];
+			e16 [label="全エリア", fontname="Meiryo UI"];
+
+
+		}
+	}
+	e13 -> e1;
+	e13 -> e2;
+	e14 -> e1;
+	e14 -> e3;
+	e15 -> e2;
+	e15 -> e3;
+	e16 -> e13;
+	e16 -> e14;
+	e16 -> e15;
+
+
+	
+	{
+		subgraph subcontentset {
+			"Content Set";
+			node [shape = ellipse, style = filled, color = palegreen];
+			e17 [label="コンテントAとコンテントB", fontname="Meiryo UI"];
+			e18 [label="コンテントAとコンテントC", fontname="Meiryo UI"];
+			e19 [label="コンテントBとコンテントC", fontname="Meiryo UI"];
+			e20 [label="全コンテント", fontname="Meiryo UI"];
+
+
+		}
+	}
+	e17 -> e4;
+	e17 -> e5;
+	e18 -> e4;
+	e18 -> e6;
+	e19 -> e5;
+	e19 -> e6;
+	e20 -> e17;
+	e20 -> e18;
+	e20 -> e19;
+
+
+
+	e1 -> e4 [dir=none, color=red];
+	e2 -> e5 [dir=none, color=red];
+	e3 -> e6 [dir=none, color=red];
+	e1 -> e7 [dir=none, color=red];
+	e2 -> e8 [dir=none, color=red];
+	e3 -> e9 [dir=none, color=red];
+	e1 -> e10 [dir=none, color=red];
+	e2 -> e11 [dir=none, color=red];
+	e3 -> e12 [dir=none, color=red];
+	
+
+	
+
+	
+
+	
+
+	subgraph scene { rank = same;
+		node [shape = circle, style = filled, color = lightblue];
+		{
+			"Scene";
+
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightgrey];
+		{
+			"Constraint";
+			e21 [label="エリアAがエリアBより価値の高いコンテントを表示しているならエリアBを隠蔽する", fontname="Meiryo UI"];
+			e22 [label="前回エリアBがコンテントB3を割り当てているならエリアCを隠蔽する", fontname="Meiryo UI"];
+			e23 [label="エリアCがエリアBより価値の高いコンテントを表示しているならエリアBを隠蔽する", fontname="Meiryo UI"];
+		}
+	}
+	
+	{ rank = same;
+		node [shape = note, style = filled, color = lavenderblush2];
+		{
+			"Constraint";
+		}
+	}
+
+	{ rank = same;
+		node [shape = note, style = filled, color = lightpink2];
+		{
+			"Constraint";
+		}
+	}
+
+	e21 -> e1 [color=blue];
+	e21 -> e2 [color=blue];
+	e22 -> e3 [color=blue];
+	e22 -> e11 [color=blue];
+	e22 -> e2 [color=blue];
+	e23 -> e3 [color=blue];
+	e23 -> e2 [color=blue];
+	
+
+	
+
+	
+}
+

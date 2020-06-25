@@ -1,0 +1,39 @@
+#HierarchyOfConstraint#START,HA1209_MinOperator_1,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(S1.isOn() -> ALL_AREAS.mix{ x |x.contentValue()}.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left.isOn()	S1.isOn()	boolean
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()	ALL_AREAS.mix{ x |x.contentValue()}.isHidden()	boolean
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()#.mix	ALL_AREAS.mix{ x |x.contentValue()}	unknown
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()#.mix#0.contentValue()	A.contentValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()#.mix#1.contentValue()	B.contentValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()#.mix#2.contentValue()	X.contentValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()#.mix#3.contentValue()	Y.contentValue()	unknown
+#HierarchyOfConstraint#END,HA1209_MinOperator_1
+#HierarchyOfConstraint#START,HA1209_MinOperator_2,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(ALL_AREAS.mix{ x |x.contentValue()} == B -> X.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left==	ALL_AREAS.mix{ x |x.contentValue()} == B	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left==#left.mix	ALL_AREAS.mix{ x |x.contentValue()}	unknown
+#HierarchyOfConstraint#EXPRESSION	->#left==#left.mix#0.contentValue()	A.contentValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#left==#left.mix#1.contentValue()	B.contentValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#left==#left.mix#2.contentValue()	X.contentValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#left==#left.mix#3.contentValue()	Y.contentValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()	X.isHidden()	boolean
+#HierarchyOfConstraint#END,HA1209_MinOperator_2
+#HierarchyOfConstraint#START,HA1209_MinOperator_3,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(S2.isOn() -> !{A1}.mix{ x |x.stateValue()}.isVisible())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left.isOn()	S2.isOn()	boolean
+#HierarchyOfConstraint#EXPRESSION	->#right!	!{A1}.mix{ x |x.stateValue()}.isVisible()	boolean
+#HierarchyOfConstraint#EXPRESSION	->#right!#.isVisible()	{A1}.mix{ x |x.stateValue()}.isVisible()	boolean
+#HierarchyOfConstraint#EXPRESSION	->#right!#.isVisible()#.mix	{A1}.mix{ x |x.stateValue()}	unknown
+#HierarchyOfConstraint#EXPRESSION	->#right!#.isVisible()#.mix#0.stateValue()	A1.stateValue()	unknown
+#HierarchyOfConstraint#END,HA1209_MinOperator_3
+#HierarchyOfConstraint#START,HA1209_MinOperator_4,t,Constraint
+#HierarchyOfConstraint#EXPRESSION	->	(ALL_VIEWCONTENTS.mix{ x |x.stateValue()} == A1 -> Y.displayingContent().allocatables().mix{ y |y.contentValue()}.isHidden())	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left==	ALL_VIEWCONTENTS.mix{ x |x.stateValue()} == A1	boolean
+#HierarchyOfConstraint#EXPRESSION	->#left==#left.mix	ALL_VIEWCONTENTS.mix{ x |x.stateValue()}	unknown
+#HierarchyOfConstraint#EXPRESSION	->#left==#left.mix#0.stateValue()	A1.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#left==#left.mix#1.stateValue()	B1.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#left==#left.mix#2.stateValue()	X1.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#left==#left.mix#3.stateValue()	Y1.stateValue()	unknown
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()	Y.displayingContent().allocatables().mix{ y |y.contentValue()}.isHidden()	boolean
+#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()#.mix	Y.displayingContent().allocatables().mix{ y |y.contentValue()}	unknown
+#HierarchyOfConstraint#END,HA1209_MinOperator_4

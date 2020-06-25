@@ -1,0 +1,384 @@
+import groovy.transform.CompileStatic;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.microsoft.z3.ArithExpr;
+import com.microsoft.z3.ArrayExpr;
+import com.microsoft.z3.BoolExpr;
+import com.microsoft.z3.Context;
+import com.microsoft.z3.Expr;
+import com.microsoft.z3.IntExpr;
+import com.microsoft.z3.Quantifier;
+import com.microsoft.z3.Solver;
+import com.microsoft.z3.Sort;
+import com.microsoft.z3.Status;
+
+import com.microsoft.z3.IntNum;
+
+import rba.tool.core.z3.Z3CodeManager;
+
+@CompileStatic
+public class ConstraintCalculation implements rba.tool.core.constraint.IConstraintCalculation {
+
+    boolean onlyOnline;
+    IntNum defNull;
+    IntNum allocatableSize;
+    IntNum contentSize;
+    Context ctx;
+    Sort int_type;
+    Sort bool_type;
+    Sort array_int_bool_type;
+    Sort array_int_int_type;
+    ArrayExpr displayingContent;
+    ArrayExpr allocatedContent;
+    ArrayExpr isDisplayed;
+    ArrayExpr isHidden;
+    ArrayExpr contentsList;
+    ArrayExpr contentValue;
+    ArrayExpr isVisible;
+    ArrayExpr isActive;
+    ArrayExpr allocatable;
+    ArrayExpr preDisplayingContent;
+    ArrayExpr preAllocatedContent;
+    ArrayExpr preIsDisplayed;
+    ArrayExpr preIsHidden;
+    ArrayExpr preContentsList;
+    ArrayExpr preContentValue;
+    ArrayExpr preIsVisible;
+    ArrayExpr preIsActive;
+    ArrayExpr preAllocatable;
+    ArrayExpr isMuted;
+    ArrayExpr isOutputted;
+    ArrayExpr isAttenuated;
+    ArrayExpr outputtingSound;
+    ArrayExpr isSounding;
+    ArrayExpr preIsMuted;
+    ArrayExpr preIsOutputted;
+    ArrayExpr preIsAttenuated;
+    ArrayExpr preOutputtingSound;
+    ArrayExpr preIsSounding;
+    ArrayExpr isOn;
+    ArrayExpr getProperty;
+    ArrayExpr preIsOn;
+    ArrayExpr preGetProperty;
+    ArrayExpr isDefeatedBy;
+    ArrayExpr defeats;
+    ArrayExpr isDisappeared;
+    ArrayExpr isCanceled;
+    ArrayExpr preIsDefeatedBy;
+    ArrayExpr preDefeats;
+    ArrayExpr preIsDisappeared;
+    ArrayExpr preIsCanceled;
+
+    ArrayExpr emp;
+    ArrayExpr empArrayConst;
+    ArrayExpr allInstanceOfArea;
+    ArrayExpr allInstanceOfAreaConst;
+    ArrayExpr allInstanceOfZone;
+    ArrayExpr allInstanceOfZoneConst;
+    ArrayExpr allInstanceOfViewContent;
+    ArrayExpr allInstanceOfViewContentConst;
+
+    ArrayExpr allInstanceOfSoundContent;
+    ArrayExpr allInstanceOfSoundContentConst;
+
+
+    public void setUp(boolean onlyOnline) {
+        this.onlyOnline = onlyOnline;
+        ctx = new Context();
+        defNull = ctx.mkInt(0);
+        allocatableSize = ctx.mkInt(4);
+        contentSize = ctx.mkInt(4);
+        int_type = ctx.getIntSort();
+        bool_type = ctx.getBoolSort();
+        array_int_bool_type = ctx.mkArraySort(int_type, bool_type);
+        array_int_int_type = ctx.mkArraySort(int_type, int_type);
+
+        displayingContent = ctx.mkArrayConst("displayingContent", int_type, int_type);
+        allocatedContent = ctx.mkArrayConst("allocatedContent", int_type, int_type);
+        isDisplayed = ctx.mkArrayConst("isDisplayed", int_type, bool_type);
+        contentsList = ctx.mkArrayConst("contentsList", int_type, array_int_bool_type);
+        contentValue = ctx.mkArrayConst("contentValue", int_type, int_type);
+        isHidden = ctx.mkArrayConst("isHidden", int_type, bool_type);
+        isVisible = ctx.mkArrayConst("isVisible", int_type, bool_type);
+        isActive = ctx.mkArrayConst("isActive", int_type, bool_type);
+        allocatable = ctx.mkArrayConst("allocatable", int_type, array_int_bool_type);
+
+        outputtingSound = ctx.mkArrayConst("outputtingSound", int_type, int_type);
+        isOutputted = ctx.mkArrayConst("isOutputted", int_type, bool_type);
+        isMuted = ctx.mkArrayConst("isMuted", int_type, bool_type);
+        isAttenuated = ctx.mkArrayConst("isAttenuated", int_type, bool_type);
+        isSounding = ctx.mkArrayConst("isSounding", int_type, bool_type);
+        preDisplayingContent = ctx.mkArrayConst("preDisplayingContent", int_type, int_type);
+        preAllocatedContent = ctx.mkArrayConst("preAllocatedContent", int_type, int_type);
+        preIsDisplayed = ctx.mkArrayConst("preIsDisplayed", int_type, bool_type);
+        preContentsList = ctx.mkArrayConst("preContentsList", int_type, array_int_bool_type);
+        preContentValue = ctx.mkArrayConst("preContentValue", int_type, int_type);
+        preIsHidden = ctx.mkArrayConst("preIsHidden", int_type, bool_type);
+        preIsVisible = ctx.mkArrayConst("preIsVisible", int_type, bool_type);
+        preIsActive = ctx.mkArrayConst("preIsActive", int_type, bool_type);
+        preAllocatable = ctx.mkArrayConst("preAllocatable", int_type, array_int_bool_type);
+
+        preOutputtingSound = ctx.mkArrayConst("preOutputtingSound", int_type, int_type);
+        preIsOutputted = ctx.mkArrayConst("preIsOutputted", int_type, bool_type);
+        preIsMuted = ctx.mkArrayConst("preIsMuted", int_type, bool_type);
+        preIsAttenuated = ctx.mkArrayConst("preIsAttenuated", int_type, bool_type);
+        preIsSounding = ctx.mkArrayConst("preIsSounding", int_type, bool_type);
+        isOn = ctx.mkArrayConst("isOn", int_type, bool_type);
+        getProperty = ctx.mkArrayConst("getProperty", int_type, array_int_int_type);
+        preIsOn = ctx.mkArrayConst("preIsOn", int_type, bool_type);
+        preGetProperty = ctx.mkArrayConst("preGetProperty", int_type, array_int_int_type);
+        isDefeatedBy = ctx.mkArrayConst("isDefeatedBy", int_type, array_int_bool_type);
+        defeats = ctx.mkArrayConst("defeats", int_type, array_int_bool_type);
+        isDisappeared = ctx.mkArrayConst("isDisappeared", int_type, bool_type);
+        isCanceled = ctx.mkArrayConst("isOn", int_type, bool_type);
+        preIsDefeatedBy = ctx.mkArrayConst("preIsDefeatedBy", int_type, array_int_bool_type);
+        preDefeats = ctx.mkArrayConst("preDefeats", int_type, array_int_bool_type);
+        preIsDisappeared = ctx.mkArrayConst("preIsDisappeared", int_type, bool_type);
+        preIsCanceled = ctx.mkArrayConst("preIsCanceled", int_type, bool_type);
+
+        emp = ctx.mkArrayConst("emp", int_type, bool_type);
+        empArrayConst = ctx.mkConstArray(int_type, ctx.mkFalse());
+        allInstanceOfArea = ctx.mkArrayConst("allInstanceOfArea", int_type, bool_type);
+        allInstanceOfAreaConst = ctx.mkConstArray(int_type, ctx.mkTrue());
+        allInstanceOfZone = ctx.mkArrayConst("allInstanceOfZone", int_type, bool_type);
+        allInstanceOfZoneConst = ctx.mkConstArray(int_type, ctx.mkTrue());
+        allInstanceOfViewContent = ctx.mkArrayConst("allInstanceOfViewContent", int_type, bool_type);
+        allInstanceOfViewContentConst = ctx.mkConstArray(int_type, ctx.mkTrue());
+
+        allInstanceOfSoundContent = ctx.mkArrayConst("allInstanceOfSoundContent", int_type, bool_type);
+        allInstanceOfSoundContentConst = ctx.mkConstArray(int_type, ctx.mkTrue());
+
+
+    }
+
+    public void close() {
+        ctx.close();
+    }
+
+    /**
+     * 制約リストの初期化
+     */
+    private void initConstraintList(List<BoolExpr> constrList, List<BoolExpr> constrLabelList) {
+        constrList.add(ctx.mkEq(emp, empArrayConst));
+        constrLabelList.add(ctx.mkBoolConst("Constraint : Emp "));
+        constrList.add(ctx.mkEq(allInstanceOfArea, allInstanceOfAreaConst));
+        constrLabelList.add(ctx.mkBoolConst("Constraint : AllInstanceOfArea "));
+        constrList.add(ctx.mkEq(allInstanceOfZone, allInstanceOfZoneConst));
+        constrLabelList.add(ctx.mkBoolConst("Constraint : AllInstanceOfZone "));
+        constrList.add(ctx.mkEq(allInstanceOfViewContent, allInstanceOfViewContentConst));
+        constrLabelList.add(ctx.mkBoolConst("Constraint : AllInstanceOfViewContent "));
+
+        constrList.add(ctx.mkEq(allInstanceOfSoundContent, allInstanceOfSoundContentConst));
+        constrLabelList.add(ctx.mkBoolConst("Constraint : AllInstanceOfSoundContent "));
+
+        //A = { A1 }
+        constrList.add(ctx.mkEq(ctx.mkSelect(contentsList, ctx.mkInt(1)), ctx.mkStore(empArrayConst, ctx.mkInt(1), ctx.mkTrue())));
+        constrLabelList.add(ctx.mkBoolConst("Constraint:A.contentsList"));
+        //B = { B1 }
+        constrList.add(ctx.mkEq(ctx.mkSelect(contentsList, ctx.mkInt(2)), ctx.mkStore(empArrayConst, ctx.mkInt(2), ctx.mkTrue())));
+        constrLabelList.add(ctx.mkBoolConst("Constraint:B.contentsList"));
+        //C = { C1 }
+        constrList.add(ctx.mkEq(ctx.mkSelect(contentsList, ctx.mkInt(3)), ctx.mkStore(empArrayConst, ctx.mkInt(3), ctx.mkTrue())));
+        constrLabelList.add(ctx.mkBoolConst("Constraint:C.contentsList"));
+        //D = { D1 }
+        constrList.add(ctx.mkEq(ctx.mkSelect(contentsList, ctx.mkInt(4)), ctx.mkStore(empArrayConst, ctx.mkInt(4), ctx.mkTrue())));
+        constrLabelList.add(ctx.mkBoolConst("Constraint:D.contentsList"));
+
+        //A1 = { A }
+        constrList.add(ctx.mkEq(ctx.mkSelect(allocatable, ctx.mkInt(1)), ctx.mkStore(empArrayConst, ctx.mkInt(1), ctx.mkTrue())));
+        constrLabelList.add(ctx.mkBoolConst("Constraint:A1.allocatable"));
+        //B1 = { B }
+        constrList.add(ctx.mkEq(ctx.mkSelect(allocatable, ctx.mkInt(2)), ctx.mkStore(empArrayConst, ctx.mkInt(2), ctx.mkTrue())));
+        constrLabelList.add(ctx.mkBoolConst("Constraint:B1.allocatable"));
+        //C1 = { C }
+        constrList.add(ctx.mkEq(ctx.mkSelect(allocatable, ctx.mkInt(3)), ctx.mkStore(empArrayConst, ctx.mkInt(3), ctx.mkTrue())));
+        constrLabelList.add(ctx.mkBoolConst("Constraint:C1.allocatable"));
+        //D1 = { D }
+        constrList.add(ctx.mkEq(ctx.mkSelect(allocatable, ctx.mkInt(4)), ctx.mkStore(empArrayConst, ctx.mkInt(4), ctx.mkTrue())));
+        constrLabelList.add(ctx.mkBoolConst("Constraint:D1.allocatable"));
+
+
+        initConstraintListForPostConstraint(constrList, constrLabelList);
+    }
+
+    /**
+     * 後処理制約リストの初期化
+     */
+    private void initConstraintListForPostConstraint(List<BoolExpr> constrList, List<BoolExpr> constrLabelList) {
+
+    }
+
+    /**
+     * 全制約の矛盾検証
+     */
+    public List<String> calculateAllConstraint() {
+        Solver s = ctx.mkSolver();
+        s.push();
+
+        List<BoolExpr> constrList = new ArrayList<BoolExpr>();
+        List<BoolExpr> constrLabelList = new ArrayList<BoolExpr>();
+
+        setAllConstraintContext(constrList, constrLabelList);
+
+        for (int i = 0; i < constrList.size(); i++) {
+            s.assertAndTrack((BoolExpr) constrList.get(i).simplify(), constrLabelList.get(i));
+        }
+
+        Status st = s.check();
+        List<String> list = Z3CodeManager.INSTNACE.getErrors(ctx, s, st,"allConstr" ,constrList, constrLabelList);
+        s.pop();
+        return list;
+    }
+
+    /**
+     * 矛盾検証実行
+     */
+    public void setAllConstraintContext(List<BoolExpr> constrList, List<BoolExpr> constrLabelList) {
+        initConstraintList(constrList, constrLabelList);
+
+        //(D.isDisplayed() XOR IF(C.isDisplayed()) THEN B.isHidden() ELSE A.isHidden())
+        constrList.add(ctx.mkXor((BoolExpr) ctx.mkSelect(isDisplayed, ctx.mkInt(4)), (BoolExpr) ctx.mkITE((BoolExpr) ctx.mkSelect(isDisplayed, ctx.mkInt(3)), ctx.mkSelect(isHidden, ctx.mkInt(2)), ctx.mkSelect(isHidden, ctx.mkInt(1)))));
+        constrLabelList.add(ctx.mkBoolConst("#1:HA763_構文の組み合わせテスト"));
+
+
+        setInvarianceConstraintContext(constrList, constrLabelList);
+        setInvariancePreConstraintContext(constrList, constrLabelList);
+    }
+
+    /**
+     * 後処理制約の全制約の矛盾検証
+     */
+    public List<String> postCalculateAllConstraint() {
+        Solver s = ctx.mkSolver();
+        s.push();
+
+        List<BoolExpr> constrList = new ArrayList<BoolExpr>();
+        List<BoolExpr> constrLabelList = new ArrayList<BoolExpr>();
+
+        setAllPostConstraintContext(constrList, constrLabelList);
+
+        for (int i = 0; i < constrList.size(); i++) {
+            s.assertAndTrack((BoolExpr) constrList.get(i).simplify(), constrLabelList.get(i));
+        }
+
+        Status st = s.check();
+        List<String> list = Z3CodeManager.INSTNACE.getErrors(ctx, s, st,"allConstr" ,constrList, constrLabelList);
+        s.pop();
+        return list;
+    }
+
+    /**
+     * 後処理制約の矛盾検証実行
+     */
+    public void setAllPostConstraintContext(List<BoolExpr> constrList, List<BoolExpr> constrLabelList) {
+        initConstraintList(constrList, constrLabelList);
+
+
+        setPostInvarianceConstraintContextINP01_INP02(constrList, constrLabelList);
+    }
+
+    /**
+     * モデルの不変性制約
+     */
+    public void setInvarianceConstraintContext(List<BoolExpr> constrList, List<BoolExpr> constrLabelList) {
+        // Area.displayingContent == contentsList.get(n) OR Area.displayingContent == contentsList.get(n+1) ...)
+        constrList.add(ctx.mkEq(ctx.mkSelect(displayingContent, ctx.mkInt(1)), ctx.mkInt(1)));
+        constrLabelList.add(ctx.mkBoolConst("IN01:Constraint _1 - (A.displayingContent == A1)"));
+        constrList.add(ctx.mkEq(ctx.mkSelect(displayingContent, ctx.mkInt(2)), ctx.mkInt(2)));
+        constrLabelList.add(ctx.mkBoolConst("IN01:Constraint _2 - (B.displayingContent == B1)"));
+        constrList.add(ctx.mkEq(ctx.mkSelect(displayingContent, ctx.mkInt(3)), ctx.mkInt(3)));
+        constrLabelList.add(ctx.mkBoolConst("IN01:Constraint _3 - (C.displayingContent == C1)"));
+        constrList.add(ctx.mkEq(ctx.mkSelect(displayingContent, ctx.mkInt(4)), ctx.mkInt(4)));
+        constrLabelList.add(ctx.mkBoolConst("IN01:Constraint _4 - (D.displayingContent == D1)"));
+
+        // a.isDisplayed->c.isVisible AND c.isVisible->a.isDisplayed
+        constrList.add(ctx.mkAnd(ctx.mkImplies((BoolExpr) ctx.mkSelect(isDisplayed, ctx.mkInt(1)), (BoolExpr) ctx.mkSelect(isVisible, ctx.mkInt(1))), ctx.mkImplies((BoolExpr) ctx.mkSelect(isVisible, ctx.mkInt(1)), (BoolExpr) ctx.mkSelect(isDisplayed, ctx.mkInt(1)))));
+        constrLabelList.add(ctx.mkBoolConst("IN02:Constraint_1 - A.isDisplayed -> A1.isVisible AND A1.isVisible -> A.isDisplayed"));
+        constrList.add(ctx.mkAnd(ctx.mkImplies((BoolExpr) ctx.mkSelect(isDisplayed, ctx.mkInt(2)), (BoolExpr) ctx.mkSelect(isVisible, ctx.mkInt(2))), ctx.mkImplies((BoolExpr) ctx.mkSelect(isVisible, ctx.mkInt(2)), (BoolExpr) ctx.mkSelect(isDisplayed, ctx.mkInt(2)))));
+        constrLabelList.add(ctx.mkBoolConst("IN02:Constraint_2 - B.isDisplayed -> B1.isVisible AND B1.isVisible -> B.isDisplayed"));
+        constrList.add(ctx.mkAnd(ctx.mkImplies((BoolExpr) ctx.mkSelect(isDisplayed, ctx.mkInt(3)), (BoolExpr) ctx.mkSelect(isVisible, ctx.mkInt(3))), ctx.mkImplies((BoolExpr) ctx.mkSelect(isVisible, ctx.mkInt(3)), (BoolExpr) ctx.mkSelect(isDisplayed, ctx.mkInt(3)))));
+        constrLabelList.add(ctx.mkBoolConst("IN02:Constraint_3 - C.isDisplayed -> C1.isVisible AND C1.isVisible -> C.isDisplayed"));
+        constrList.add(ctx.mkAnd(ctx.mkImplies((BoolExpr) ctx.mkSelect(isDisplayed, ctx.mkInt(4)), (BoolExpr) ctx.mkSelect(isVisible, ctx.mkInt(4))), ctx.mkImplies((BoolExpr) ctx.mkSelect(isVisible, ctx.mkInt(4)), (BoolExpr) ctx.mkSelect(isDisplayed, ctx.mkInt(4)))));
+        constrLabelList.add(ctx.mkBoolConst("IN02:Constraint_4 - D.isDisplayed -> D1.isVisible AND D1.isVisible -> D.isDisplayed"));
+
+    }
+
+    /**
+     * モデルの不変性制約(pre制約)
+     */
+    public void setInvariancePreConstraintContext(List<BoolExpr> constrList, List<BoolExpr> constrLabelList) {
+        // Area.preDisplayingContent == contentsList.get(n) OR Area.preDisplayingContent == contentsList.get(n+1) ...)
+        constrList.add(ctx.mkEq(ctx.mkSelect(preDisplayingContent, ctx.mkInt(1)), ctx.mkInt(1)));
+        constrLabelList.add(ctx.mkBoolConst("IN01:Constraint (pre)_1 - (A.preDisplayingContent == A1)"));
+        constrList.add(ctx.mkEq(ctx.mkSelect(preDisplayingContent, ctx.mkInt(2)), ctx.mkInt(2)));
+        constrLabelList.add(ctx.mkBoolConst("IN01:Constraint (pre)_2 - (B.preDisplayingContent == B1)"));
+        constrList.add(ctx.mkEq(ctx.mkSelect(preDisplayingContent, ctx.mkInt(3)), ctx.mkInt(3)));
+        constrLabelList.add(ctx.mkBoolConst("IN01:Constraint (pre)_3 - (C.preDisplayingContent == C1)"));
+        constrList.add(ctx.mkEq(ctx.mkSelect(preDisplayingContent, ctx.mkInt(4)), ctx.mkInt(4)));
+        constrLabelList.add(ctx.mkBoolConst("IN01:Constraint (pre)_4 - (D.preDisplayingContent == D1)"));
+
+        // a.preIsDisplayed->c.preIsVisible AND c.preIsVisible->a.preIsDisplayed
+        constrList.add(ctx.mkAnd(ctx.mkImplies((BoolExpr) ctx.mkSelect(preIsDisplayed, ctx.mkInt(1)), (BoolExpr) ctx.mkSelect(preIsVisible, ctx.mkInt(1))), ctx.mkImplies((BoolExpr) ctx.mkSelect(preIsVisible, ctx.mkInt(1)), (BoolExpr) ctx.mkSelect(preIsDisplayed, ctx.mkInt(1)))));
+        constrLabelList.add(ctx.mkBoolConst("IN02:Constraint(pre)_1 - A.preIsDisplayed -> A1.preIsVisible AND A1.preIsVisible -> A.preIsDisplayed"));
+        constrList.add(ctx.mkAnd(ctx.mkImplies((BoolExpr) ctx.mkSelect(preIsDisplayed, ctx.mkInt(2)), (BoolExpr) ctx.mkSelect(preIsVisible, ctx.mkInt(2))), ctx.mkImplies((BoolExpr) ctx.mkSelect(preIsVisible, ctx.mkInt(2)), (BoolExpr) ctx.mkSelect(preIsDisplayed, ctx.mkInt(2)))));
+        constrLabelList.add(ctx.mkBoolConst("IN02:Constraint(pre)_2 - B.preIsDisplayed -> B1.preIsVisible AND B1.preIsVisible -> B.preIsDisplayed"));
+        constrList.add(ctx.mkAnd(ctx.mkImplies((BoolExpr) ctx.mkSelect(preIsDisplayed, ctx.mkInt(3)), (BoolExpr) ctx.mkSelect(preIsVisible, ctx.mkInt(3))), ctx.mkImplies((BoolExpr) ctx.mkSelect(preIsVisible, ctx.mkInt(3)), (BoolExpr) ctx.mkSelect(preIsDisplayed, ctx.mkInt(3)))));
+        constrLabelList.add(ctx.mkBoolConst("IN02:Constraint(pre)_3 - C.preIsDisplayed -> C1.preIsVisible AND C1.preIsVisible -> C.preIsDisplayed"));
+        constrList.add(ctx.mkAnd(ctx.mkImplies((BoolExpr) ctx.mkSelect(preIsDisplayed, ctx.mkInt(4)), (BoolExpr) ctx.mkSelect(preIsVisible, ctx.mkInt(4))), ctx.mkImplies((BoolExpr) ctx.mkSelect(preIsVisible, ctx.mkInt(4)), (BoolExpr) ctx.mkSelect(preIsDisplayed, ctx.mkInt(4)))));
+        constrLabelList.add(ctx.mkBoolConst("IN02:Constraint(pre)_4 - D.preIsDisplayed -> D1.preIsVisible AND D1.preIsVisible -> D.preIsDisplayed"));
+
+    }
+
+    /**
+     * 後処理制約のモデルの不変性制約
+     */
+    public void setPostInvarianceConstraintContextINP01_INP02(List<BoolExpr> constrList, List<BoolExpr> constrLabelList) {
+        // Content1.isDefeatedBy(Content2) -> Content2.isCanceled
+
+        //!Content1.isDefeatedBy(Content1)
+        constrList.add(ctx.mkNot((BoolExpr) ctx.mkSelect((ArrayExpr) ctx.mkSelect(isDefeatedBy, ctx.mkInt(1)), ctx.mkInt(1))));
+        constrLabelList.add(ctx.mkBoolConst("INP02:Post Constraint 1 - !A1.isDefeatedBy(A1)"));
+        constrList.add(ctx.mkNot((BoolExpr) ctx.mkSelect((ArrayExpr) ctx.mkSelect(isDefeatedBy, ctx.mkInt(2)), ctx.mkInt(2))));
+        constrLabelList.add(ctx.mkBoolConst("INP02:Post Constraint 2 - !B1.isDefeatedBy(B1)"));
+        constrList.add(ctx.mkNot((BoolExpr) ctx.mkSelect((ArrayExpr) ctx.mkSelect(isDefeatedBy, ctx.mkInt(3)), ctx.mkInt(3))));
+        constrLabelList.add(ctx.mkBoolConst("INP02:Post Constraint 3 - !C1.isDefeatedBy(C1)"));
+        constrList.add(ctx.mkNot((BoolExpr) ctx.mkSelect((ArrayExpr) ctx.mkSelect(isDefeatedBy, ctx.mkInt(4)), ctx.mkInt(4))));
+        constrLabelList.add(ctx.mkBoolConst("INP02:Post Constraint 4 - !D1.isDefeatedBy(D1)"));
+
+        //!Content1.defeats(Content1)
+        constrList.add(ctx.mkNot((BoolExpr) ctx.mkSelect((ArrayExpr) ctx.mkSelect(defeats, ctx.mkInt(1)), ctx.mkInt(1))));
+        constrLabelList.add(ctx.mkBoolConst("INP02:Post Constraint 1 - !A1.defeats(A1)"));
+        constrList.add(ctx.mkNot((BoolExpr) ctx.mkSelect((ArrayExpr) ctx.mkSelect(defeats, ctx.mkInt(2)), ctx.mkInt(2))));
+        constrLabelList.add(ctx.mkBoolConst("INP02:Post Constraint 2 - !B1.defeats(B1)"));
+        constrList.add(ctx.mkNot((BoolExpr) ctx.mkSelect((ArrayExpr) ctx.mkSelect(defeats, ctx.mkInt(3)), ctx.mkInt(3))));
+        constrLabelList.add(ctx.mkBoolConst("INP02:Post Constraint 3 - !C1.defeats(C1)"));
+        constrList.add(ctx.mkNot((BoolExpr) ctx.mkSelect((ArrayExpr) ctx.mkSelect(defeats, ctx.mkInt(4)), ctx.mkInt(4))));
+        constrLabelList.add(ctx.mkBoolConst("INP02:Post Constraint 4 - !D1.defeats(D1)"));
+
+
+    }
+
+    /**
+     * 含意部分制約の矛盾検証
+     */
+    public Map<String, List<String>> calculateImpliesConstraints() {
+        Map<String, List<String>> map = new LinkedHashMap<String, List<String>>();
+
+        return map;
+    }
+
+    /**
+     * 後処理制約の含意部分制約の矛盾検証
+     */
+    public Map<String, List<String>> postCalculateImpliesConstraints() {
+        Map<String, List<String>> map = new LinkedHashMap<String, List<String>>();
+
+        return map;
+    }
+
+
+}

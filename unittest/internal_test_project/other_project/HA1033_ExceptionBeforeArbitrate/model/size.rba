@@ -1,0 +1,10 @@
+Package Sizes {
+	Size FullScreenSize {
+		width: 340
+		height: 120
+	}
+	Size AreaSize {
+		width: 100
+		height: 100
+	}
+}

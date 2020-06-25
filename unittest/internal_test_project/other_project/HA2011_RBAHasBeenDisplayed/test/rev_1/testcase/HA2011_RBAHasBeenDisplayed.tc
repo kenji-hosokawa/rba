@@ -1,0 +1,8 @@
+#start isExceptionBeforeArbitrate
+CL
+C,on,A1,NORMAL
+C,on,X1,NORMAL
+C,on,X2,NORMAL
+Assert,A,X,X2
+Assert,A,A,
+

@@ -1,0 +1,185 @@
+Package SampleDisplays {
+	Display Sample_METER{
+		Size Sample_METER_FULLSCREEN {
+			width: 500
+			height: 400
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x:100
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: A
+				}
+				PositionContainer {
+					x:300
+					y:0
+					basePoint: LEFT_TOP
+					areaReference: B
+				}
+				PositionContainer {
+					x:300
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: C
+				}
+				PositionContainer {
+					x:300
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: D
+				}
+				PositionContainer {
+					x:300
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: X
+				}
+				PositionContainer {
+					x:300
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: Y
+				}
+				PositionContainer {
+					x:300
+					y:100
+					basePoint: LEFT_TOP
+					areaReference: Z
+				}
+			}
+		}
+	}
+	Size Aサイズ {
+		width:300
+		height:200
+	}
+	Size Bサイズ {
+		width:200
+		height:100
+	}
+	Size Cサイズ {
+		width:200
+		height:100
+	}
+	Size Dサイズ {
+		width:200
+		height:100
+	}
+	Size Xサイズ {
+		width:200
+		height:100
+	}
+	Area A {
+		sizeReference:Aサイズ
+		visibility: > That-of B
+		zorder: > That-of B
+	}
+	Area B {
+		sizeReference:Bサイズ
+		visibility: > That-of C
+		zorder: > That-of C
+	}
+	Area C {
+		sizeReference:Cサイズ
+		visibility: > That-of D
+		zorder: > That-of D
+	}
+	Area D {
+		sizeReference:Dサイズ
+		visibility: MIN_VALUE
+		zorder: MIN_VALUE
+	}
+	Area X {
+		sizeReference:Xサイズ
+		visibility: MIN_VALUE
+		zorder: MIN_VALUE
+	}
+	Area Y {
+		sizeReference:Xサイズ
+		visibility: MIN_VALUE
+		zorder: MIN_VALUE
+	}
+	Area Z {
+		sizeReference:Xサイズ
+		visibility: MIN_VALUE
+		zorder: MIN_VALUE
+	}
+	ViewContent A1{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Aサイズ
+	}
+	ViewContent A2{
+		allocatable: [
+			A
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Aサイズ
+	}
+	ViewContent B1 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Bサイズ
+	}
+	ViewContent B2 {
+		allocatable: [
+			B
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE + 1
+		}
+		sizeReference:Bサイズ
+	}
+	ViewContent C2 {
+		allocatable: [
+			C
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE + 1
+		}
+		sizeReference:Cサイズ
+	}
+	ViewContent D1 {
+		allocatable: [
+			D
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Dサイズ
+	}
+	ViewContent X1 {
+		allocatable: [
+			X,Y,Z
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference:Xサイズ
+	}
+	Constraint HA1208_LetStatement_Multiple {
+		description: "1つのExpressionに複数のlet"
+		runtime: true
+		let a1Content = A1
+		let aContent = A.allocatedContent()
+		let bContent = B.allocatedContent()
+		let cContent = C.allocatedContent()
+		let x1Allo = X1.allocatables()
+		(IF(aContent == a1Content )
+			THEN bContent
+			ELSE cContent
+		).stateValue() > D1.stateValue() -> For-All x1Allo{x| x.isHidden() }
+	}
+}

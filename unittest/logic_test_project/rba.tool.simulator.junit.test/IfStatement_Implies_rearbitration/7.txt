@@ -1,0 +1,6 @@
+C,ON,UserContent,LOW
+C,ON,InterruptContent,LOW
+C,ON,UserContent,HIGH
+execute
+Assert,A,InterruptArea,NULL
+Assert,A,UserArea,UserContent
