@@ -1,6 +1,6 @@
 // Copyright (c) 2018 DENSO CORPORATION. All rights reserved.
 /**
- * JSONパーサークラス
+ * JSON parser class
  */
 
 #ifndef RBAJSONPARSER_HPP
@@ -29,16 +29,8 @@ class RBAModelFactory;
 // }
 
 /**
- * @cond japanese
- * @class RBAJsonParser
- * JSON形式のモデル情報を読み込み、モデルオブジェクトを生成する機能を提供する。
- * @endcond
- *
- * @cond english
  * @class RBAJsonParser
  * Provides the facility that loads a model file in JSON format and generate a Model object.
- * @enum
- * @endcond
  */
 class DLL_EXPORT RBAJsonParser
 {
@@ -52,17 +44,6 @@ public:
 
 public:
   /**
-   * @cond japanese
-   * @brief JSONファイルを読み込んでモデルを生成する
-   * @param filename JSONファイルのファイルパス
-   * @return モデル
-   * ファイルが存在しない場合はnullptrを返す。
-   *
-   * **使用例：**
-   *
-   * @endcond
-   *
-   * @cond english
    * @brief Loads a JSON file and generates a model object.
    * @param filename Path of JSON file
    * @return Model
@@ -70,7 +51,6 @@ public:
    *
    * **Example**
    *
-   * @endcond
    * ```
    *    rba::RBAJsonParser parser;
    *    rba::RBAModel* model = parser.parse("RBAModel.json");

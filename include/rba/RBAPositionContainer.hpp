@@ -1,6 +1,6 @@
 // Copyright (c) 2018 DENSO CORPORATION. All rights reserved.
 /**
- * ポジションコンテナクラス
+ * Position container class
  */
 
 #ifndef RBAPOSITIONCONTAINER_HPP
@@ -26,92 +26,42 @@ protected:
 
 public:
   /**
-   * @cond japanese
-   * @brief X座標を取得する
-   * @return X座標の値
-   * @endcond
-   *
-   * @cond english
-   * @brief 
-   * @param
-   * @return 
-   * @endcond
+   * @brief Get X coordinate
+   * @return X coordinate
    */
   virtual std::int32_t getX() const=0;
 
   /**
-   * @cond japanese
-   * @brief Y座標を取得する
-   * @return Y座標の値
-   * @endcond
-   *
-   * @cond english
-   * @brief 
-   * @param
-   * @return 
-   * @endcond
+   * @brief Get Y coordinate
+   * @return Y coordinate
    */
   virtual std::int32_t getY() const=0;
 
   /**
-   * @cond japanese
-   * @brief ベースポイントを取得する
-   * @return ベースポイント
-   * @endcond
-   *
-   * @cond english
-   * @brief 
-   * @param
-   * @return 
-   * @endcond
+   * @brief Get base point
+   * @return Base point
    */
   virtual RBABasePoint getBasePoint() const=0;
 
   /**
-   * @cond japanese
-   * @brief 割り当てられているエリアを取得する
-   * @return 割り当てられているエリア
-   * @endcond
-   *
-   * @cond english
-   * @brief 
-   * @param
-   * @return 
-   * @endcond
+   * @brief Get assigned area
+   * @return assigned area
    */
   virtual const RBAArea* getArea() const=0;
 
 public:
   /**
-   * @cond japanese
-   * @brief X座標のデフォルト値
-   * @endcond
-   *
-   * @cond english
-   * @brief 
-   * @endcond
+   * @brief default X coordinate
    */
   const static std::int32_t X_EDEFAULT=0;
 
   /**
-   * @cond japanese
-   * @brief Y座標のデフォルト値
-   * @endcond
-   *
-   * @cond english
-   * @brief 
-   * @endcond
+   * @brief default Y coordinate
    */
   const static std::int32_t Y_EDEFAULT=0;
 
   /**
-   * @cond japanese
-   * @brief ベースポイントのデフォルト値
-   * @endcond
-   *
-   * @cond english
-   * @brief 
-   * @endcond
+   * @brief default base point
    */
   const static RBABasePoint BASE_POINT_EDEFAULT=RBABasePoint::LEFT_TOP;
 
