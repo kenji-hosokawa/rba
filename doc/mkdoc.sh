@@ -2,8 +2,7 @@
 
 WORKDIR=./work
 TARGETDIR=../include/rba
-DOXYGEN_JP=Doxygen_jp
-DOXYGEN_EN=Doxygen_en
+DOXYGEN=Doxygen
 LOGO_FILE=denso_logo.png
 
 if [ -d $WORKDIR ]; then
@@ -30,10 +29,8 @@ done
 /bin/rm -f $worksrc/RBAViewContentSet.hpp
 /bin/rm -f $worksrc/RBAZoneSet.hpp
 
-sed -e 's/^INPUT =.*$/INPUT = .\/src/' $DOXYGEN_JP > $WORKDIR/$DOXYGEN_JP
-sed -e 's/^INPUT =.*$/INPUT = .\/src/' $DOXYGEN_EN > $WORKDIR/$DOXYGEN_EN
+sed -e 's/^INPUT =.*$/INPUT = .\/src/' $DOXYGEN > $WORKDIR/$DOXYGEN
 
 cd $WORKDIR
-doxygen $DOXYGEN_JP
-doxygen $DOXYGEN_EN
+doxygen $DOXYGEN
 
