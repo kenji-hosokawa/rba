@@ -1,5 +1,5 @@
 /// @file  RBAExpreessionMaker.cpp
-/// @brief 式オブジェクト生成の抽象クラス定義ファイル
+/// @brief Abstract class definition file for expression object generation
 ///
 /// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 
@@ -27,7 +27,7 @@ RBAExpressionMaker::setLetStatement(RBAModelImpl* const model,
     RBALetStatementMaker letMaker;
     letMaker.setFactory(getFactory());
     for(const auto& param : letElem->getChildren()) {  
-      // letMaker::create()でpushVariable()を実施
+      // execute pushVariable() in letMaker::create()
       RBALetStatement* const letExpr
         {dynamic_cast<RBALetStatement*>(letMaker.create(param.get(), model))};
       expr->addLetStatement(letExpr);

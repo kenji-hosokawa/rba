@@ -1,5 +1,5 @@
 /**
- * アクションオペレータクラス定義ファイル
+ * Action operator class　definition
  */
 
 #include "RBAActionOperator.hpp"

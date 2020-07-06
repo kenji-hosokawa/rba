@@ -1,5 +1,5 @@
 /**
- * 調停負け時の要求を取り下げるタイプ
+ * A type that withdraws requests when arbitration loses
  */
 
 #ifndef RBAEXECUTERESULT_HPP
@@ -12,9 +12,9 @@ enum class RBAExecuteResult : std::uint8_t
 {
   TRUE,
   FALSE,
-  EXE,    //doAction()でアクションを行った場合(SetOfActionとIfActionは対象外)
-  NOTEXE, //doAction()でアクションを行わなかった場合(SetOfActionとIfActionは対象外)
-  SKIP    //getValue(), getReferenceObject()の場合はSKIP
+  EXE,    //In case of action is performed by doAction() (Excludes SetOfAction and IfAction)
+  NOTEXE, //In case of action is NOT performed　by doAction() (Excludes SetOfAction and IfAction)
+  SKIP    //In case of getValue() or getReferenceObject()
 };
 
 }

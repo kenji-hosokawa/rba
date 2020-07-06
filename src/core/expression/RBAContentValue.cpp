@@ -1,4 +1,6 @@
-/// コンテントバリュークラス定義ファイル
+/// 
+/// ContentValue class definition 
+///
 
 #include <string>
 #include "RBAContentValue.hpp"
@@ -15,9 +17,11 @@ namespace rba
 
 void RBAContentValue::accept(RBAExpressionVisitor& visitor)
 {
-  // 現時点で唯一存在するvistorであるRBASceneAllocatableCollectorは、
-  // コンテント状態の価値にacceptしないのでこのパスを通ることはない。
-  // 将来、別のvisitorがacceptするかもしれないので、残しておく。
+  // RBA SceneAllocatableCollector which is only existing vistor at this time 
+  // does not accept the value of the content state.
+  // So this code doesn't work. 
+  //
+  // But, leave this because another visitor may accept it in the future.
   visitor.visit(*this);
 }
 
@@ -53,7 +57,7 @@ RBAContentValue::getValueCore(RBAConstraintInfo* info, RBAArbitrator* arb) const
               result = cs->getContentStatePriority();
             }
           } else {
-            // 今回調停が終わっていない場合はExceptionを投げる
+            // Throw an Exception if arbitration is not over
             info->setExceptionBeforeArbitrate(true);
           }
         }

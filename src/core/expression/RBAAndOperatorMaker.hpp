@@ -1,5 +1,5 @@
 /// @file  RBAAndOperatorMaker.hpp
-/// @brief AndOperatorオブジェクト生成クラスヘッダファイル
+/// @brief AndOperator object maker classs header file
 ///
 /// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 
@@ -11,7 +11,7 @@
 namespace rba
 {
 
-/// @brief AndOperatorオブジェクト生成クラス
+/// @brief AndOperator object maker classs
 class RBAAndOperatorMaker : public RBAOperatorMaker
 {
 public:
@@ -23,9 +23,9 @@ public:
   virtual ~RBAAndOperatorMaker()=default;
 
 protected:
-  /// @brief 空のインスタンス生成
-  /// @details 派生クラスでunique_ptrの空のインスタンスを生成する。
-  /// @return インスタンスのunique_ptr
+  /// @brief Empty instanciation
+  /// @details Create an empty instance of unique_ptr in a derived class
+  /// @return unique_ptr of instance
   std::unique_ptr<RBAModelElement> createInstance(const std::string& name="") override;
 
 };

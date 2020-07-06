@@ -1,5 +1,5 @@
 /**
- * ANDオペレータクラスヘッダファイル
+ * AND operator class header fiel
  */
 
 #ifndef RBAANDOPERATOR_HPP

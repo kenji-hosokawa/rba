@@ -1,4 +1,6 @@
-/// コンテントバリュークラスヘッダファイル
+/// 
+/// ContentValue class header file 
+///
 
 #ifndef RBACONTENTVALUE_HPP
 #define RBACONTENTVALUE_HPP

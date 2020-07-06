@@ -1,5 +1,5 @@
 /**
- * Expressionビジタークラスヘッダファイル
+ * Expression visitor class header file
  */
 
 #ifndef RBAEXPRESSIONVISITOR_HPP
@@ -64,7 +64,7 @@ class RBAExpressionVisitor {
   RBAExpressionVisitor& operator=(const RBAExpressionVisitor&&)=delete;
   virtual ~RBAExpressionVisitor() = default;
 
-  // エリアの状態参照
+  // Refer to Area status
   virtual void visit(RBAIsDisplayed& exp) = 0;
   virtual void visit(RBADisplayingContent& exp) = 0;
   virtual void visit(RBAAllocatedContent& exp) = 0;
@@ -73,7 +73,7 @@ class RBAExpressionVisitor {
   virtual void visit(RBAGetContentsList& exp) = 0;
   virtual void visit(RBAActiveContents& exp) = 0;
 
-  // 表示コンテントの状態参照
+  // Refer to display content status
   virtual void visit(RBAIsActive& exp) = 0;
   virtual void visit(RBAIsVisible& exp) = 0;
   virtual void visit(RBAStateValue& exp) = 0;
@@ -83,31 +83,31 @@ class RBAExpressionVisitor {
   virtual void visit(RBAGetAllocatables& exp) = 0;
   virtual void visit(RBAActiveState& exp) = 0;
 
-  // ゾーンの状態参照
+  // Refer to Zone status
   virtual void visit(RBAIsOutputted& exp) = 0;
   virtual void visit(RBAOutputtingSound& exp) = 0;
-  // allocatedContentはエリアと共通
+  // allocatedContent　is common with Area
   virtual void visit(RBAIsMuted& exp) = 0;
   virtual void visit(RBAIsAttenuated& exp) = 0;
-  // contentValueはエリアと共通
-  // contentsListはエリアと共通
+  // contentValue is common with Area
+  // contentsList　is common with Area
 
-  // 音声コンテントの状態参照
-  // isActiveは表示コンテントと共通
+  // Refer to sound content status
+  // isActive is common with display content
   virtual void visit(RBAIsSounding& exp) = 0;
-  // stateValueは表示コンテントと共通
-  // hasComeEarlierThanは表示コンテントと共通
-  // hasComeLaterThanは表示コンテントと共通
-  // allocatablesは表示コンテントと共通
-  // activeStateは表示コンテントと共通
+  // stateValue is common with display content
+  // hasComeEarlierThan is common with display content
+  // hasComeLaterThan is common with display content
+  // allocatables is common with display content
+  // activeState is common with display content
 
-  // シーン参照
+  // Refer to Scene
   virtual void visit(RBAIsOn& exp) = 0;
   virtual void visit(RBAGetProperty& exp) = 0;
 
   virtual void visit(RBAIsTypeOfOperator& exp) = 0;
 
-  // 演算子
+  // Operators
   virtual void visit(RBAAndOperator& exp) = 0;
   virtual void visit(RBAOrOperator& exp) = 0;
   virtual void visit(RBANotOperator& exp) = 0;
@@ -119,30 +119,30 @@ class RBAExpressionVisitor {
   virtual void visit(RBAIsLowerThanOperator& exp) = 0;
   virtual void visit(RBAIsLowerThanEqualOperator& exp) = 0;
 
-  // 量化記号
+  // Quantification symbol
   virtual void visit(RBAForAllOperator& exp) = 0;
   virtual void visit(RBAExistsOperator& exp) = 0;
 
-  // 組込み定義式
+  // Built-in definition expression
   virtual void visit(RBAAllInstanceOfArea& exp) = 0;
   virtual void visit(RBAAllInstanceOfViewContent& exp) = 0;
   virtual void visit(RBAAllInstanceOfZone& exp) = 0;
   virtual void visit(RBAAllInstanceOfSoundContent& exp) = 0;
 
-  // 構文
+  // Syntax
   virtual void visit(RBAIfStatement& exp) = 0;
   virtual void visit(RBALetStatement& exp) = 0;
 
-  // 修飾子
+  // Modifier
   virtual void visit(RBAPreviousModifier& exp) = 0;
 
-  // 集合操作
+  // Set operator
   virtual void visit(RBAMaxOperator& exp) = 0;
   virtual void visit(RBAMinOperator& exp) = 0;
   virtual void visit(RBASelectOperator& exp) = 0;
   virtual void visit(RBASizeOperator& exp) = 0;
 
-  // オブジェクトリファレンス
+  // Object references
   virtual void visit(RBAObjectReference& exp) = 0;
   virtual void visit(RBASetOfOperator& exp) = 0;
 };

@@ -1,5 +1,5 @@
 /**
- * アクションオペレータクラス
+ * Action operator class
  */
 
 #ifndef RBAACTIONOPERATOR_HPP

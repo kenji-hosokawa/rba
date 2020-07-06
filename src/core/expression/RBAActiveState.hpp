@@ -1,5 +1,5 @@
 //
-// activeStateヘッダーファイル
+// activeState header
 //
 
 #ifndef RBAACTIVESTATE_HPP

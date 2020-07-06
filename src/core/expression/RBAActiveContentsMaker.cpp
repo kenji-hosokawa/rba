@@ -1,5 +1,5 @@
 /// @file  RBAActiveContentsMaker.cpp
-/// @brief ActiveContentsオブジェクト生成クラス定義ファイル
+/// @brief ActiveContents object creation class defintion
 ///
 /// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 

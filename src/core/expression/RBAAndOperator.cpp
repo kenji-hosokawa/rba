@@ -1,5 +1,5 @@
 /**
- * ANDオペレータクラス定義ファイル
+ * AND operator class definition
  */
 
 #include "RBAAndOperator.hpp"
@@ -28,14 +28,14 @@ bool
 RBAAndOperator::executeCore(RBAConstraintInfo* info,
                             RBAArbitrator * arb) const
 {
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add itself to the constraint hierarchy for coverage
   LOG_addHierarchy(LOG_getSymbol());
   
   std::uint32_t falseCount {0U};
   std::uint32_t exceptionCount {0U};
   std::uint32_t index {0U};
   for(const auto& ope : getOperand()) {
-    // カバレッジ向けの制約階層構造に回数を追加
+    // Add count to constraint hierarchy for coverage
     LOG_addHierarchy("#" + std::to_string(index));
 
     RBAConstraintInfo* const childInfo {info->getChild(index)};
@@ -48,29 +48,29 @@ RBAAndOperator::executeCore(RBAConstraintInfo* info,
       ;
     }
 
-    // カバレッジ向けの制約階層構造から回数を削除
+    // Remove count to constraint hierarchy for coverage
     LOG_removeHierarchy();
     index++;
   }
 
-  // 失敗あり
+  // with fail
   if (falseCount > 0U) {
     LOG_arbitrateConstraintLogicLogLine(
         "      [" + LOG_getExpressionText() + "] false");
     LOG_coverageConstraintExpressionLog(LOG_getCoverageExpressionText(),
                                         RBAExecuteResult::FALSE);
-    // カバレッジ向けの制約階層構造から自分を削除
+    // Rmove count to constraint hierarchy for coverage
     LOG_removeHierarchy();
     return false;
   }
 
-  // 例外
+  // exception
   if (exceptionCount > 0U) {
     LOG_arbitrateConstraintLogicLogLine(
         "      [" + LOG_getExpressionText() + "] before arbitrate skip");
     LOG_coverageConstraintExpressionLog(LOG_getCoverageExpressionText(),
                                         RBAExecuteResult::SKIP);
-    // カバレッジ向けの制約階層構造から自分を削除
+    // Rmove count to constraint hierarchy for coverage
     LOG_removeHierarchy();
     info->setExceptionBeforeArbitrate(true);
     return false;
@@ -80,7 +80,7 @@ RBAAndOperator::executeCore(RBAConstraintInfo* info,
       "      [" + LOG_getExpressionText() + "] true");
   LOG_coverageConstraintExpressionLog(LOG_getCoverageExpressionText(),
                                       RBAExecuteResult::TRUE);
-  // カバレッジ向けの制約階層構造から自分を削除
+  // Rmove count to constraint hierarchy for coverage
   LOG_removeHierarchy();
 
   return true;

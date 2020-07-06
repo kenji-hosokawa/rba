@@ -1,5 +1,5 @@
 /// @file  RBAExistsOperatorMaker.hpp
-/// @brief ExistsOperatorオブジェクト生成クラスヘッダファイル
+/// @brief ExistsOperator object maker Class header
 ///
 /// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 
@@ -11,7 +11,7 @@
 namespace rba
 {
 
-/// @brief ExistsOperatorオブジェクト生成クラス
+/// @brief ExistsOperator object maker Class
 class RBAExistsOperatorMaker : public RBALambdaContextMaker
 {
 public:
@@ -23,23 +23,23 @@ public:
   virtual ~RBAExistsOperatorMaker()=default;
 
 protected:
-  /// @brief 空のインスタンス生成
-  /// @details 派生クラスでunique_ptrの空のインスタンスを生成する。
-  /// @return インスタンスのunique_ptr
+  /// @brief Create empty instance
+  /// @details Create an empty instance of unique_ptr in a derived class
+  /// @return unique_ptr of instance
   std::unique_ptr<RBAModelElement> createInstance(const std::string& name="") override;
 
-  /// @brief 派生クラスごとにモデルエレメントの属性をセットする
-  /// @param[in] jsonElem ModelElementのJSONエレメント
-  /// @param[in] model 生成したオブジェクトを保存するモデル
-  /// @param[in,out] owner 親オブジェクト（未使用）
+  /// @brief Set attributes of model element for each derived class
+  /// @param[in] jsonElem JSON element of ModelElement
+  /// @param[in] model Model for storing created object
+  /// @param[in,out] owner parent object(Not in use)
   RBAModelElement* setProperty(RBAModelElement* element,
                                        const RBAJsonElement* jsonElem,
                                        RBAModelImpl* model,
                                        RBAModelElement* owner) override;
 
-  /// @brief LambdaContextの空のオブジェクト生成
-  /// @details unique_ptrの空のオブジェクトを生成する。
-  /// @return LambdaContextオブジェクトのunique_ptr
+  /// @brief Crate empty object of LambdaContext
+  /// @details Create empty object of unique_ptr
+  /// @return unique_ptr for LambdaContext object
   std::unique_ptr<RBALambdaContext> createLambdaContext() override;
 
 };

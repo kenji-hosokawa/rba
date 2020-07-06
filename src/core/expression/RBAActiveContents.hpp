@@ -1,5 +1,5 @@
 //
-// ActiveContentsオペレータ
+// ActiveContents operator
 //
 
 #ifndef RBAACTIVECONTENTS_HPP

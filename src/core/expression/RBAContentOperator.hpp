@@ -1,5 +1,5 @@
 /**
- * コンテントオペレータクラス
+ * ContentOperator class 
  */
 
 #ifndef RBACONTENTOPERATOR_HPP

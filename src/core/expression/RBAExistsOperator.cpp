@@ -1,5 +1,5 @@
 /**
- * Existsオペレータクラス定義ファイル
+ * Exists operator Class definition
  */
 
 #include "RBAExistsOperator.hpp"
@@ -33,13 +33,13 @@ bool
 RBAExistsOperator::executeCore(RBAConstraintInfo* info,
 				   RBAArbitrator * arb) const
 {
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add itself to the constraint hierarchy for coverage
   LOG_addHierarchy(LOG_getSymbol());
 
   const RBAExpression* const setObj {getLhsOperand()};
   RBALambdaExpression* const lambda {getLambda()};
 
-  // ルールオブジェクトを取得してループ
+  // Get rule object and loop
   RBAConstraintInfo* const leftInfo {info->getChild(0U)};
 
   std::vector<const RBARuleObject*> objs;
@@ -51,7 +51,7 @@ RBAExistsOperator::executeCore(RBAConstraintInfo* info,
   }
 
   if (leftInfo->isExceptionBeforeArbitrate() || (objset == nullptr)) {
-    // カバレッジ向けの制約階層構造から自分を削除
+    // Remove itself form the constraint hierarchy for coverage
     LOG_removeHierarchy();
 
     info->setExceptionBeforeArbitrate(true);
@@ -75,7 +75,7 @@ RBAExistsOperator::executeCore(RBAConstraintInfo* info,
   bool isTrue {false};
   std::uint32_t i {0U};
   for(const RBARuleObject* const obj : objs) {
-    // カバレッジ向けの制約階層構造に回数を追加
+    // Add count to the constraint hierarchy for coverage
     LOG_addHierarchy("#" + std::to_string(i));
 
     RBAConstraintInfo* const childInfo {info->getChild(i)};
@@ -83,7 +83,7 @@ RBAExistsOperator::executeCore(RBAConstraintInfo* info,
 
     const bool res {lambda->execute(childInfo, arb)};
 
-    // カバレッジ向けの制約階層構造から回数を削除
+    // Remove count from the constraint hierarchy for coverage
     LOG_removeHierarchy();
 
     if(childInfo->isExceptionBeforeArbitrate()) {
@@ -95,12 +95,12 @@ RBAExistsOperator::executeCore(RBAConstraintInfo* info,
   }
 
   if (isTrue == true) {
-    // 成功あり(失敗、例外は不問)
+    // Succeed
     LOG_arbitrateConstraintLogicLogLine(
         "      [" + LOG_getExpressionText() + "] true");
     LOG_coverageConstraintExpressionLog(LOG_getCoverageExpressionText(),
                                         RBAExecuteResult::TRUE);
-    // カバレッジ向けの制約階層構造から自分を削除
+    // Remove itself from the constraint hierarchy for coverage
     LOG_removeHierarchy();
     info->setExceptionBeforeArbitrate(false);
     return true;
@@ -109,7 +109,7 @@ RBAExistsOperator::executeCore(RBAConstraintInfo* info,
         "      [" + LOG_getExpressionText() + "] before arbitrate skip");
     LOG_coverageConstraintExpressionLog(LOG_getCoverageExpressionText(),
                                         RBAExecuteResult::SKIP);
-    // カバレッジ向けの制約階層構造から自分を削除
+    // Remove itself from the constraint hierarchy for coverage
     LOG_removeHierarchy();
     return false;
   } else {
@@ -117,7 +117,7 @@ RBAExistsOperator::executeCore(RBAConstraintInfo* info,
         "      [" + LOG_getExpressionText() + "] false");
     LOG_coverageConstraintExpressionLog(LOG_getCoverageExpressionText(),
                                         RBAExecuteResult::FALSE);
-    // カバレッジ向けの制約階層構造から自分を削除
+    // Remove itself from the constraint hierarchy for coverage
     LOG_removeHierarchy();
     return false;
   }

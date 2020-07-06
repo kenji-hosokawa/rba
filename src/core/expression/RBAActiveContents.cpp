@@ -1,6 +1,6 @@
-//
-// Selectオペレータ定義ファイル
-//
+/**
+ * Select operator class definition
+ */
 
 #include <memory>
 #include "RBAActiveContents.hpp"
@@ -48,7 +48,7 @@ RBAActiveContents::getReferenceObjectCore(RBAConstraintInfo* info, RBAArbitrator
     const RBAAllocatable* const alloc {dynamic_cast<const RBAAllocatable*>(lhsObj->getRawObject())};
 #ifdef RBA_USE_LOG
     if (arb == nullptr) {
-      // createHierarchy()からコールされるとき、このパスを通る
+      // Follow this path when called from createHierarchy()
       returnObj = alloc->getContentSet();
     } else {
 #endif

@@ -1,5 +1,5 @@
 /**
- * Existsオペレータクラスヘッダファイル
+ * Exists operator Class header file
  */
 
 #ifndef RBAEXISTSOPERATOR_HPP

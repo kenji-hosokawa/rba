@@ -1,5 +1,5 @@
 /**
- * 式クラスヘッダファイル
+ * Formula class header file
  */
 
 #ifndef RBAEXPRESSION_HPP

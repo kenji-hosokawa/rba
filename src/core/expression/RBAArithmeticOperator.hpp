@@ -1,5 +1,5 @@
 /**
- * 算術オペレータクラスヘッダファイル
+ * ArithmeticOperator class header file
  */
 
 #ifndef RBAARITHMETICOPERATOR_HPP

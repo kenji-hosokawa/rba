@@ -1,5 +1,5 @@
 /**
- * 式の型タイプ列挙クラスヘッダファイル
+ * Expression type enumeration class header file
  */
 
 #ifndef RBAEXPRESSIONTYPE_HPP

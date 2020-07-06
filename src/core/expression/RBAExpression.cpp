@@ -1,5 +1,5 @@
 /**
- * 式クラス定義ファイル
+ * Formula class definition
  */
 
 #include "RBAExpression.hpp"
@@ -21,7 +21,7 @@ void RBAExpression::addLetStatement(RBALetStatement* const letStatement)
 void
 RBAExpression::accept(RBAExpressionVisitor& visitor)
 {
-  // 派生クラスの関数がコールされるため、コールされない
+  // Not called because the function of the derived class is called
 }
 
 bool
@@ -43,8 +43,8 @@ RBAExpression::execute(RBAConstraintInfo* const info, RBAArbitrator * const arb)
 bool
 RBAExpression::executeCore(RBAConstraintInfo* info, RBAArbitrator * arb) const
 {
-  // evaluate()でgetReferenceObject()を定義していないExpressionを
-  // 指定した時、この関数がコールされる
+  // This function is called when an Expression that does not define 
+  // getReferenceObject() in evaluate() is specified. 
   info->setExceptionBeforeArbitrate(true);
   return false;
 }
@@ -64,8 +64,8 @@ const RBARuleObject*
 RBAExpression::getReferenceObjectCore(RBAConstraintInfo* info,
                                       RBAArbitrator* arb) const
 {
-  // evaluateObject()でgetReferenceObject()を定義していないExpressionを
-  // 指定した時、この関数がコールされる
+  // This function is called when an Expression that does not define 
+  // getReferenceObject() in evaluateObject() is specified. 
   return nullptr;
 }
 
@@ -87,8 +87,8 @@ RBAExpression::getLetStatements() const
 std::int32_t
 RBAExpression::getValueCore(RBAConstraintInfo* info, RBAArbitrator * arb) const
 {
-  // evaluateValue()でgetValue()を定義していないExpressionを
-  // 指定した時、この関数がコールされる
+  // This function is called when an Expression that does not define 
+  // getValue() in evaluateValue() is specified. 
   return -99;
 }
 
@@ -103,8 +103,8 @@ RBAExpression::doAction(RBAConstraintInfo* const info, RBAArbitrator* const arb)
 void
 RBAExpression::doActionCore(RBAConstraintInfo* info, RBAArbitrator* arb)
 {
-  // evaluateDoAction()でdoAction()を定義していないExpressionを
-  // 指定した時、この関数がコールされる
+  // This function is called when an Expression that does not define 
+  // doAction() in evaluateDoAction() is specified. 
   return;
 }
 
@@ -112,27 +112,27 @@ RBAExpression::doActionCore(RBAConstraintInfo* info, RBAArbitrator* arb)
 const std::string
 RBAExpression::getExpressionText() const
 {
-  // 派生クラスの関数がコールされるため、コールされない
+  // Not called because the function of the derived class is called
   return "Unsupported operation exception";
 }
 
 const std::string
 RBAExpression::getCoverageExpressionText() const
 {
-  // 派生クラスの関数がコールされるため、コールされない
+  // Not called because the function of the derived class is called
   return "Unsupported operation exception";
 }
 
 void
 RBAExpression::createHierarchy()
 {
-  // 派生クラスの関数がコールされるため、コールされない
+  // Not called because the function of the derived class is called
 }
 
 RBAExpressionType
 RBAExpression::getUnderlyingType() const
 {
-  // 派生クラスの関数がコールされるため、コールされない
+  // Not called because the function of the derived class is called
   return RBAExpressionType::EXCEPTION;
 }
 #endif

@@ -1,5 +1,5 @@
 /// @file  RBAAllocatedContentMaker.cpp
-/// @brief AllocatedContentオブジェクト生成クラス定義ファイル
+/// @brief AllocatedContent object maker class definition
 ///
 /// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 

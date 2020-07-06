@@ -1,5 +1,5 @@
 /// @file  RBAAndOperatorMaker.cpp
-/// @brief AndOperatorオブジェクト生成クラス定義ファイル
+/// @brief AndOperator object maker class defintion file
 ///
 /// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 

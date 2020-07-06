@@ -1,5 +1,5 @@
 /**
- * アロケータブルオペレータクラス定義ファイル
+ * Allcatable operator class definitio
  */
 
 #include "RBAAllocatableOperator.hpp"

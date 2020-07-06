@@ -1,5 +1,5 @@
 /// @file  RBAExistsOperatorMaker.cpp
-/// @brief ExistsOperatorオブジェクト生成クラス定義ファイル
+/// @brief Exists Operator object maker Class definition
 ///
 /// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 

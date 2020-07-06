@@ -1,5 +1,5 @@
 /// @file  RBAActiveStateMaker.cpp
-/// @brief ActiveStateオブジェクト生成クラス定義ファイル
+/// @brief ActiveState objeckt maker class definition
 ///
 /// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 

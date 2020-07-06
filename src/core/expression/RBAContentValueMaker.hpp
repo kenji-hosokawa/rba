@@ -1,5 +1,5 @@
 /// @file  RBAContentValueMaker.hpp
-/// @brief ContentValueオブジェクト生成クラスヘッダファイル
+/// @brief ContentValue object maker calss header file
 ///
 /// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 

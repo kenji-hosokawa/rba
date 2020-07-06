@@ -1,5 +1,5 @@
 //
-// activeState定義ファイル
+// activeState definition
 //
 
 #include "RBAActiveState.hpp"

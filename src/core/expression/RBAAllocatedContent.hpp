@@ -1,5 +1,5 @@
 /**
- * AllocatedContentクラス
+ * Allocated Content class
  */
 
 #ifndef RBAALLOCATEDCONTENT_HPP

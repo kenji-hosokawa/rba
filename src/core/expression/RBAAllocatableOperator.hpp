@@ -1,5 +1,5 @@
 /**
- * アロケータブルオペレータクラスヘッダファイル
+ * Allocatable operator class header
  */
 
 #ifndef RBAALLOCATABLEOPERATOR_HPP

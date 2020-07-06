@@ -1,5 +1,5 @@
 /**
- * コンテントオペレータクラス定義ファイル
+ * ContentOperator class definition
  */
 
 #include "RBAContentOperator.hpp"

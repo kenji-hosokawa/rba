@@ -1,5 +1,5 @@
 /// @file  RBAContentValueMaker.cpp
-/// @brief ContentValueオブジェクト生成クラス定義ファイル
+/// @brief ContentValue object maker classs definition
 ///
 /// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 

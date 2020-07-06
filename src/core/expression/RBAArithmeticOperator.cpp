@@ -1,5 +1,5 @@
 /**
- * 算術オペレータクラス定義ファイル
+ * ArithmeticOperator class definition
  */
 
 #include "RBAArithmeticOperator.hpp"

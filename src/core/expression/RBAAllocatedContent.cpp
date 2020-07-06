@@ -1,5 +1,6 @@
+
 /**
- * AllocatedContentクラス
+ * Allocated Content class
  */
 
 #include "RBAAllocatedContent.hpp"
@@ -17,9 +18,10 @@ namespace rba
 
 void RBAAllocatedContent::accept(RBAExpressionVisitor& visitor)
 {
-  // 現時点で唯一存在するvistorであるRBASceneAllocatableCollectorは、
-  // コンテントにacceptしないのでこのパスを通ることはない。
-  // 将来、別のvisitorがacceptするかもしれないので、残しておく。
+  // RBASceneAllocatableCollector which is the only visitor at the moment
+  // does not accept this content, so it will not pass this path.
+  //  
+  // However, in the future, another visitor may accept it, so leave this.
   visitor.visit(*this);
 }
 
@@ -33,7 +35,7 @@ const RBARuleObject*
 RBAAllocatedContent::getReferenceObjectCore(RBAConstraintInfo* info,
                                             RBAArbitrator* arb) const
 {
-  const RBARuleObject* object {nullptr};  // 戻り値
+  const RBARuleObject* object {nullptr};  // return value
   const auto leftInfo = info->getChild(0U);
   const auto ruleObj = getLhsOperand()->getReferenceObject(leftInfo, arb);
   if (ruleObj != nullptr) {
@@ -49,7 +51,8 @@ RBAAllocatedContent::getReferenceObjectCore(RBAConstraintInfo* info,
         if (contentState != nullptr) {
           object = contentState->getOwner();
         }
-        // この時点では制約式がFalseになるかTrueになるか不明なので、両方に入れておく
+        // At this point, it is unsure whether the constraint expression will be False or True,
+        // so put it in both.
         info->addTrueAllocatable(alloc);
         info->addFalseAllocatable(alloc);
       } else {
@@ -63,8 +66,10 @@ RBAAllocatedContent::getReferenceObjectCore(RBAConstraintInfo* info,
   bool pre = false;
   std::string str;
   if (ruleObj == nullptr) {
-    // 現在エリアを返す制約式はない。よって、ruleObjがNULLになることはない。
-    // 将来、エリアを返す制約式が作成されるかもしれないので、この処理を残しておく。
+    // Currently there is no constraint expression that returns an area. 
+    // Therefore, ruleObj never becomes NULL.
+    // In the future, a constraint expression that returns an area 
+    // may be created, so leave this processing.
     str = "Allocatable[NULL] has no Content skip";
   } else {
     pre = ruleObj->isPrevious();

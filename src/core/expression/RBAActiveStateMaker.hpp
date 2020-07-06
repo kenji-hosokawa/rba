@@ -1,6 +1,5 @@
 /// @file  RBAActiveStateMaker.hpp
-/// @brief ActiveStateオブジェクト生成クラスヘッダファイル
-///
+/// @brief ActiveState object maker class header ///
 /// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 
 #ifndef RBAACTIVESTATEMAKER_HPP
@@ -11,7 +10,7 @@
 namespace rba
 {
 
-/// @brief ActiveStateオブジェクト生成クラス
+/// @brief ActiveState object maker class
 class RBAActiveStateMaker : public RBAOperatorMaker
 {
 public:
@@ -23,9 +22,9 @@ public:
   virtual ~RBAActiveStateMaker()=default;
 
 protected:
-  /// @brief 空のインスタンス生成
-  /// @details 派生クラスでunique_ptrの空のインスタンスを生成する。
-  /// @return インスタンスのunique_ptr
+  /// @brief Empty instanciation
+  /// @details Create an empty instance of unique_ptr in a derived class
+  /// @return unique_ptr of instance
   std::unique_ptr<RBAModelElement> createInstance(const std::string& name="") override;
 
 };
