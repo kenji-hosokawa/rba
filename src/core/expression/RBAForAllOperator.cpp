@@ -1,5 +1,21 @@
 /**
- * ForAllオペレータクラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * ForAll operator class definitno file
  */
 
 #include "RBAForAllOperator.hpp"
@@ -37,10 +53,10 @@ RBAForAllOperator::executeCore(RBAConstraintInfo* info,
   const RBAExpression* const setObj {getLhsOperand()};
   RBALambdaExpression* const lambda {getLambda()};
 
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add own to the constraint hierarchy for coverage
   LOG_addHierarchy(LOG_getSymbol());
 
-  // ルールオブジェクトを取得してループ
+  // get Rule object and loop
   RBAConstraintInfo* const leftInfo {info->getChild(0U)};
 
   std::vector<const RBARuleObject*> objs;
@@ -51,7 +67,7 @@ RBAForAllOperator::executeCore(RBAConstraintInfo* info,
   }
 
   if(leftInfo->isExceptionBeforeArbitrate() || (objset == nullptr)) {
-    // カバレッジ向けの制約階層構造から自分を削除
+    // Remove own from the constraint hierarchy for coverage
     LOG_removeHierarchy();
 
     info->setExceptionBeforeArbitrate(true);
@@ -74,7 +90,7 @@ RBAForAllOperator::executeCore(RBAConstraintInfo* info,
   bool isTrue {true};
   std::uint32_t i {0U};
   for(const RBARuleObject* const obj : objs) {
-    // カバレッジ向けの制約階層構造に回数を追加
+    // Add count to the constraint hierarchy for coverage
     LOG_addHierarchy("#" + std::to_string(i));
 
     RBAConstraintInfo* const childInfo {info->getChild(i)};
@@ -82,7 +98,7 @@ RBAForAllOperator::executeCore(RBAConstraintInfo* info,
 
     const bool res {lambda->execute(childInfo, arb)};
 
-    // カバレッジ向けの制約階層構造から回数を削除
+    // Remove count from the constraint hierarchy for coverage
     LOG_removeHierarchy();
 
     if(childInfo->isExceptionBeforeArbitrate()) {
@@ -98,7 +114,7 @@ RBAForAllOperator::executeCore(RBAConstraintInfo* info,
         "      [" + LOG_getExpressionText() + "] false");
     LOG_coverageConstraintExpressionLog(LOG_getCoverageExpressionText(),
                                         RBAExecuteResult::FALSE);
-    // カバレッジ向けの制約階層構造から自分を削除
+    // Remove count from the constraint hierarchy for coverage
     LOG_removeHierarchy();
     info->setExceptionBeforeArbitrate(false);
     return false;
@@ -107,7 +123,7 @@ RBAForAllOperator::executeCore(RBAConstraintInfo* info,
         "      [" + LOG_getExpressionText() + "] before arbitrate skip");
     LOG_coverageConstraintExpressionLog(LOG_getCoverageExpressionText(),
                                         RBAExecuteResult::SKIP);
-    // カバレッジ向けの制約階層構造から自分を削除
+    // Remove count from the constraint hierarchy for coverage
     LOG_removeHierarchy();
     return false;
   } else {
@@ -115,7 +131,7 @@ RBAForAllOperator::executeCore(RBAConstraintInfo* info,
         "      [" + LOG_getExpressionText() + "] true");
     LOG_coverageConstraintExpressionLog(LOG_getCoverageExpressionText(),
                                         RBAExecuteResult::TRUE);
-    // カバレッジ向けの制約階層構造から自分を削除
+    // Remove count from the constraint hierarchy for coverage
     LOG_removeHierarchy();
     return true;
   }
