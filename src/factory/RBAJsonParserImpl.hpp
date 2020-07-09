@@ -1,7 +1,21 @@
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /// @file  RBAJsonParserImpl.hpp
-/// @brief JSONパーサー実装クラスヘッダファイル
-///
-/// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
+/// @brief JSON　Parser implementation class header file
 
 #ifndef RBAJSONPARSERIMPL_HPP
 #define RBAJSONPARSERIMPL_HPP
@@ -16,7 +30,7 @@ namespace rba
 class RBAJsonElement;
 enum class RBAConstraintMap : std::uint8_t;
 
-/// @brief JSONパーサー実装クラス
+/// @brief JSON　Parser implementation class
 class RBAJsonParser::Impl
 {
 public:

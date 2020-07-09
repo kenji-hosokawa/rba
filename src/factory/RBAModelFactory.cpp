@@ -1,7 +1,21 @@
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /// @file  RBAModelFactory.cpp
-/// @brief モデルファクトリクラス定義ファイル
-///
-/// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
+/// @brief Model Factory class definition file
 
 #include <algorithm>
 #include "RBAModelFactory.hpp"
@@ -22,10 +36,13 @@ RBAModelFactory::RBAModelFactory(RBAModelImpl* const model)
   }
   else {
     // @Deviation (A18-5-2)
-    // 【ルールに逸脱している内容】
-    //  Operators new and delete shall not be called explicitly.
-    // 【ルールを逸脱しても問題ないことの説明】
-    //  model_ は RBAModelFacotry が所有しない。そのためスマートポインタでは管理しない。 RBAModelFactory の使用側で管理されているので問題ない。
+    //  [Contents that deviate from the rules]
+    //   Operators new and delete shall not be called explicitly.
+    //  [Explain that it is okay to deviate from the rules]
+    //   model_ is not owned by RBAModelFacotry.
+    //   Therefore, it is not managed by the smart pointer.
+    //   There is no problem because it is managed by 
+    //   the user side of RBAModelFactory.
     model_ = new RBAModelImpl();
   }
 }
@@ -44,10 +61,11 @@ void
 RBAModelFactory::deleteModel()
 {
     // @Deviation (A18-5-2)
-    // 【ルールに逸脱している内容】
-    //  Operators new and delete shall not be called explicitly.
-    // 【ルールを逸脱しても問題ないことの説明】
-    //  RBAModelFactory の使用側で管理されているので、外部から delete されても問題ない。
+    //  [Contents that deviate from the rules]
+    //   Operators new and delete shall not be called explicitly.
+    //  [Explain that it is okay to deviate from the rules]
+    //   Since it is managed by the user side of RBAModelFactory, 
+    //   there is no problem even if it is deleted from the outside.
   delete model_;
   model_ = nullptr;
 }
@@ -116,18 +134,19 @@ RBAModelFactory::setAllocatableConstraint(const std::string& allocatableName,
                                           const std::string& constraintName,
                                           const RBAConstraintMap& kind)
 {
-  // アロケータブルを取得
+  // Get allocatable
   RBAAllocatable* const allocatable
     {const_cast<RBAAllocatable*>(model_->findAllocatable(allocatableName))};
-  // 制約式を取得
+  // Get constraint 
   RBAConstraintImpl* const constraint {model_->findConstraintImpl(constraintName)};
   if ((allocatable != nullptr) && (constraint != nullptr)) {
     allocatable->addConstraint(constraint, kind);
   }
 }
 
-// Variableは異なるスコープで同じ名前のものが定義できるが、ここで今生成中のスコープで定義されている
-// Variableを登録している
+// Variable can be defined with the same name in different scopes,
+// but here we are registering the Variable defined in the scope 
+// that is being created
 void
 RBAModelFactory::pushVariable(const RBAVariable* const var)
 {

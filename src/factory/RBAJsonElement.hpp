@@ -1,7 +1,21 @@
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /// @file  RBAJsonElement.hpp
-/// @brief JSONエレメントクラスヘッダファイル
-///
-/// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
+/// @brief JSON element class header file
 
 #ifndef RBAJSONELEMENT_HPP
 #define RBAJSONELEMENT_HPP
@@ -21,7 +35,7 @@ enum class RBAContentLoserType : std::uint8_t;
 enum class RBAExpressionType : std::uint8_t;
 #endif
 
-/// @brief JSONエレメントクラス
+/// @brief JSONエ Element class
 class DLL_EXPORT RBAJsonElement
 {
 public:

@@ -1,7 +1,21 @@
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /// @file  RBAJsonElement.cpp
-/// @brief JSONエレメントクラス定義ファイル
-///
-/// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
+/// @brief JSON element class defintion file
 
 #include "RBAJsonElement.hpp"
 
@@ -14,35 +28,39 @@
 namespace rba
 {
 
-// RBAJsonElementクラス
+// RBAJsonElement clas
 
 std::string RBAJsonElement::emptyStr_;
 
 const std::string&
 RBAJsonElement::getString() const
 {
-  // 派生クラスの関数がコールされるため、この関数がコールされることはない
+  // This function is never called 
+  // because the function of the derived class is called
   return emptyStr_;
 }
 
 std::int32_t
 RBAJsonElement::getInt() const
 {
-  // 派生クラスの関数がコールされるため、この関数がコールされることはない
+  // This function is never called 
+  // because the function of the derived class is called
   return -99;
 }
 
 RBAArbitrationPolicy
 RBAJsonElement::getArbitrationPolicy() const
 {
-  // 派生クラスの関数がコールされるため、この関数がコールされることはない
+  // This function is never called 
+  // because the function of the derived class is called
   return RBAArbitrationPolicy::DEFAULT;
 }
 
 RBAContentLoserType
 RBAJsonElement::getLoserType() const
 {
-  // 派生クラスの関数がコールされるため、この関数がコールされることはない
+  // This function is never called 
+  // because the function of the derived class is called
   return RBAContentLoserType::NEVER_GIVEUP;
 }
 
@@ -50,7 +68,8 @@ RBAJsonElement::getLoserType() const
 RBAExpressionType
 RBAJsonElement::getExpressionType() const
 {
-  // 派生クラスの関数がコールされるため、この関数がコールされることはない
+  // This function is never called 
+  // because the function of the derived class is called
   return RBAExpressionType::VALUE;
 }
 #endif
@@ -110,7 +129,7 @@ RBAJsonElement::getClassName() const
   return emptyStr_;
 }
 
-// RBAJsonElementElementクラス
+// RBAJsonElementElement class
 
 RBAJsonElementElement::RBAJsonElementElement(const std::string& name)
   : RBAJsonElement{}
@@ -118,7 +137,7 @@ RBAJsonElementElement::RBAJsonElementElement(const std::string& name)
   setName(name);
 }
 
-// RBAJsonElementStringクラス
+// RBAJsonElementString class
 
 RBAJsonElementString::RBAJsonElementString(const std::string& name)
   : RBAJsonElement{}
@@ -221,7 +240,7 @@ RBAJsonElementString::setString(const std::string& str)
   str_ = str;
 }
 
-// RBAJsonElementIntクラス
+// RBAJsonElementInt class
 
 RBAJsonElementInt::RBAJsonElementInt(const std::string& name)
   : RBAJsonElement{}
@@ -241,7 +260,7 @@ RBAJsonElementInt::setInt(const std::int32_t val)
   val_ = val;
 }
 
-// RBAJsonElementArrayクラス
+// RBAJsonElementArray class
 
 RBAJsonElementArray::RBAJsonElementArray(const std::string& name)
   : RBAJsonElement{}
