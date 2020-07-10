@@ -1,5 +1,21 @@
 /**
- * 抽象探索クラスヘッダファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Abstract search class header file
  */
 
 #ifndef RBAABSTRACTCOLLECTOR_HPP
@@ -25,7 +41,7 @@ class RBAAbstractCollector : public RBAExpressionVisitor
   RBAAbstractCollector& operator=(RBAAbstractCollector&&)=default;
   virtual ~RBAAbstractCollector()=default;
 
-  // エリアの状態参照
+  // area status
   void visit(RBAIsDisplayed& exp) override;
   void visit(RBADisplayingContent& exp) override;
   void visit(RBAAllocatedContent& exp) override;
@@ -34,7 +50,7 @@ class RBAAbstractCollector : public RBAExpressionVisitor
   void visit(RBAGetContentsList& exp) override;
   void visit(RBAActiveContents& exp) override;
 
-  // 表示コンテントの状態参照
+  // display content status
   void visit(RBAIsActive& exp) override;
   void visit(RBAIsVisible& exp) override;
   void visit(RBAStateValue& exp) override;
@@ -44,31 +60,31 @@ class RBAAbstractCollector : public RBAExpressionVisitor
   void visit(RBAGetAllocatables& exp) override;
   void visit(RBAActiveState& exp) override;
 
-  // ゾーンの状態参照
+  // zone status
   void visit(RBAIsOutputted& exp) override;
   void visit(RBAOutputtingSound& exp) override;
-  // allocatedContentはエリアと共通
+  // allocatedContent is common with area
   void visit(RBAIsMuted& exp) override;
   void visit(RBAIsAttenuated& exp) override;
-  // contentValueはエリアと共通
-  // contentsListはエリアと共通
+  // contentValue is common with area
+  // contentsList is common with area
 
-  // 音声コンテントの状態参照
-  // isActiveは表示コンテントと共通
+  // sound content status
+  // isActive is common with display content
   void visit(RBAIsSounding& exp) override;
-  // stateValueは表示コンテントと共通
-  // hasComeEarlierThanは表示コンテントと共通
-  // hasComeLaterThanは表示コンテントと共通
-  // allocatablesは表示コンテントと共通
-  // activeStateは表示コンテントと共通
+  // stateValue is common with display content
+  // hasComeEarlierThan is common with display content
+  // hasComeLaterThan is common with display content
+  // allocatables is common with display content
+  // activeState is common with display content
 
-  // シーン参照
+  // scene
   void visit(RBAIsOn& exp) override;
   void visit(RBAGetProperty& exp) override;
 
   void visit(RBAIsTypeOfOperator& exp) override;
 
-  // 演算子
+  // operator
   void visit(RBAAndOperator& exp) override;
   void visit(RBAOrOperator& exp) override;
   void visit(RBANotOperator& exp) override;
@@ -80,37 +96,37 @@ class RBAAbstractCollector : public RBAExpressionVisitor
   void visit(RBAIsLowerThanOperator& exp) override;
   void visit(RBAIsLowerThanEqualOperator& exp) override;
 
-  // 量化記号
+  // Quantification symbol
   void visit(RBAForAllOperator& exp) override;
   void visit(RBAExistsOperator& exp) override;
 
-  // 組込み定義式
+  // Built-in definition expression
   void visit(RBAAllInstanceOfArea& exp) override;
   void visit(RBAAllInstanceOfViewContent& exp) override;
   void visit(RBAAllInstanceOfZone& exp) override;
   void visit(RBAAllInstanceOfSoundContent& exp) override;
 
-  // 構文
+  // statement
   void visit(RBAIfStatement& exp) override;
   void visit(RBALetStatement& exp) override;
 
-  // 修飾子
+  // modifier
   void visit(RBAPreviousModifier& exp) override;
 
-  // 集合操作
+  // operator
   void visit(RBAMaxOperator& exp) override;
   void visit(RBAMinOperator& exp) override;
   void visit(RBASelectOperator& exp) override;
   void visit(RBASizeOperator& exp) override;
 
-  // オブジェクトリファレンス
+  // object reference
   void visit(RBAObjectReference& exp) override;
   void visit(RBASetOfOperator& exp) override;
 
  protected:
   void visitLetStatement(RBAExpression& exp) ;
 
-  // ゲッタ、セッタ
+  // getter, setter
   std::set<const RBARuleObject*>& getLetVal();
   void addLetVal(const RBARuleObject* const obj);
   bool isVisitsLetStatement() const;
@@ -121,21 +137,21 @@ class RBAAbstractCollector : public RBAExpressionVisitor
   bool isPreviousModifier() const;
 
  private:
-  // letStatementの評価結果としてとり得るオブジェクト
+  // Object that can be taken as the evaluation result of letStatement
   std::set<const RBARuleObject*> letVal_;
-  // getReferenceObject()内で参照するモデル
+  // Model referenced in getReferenceObject()
   RBAModelImpl* model_;
-  // 左辺を探索中のとき、true
-  // 上記以外の時、false
+  // True when searching the left side
+  // Otherwise, false
   bool isLhs_;
-  // (pre)の下にあるExpressionにいるとき、true
-  // 上記以外の時、false
+  // true when in Expression under (pre)
+  // Otherwise, false
   bool isPreviousModifier_;
-  // Notで反転していないとき、true
-  // Notで反転しているとき、false
+  // True if not inverted with Not
+  // False if inverted with Not
   bool isPositive_;
-  // letStatementの中を探索中のとき、true
-  // 上記以外の時、false
+  // true when searching through letStatement
+  // Otherwise, false
   bool visitsLetStatement_;
 };
 
