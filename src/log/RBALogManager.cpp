@@ -1,5 +1,21 @@
 /**
- * ログマネージャクラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Log manager class definition file
  */
 
 #include <sstream>
@@ -373,7 +389,7 @@ RBALogManager::setEnableImpl(std::uint16_t logType, bool sw)
 }
 
 /**
- * ログを初期化する
+ * initialize log
  */
 void
 RBALogManager::initImpl(int32_t level)
@@ -389,7 +405,7 @@ RBALogManager::initImpl(int32_t level)
 }
 
 /**
- * 要求情報を1行でログする
+ * Output request information log in one line
  * @param message
  */
 void
@@ -401,7 +417,7 @@ RBALogManager::requestLogLineImpl(const std::string& message)
 }
 
 /**
- * 結果情報を1行でログする
+ * Ouput result information log in one line
  * @param message
  */
 void
@@ -416,7 +432,7 @@ RBALogManager::resultLogLineImpl(const std::string& message)
 }
 
 /**
- * エリア調停情報を1行でログする
+ * Ouput Area arbitration information log in one line
  * @param message
  */
 void
@@ -428,7 +444,7 @@ RBALogManager::arbitrateAreaLogLineImpl(const std::string& message)
 }
 
 /**
- * コンテンツ調停情報を1行でログする
+ * Ouput Content arbitration information log in one line
  * @param message
  */
 void
@@ -440,7 +456,7 @@ RBALogManager::arbitrateContentLogLineImpl(const std::string& message)
 }
 
 /**
- * 制約確認情報を1行でログする
+ * Ouput Constraint confirmation information log in one line
  * @param message
  */
 void
@@ -458,7 +474,7 @@ RBALogManager::arbitrateConstraintLogLineImpl(const std::string& message)
 }
 
 /**
- * 制約ロジック情報を1行でログする
+ * Ouput Constraint logic information log in one line
  * @param message
  */
 void
@@ -476,7 +492,7 @@ RBALogManager::arbitrateConstraintLogicLogLineImpl(const std::string& message)
 }
 
 /**
- * 全制約チェックログを1行で追加する
+ * Ouput all Constraint check log in one line
  * @param message
  */
 void
@@ -488,7 +504,7 @@ RBALogManager::allConstraintLogLineImpl(const std::string& message)
 }
 
 /**
- * 全制約チェックログを1行で追加する
+ * Ouput Request cancel log in one line
  * @param message
  */
 void
@@ -500,7 +516,7 @@ RBALogManager::cancelRequestLogLineImpl(const std::string& message)
 }
 
 /**
- * 設定レベル以下の調停ログの文字列を取得する
+ * Get the string of arbitration log below the set level
  * @return
  */
 std::string
@@ -626,11 +642,11 @@ RBALogManager::getCancelRequestLogImpl()
   return oss.str();
 }
 
-// -------------------
-// カバレッジ向けのログ情報
-// -------------------
+// ------------------------------
+// Log information for coverage
+// ------------------------------
 /**
- * カバレッジ向けの要求ログを1行で追加する
+ * Add request log for coverage in one line
  * @param message
  */
 void
@@ -640,7 +656,7 @@ RBALogManager::coverageRequestLogLineImpl(const std::string& message)
 }
 
 /**
- * カバレッジ向けのアロケート設定ログを1行で追加する
+ * Add Allocate setting log for coverage in one line
  * @param message
  */
 void
@@ -650,7 +666,7 @@ RBALogManager::coveragePrevResultLogLineImpl(const std::string& message)
 }
 
 /**
- * カバレッジ向けの結果ログを1行で追加する
+ * Add result log for coverage in one line
  * @param message
  */
 void
@@ -660,7 +676,7 @@ RBALogManager::coverageResultLogLineImpl(const std::string& message)
 }
 
 /**
- * カバレッジ向けの制約開始ログを追加する
+ * Add Constraint start log for coverage
  * @param constraint
  */
 void
@@ -674,7 +690,7 @@ RBALogManager::coverageConstraintStartLogImpl(const RBAAbstractConstraint* const
 }
 
 /**
- * カバレッジ向けの制約終了ログを追加する
+ * Add Constraint finish log for coverage
  * @param constraint
  */
 void
@@ -688,7 +704,7 @@ RBALogManager::coverageConstraintEndLogImpl(const RBAAbstractConstraint* constra
 }
 
 /**
- * カバレッジ向けの制約実行ログを追加する
+ * Add Constraint execution log for coverage
  * @param expressionText
  * @param result
  */
@@ -704,7 +720,7 @@ RBALogManager::coverageConstraintExpressionLogImpl(
 }
 
 /**
- * カバレッジ向けのアクション用制約実行ログを追加する
+ * Add action constraint execution log for coverage
  * @param expressionText
  */
 void
@@ -715,7 +731,7 @@ coverageConstraintExpressionLogImpl(const std::string& expressionText)
 }
 
 /**
- * カバレッジ向けの要求キャンセルログを1行で追加する
+ * Add request cancellation log for coverage in one line
  * @param message
  */
 void
@@ -735,7 +751,7 @@ RBALogManager::addStartLogLineImpl(const std::string& log)
 }
 
 /**
- * カバレッジ向けの制約構造ログを1行で追加する
+ * Add Constraint structure log for coverage in one line
  * @param message
  */
 void
@@ -745,7 +761,7 @@ RBALogManager::coverageHierarchyOfConstraintLogLineImpl(const std::string& messa
 }
 
 /**
- * カバレッジ向けの制約構造開始ログを追加する
+ * Add Constraint structure start log for coverage
  * @param constraint
  */
 void
@@ -756,7 +772,7 @@ coverageHierarchyOfConstraintStartLogImpl(const RBAAbstractConstraint* constrain
 }
 
 /**
- * カバレッジ向けの制約構造終了ログを追加する
+ * Add Constraint structure finish log for coverage
  * @param constraint
  */
 void
@@ -767,7 +783,7 @@ coverageHierarchyOfConstraintEndLogImpl(const RBAAbstractConstraint* constraint)
 }
 
 /**
- * カバレッジ向けの制約構造式ログを追加する
+ * Add Constraint structure formula log for coverage
  * @param expressionText
  * @param expression
  */
@@ -780,11 +796,11 @@ coverageHierarchyOfConstraintExpressionLogImpl(const std::string& expressionText
 						     expression);
 }
 
-// ---------------------------
-// カバレッジ向けの制約ログの階層情報
-// ---------------------------
+// ----------------------------------------------------------
+// Hierarchical information of constraint log for coverage
+// ----------------------------------------------------------
 /**
- * 制約の階層構造を初期化する
+ * Initilize hierarchical structure of constraint
  */
 void
 RBALogManager::initConstraintHierarchyImpl()
@@ -793,7 +809,7 @@ RBALogManager::initConstraintHierarchyImpl()
 }
 
 /**
- * 制約の階層構造を追加する
+ * Add hierarchical structure of constraint
  * @param data
  * @return
  */
@@ -810,7 +826,7 @@ RBALogManager::addHierarchyImpl(const std::string& data)
 }
 
 /**
- * 制約の階層構造を削除する
+ * Remove hierarchical structure of constraint
  * @param data
  * @return
  */

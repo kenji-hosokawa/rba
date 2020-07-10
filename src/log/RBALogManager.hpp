@@ -1,5 +1,21 @@
 /**
- * ログマネージャクラス
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Log manager class header file
  */
 
 #ifndef RBALOGMANAGER_HPP
@@ -23,7 +39,7 @@ public:
   RBALogManager& operator=(const RBALogManager&&)=delete;
   virtual ~RBALogManager()=default;
 
-  //RBATool使用IF
+  // Interefae for RBA Tool
   static void init(int32_t level);
   void addCoverageLogCollector(RBAILogCollector* collector);
   void removeCoverageLogCollector(RBAILogCollector* collector);
@@ -33,7 +49,7 @@ public:
   static RBALogManager* getLogManager();
   static void setEnable(std::uint16_t logType, bool sw=true);
 
-  // rba外部非公開IF
+  // いInterface private to the outside of RBA
   static void setType(std::uint16_t logType);
   static void requestLogLine(const std::string& message);
   static void resultLogLine(const std::string& message);
@@ -117,9 +133,9 @@ public:
   const static std::uint16_t TYPE_CHECK_ALL_CONSTRAINTS =0x0020U;
   const static std::uint16_t TYPE_RESULT                =0x0080U;
   /*
-   * c++でログ出力機能を実装するときに使用する
-   * 現時点では、TYPE_SAVE_LOG がonの場合は、RBATool側でファイル出力しているので、
-   * この情報は参照していない
+   * Used when implementing log output feature in C++.
+   * Currebtly, the file is output on the RBATool side 
+   * when TYPE_SAVE_LOG is on, so this information is not referenced.
    */
   const static std::uint16_t TYPE_SAVE_LOG = 0x0100U;
 
@@ -152,10 +168,11 @@ private:
 }
 
 // @Deviation (PRE00-CPP,Rule-16_0_4,Rule-16_2_1)
-// 【ルールに逸脱している内容】
-// Function-like macros shall not be defined.
-// 【ルールを逸脱しても問題ないことの説明】
-//  関数マクロでないと処理負荷が発生してしまうため、修正しない
+// [Contents that deviate from the rules]
+//   Function-like macros shall not be defined.
+// [Explanation that there is no problem even if it deviates from the rules]
+//   Do not modify because it will cause processing load 
+//   if it is not a function macro
 #define LOG_initConstraintHierarchy() \
   rba::RBALogManager::initConstraintHierarchy()
 #define LOG_removeHierarchy() \

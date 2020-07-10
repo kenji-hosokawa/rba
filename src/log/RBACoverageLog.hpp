@@ -1,5 +1,21 @@
 /**
- * カバレッジログクラス
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Coverage Log class
  */
 
 #ifndef RBACOVERAGELOG_HPP
@@ -58,8 +74,10 @@ public:
 #pragma warning(push)
 #pragma warning(disable:4251)
 #endif
-  const static std::string SEP;       // 制約式行以外の区切り文字
-  const static std::string EXP_SEP;  // 制約式行の区切り文字(タブ)
+  // Delimiters other than constraint expression lines
+  const static std::string SEP;
+  // Delimiters of constraint expression line (Tab)
+  const static std::string EXP_SEP;
   const static std::string START;
   const static std::string END;
   const static std::string EXPRESSION;
@@ -78,14 +96,16 @@ private:
 #pragma warning(push)
 #pragma warning(disable:4251)
 #endif
-  std::vector<std::string> hierarchys_; // 制約の階層(x#y#z形式)
+  std::vector<std::string> hierarchys_; // Constraint hierarchy (x#y#z format)
   std::set<RBAILogCollector*> collectors_;
   std::vector<RBALog*> requestLogs_;
   std::vector<RBALog*> resultLogs_;
   std::vector<RBALog*> constraintLogs;
   std::vector<RBALog*> canceledRequestLogs_;
 
-  // 制約カバレッジの分母を求めるための制約構造ログ。制約ログは実行結果も持つので異なる
+　　// Constraint structure log for finding the denominator of 
+  // constraint coverage. The constraint log is different 
+  // because it also has the execution result.
   std::vector<RBALog*> hierarchyOfConstraintLogs_;
 #ifdef _MSC_VER
 #pragma warning(pop)

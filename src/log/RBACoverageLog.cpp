@@ -1,5 +1,21 @@
 /**
- * カバレッジログクラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Coverage Log class definition file
  */
 
 #include <algorithm>
@@ -27,9 +43,9 @@ const std::string RBACoverageLog::CONSTRAINT = "Constraint";
 const std::string RBACoverageLog::RULE = "Rule";
 
 /**
- * 要求ログを1行で追加
+ * Add request log in one line
  *
- * @param message
+ * @param message log message
  */
 void
 RBACoverageLog::addRequestLogLine(const std::string& message)
@@ -38,9 +54,9 @@ RBACoverageLog::addRequestLogLine(const std::string& message)
 }
 
 /**
- * アロケート設定ログを1行で追加
+ * Add allocate setting log in one line
  *
- * @param message
+ * @param message log 
  */
 void
 RBACoverageLog::addPrevResultLogLine(const std::string& message)
@@ -49,7 +65,7 @@ RBACoverageLog::addPrevResultLogLine(const std::string& message)
 }
 
 /**
- * 結果ログを1行で追加
+ * Add result log in one line
  *
  * @param message
  */
@@ -81,7 +97,7 @@ RBACoverageLog::removeCoverageLogCollector(RBAILogCollector* collector)
 }
 
 /**
- * 制約ログを1行で追加
+ * Add "Constraint" log in one line
  *
  * @param message
  */
@@ -92,7 +108,7 @@ RBACoverageLog::addConstraintLogLine(const std::string& message)
 }
 
 /**
- * 制約開始ログを追加
+ * Add "Constraint" start log
  *
  * @param constraint
  */
@@ -112,7 +128,7 @@ RBACoverageLog::addConstraintStartLog(const RBAAbstractConstraint* element)
 }
 
 /**
- * 制約終了ログを追加
+ * Add "Constraint" finish log
  *
  * @param constraint
  */
@@ -123,7 +139,7 @@ RBACoverageLog::addConstraintEndLog(const RBAAbstractConstraint* element)
 }
 
 /**
- * 制約式実行ログを追加
+ * Add "Constraint expression" execution log
  *
  * @param expressionText
  * @param result
@@ -150,7 +166,7 @@ RBACoverageLog::addConstraintExpressionLog(
 }
 
 /**
- * 制約式実行ログを追加（アクション用）
+ * Add "Constraint expression" execution log (For Action)
  *
  * @param expressionText
  */
@@ -163,7 +179,7 @@ RBACoverageLog::addConstraintExpressionLog(const std::string& expressionText)
 }
 
 /**
- * 要求キャンセルログを1行で追加
+ * Add request cancellation log in one line
  *
  * @param message
  */
@@ -174,7 +190,7 @@ RBACoverageLog::addCanceledRequestLogLine(const std::string& message)
 }
 
 /**
- * 制約構造ログを1行で追加
+ * Add constraint structure log in one line
  *
  * @param message
  */
@@ -185,7 +201,7 @@ RBACoverageLog::addHierarchyOfConstraintLogLine(const std::string& message)
 }
 
 /**
- * 制約構造開始ログを1行で追加
+ * Add constraint structure start log in one line
  *
  * @param message
  */
@@ -213,7 +229,7 @@ addHierarchyOfConstraintStartLog(const RBAAbstractConstraint* element)
 }
 
 /**
- * 制約構造終了ログを追加
+ * Add constraint structure finish log 
  *
  * @param constraint
  */
@@ -225,7 +241,7 @@ RBACoverageLog::addHierarchyOfConstraintEndLog(const RBAAbstractConstraint* elem
 }
 
 /**
- * 制約式実行ログを追加
+ * Add constraint structure execution log
  *
  * @param expressionText
  * @param result
@@ -241,12 +257,12 @@ addHierarchyOfConstraintExpressionLog(const std::string& expressionText,
 				  getExpressionType(expression));
 }
 
-// ---------------------------
-// カバレッジ向けの制約ログの階層情報
-// ---------------------------
+// ---------------------------------------------------------
+// Hierarchical information of constraint log for coverage
+// ---------------------------------------------------------
 
 /**
- * 制約の階層構造を初期化する
+ * Initialize the constraint hierarchy
  */
 void
 RBACoverageLog::initConstraintHierarchy()
@@ -255,7 +271,7 @@ RBACoverageLog::initConstraintHierarchy()
 }
 
 /**
- * 制約の階層構造を文字列で返す
+ * Returns the constraint hierarchy as a string
  *
  * @return
  */
@@ -268,7 +284,8 @@ RBACoverageLog::getHierarchy() const
   int32_t i=0;
   for(std::string now : hierarchys_) {
     if((i != 0) && (pre[0] != '#')) {
-      // 初回でかつ複数演算子扱いでなければ分割識別子を追加
+      // If it is the first time and it is not treated as multiple operators,
+      // add split identifier
       oss << "#";
     }
     pre = now;
@@ -283,7 +300,7 @@ RBACoverageLog::getHierarchy() const
 }
 
 /**
- * 制約の階層構造を追加する
+ * Add constraint hierarchy
  *
  * @param data
  * @return
@@ -296,7 +313,7 @@ RBACoverageLog::addHierarchy(const std::string& data)
 }
 
 /**
- * 制約の階層構造を削除する
+ * Remove constraint hierarchy
  *
  * @param data
  * @return
@@ -308,7 +325,8 @@ RBACoverageLog::removeHierarchy()
 }
 
 /**
- * 階層構造ログに出力する式の型文字列を返す
+ * Returns the type string of the expression 
+ * to be output to the hierarchical log
  *
  * @param expression
  * @return
