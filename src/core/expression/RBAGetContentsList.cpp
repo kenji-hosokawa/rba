@@ -1,5 +1,21 @@
 /**
- * コンテントリスト取得クラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * GetContentsList class definition file
  */
 
 #include "RBAGetContentsList.hpp"
@@ -15,9 +31,9 @@ namespace rba
 
 void RBAGetContentsList::accept(RBAExpressionVisitor& visitor)
 {
-  // 現時点で唯一存在するvistorであるRBASceneAllocatableCollectorは、
-  // コンテントにacceptしないのでこのパスを通ることはない。
-  // 将来、別のvisitorがacceptするかもしれないので、残しておく。
+  // This path is not used, because RBASceneAllocatableCollector, 
+  // the only existing visitor as of now, does not accept content.
+  // But, keep this because another visitor may accept, in the future.
   visitor.visit(*this);
 }
 
@@ -39,12 +55,15 @@ RBAGetContentsList::getReferenceObjectCore(RBAConstraintInfo* info,
   if (ruleObj != nullptr) {
     allocatable = dynamic_cast<const RBAAllocatable*>(ruleObj->getRawObject());
   }
-  // この制約式で参照するコンテンツが前回の調停結果なのかを示す
+  // Indicates whether the content referenced by this constraint expression 
+  // is the result of the previous arbitration result.
 
   if (leftInfo->isExceptionBeforeArbitrate() || (allocatable == nullptr)) {
-    // 現時点では調停FWは、GetContentsList以下の式が調停前となる及び、
-    // allocatableとしてnullを返す制約式がかけないため、このパスを通ることはない。
-    // 将来の変更で通る可能性があるので、このまま残しておく。
+    // As of now, this path is not used due to the following reasons.
+    //  - The expression below GetContentsList is before arbitration
+    //  - Constraint expression that returns null as allocatable 
+    //    can not be described(specified) 
+    // But, defined this for maintainability (especially expandability).
     info->setExceptionBeforeArbitrate(true);
     return nullptr;
   }
@@ -53,13 +72,14 @@ RBAGetContentsList::getReferenceObjectCore(RBAConstraintInfo* info,
 }
 
 #ifdef RBA_USE_LOG
-// 現時点では調停FWは、GetContentsListのcreateHierarchy()を呼び出す
-// 制約式がかけないため、このパスを通ることはない。
-// 将来の変更で通る可能性があるので、このまま残しておく。
+// At the moment, the arbitration FW cannot write a constraint expression 
+// to call createHierarchy() of GetContentsList, 
+// so it does not go through this path. 
+// But, defined this for maintainability (especially expandability.
 void
 RBAGetContentsList::createHierarchy()
 {
-  // 構造に影響しないので何もしない
+  // No operation because　it does not affect structure.
 }
 #endif
 

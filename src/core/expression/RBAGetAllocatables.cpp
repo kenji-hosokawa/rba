@@ -1,8 +1,24 @@
 /**
- * アロケータブル取得クラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
-#include "RBAGetAllocatables.hpp"
+ /**
+ * GetAllocatables class definition file
+ */
+
+#include "RBAGetAllocatables.hpp"                                                       
 
 #include "RBAContent.hpp"
 #include "RBAAllocatableSet.hpp"
@@ -16,9 +32,9 @@ namespace rba
 void
 RBAGetAllocatables::accept(RBAExpressionVisitor& visitor)
 {
-  // 現時点で唯一存在するvistorであるRBASceneAllocatableCollectorは、
-  // コンテントにacceptしないのでこのパスを通ることはない。
-  // 将来、別のvisitorがacceptするかもしれないので、残しておく。
+  // This path is not used, because RBASceneAllocatableCollector, 
+  // the only existing visitor as of now, does not accept content.
+  // But, keep this because another visitor may accept, in the future.
   visitor.visit(*this);
 }
 
@@ -63,14 +79,15 @@ RBAGetAllocatables::getExpressionText() const
 {
   return getLhsOperand()->getExpressionText() + getSymbol();
 }
-
-// 現時点では調停FWは、GetAllocatablesのcreateHierarchy()を呼び出す
-// 制約式がかけないため、このパスを通ることはない。
-// 将来の変更で通る可能性があるので、このまま残しておく。
+                                                    
+// At the moment, the arbitration FW cannot write a constraint expression 
+// to call createHierarchy() of GetAllocatables, 
+// so it does not go through this path. 
+// But, defined this for maintainability (especially expandability.
 void
 RBAGetAllocatables::createHierarchy()
 {
-  // 構造に影響しないので何もしない
+  // No operation because　it does not affect structure.
 }
 
 #endif
