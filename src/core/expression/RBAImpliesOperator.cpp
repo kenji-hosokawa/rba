@@ -1,5 +1,21 @@
 /**
- * 含意オペレータクラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+ /**
+ * implication operator class defintion file
  */
 
 #include "RBAImpliesOperator.hpp"
@@ -28,20 +44,26 @@ RBAImpliesOperator::executeCore(RBAConstraintInfo* info,
                                 RBAArbitrator* arb) const
 {
   bool isPassed {false};
-  LOG_addHierarchy(LOG_getSymbol());  // カバレッジ向けの制約階層構造に自分を追加
+  // Add own to the constraint hierarchy for coverage
+  LOG_addHierarchy(LOG_getSymbol());
   RBAConstraintInfo* const leftInfo {info->getChild(0U)};
-  LOG_addHierarchy("#left");  // カバレッジ向けの制約階層構造に左辺を追加
+  // Add "left-hand side formula" to the constraint hierarchy for coverage
+  LOG_addHierarchy("#left"); 
   const bool lhsRes {getLhsOperand()->execute(leftInfo, arb)};
-  LOG_removeHierarchy();  // カバレッジ向けの制約階層構造から左辺を削除
+  // Remove "left-hand side formula" from the constraint hierarchy for coverage
+  LOG_removeHierarchy();
 
   if (leftInfo->isExceptionBeforeArbitrate() == false) {
     if (lhsRes == false) {
       isPassed = true;
     } else {
       RBAConstraintInfo* const rightInfo {info->getChild(1U)};
-      LOG_addHierarchy("#right");  // カバレッジ向けの制約階層構造に右辺を追加
+      // Add "right-hand side formula" to the constraint hierarchy for coverage
+      LOG_addHierarchy("#right");
       const bool rhsRes {getRhsOperand()->execute(rightInfo, arb)};
-      LOG_removeHierarchy();  // カバレッジ向けの制約階層構造から右辺を削除
+      // Remove "right-hand side formula"
+      // from the constraint hierarchy for coverage
+      LOG_removeHierarchy();
       if (rightInfo->isExceptionBeforeArbitrate() == true) {
         info->setExceptionBeforeArbitrate(true);
       } else if (rhsRes == true) {
@@ -52,11 +74,14 @@ RBAImpliesOperator::executeCore(RBAConstraintInfo* info,
     }
   } else {
     info->setExceptionBeforeArbitrate(true);
-    // 右辺の再調停対象アロケータブルを取得するために、右辺の評価を実行する
+    // Evaluate the right-hand side fromula
+    // to get the right side allocatable of arbitration target
     RBAConstraintInfo* const rightInfo {info->getChild(1U)};
-    LOG_addHierarchy("#right");  // カバレッジ向けの制約階層構造に右辺を追加
+    // Add "right-hand side formula" to the constraint hierarchy for coverage
+    LOG_addHierarchy("#right");
     static_cast<void>(getRhsOperand()->execute(rightInfo, arb));
-    LOG_removeHierarchy();  // カバレッジ向けの制約階層構造から右辺を削除
+    // Remove "right-hand side formula" to the constraint hierarchy for coverage
+    LOG_removeHierarchy();
   }
 #ifdef RBA_USE_LOG
   if (info->isExceptionBeforeArbitrate()) {
@@ -76,7 +101,8 @@ RBAImpliesOperator::executeCore(RBAConstraintInfo* info,
                                         RBAExecuteResult::FALSE);
   }
 #endif
-  LOG_removeHierarchy();  // カバレッジ向けの制約階層構造から自分を削除
+  // Remove own from the constraint hierarchy for coverage
+  LOG_removeHierarchy();
   return isPassed;
 }
 
@@ -93,23 +119,25 @@ RBAImpliesOperator::createHierarchy()
   RBAExpression* exprLhs = getLhsOperand();
   RBAExpression* exprRhs = getRhsOperand();
 
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add own to the constraint hierarchy for coverage
   LOG_addHierarchy(getSymbol());
   RBALogManager::coverageHierarchyOfConstraintExpressionLog(getCoverageExpressionText(), this);
 
-  // カバレッジ向けの制約階層構造に左辺を追加
+  // Add "left-hand side formula" to the constraint hierarchy for coverage
   LOG_addHierarchy("#left");
   exprLhs->createHierarchy();
-  // カバレッジ向けの制約階層構造から左辺を削除
+  // Remove "left-hand side formula" from
+  //  the constraint hierarchy for coverage
   LOG_removeHierarchy();
 
-  // カバレッジ向けの制約階層構造に右辺を追加
+  // Add "right-hand side formula" to the constraint hierarchy for coverage
   LOG_addHierarchy("#right");
   exprRhs->createHierarchy();
-  // カバレッジ向けの制約階層構造から右辺を削除
+  // Remove "right-hand side formula" from
+  //  the constraint hierarchy for coverage
   LOG_removeHierarchy();
 
-  // カバレッジ向けの制約階層構造から自分を削除
+  // Remove own from the constraint hierarchy for coverage
   LOG_removeHierarchy();
 }
 #endif

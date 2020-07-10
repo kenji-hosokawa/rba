@@ -1,5 +1,21 @@
 /**
- * Ifステートメントクラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * If statement class defintion file
  */
 
 #include <sstream>
@@ -212,34 +228,34 @@ RBAIfStatement::getCoverageExpressionText() const
 void
 RBAIfStatement::createHierarchy()
 {
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add own to the constraint hierarchy for coverage
   LOG_addHierarchy("IF");
   RBALogManager::coverageHierarchyOfConstraintExpressionLog(getCoverageExpressionText(),
 						 this);
 
-  // カバレッジ向けの制約階層構造にconditionを追加
+  // Add condition to the constraint hierarchy for coverage
   LOG_addHierarchy("#condition:");
   condition_->createHierarchy();
-  // カバレッジ向けの制約階層構造からconditionを削除
+  // Remove condtion from to the constraint hierarchy for coverage
   LOG_removeHierarchy();
 
   if(thenExpression_) {
-    // カバレッジ向けの制約階層構造にthenを追加
+    // Add "then" to the constraint hierarchy for coverage
     LOG_addHierarchy("#then:");
     thenExpression_->createHierarchy();
-    // カバレッジ向けの制約階層構造からthenを削除
+    // Remove "then" from the constraint hierarchy for coverage
     LOG_removeHierarchy();
   }
 
   if(elseExpression_) {
-    // カバレッジ向けの制約階層構造にelseを追加
+    // Add "else" to the constraint hierarchy for coverage
     LOG_addHierarchy("#else:");
     elseExpression_->createHierarchy();
-    // カバレッジ向けの制約階層構造からelseを削除
+    // Remove "else" from the constraint hierarchy for coverage
     LOG_removeHierarchy();
   }
 
-  // カバレッジ向けの制約階層構造から自分を削除
+  // Remove own from the constraint hierarchy for coverage
   LOG_removeHierarchy();
 }
 
