@@ -1,5 +1,21 @@
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 /// @file  RBAAllInstanceOfAreaMaker.hpp
-/// @brief AllInstanceOfAreaオブジェクト生成クラスヘッダファイル
+/// @brief AllInstanceOfArea object generation class header file
 ///
 /// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 
@@ -15,7 +31,7 @@ class RBAModelElement;
 class RBAJsonElement;
 class RBAModelImpl;
 
-/// @brief AllInstanceOfAreaオブジェクト生成クラス
+/// @brief AllInstanceOfArea object generation class
 class RBAAllInstanceOfAreaMaker : public RBAExpressionMaker
 {
 public:
@@ -27,15 +43,15 @@ public:
   virtual ~RBAAllInstanceOfAreaMaker()=default;
 
 protected:
-  /// @brief 空のインスタンス生成
-  /// @details 派生クラスでunique_ptrの空のインスタンスを生成する。
-  /// @return インスタンスのunique_ptr
+  /// @brief create empty instance
+  /// @details Create an empty instance of unique_ptr in your derived class.
+  /// @return instans of unique_ptr
   std::unique_ptr<RBAModelElement> createInstance(const std::string& name="") override;
 
-  /// @brief 派生クラスごとにモデルエレメントの属性をセットする
-  /// @param[in] jsonElem ModelElementのJSONエレメント
-  /// @param[in] model 生成したオブジェクトを保存するモデル
-  /// @param[in,out] owner 親オブジェクト（未使用）
+  /// @brief Set model element attributes for each derived class
+  /// @param[in] jsonElem JSON element of ModelElement
+  /// @param[in] model Model to save the generated object
+  /// @param[in,out] owner parent object (unused)
   RBAModelElement* setProperty(RBAModelElement* element,
                                const RBAJsonElement* jsonElem,
                                RBAModelImpl* model,
