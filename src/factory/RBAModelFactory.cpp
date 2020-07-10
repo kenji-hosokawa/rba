@@ -153,8 +153,8 @@ RBAModelFactory::pushVariable(const RBAVariable* const var)
   currentVariables_.push_back(var);
 }
 
-// Variableは異なるスコープで同じ名前のものが定義できるが、定義のあるスコープから抜けた時、
-// Variableを削除している。
+// Variables can be defined with the same name in different scopes,
+// but when you leave the scope with a definition, Variable is deleted.
 void
 RBAModelFactory::popVariable()
 {
