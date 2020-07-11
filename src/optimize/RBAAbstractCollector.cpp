@@ -1,5 +1,21 @@
 /**
- * 抽象探索クラス実装ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Abstract search class implementation file
  */
 
 #include <memory>
@@ -76,7 +92,7 @@ RBAAbstractCollector::RBAAbstractCollector(RBAModelImpl* const model)
 {
 }
 
-// エリアの状態参照
+// area status
 void RBAAbstractCollector::visit(RBAIsDisplayed& exp)
 {
   visitLetStatement(exp);
@@ -114,7 +130,7 @@ void RBAAbstractCollector::visit(RBAActiveContents& exp)
   exp.getLhsOperand()->accept(*this);
 }
 
-// 表示コンテントの状態参照
+// display content status
 void RBAAbstractCollector::visit(RBAIsActive& exp)
 {
   visitLetStatement(exp);
@@ -156,7 +172,7 @@ void RBAAbstractCollector::visit(RBAActiveState& exp)
   visitLetStatement(exp);
   exp.getLhsOperand()->accept(*this);
 }
-// ゾーンの状態参照
+// zone status
 void RBAAbstractCollector::visit(RBAIsOutputted& exp)
 {
   visitLetStatement(exp);
@@ -167,7 +183,7 @@ void RBAAbstractCollector::visit(RBAOutputtingSound& exp)
   visitLetStatement(exp);
   exp.getLhsOperand()->accept(*this);
 }
-// allocatedContentはエリアと共通
+// allocatedContent is common with area
 void RBAAbstractCollector::visit(RBAIsMuted& exp)
 {
   visitLetStatement(exp);
@@ -178,22 +194,22 @@ void RBAAbstractCollector::visit(RBAIsAttenuated& exp)
   visitLetStatement(exp);
   exp.getLhsOperand()->accept(*this);
 }
-// contentValueはエリアと共通
-// contentsListはエリアと共通
+// contentValue is common with area
+// contentsList is common with area
 
-// 音声コンテントの状態参照
-// isActiveは表示コンテントと共通
+// sound content status
+// isActive is common with display content
 void RBAAbstractCollector::visit(RBAIsSounding& exp)
 {
   visitLetStatement(exp);
   exp.getLhsOperand()->accept(*this);
 }
-// stateValueは表示コンテントと共通
-// hasComeEarlierThanは表示コンテントと共通
-// hasComeLaterThanは表示コンテントと共通
-// allocatablesは表示コンテントと共通
+// stateValue is common with display content
+// hasComeEarlierThan is common with display content
+// hasComeLaterThan is common with display content
+// allocatables is common with display content
 
-// シーン参照
+// scene status
 void RBAAbstractCollector::visit(RBAIsOn& exp)
 {
   visitLetStatement(exp);
@@ -211,7 +227,7 @@ void RBAAbstractCollector::visit(RBAIsTypeOfOperator& exp)
   exp.getLhsOperand()->accept(*this);
 }
 
-// 演算子
+// operator
 void RBAAbstractCollector::visit(RBAAndOperator& exp)
 {
   visitLetStatement(exp);
@@ -278,7 +294,7 @@ void RBAAbstractCollector::visit(RBAIsLowerThanEqualOperator& exp)
   exp.getRhsOperand()->accept(*this);
 }
 
-// 量化記号
+// Quantification symbol
 void RBAAbstractCollector::visit(RBAForAllOperator& exp)
 {
   visitLetStatement(exp);
@@ -308,7 +324,7 @@ void RBAAbstractCollector::visit(RBAForAllOperator& exp)
       exp.getLambda()->getBodyText()->accept(*this);
     }
   } else {
-    // このパスを通るとき、LetStatementのValiableを参照している可能性がある
+    // As you go through this path, you may be referencing the LetStatement's Variable
     for (auto& obj : letVal_) {
       exp.getLambda()->setRuleObj(obj);
       exp.getLambda()->getBodyText()->accept(*this);
@@ -344,7 +360,7 @@ void RBAAbstractCollector::visit(RBAExistsOperator& exp)
       exp.getLambda()->getBodyText()->accept(*this);
     }
   } else {
-    // このパスを通るとき、LetStatementのValiableを参照している可能性がある
+    // As you go through this path, you may be referencing the LetStatement's Variable
     for (auto& obj : letVal_) {
       exp.getLambda()->setRuleObj(obj);
       exp.getLambda()->getBodyText()->accept(*this);
@@ -352,33 +368,33 @@ void RBAAbstractCollector::visit(RBAExistsOperator& exp)
   }
 }
 
-// 組込み定義式
+// Built-in definition expression
 void RBAAbstractCollector::visit(RBAAllInstanceOfArea& exp)
 {
-  // このVisitorの実装は、ForAllとExistsの集合をReferenceObjectで参照し、
-  // それをValiableに設定後、bodyへacceptする挙動となっており、
-  // 集合にはacceptしないので、このパスを通ることはない
+  // This Visitor implementation refers to the set of ForAll and Exists with
+  // ReferenceObject, sets it to Variable, and then accepts it to the body.
+  // It does not accept to the set, so it does not pass through this path.
 }
 void RBAAbstractCollector::visit(RBAAllInstanceOfViewContent& exp)
 {
-  // このVisitorの実装は、ForAllとExistsの集合をReferenceObjectで参照し、
-  // それをValiableに設定後、bodyへacceptする挙動となっており、
-  // 集合にはacceptしないので、このパスを通ることはない
+  // This Visitor implementation refers to the set of ForAll and Exists with
+  // ReferenceObject, sets it to Variable, and then accepts it to the body.
+  // It does not accept to the set, so it does not pass through this path.
 }
 void RBAAbstractCollector::visit(RBAAllInstanceOfZone& exp)
 {
-  // このVisitorの実装は、ForAllとExistsの集合をReferenceObjectで参照し、
-  // それをValiableに設定後、bodyへacceptする挙動となっており、
-  // 集合にはacceptしないので、このパスを通ることはない
+  // This Visitor implementation refers to the set of ForAll and Exists with
+  // ReferenceObject, sets it to Variable, and then accepts it to the body.
+  // It does not accept to the set, so it does not pass through this path.
 }
 void RBAAbstractCollector::visit(RBAAllInstanceOfSoundContent& exp)
 {
-  // このVisitorの実装は、ForAllとExistsの集合をReferenceObjectで参照し、
-  // それをValiableに設定後、bodyへacceptする挙動となっており、
-  // 集合にはacceptしないので、このパスを通ることはない
+  // This Visitor implementation refers to the set of ForAll and Exists with
+  // ReferenceObject, sets it to Variable, and then accepts it to the body.
+  // It does not accept to the set, so it does not pass through this path.
 }
 
-// 構文
+// statement
 void RBAAbstractCollector::visit(RBAIfStatement& exp)
 {
   visitLetStatement(exp);
@@ -394,7 +410,7 @@ void RBAAbstractCollector::visit(RBALetStatement& exp)
   visitLetStatement(exp);
   exp.getLhsOperand()->accept(*this);
 }
-// 修飾子
+// modifier
 void RBAAbstractCollector::visit(RBAPreviousModifier& exp)
 {
   visitLetStatement(exp);
@@ -403,7 +419,7 @@ void RBAAbstractCollector::visit(RBAPreviousModifier& exp)
   exp.getObjReference()->accept(*this);
   isPreviousModifier_ = b_isPreviousModifier_;
 }
-// 集合操作
+// max operator
 void RBAAbstractCollector::visit(RBAMaxOperator& exp)
 {
   visitLetStatement(exp);
@@ -433,7 +449,7 @@ void RBAAbstractCollector::visit(RBAMaxOperator& exp)
       exp.getLambda()->getBodyText()->accept(*this);
     }
   } else {
-    // このパスを通るとき、LetStatementのValiableを参照している可能性がある
+    // As you go through this path, you may be referencing the LetStatement's Variable
     for (auto& obj : letVal_) {
       exp.getLambda()->setRuleObj(obj);
       exp.getLambda()->getBodyText()->accept(*this);
@@ -469,7 +485,7 @@ void RBAAbstractCollector::visit(RBAMinOperator& exp)
       exp.getLambda()->getBodyText()->accept(*this);
     }
   } else {
-    // このパスを通るとき、LetStatementのValiableを参照している可能性がある
+    // As you go through this path, you may be referencing the LetStatement's Variable
     for (auto& obj : letVal_) {
       exp.getLambda()->setRuleObj(obj);
       exp.getLambda()->getBodyText()->accept(*this);
@@ -505,7 +521,7 @@ void RBAAbstractCollector::visit(RBASelectOperator& exp)
       exp.getLambda()->getBodyText()->accept(*this);
     }
   } else {
-    // このパスを通るとき、LetStatementのValiableを参照している可能性がある
+    // As you go through this path, you may be referencing the LetStatement's Variable
     for (auto& obj : letVal_) {
       exp.getLambda()->setRuleObj(obj);
       exp.getLambda()->getBodyText()->accept(*this);
@@ -517,7 +533,7 @@ void RBAAbstractCollector::visit(RBASizeOperator& exp)
   visitLetStatement(exp);
   exp.getLhsOperand()->accept(*this);
 }
-// オブジェクトリファレンス
+// object reference
 void RBAAbstractCollector::visit(RBAObjectReference& exp)
 {
   visitLetStatement(exp);
@@ -578,8 +594,5 @@ bool RBAAbstractCollector::isPreviousModifier() const
 {
   return isPreviousModifier_;
 }
-
-
-
 
 } /* namespace rba */
