@@ -49,7 +49,7 @@ public:
   static RBALogManager* getLogManager();
   static void setEnable(std::uint16_t logType, bool sw=true);
 
-  // いInterface private to the outside of RBA
+  // Interface private to the outside of RBA
   static void setType(std::uint16_t logType);
   static void requestLogLine(const std::string& message);
   static void resultLogLine(const std::string& message);
