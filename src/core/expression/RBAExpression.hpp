@@ -15,7 +15,7 @@
  */
 
 /**
- * Formula class header file
+ * Expression class header file
  */
 
 #ifndef RBAEXPRESSION_HPP
