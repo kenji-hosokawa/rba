@@ -52,7 +52,7 @@ RBAIsGreaterThanEqualOperator::executeCore(RBAConstraintInfo* info,
   const std::int32_t rhsVal {getRhsOperand()->getValue(rightInfo, arb)};
   // If a pre-arbitration exception occurs on either the left side 
   // or the right side in the reference, throw it higher
-   if ((leftInfo->isExceptionBeforeArbitrate() == true)
+  if ((leftInfo->isExceptionBeforeArbitrate() == true)
       || (rightInfo->isExceptionBeforeArbitrate() == true)
       || (lhsVal == -99)
       || (rhsVal == -99)) {
