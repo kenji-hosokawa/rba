@@ -15,7 +15,7 @@
  */
 
 /**
- * Formula class definition
+ * Expression class definition
  */
 
 #include "RBAExpression.hpp"
@@ -37,7 +37,7 @@ void RBAExpression::addLetStatement(RBALetStatement* const letStatement)
 void
 RBAExpression::accept(RBAExpressionVisitor& visitor)
 {
-  // Not called because the function of the derived class is called
+  // Not be called because the function of the derived class is called
 }
 
 bool
