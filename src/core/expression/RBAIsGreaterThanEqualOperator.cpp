@@ -1,4 +1,20 @@
-/// 大なりイコールチェックオペレータクラス定義ファイル
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/// IsGreaterThanEqualOperator class definition file
 
 #include "RBAIsGreaterThanEqualOperator.hpp"
 #include "RBAArbitrator.hpp"
@@ -28,13 +44,14 @@ RBAIsGreaterThanEqualOperator::executeCore(RBAConstraintInfo* info,
                                            RBAArbitrator* arb) const
 {
   bool isPassed {false};
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add own to Constraint hierarchy for coverage
   LOG_addHierarchy(LOG_getSymbol());
   RBAConstraintInfo* const leftInfo {info->getChild(0U)};
   RBAConstraintInfo* const rightInfo {info->getChild(1U)};
   const std::int32_t lhsVal {getLhsOperand()->getValue(leftInfo, arb)};
   const std::int32_t rhsVal {getRhsOperand()->getValue(rightInfo, arb)};
-  // 参照で調停前例外が片方でも出た場合は上位にスロー
+  // If a pre-arbitration exception occurs on either the left side 
+  // or the right side in the reference, throw it higher
   if ((leftInfo->isExceptionBeforeArbitrate() == true)
       || (rightInfo->isExceptionBeforeArbitrate() == true)
       || (lhsVal == -99)
@@ -66,7 +83,7 @@ RBAIsGreaterThanEqualOperator::executeCore(RBAConstraintInfo* info,
                                         RBAExecuteResult::FALSE);
   }
 #endif
-  // カバレッジ向けの制約階層構造から自分を削除
+  // Remove own from Constraint hierarchy for coverage
   LOG_removeHierarchy();
   return isPassed;
 }
