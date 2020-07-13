@@ -25,7 +25,7 @@
 namespace rba
 {
 
-/// @brief ContentValueオブジェクト生成クラス
+/// @brief ContentValue object generation class
 class RBAContentValueMaker : public RBAOperatorMaker
 {
 public:
@@ -37,9 +37,9 @@ public:
   virtual ~RBAContentValueMaker()=default;
 
 protected:
-  /// @brief 空のインスタンス生成
-  /// @details 派生クラスでunique_ptrの空のインスタンスを生成する。
-  /// @return インスタンスのunique_ptr
+  /// @brief Create empty instance
+  /// @details Create an empty instance of unique_ptr in a derived class
+  /// @return unique_ptr of instance
   std::unique_ptr<RBAModelElement> createInstance(const std::string& name="") override;
 
 };
