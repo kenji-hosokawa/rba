@@ -1,5 +1,21 @@
 /**
- * シーンのアクティブ判定クラスの定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * IsOn class (to judge if a Scene is active) definition file
  */
 
 #include "RBAIsOn.hpp"
@@ -31,7 +47,7 @@ RBAIsOn::executeCore(RBAConstraintInfo* info,
                      RBAArbitrator* arb) const
 {
   bool isPassed {false};
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add own to Constraint hierarchy for coverage
   LOG_addHierarchy(LOG_getSymbol());
   RBAConstraintInfo* const leftInfo {info->getChild(0U)};
   const RBARuleObject* const ruleObj
@@ -46,8 +62,9 @@ RBAIsOn::executeCore(RBAConstraintInfo* info,
       isPassed = arb->getResult()->isPreActive(scene);
     }
   } else {
-    // 現時点では、sceneとしてnullを返す式は存在しないため、このパスを通ることはないが、
-    // 将来、nullを返す式が追加されるかもしれないのでこのままにしておく。
+    // Currently, there is no expression that returns null as "Scene", 
+    // so it does not go through this path. But an expression　that returns null
+    // may be added　in the future, so it is described as it is.
     ;
   }
 #ifdef RBA_USE_LOG
@@ -73,15 +90,16 @@ RBAIsOn::executeCore(RBAConstraintInfo* info,
                                           RBAExecuteResult::FALSE);
     }
   } else {
-    // 現時点では、sceneとしてnullを返す式は存在しないため、このパスを通ることはないが、
-    // 将来、nullを返す式が追加されるかもしれないのでこのままにしておく。
+    // Currently, there is no expression that returns null as "Scene", 
+    // so it does not go through this path. But an expression　that returns null
+    // may be added　in the future, so it is described as it is.
     LOG_arbitrateConstraintLogicLogLine(
         "      " + getPreMsg(ruleObj->isPrevious()) + "Scene[NULL] is not On");
     LOG_coverageConstraintExpressionLog(LOG_getCoverageExpressionText(),
                                         RBAExecuteResult::FALSE);
   }
 #endif
-  // カバレッジ向けの制約階層構造から自分を削除
+  // Remove own from Constraint hierarchy for coverage
   LOG_removeHierarchy();
   return isPassed;
 }
