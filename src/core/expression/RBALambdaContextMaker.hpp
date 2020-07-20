@@ -27,7 +27,7 @@ namespace rba
 
 class RBALambdaContext;
 
-/// @brief LambdaContextオブジェクト生成クラス
+/// @brief LambdaContext object generation abstract class
 class RBALambdaContextMaker : public RBAOperatorMaker
 {
 public:
