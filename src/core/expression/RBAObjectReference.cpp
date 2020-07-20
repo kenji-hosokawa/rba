@@ -1,4 +1,20 @@
-/// オブジェクトリファレンスクラス定義ファイル
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/// ObjectReference class definition
 
 #include "RBAObjectReference.hpp"
 
@@ -31,7 +47,7 @@ RBAObjectReference::getReferenceObjectCore(RBAConstraintInfo* info,
 {
   const RBARuleObject* obj {refObject_};
   if (obj->isModelElementType(RBAModelElementType::Variable)) {
-    // 変数の場合はその参照
+    // in case of varible, its reference
     const RBAVariable* const val {dynamic_cast<const RBAVariable*>(obj)};
     obj = val->getRuleObj();
     std::shared_ptr<RBAConstraintInfo> valInfo {val->getConstraintInfo()};
@@ -62,7 +78,7 @@ RBAObjectReference::setExpressionType(RBAExpressionType const newExprType)
 void
 RBAObjectReference::createHierarchy()
 {
-  // 構造に影響しないので何もしない
+  // No operation, because this does not affect the structure
 }
 
 const std::string

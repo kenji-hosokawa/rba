@@ -1,5 +1,21 @@
 /**
- * オブジェクト比較クラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * ObjectCompare calss defintion
  */
 
 #include "RBAObjectCompare.hpp"
@@ -30,38 +46,41 @@ RBAObjectCompare::executeCore(RBAConstraintInfo* info,
                               RBAArbitrator* arb) const
 {
   bool isPassed {false};
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add own to Constraint hierarchy for coverage
   LOG_addHierarchy(LOG_getSymbol());
   RBAConstraintInfo* const leftInfo {info->getChild(0U)};
   const RBAExpression* const lhs {getLhsOperand()};
-  // カバレッジ向けの制約階層構造に左辺を追加 
+  // Add left hand side expression to Constraint hierarchy for coverage
   LOG_addHierarchy("#left");
   const RBARuleObject* const lhobj {lhs->getReferenceObject(leftInfo, arb)};
-  // カバレッジ向けの制約階層構造から左辺を削除
+  // Remove left hand side expression from Constraint hierarchy for coverage
   LOG_removeHierarchy();
-  // 参照で調停前例外が片方でも出た場合は上位にスロー
+  // Throw if one of the pre-arbitration exceptions appears in the reference
   if (leftInfo->isExceptionBeforeArbitrate() == true) {
     info->setExceptionBeforeArbitrate(true);
   } else {
     RBAConstraintInfo* const rightInfo {info->getChild(1U)};
     const RBAExpression* const rhs {getRhsOperand()};
-    // カバレッジ向けの制約階層構造に右辺を追加
+    // Add right hand side expression to Constraint hierarchy for coverage
     LOG_addHierarchy("#right");
     const RBARuleObject* const rhobj {rhs->getReferenceObject(rightInfo, arb)};
-    // カバレッジ向けの制約階層構造から右辺を削除
+    // Remove right hand side expression to Constraint hierarchy for coverage
     LOG_removeHierarchy();
-    // 参照で調停前例外が片方でも出た場合は上位にスロー
+    // Throw if one of the pre-arbitration exceptions appears in the reference
     if (rightInfo->isExceptionBeforeArbitrate()) {
       info->setExceptionBeforeArbitrate(true);
     } else {
-      // オブジェクトが2つ取り出せなければfalse
+      // False if both objects cannot be got
       if ((lhobj != nullptr) && (rhobj != nullptr)) {
         if (lhobj->getRawObject() == rhobj->getRawObject()) {
           isPassed = true;
-          // ObjectRefrenceをオペランドとするObjectCompareは再調停により、評価結果がfalseからTrueになることが無いので、
-          // 再調停のためのFalseAllocatableやTrueAllocatabeの追加は必要ない
-          // AllocatedContentなどのExpressionをオペランドとする場合には、
-          // オペランドにて、FalseAllocatableやTrueAllocatabeの追加するため、ObjectCompareでは追加する必要がない。
+　　　　　　　　　　// Even if re-arbitration is performed for "ObjectCompare" that uses 
+          // "ObjectRefrence" as an operand, the evaluation result does not  
+          // change from false to True, so it is not necessary to add  
+          // "FalseAllocatable" or "TrueAllocatabe" for re-arbitration.
+          // When "Expression" such as "AllocatedContent" is used as an operand,
+          // "FalseAllocatable" and "TrueAllocatabe" are added in the operand,
+          // so it is not necessary to add in ObjectCompare.
         }
       }
     }
@@ -84,7 +103,7 @@ RBAObjectCompare::executeCore(RBAConstraintInfo* info,
                                         RBAExecuteResult::FALSE);
   }
 #endif
-  // カバレッジ向けの制約階層構造から自分を削除
+  // Remove own from Constraint hierarchy for coverage
   LOG_removeHierarchy();
   return isPassed;
 }
@@ -113,26 +132,26 @@ RBAObjectCompare::getCoverageExpressionText() const
 void
 RBAObjectCompare::createHierarchy()
 {
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add own to Constraint hierarchy for coverage
   LOG_addHierarchy(getSymbol());
   RBALogManager::coverageHierarchyOfConstraintExpressionLog(getCoverageExpressionText(), this);
 
   RBAExpression*  expr0 = getLhsOperand();
   RBAExpression*  expr1 = getRhsOperand();
 
-  // カバレッジ向けの制約階層構造に左辺を追加
+  // Add left hand side expression to Constraint hierarchy for coverage
   LOG_addHierarchy("#left");
   expr0->createHierarchy();
-  // カバレッジ向けの制約階層構造から左辺を削除
+  // Remove left hand side expression from Constraint hierarchy for coverage
   LOG_removeHierarchy();
 
-  // カバレッジ向けの制約階層構造に右辺を追加
+  // Add right hand side expression to Constraint hierarchy for coverage
   LOG_addHierarchy("#right");
   expr1->createHierarchy();
-  // カバレッジ向けの制約階層構造から右辺を削除
+  // Remove right hand side expression from Constraint hierarchy for coverage
   LOG_removeHierarchy();
 
-  // カバレッジ向けの制約階層構造から自分を削除
+  // Remove own from Constraint hierarchy for coverage
   LOG_removeHierarchy();
 }
 
