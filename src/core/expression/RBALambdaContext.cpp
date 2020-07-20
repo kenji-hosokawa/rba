@@ -1,5 +1,21 @@
 /**
- * ラムダコンテキストクラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * LambdaContext class definition file
  */
 
 #include "RBALambdaContext.hpp"
@@ -31,14 +47,15 @@ void
 RBALambdaContext::createHierarchy()
 {
   lambda_->getX()->clearRuleObj();
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add own to Constraint hierarchy for coverage
   LOG_addHierarchy(getSymbol());
   RBALogManager::coverageHierarchyOfConstraintExpressionLog(getCoverageExpressionText(), this);
 
-  // ルールオブジェクトを取得してループ
+  // Get rule object and loop
   RBAExpression* setObj = getLhsOperand();
   RBAConstraintInfo dummyInfo;
-  // For-AllやExistsの集合に用いるAllInstanceOf...やSetOfOperatorでは参照しないため、nullptrで問題ない
+  // Since it is not referenced by "AllInstanceOf..." or "SetOfOperator" 
+  // used for the set of "For-All" or "Exists", nullptr is no problem
   RBAArbitrator* dummyArb = nullptr;
   const RBARuleObject* objset = setObj->getReferenceObject(&dummyInfo, dummyArb);
   std::vector<const RBARuleObject*> objs;
@@ -58,7 +75,7 @@ RBALambdaContext::createHierarchy()
     }
   }
 
-  // カバレッジログで自分が持つ変数の展開を有効にする
+  // Enable expansion of own variables in the coverage log
   std::int32_t idx=0;
   for(const RBARuleObject* obj : objs) {
     LOG_addHierarchy("#" + std::to_string(idx++));
@@ -67,7 +84,7 @@ RBALambdaContext::createHierarchy()
     LOG_removeHierarchy();
   }
 
-  // カバレッジ向けの制約階層構造から自分を削除
+  // Remove own to Constraint hierarchy for coverage
   LOG_removeHierarchy();
 }
 #endif
