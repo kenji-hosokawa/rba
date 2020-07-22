@@ -1,5 +1,21 @@
 /**
- * セットオブオペレータクラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * RBASetOfOperator class definition
  */
 
 #include <sstream>
@@ -91,22 +107,22 @@ RBASetOfOperator::getReferenceObjectCore(RBAConstraintInfo* info,
 void
 RBASetOfOperator::doActionCore(RBAConstraintInfo* info, RBAArbitrator* arb)
 {
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add own to Constraint hierarchy for coverage
   LOG_addHierarchy("SetOf");
 
   std::uint32_t i {0U};
   for(RBAExpression* const expr : getOperand()) {
-    // カバレッジ向けの制約階層構造に要素番号を追加
+    // Add number of element to Constraint hierarchy for coverage
     LOG_addHierarchy("#" + std::to_string(i) + ":");
 
-    // Actionの実行しかしないはずなので、infoはそのまま
+    // Since it should only execute Action, info is as it is
     expr->doAction(info, arb);
     i++;
 
-    // カバレッジ向けの制約階層構造から要素番号を削除
+    // Remove number of element from Constraint hierarchy for coverage
     LOG_removeHierarchy();
   }
-  // カバレッジ向けの制約階層構造から自分を削除
+  // Remove own from Constraint hierarchy for coverage
   LOG_removeHierarchy();
 
   return;
@@ -152,19 +168,20 @@ RBASetOfOperator::getCoverageExpressionText() const
 void
 RBASetOfOperator::createHierarchy()
 {
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add own to Constraint hierarchy for coverage
   LOG_addHierarchy("SetOf");
   RBALogManager::coverageHierarchyOfConstraintExpressionLog(getCoverageExpressionText(), this);
   uint32_t idx=0;
   for(RBAExpression* expr : getOperand()) {
-    // カバレッジ向けの制約階層構造に要素番号を追加
+    // Add number of element to Constraint hierarchy for coverage
     LOG_addHierarchy("#"+std::to_string(idx)+":");
     expr->createHierarchy();
+    // Remove number of element from Constraint hierarchy for coverage
     // カバレッジ向けの制約階層構造から要素番号を削除
     LOG_removeHierarchy();
     idx++;
   }
-  // カバレッジ向けの制約階層構造から自分を削除
+  // Remove own from Constraint hierarchy for coverage
   LOG_removeHierarchy();
 }
 
