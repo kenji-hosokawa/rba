@@ -18,7 +18,6 @@
  * SceneOperator class header
  */
 
-
 #ifndef RBASCENEOPERATOR_HPP
 #define RBASCENEOPERATOR_HPP
 

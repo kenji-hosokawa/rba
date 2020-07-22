@@ -15,7 +15,7 @@
  */
 
 /**
- * SelectOperator class header
+ * SelectOperator class definition
  */
 
 #include <memory>
