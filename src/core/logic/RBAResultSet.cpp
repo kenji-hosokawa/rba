@@ -1,5 +1,21 @@
 /**
- * 調停結果セットクラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * ResultSet (set arbitration result) class
  */
 
 #include <algorithm>
@@ -194,9 +210,10 @@ RBAResultSet::getContentState(const RBAAllocatable* const alloc) const
     auto it = allocToContentState_.find(alloc);
     if(it != allocToContentState_.end()) {
       auto state = it->second;
-      // 引数allocに割り当てられたcontent(state)がallocatable機能を持っていれば(cyclicなど)、
-      // それに割り当てられているcontentStateを引数allocに割り当てられたcontentStateとする。
-      // これをallocatableなcontentではなくなるまで辿っていく。
+      // If the content(state) assigned to the "alloc" has the 
+      // allocatable function (such as cyclic), the contentState assigned to it 
+      // is the contentState assigned to the "alloc".
+      // Search this until it is not allocatable content. 
       while ((state != nullptr) 
               && (dynamic_cast<RBAAllocatable*>(state->getOwner()) != nullptr)) {
         it = allocToContentState_.find(dynamic_cast<RBAAllocatable*>(state->getOwner()));
@@ -243,18 +260,20 @@ RBAResultSet::getArea(const RBAViewContentState* const state,
     for(const auto& it : allocToContentState_) {
       if(dynamic_cast<const RBAViewContentState*>(it.second) == state) {
         const RBAContent* const content {dynamic_cast<const RBAContent*>(it.first)};
-        if (content != nullptr) { // CyclicContentの場合
-          // CyclicContentに割り当たっているViewContentStateを取得する
+        if (content != nullptr) { // In case of CyclicContent
+          // Get ViewContentState assigned to CyclicContent
           const RBAViewContentState* const ownerState
             {dynamic_cast<const RBAViewContentState*>(getReqestState(content))};
           // @Deviation (MEM05-CPP,Rule-7_5_4,A7-5-2)
-          // 【ルールに逸脱している内容】
-          // getArea()を再帰呼び出ししている
-          // 【ルールを逸脱しても問題ないことの説明】
-          // CyclicContentに対して、getArea()したときは、
-          // そのときCyclicContentに割り当たっているViewContentが割り当たっているAreaを応答する動きになっている
-          // CyclicContent に CyclicContent が割り当たる場合など、複数の再帰呼び出しが行われる可能性があるが
-          // ルールモデルの定義は有限であり、スタックオーバーフローすることはなく、問題無い
+          //  [Contents that deviate from the rules]
+          //   calling getArea() recursively
+          // 　[Reason that there is no problem if the rule is deviated]
+          //   When getArea() is performed on CyclicContent, at that time, 
+          //   respond Area where ViewContent assigned to CyclicContent 
+          //   is assigned. When CyclicContent is assigned to CyclicContent, 
+          //   multiple recursive calls may be made, but the rule model 
+          //   definition is finite. 
+          //   Therefore, stack overflow will not be occured, no problem.
           getArea(ownerState, areaList);
         } else {
   	      areaList.push_back(dynamic_cast<const RBAArea*>(it.first));
@@ -276,11 +295,14 @@ RBAResultSet::getZone(const RBASoundContentState* const state,
           const RBASoundContentState* const ownerState
             {dynamic_cast<const RBASoundContentState*>(getReqestState(content))};
           // @Deviation (MEM05-CPP,Rule-7_5_4,A7-5-2)
-          // 【ルールに逸脱している内容】
-          // Function '::rba::RBAResultSet::getZone=(_,p={c::rba::RBASoundContentState},
-          // &{c::std::__cxx11::list<p={c::rba::RBAZone},{c::std::allocator<p={c::rba::RBAZone}>}>})' is recursive. 
-          // 【ルールを逸脱しても問題ないことの説明】
-          //  機能として再帰呼び出しが必要なため
+          //  [Contents that deviate from the rules]
+          //   Function '::rba::RBAResultSet::getZone=(_,
+          //                  p={c::rba::RBASoundContentState},
+          //                  &{c::std::__cxx11::list<p={c::rba::RBAZone},
+          //                  {c::std::allocator<p={c::rba::RBAZone}>}>})' 
+          //   is recursive. 
+          // 　[Reason that there is no problem if the rule is deviated]
+          //   Recursive call is required as a feature
           getZone(ownerState, zoneList);
         } else {
 	        zoneList.push_back(dynamic_cast<const RBAZone*>(it.first));
@@ -455,9 +477,9 @@ RBAResultSet::isAlreadyOutputting(const RBAContentState* const state) const
 // Impl [set Active Scene]
 
 /**
- * @brief シーンの表示要求／表示取り下げ要求をセットする
- * @param scene シーン
- * @param newActive true:表示要求 false:表示取り下げ要求
+ * @brief Set display request or display withdrawal request, for Scene 
+ * @param scene Scene
+ * @param newActive true: display request, false: display withdrawal request
  */
 void
 RBAResultSet::setActive(const RBAScene* const scene, const bool newActive)
@@ -478,17 +500,18 @@ RBAResultSet::setActive(const RBAScene* const scene, const bool newActive)
 // Impl [set Active ContentState]
 
 /**
- * @brief コンテントステートの表示要求／表示取り下げ要求をセットする
- * @param contentState コンテントステート
- * @param newActive true:表示要求 false:表示取り下げ要求
- * @details すでにコンテントが登録されている場合は、登録済みコンテントを削除する。
+ * @brief Set display request or display withdrawal request, for Content state
+ * @details If the content has already been registered, 
+            delete the registered content.
+ * @param contentState Content state
+ * @param newActive true: display request, false: display withdrawal request
  */
 void
 RBAResultSet::setActive(const RBAContentState* const state, const bool newActive)
 {
   updateRequestStatus(dynamic_cast<RBAContent*>(state->getOwner()), newActive);
 
-  // すでにアクティブなコンテントかチェックする
+  // Check if Content is already active
   const RBAContentState* temp {nullptr};
   for(auto& cs : activeContentStates_) {
     if(cs->getOwner() == state->getOwner()) {
@@ -496,7 +519,7 @@ RBAResultSet::setActive(const RBAContentState* const state, const bool newActive
       break;
     }
   }
-  // コンテントがアクティブなら削除する
+  // Delete if Content is active
   if (temp != nullptr) {
     setOrder(temp, 0);
     static_cast<void>(activeContentStates_.erase(temp));
@@ -507,7 +530,7 @@ RBAResultSet::setActive(const RBAContentState* const state, const bool newActive
     }
   }
 
-  // アクティブ登録
+  // Rgistre active
   if(newActive) {
     requestContentStateMap_[dynamic_cast<const RBAContent*>(state->getOwner())] = state;
     static_cast<void>(activeContentStates_.insert(state));
@@ -568,8 +591,9 @@ RBAResultSet::setContentState(const RBAAllocatable* const alloc, const RBAConten
   if (isHiddenRes) {
 	static_cast<void>(hiddenAllocs_.insert(alloc));
   } else {
-    // 現時点では、hiddenAllocs_に格納済みのアロケータブルを削除するケースはない。
-    // 将来、隠蔽を強制解除するようなことがあるかもしれないので残しておく。
+    // Currently, there is no case to delete the Allocable stored in 
+    // hiddenAllocs_. In the future, since hiding may be forcibly released,
+    // implement it.
 	static_cast<void>(hiddenAllocs_.erase(alloc));
   }
 
@@ -602,15 +626,17 @@ RBAResultSet::setContentState(const RBAAllocatable* const alloc, const RBAConten
   } else {
 	static_cast<void>(outputtingAllocs_.erase(alloc));
     if (alloc->isArea()) {
-      // 現時点では、visibleAreas_に格納済みのエリアを削除するケースはない。
-      // 将来、コンテントの割り当てを強制解除するようなことがあるかもしれないので残しておく。
+      // Currently, there is no case to delete the Area stored in visibleAreas_.
+      // In the future, it may happen that content allocation is 
+      // forcibly released, so implement thes.
       visibleAreas_.remove(area);
       if (std::find(invisibleAreas_.begin(), invisibleAreas_.end(), area) == invisibleAreas_.end()) {
         invisibleAreas_.push_back(area);
       }
     } else if (alloc->isZone()) {
-      // 現時点では、soundingZones_に格納済みのエリアを削除するケースはない。
-      // 将来、コンテントの割り当てを強制解除するようなことがあるかもしれないので残しておく。
+      // Currently, there is no case to delete the Area stored in soundingZones_.
+      // In the future, it may happen that content allocation is 
+      // forcibly released, so implement thes.
       soundingZones_.remove(zone);
       if (std::find(unsoundingZones_.begin(), unsoundingZones_.end(), zone) == unsoundingZones_.end()) {
         unsoundingZones_.push_back(zone);
@@ -648,8 +674,9 @@ RBAResultSet::setContentState(const RBAAllocatable* const alloc, const RBAConten
         attenuatedZones_.push_back(zone);
       }
     } else {
-      // 現時点では、attenuatedZones_に格納済みのアロケータブルを削除するケースはない。
-      // 将来、減衰を強制解除するようなことがあるかもしれないので残しておく。
+      // Currently, there is no case to delete the Allocatable stored in 
+      // attenuatedZones_. In the future, there may be cases in which 
+      // "attenuation" is forcibly canceled, so implement this.
       attenuatedZones_.remove(zone);
     }
   }
@@ -751,7 +778,7 @@ RBAResultSet::getSceneProperty(const RBAAbstractProperty* const property) const
 {
   auto it = propertyMap_.find(property);
   if(it == propertyMap_.end()) {
-    // プロパティが未登録
+    // Property not registered
     return -99;
   }
 
@@ -836,7 +863,7 @@ RBAResultSet::isLater(const RBAContent* const target,
 std::set<const RBASceneImpl*>&
 RBAResultSet::getDifferentConditionScenes(const RBAResultSet& target)
 {
-  // targetシーンOn状態との差分検知
+  // Detect the difference from the target scene On state
   const std::list<const RBAScene*> targetScenes {target.getActiveScenes()};
   for (auto& s : activeScenes_) {
     if (std::find(targetScenes.begin(), targetScenes.end(), s)
@@ -851,7 +878,7 @@ RBAResultSet::getDifferentConditionScenes(const RBAResultSet& target)
     }
   }
 
-  // targetシーンプロパティ状態との差分検知
+  // Detect the difference from the target scene property state
   for (auto& p : propertyMap_) {
     if (target.getSceneProperty(p.first) != p.second) {
       static_cast<void>(differentConditionScenes_.insert(p.first->getScene()));
@@ -871,8 +898,8 @@ RBAResultSet::updateRequestStatus(const RBAContent* const content, const bool is
   if (isOnRequest) {
     contentToStatus_[content].onRequest();
   } else {
-    // コンテントのオフ要求が来たら、要求されたステートが、
-    // そのときActiveなステートと違っていても、コンテントの要求をオフにする
+    // When a content "off request" comes in, turn off the content request 
+    // even if the requested state is different from Active state at that time.
     static_cast<void>(contentToStatus_.erase(content));
   }
 }

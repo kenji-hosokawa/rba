@@ -1,4 +1,20 @@
-/// 制約式情報クラス定義ファイル
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/// ConstraintInfo class
 
 #include <algorithm>
 #include "RBAAllocatable.hpp"
@@ -37,14 +53,16 @@ RBAConstraintInfo::getChild(const std::uint32_t index) const
   if (children_.size() < requiredSize) {
     children_.resize(requiredSize, std::make_unique<RBAConstraintInfo>());
   }
-  // 範囲外アクセスしないので、コスト面を考え、atではなく[]を使用する
+  // Use "[]" instead of "at" because it doesn't access out of range
   return children_[static_cast<std::size_t>(index)].get();
 }
 
 void RBAConstraintInfo::setChild(const std::shared_ptr<RBAConstraintInfo> info)
 {
-  // この関数はlet式で使用し、let式では、評価のたびに新しいConstraintInfoを生成する。
-  // そのため、addだと、調停毎にchildrenが追加されてしまうので、setで調停毎にchildrenを設定している
+  // This function is used in "let" expressions, which generate a new 
+  // "ConstraintInfo" on each evaluation.
+  // Therefore, in the case of "add", "children" will be added for each arbitration, 
+  // so use "set" to set "children" for each arbitration.
   children_ = { info };
 }
 
@@ -81,7 +99,7 @@ void RBAConstraintInfo::clearFalseAllocatable()
   falseAllocatables_.clear();
 }
 
-/// True/Falseを反転させるか
+/// TCheck whether to invert True/False
 /// @return
 bool RBAConstraintInfo::isRevert() const
 {
@@ -115,12 +133,13 @@ void RBAConstraintInfo::clear()
 {
   for (const std::shared_ptr<RBAConstraintInfo>& child : children_) {
     // @Deviation (MEM05-CPP,Rule-7_5_4,A7-5-2)
-    // 【ルールに逸脱している内容】
-    // clear()を再帰呼び出ししている
-    // 【ルールを逸脱しても問題ないことの説明】
-    // 制約式ツリーの各ノード毎にConstraintInfoは作成される。
-    // 制約式ツリーはモデルファイルに書かれた制約式によって決定され、その深さは有限である。
-    // そのため、スタックオーバーフローすることはなく、問題無い
+    //  [Contents that deviate from the rules]
+    //   recursively calling clear()
+    // 　[Reason that there is no problem if the rule is deviated]
+    //   ConstraintInfo is created for each node in the Constraint expression 
+    //   tree. The Constraint expression tree is determined by the constraint 
+    //   expressions written in the model file, and its depth is finite.
+    //   Therefore, stack overflow does not occur and there is no problem
     child->clear();
   }
   result_ = RBAExecuteResult::SKIP;
@@ -155,10 +174,11 @@ bool RBAConstraintInfo::needsReRearbitrationFor(
       case RBAModelElementType::IfStatement:
         if (children_.front()->isExceptionBeforeArbitrate()) {
           // @Deviation (MEM05-CPP,Rule-7_5_4,A7-5-2)
-          // 【ルールに逸脱している内容】
-          // Function '::rba::RBAConstraintInfo::needsReRearbitrationFor=(_,p={c::rba::RBAAllocatable})' is recursive.
-          // 【ルールを逸脱しても問題ないことの説明】
-          // 機能として再帰呼び出しが必要なため
+          //  [Contents that deviate from the rules]
+          //   Function '::rba::RBAConstraintInfo::needsReRearbitrationFor=(_,
+          //                          p={c::rba::RBAAllocatable})' is recursive.
+          // 　[Reason that there is no problem if the rule is deviated]
+          //   Recursive call is required as a feature
           result = children_.back()->needsReRearbitrationFor(allocatable);
         }
         break;
@@ -180,13 +200,19 @@ bool RBAConstraintInfo::needsRearbitrationFor(const RBAAllocatable* const alloca
 {
   bool result {false};  // 再調停要否
   if (children_.empty() == false) {
-    // 制約式の構文がImpliesOperatorのとき、
-    // 制約式の構文がIfStatementのとき、
-    // 制約式の構文が上記以外のとき、
+    // When the syntax of the constraint expression is 
+    //  - ImpliesOperator
+    //  - IfStatement 
+    //  - other than the above
     switch (expression_->getModelElementType()) {
       case RBAModelElementType::ImpliesOperator:
-        // 含意の左辺がtrue、且つ、左辺に調停中アロケータブルが含まれているときは、再調停要と判定
-        // 含意の左辺がtrue、且つ、左辺にアロケータブルの状態参照式が含まれているときは、再調停不要と判定
+        // If the left side of the implication is true and 
+        // the left side contains an Allocatable during arbitration, 
+        // re-arbitration is required.
+        //
+        // If the left side of the implication is true and 
+        // the left side contains an allocatable state reference expression, 
+        // re-arbitration is NOT required.
         if (children_.front()->isTrue()) {
           if (children_.front()->contains(allocatable)) {
             result = true;
@@ -200,9 +226,12 @@ bool RBAConstraintInfo::needsRearbitrationFor(const RBAAllocatable* const alloca
         }
         break;
       case RBAModelElementType::IfStatement:
-        // IF条件に調停中アロケータブルが含まれているときは、再調停要と判定
-        // IF条件にアロケータブルの状態参照式が含まれているときは、再調停不要と判定
-        // IF条件にアロケータブルの状態参照式が含まれていないときは、子構文を探索;
+        // If the IF condition includes Allocatble in arbitration, 
+        // re-arbitration is required.
+        // If the IF condition includes an Allocatable state reference 
+        // expression, re-arbitration is NOT required.
+        // If the IF condition does not include an allocatable state reference 
+        // expression, search the child syntax.
         if (children_.front()->contains(allocatable)) {
           result = true;
         } else {
@@ -216,15 +245,24 @@ bool RBAConstraintInfo::needsRearbitrationFor(const RBAAllocatable* const alloca
       default:
         for (const auto& child : children_) {
           // @Deviation (MEM05-CPP,Rule-7_5_4,A7-5-2)
-          // 【ルールに逸脱している内容】
-          // Function '::rba::RBAConstraintInfo::needsRearbitrationFor=(_,p={c::rba::RBAAllocatable},_o)' is recursive. 
-          // 【ルールを逸脱しても問題ないことの説明】
-          // 機能として再帰呼び出しが必要なため
+          //  [Contents that deviate from the rules]
+          //   Function '::rba::RBAConstraintInfo::needsRearbitrationFor=(_,
+          //                       p={c::rba::RBAAllocatable},_o)' is recursive. 
+          // 　[Reason that there is no problem if the rule is deviated]
+          //   Recursive call is required as a feature
           result = (result || child->needsRearbitrationFor(allocatable, isImplies));
         }
-        // 制約式にIF、または、含意を含まない、あるいは
-        // 親構文のIF条件、または、親構文の含意の左辺に、アロケータブルの状態参照式が含まれていないとき、
-        // 調停中アロケータブルが含まれているときは、再調停要と判定
+        // The Constraint expression does not include IF or implication,
+        //  or
+        // the Allocatable state reference expression is not included　in the 
+        // left side of the IF condition of the parent syntax or 
+        // the implication of the parent syntax,
+        //  or
+        // "Allocable" during arbitration is included in the left side of 
+        // the IF condition of the parent syntax or the implication of the 
+        // parent syntax,
+        //
+        // re-arbitration is required.
         if (!isImplies && contains(allocatable)) {
           result = true;
         }
@@ -234,27 +272,32 @@ bool RBAConstraintInfo::needsRearbitrationFor(const RBAAllocatable* const alloca
   return result;
 }
 
-/// @brief 右辺をfalseにしたアロケータブルを収集する
+/// @brief Collect "Allocatable" whose right side is false.
 /// @details
-/// ・例外が発生していれば、収集しない
-/// ・expression_がnullptrの場合
-/// ・expression_が含意の場合
-///  ・左辺が成立しており、左辺にアロケータブル状態に影響を受ける条件があった場合、
-///    右辺をfalseにした要因となったアロケータブルを収集する
-///  ・左辺が成立しており、左辺にアロケータブル状態に影響を受ける条件がない場合、
-///    右辺に対して本関数をコールする。※含意またはIFのnestに対応するため
-/// ・expression_がIFの場合
-///  ・左辺にアロケータブル状態に影響を受ける条件があった場合、
-///    右辺をfalseにした要因となったアロケータブルを収集する
-///  ・左辺にアロケータブル状態に影響を受ける条件がない場合、
-///    右辺に対して本関数をコールする。※含意またはIFのnestに対応するため
-/// ・expression_が否定の場合
-///  ・左辺に対してisNotを反転した本関数をコールする。※含意またはIFが子に存在する場合に対応するため
-/// ・expression_が上記の場合
-///  ・子ConstraintInfoに対してを本関数をコールする。※含意またはIFが子に存在する場合に対応するため
-/// @param[in] allocatable : 調停中のアロケータブル
-/// @param[out] targets : 再調停対象アロケータブル
-/// @param[in] isNot : 否定演算子による正否の逆転状態
+///  - Do not collect if an exception has occurred
+///  - When expression_ is nullptr or When expression_ is implication
+///    - If the left side is satisfied and there is a condition on the left 
+///      side that is affected by the allocatable state, collect the 
+///      allocatable that caused the right side to be false.
+///    - If the left side is satisfied and there is NO condition affected by 
+///      the allocatable state on the left side, this function is called on 
+///      the right side. (To correspond to implication or IF nest)
+///  - When expression_ is IF
+///    - If there is a condition on the left side that is affected by the 
+///      "Allocatable" state, collect the "Allocatable that caused the 
+///      right side to be false.
+///    - If there is no condition affected by the allocatable state on the left 
+///      side, call this function for the right side. 
+///      (To correspond to the implication or nest of IF)
+///  - When expression_ is negative
+///    - Call this function with "isNot" inverted for the left side.
+///      (To deal with implications or IFs present in children.)
+///  - When expression_ is above
+///    - Call this function for the child ConstraintInfo. 
+///      (To deal with implications or IFs present in children.)
+/// @param[in] allocatable "Allcatable" during arbitration
+/// @param[out] targets "Allocatable" for re-arbitration
+/// @param[in] isNot Inversion state of right and wrong by negation operator.
 void RBAConstraintInfo::collectRearbitrationTargetFor(
     const RBAAllocatable* const allocatable, std::set<const RBAAllocatable*>& targets,
     const bool isNot) const
@@ -286,12 +329,12 @@ void RBAConstraintInfo::collectRearbitrationTargetFor(
         break;
       case RBAModelElementType::NotOperator:
         // @Deviation (MEM05-CPP,Rule-7_5_4,A7-5-2)
-        // 【ルールに逸脱している内容】
-        // Function '::rba::RBAConstraintInfo::collectRearbitrationTargetFor=(_,p={c::rba::RBAAllocatable},
-        // &{c::std::set<p={c::rba::RBAAllocatable},{c::std::less<p={c::rba::RBAAllocatable}>},
-        // {c::std::allocator<p={c::rba::RBAAllocatable}>}>},_o)' is recursive. 
-        // 【ルールを逸脱しても問題ないことの説明】
-        // 機能として再帰呼び出しが必要なため
+        //  [Contents that deviate from the rules]
+        //   Function '::rba::RBAConstraintInfo::collectRearbitrationTargetFor=(_,p={c::rba::RBAAllocatable},
+        //     &{c::std::set<p={c::rba::RBAAllocatable},{c::std::less<p={c::rba::RBAAllocatable}>},
+        //     {c::std::allocator<p={c::rba::RBAAllocatable}>}>},_o)' is recursive. 
+        // 　[Reason that there is no problem if the rule is deviated]
+        //   Recursive call is required as a feature
         children_.front()->collectRearbitrationTargetFor(allocatable, targets,
                                                          !isNot);
         break;
@@ -318,17 +361,21 @@ void RBAConstraintInfo::collectTrueAllocatables(
   } else if (isImplies()) {
     children_.back()->collectTrueAllocatables(allocatables);
   } else if (isSizeOperator()) {
-    // サイズオペレーターは集合の数を評価するので、FalseAllocatableとTrueAllocatableを合わせたAllocatableがTrueAllocatablesとなる
+    // Since the size operator evaluates the number of sets, 
+    // the Allocatable that combines FalseAllocatable and TrueAllocatable 
+    // becomes TrueAllocatables.
     children_.back()->collectTrueAllocatables(allocatables);
     children_.back()->collectFalseAllocatables(allocatables);
   } else {
     for (const auto& child : children_) {
       // @Deviation (MEM05-CPP,Rule-7_5_4,A7-5-2)
-      // 【ルールに逸脱している内容】
-      // Function '::rba::RBAConstraintInfo::collectTrueAllocatables=(_,&{c::std::set<p={c::rba::RBAAllocatable},
-      // {c::std::less<p={c::rba::RBAAllocatable}>},{c::std::allocator<p={c::rba::RBAAllocatable}>}>})' is recursive. 
-      // 【ルールを逸脱しても問題ないことの説明】
-      // 機能として再帰呼び出しが必要なため
+      //  [Contents that deviate from the rules]
+      //   Function '::rba::RBAConstraintInfo::collectTrueAllocatables=(_,
+      //     &{c::std::set<p={c::rba::RBAAllocatable},
+      //     {c::std::less<p={c::rba::RBAAllocatable}>},
+      //     {c::std::allocator<p={c::rba::RBAAllocatable}>}>})' is recursive. 
+      // 　[Reason that there is no problem if the rule is deviated]
+      //   Recursive call is required as a feature
       child->collectTrueAllocatables(allocatables);
     }
     allocatables.insert(trueAllocatables_.begin(), trueAllocatables_.end());
@@ -350,17 +397,22 @@ void RBAConstraintInfo::collectFalseAllocatables(
   } else if (isImplies()) {
     children_.back()->collectFalseAllocatables(allocatables);
   } else if (isSizeOperator()) {
-    // サイズオペレーターは集合の数を評価するので、FalseAllocatableとTrueAllocatableを合わせたAllocatableがFalseAllocatablesとなる
+    // The size operator evaluates the number of sets, so "Allocatable", 
+    // which is a combination of "FalseAllocatable" and "TrueAllocatable", 
+    // becomes "FalseAllocatables".
     children_.back()->collectTrueAllocatables(allocatables);
     children_.back()->collectFalseAllocatables(allocatables);
   } else {
     for (const auto& child : children_) {
       // @Deviation (MEM05-CPP,Rule-7_5_4,A7-5-2)
-      // 【ルールに逸脱している内容】
-      // Function '::rba::RBAConstraintInfo::collectFalseAllocatables=(_,&{c::std::set<p={c::rba::RBAAllocatable},
-      // {c::std::less<p={c::rba::RBAAllocatable}>},{c::std::allocator<p={c::rba::RBAAllocatable}>}>})' is recursive. 
-      // 【ルールを逸脱しても問題ないことの説明】
-      // 機能として再帰呼び出しが必要なため
+      //  [Contents that deviate from the rules]
+      //   Function '::rba::RBAConstraintInfo::collectFalseAllocatables=(_,
+      //           &{c::std::set<p={c::rba::RBAAllocatable},
+      //           {c::std::less<p={c::rba::RBAAllocatable}>},
+      //           {c::std::allocator<p={c::rba::RBAAllocatable}>}>})' 
+      //   is recursive. 
+      // 　[Reason that there is no problem if the rule is deviated]
+      //   Recursive call is required as a feature
       child->collectFalseAllocatables(allocatables);
     }
     allocatables.insert(falseAllocatables_.begin(), falseAllocatables_.end());
@@ -384,10 +436,12 @@ bool RBAConstraintInfo::contains(const RBAAllocatable* const allocatable) const
   }
   for (const auto& child : children_) {
     // @Deviation (MEM05-CPP,Rule-7_5_4,A7-5-2)
-    // 【ルールに逸脱している内容】
-    // Function '::rba::RBAConstraintInfo::contains=(_,p={c::rba::RBAAllocatable})' is recursive. 
-    // 【ルールを逸脱しても問題ないことの説明】
-    // 機能として再帰呼び出しが必要なため
+    //  [Contents that deviate from the rules]
+    //   Function '::rba::RBAConstraintInfo::contains=(_,
+    //                                p={c::rba::RBAAllocatable})' 
+    //   is recursive. 
+    // 　[Reason that there is no problem if the rule is deviated]
+    //   Recursive call is required as a feature
     if (child->contains(allocatable)) {
       return true;
     }
@@ -410,40 +464,55 @@ void RBAConstraintInfo::collectAffectedAllocatables(
     const bool collecting,
     const bool forObject)
 {
-  // 制約式をFalseにした原因アロケータブルを収集する
-  // 制約式評価時に作成したツリー構造のConstraintInfoを
-  // 本関数で再帰呼び出しすることで実装している。
-  // 否定より下のConstraintInfoは成否が反転するためTrueを収集するようにしている
+  // Collect the allocatable that caused the constraint expression to be False.
+  // It is implemented by recursively calling ConstraintInfo of the tree 
+  // structure created at the time of "Constraint" expression evaluation.
+  // with this function.
+  // Collect True because the success or failure of ConstraintInfo below 
+  // "negative" is reversed.
   switch (getExpression()->getModelElementType()) {
     case RBAModelElementType::NotOperator:
-      // 否定より下のConstraintInfoは成否が反転するためisRevertを反転させて、子Infoを呼び出す
+      // ConstraintInfo below negative negates success or failure, 
+      // so invert isRevert and call child Info.
       children_[0U]->collectAffectedAllocatables(!isRevert, affectAllocatables,
                                                  collecting, forObject);
       break;
     case RBAModelElementType::SizeOperator:
-      // サイズオペレーターは集合の数を評価するので、FalseAllocatableとTrueAllocatableを合わせたAllocatableがaffectAllocatablesとなる
+      // Since the size operator evaluates the number of sets, 
+      // "Allocatable" which is a combination of "FalseAllocatable" and 
+      // "TrueAllocatable" becomes "affectAllocatables".
       children_[0U]->collectAffectedAllocatables(false, affectAllocatables,
                                                  true, true);
       break;
     case RBAModelElementType::OrOperator:
     case RBAModelElementType::ExistsOperator:
-      // "Exists {A,B}{x|x.isXXX}"は"A.isXXX OR B.isXXX"と等価であるため、同一処理を行う
+      // the same processing is performed, because "Exists {A,B}{x|x.isXXX}" 
+      // is equivalent to "A.isXXX OR B.isXXX"
       if (!isRevert) {
-        // 奇数個の否定で修飾されていない、評価結果がFalseまたはSkipの、ORのInfoに来た時の処理
+        // Processing when "Info" of "OR"　in which evaluation result that is not 
+        // qualified by an odd number of negative is "Skip" or evaluation reslt 
+        // that is not qualified by an odd number of negative is "False".
         if (!isTrue()) {
-          // 評価結果がFalseの子Infoのアロケータブルを収集する
-          // A.isXXX OR B.isXXX のとき、Aの評価結果がTrueであれば、Bの評価結果がFalseでも、
-          // ORの評価結果がTrueになる。よって、AはBに影響を与えている。逆にBもAに影響を与えている
-          // よって、collectingをTrueにして子Infoに影響アロケータブルを探しにいく。
+          // Collect the Allocatable of child Info whose 
+          // whose evaluation result is False.
+          // When "A.isXXX OR B.isXXX", if the evaluation result of A is True, 
+          // the evaluation result of OR will be True even if the evaluation 
+          // result of B is False. Therefore, A affects B. 
+          // Conversely, B also affects A.
+          // Therefore, set "collecting" to True and 
+          // search "child Info" for allocatable.
           for (auto& i : children_) {
             i->collectAffectedAllocatables(isRevert, affectAllocatables, true,
-                                           forObject);  //ORの時に収集する
+                                           forObject);  // Collct when "OR"
           }
         }
       } else {
-        // 奇数個の否定で修飾されている、評価結果がTrueまたはSkipの、ORのInfoに来た時の処理
-        // "!(A.isXXX OR B.isXXX)"は"!A.isXXX AND !B.isXXX"に分解できるため、
-        // NOTの場合はANDと同じ処理を行う
+        // Processing when "Info" of "OR"　in which evaluation result that is not 
+        // qualified by an odd number of negative is "Skip" or evaluation reslt 
+        // that is not qualified by an odd number of negative is "False".
+        // "!(A.isXXX OR B.isXXX)" can be decomposed into 
+        // "!A.isXXX AND !B.isXXX", so if "NOT", perform the same processing 
+        // as "AND".
         if (!isFalse()) {
           for (auto& i : children_) {
             i->collectAffectedAllocatables(isRevert, affectAllocatables,
@@ -454,28 +523,41 @@ void RBAConstraintInfo::collectAffectedAllocatables(
       break;
     case RBAModelElementType::AndOperator:
     case RBAModelElementType::ForAllOperator:
-      // "For-All {A,B}{x|x.isXXX}"は"A.isXXX AND B.isXXX"と等価であるため、同一処理を行う
+      //"For-All {A,B}{x|x.isXXX}" is equivalent to "A.isXXX AND B.isXXX", 
+      // so the same processing is performed
       if (isRevert) {
-        // 奇数個の否定で修飾されている、評価結果がTrueまたはSkipの、ANDのInfoに来た時の処理
-        // "!(A.isXXX AND B.isXXX)"は"!A.isXXX OR !B.isXXX"に分解できるため、
-        // NOTの場合はORと同じ処理を行う
+        // Processing when "Info" of "AND"　in which evaluation result that 
+        // is not qualified by an odd number of "negative" is "Skip" or 
+        // evaluation reslt that is not qualified by an odd number of negative 
+        // is "True".
+        //
+        // "!(A.isXXX AND B.isXXX)" can be decomposed into 
+        // "!A.isXXX OR !B.isXXX", so if "NOT", perform the same processing 
+        // as "OR".
         if (!isFalse()) {
           for (auto& i : children_) {
             // @Deviation (MEM05-CPP,Rule-7_5_4,A7-5-2)
-            // 【ルールに逸脱している内容】
-            // Function '::rba::RBAConstraintInfo::collectAffectedAllocatables(_,_o,&{c::std::set<p={c::rba::RBAAllocatable},
-            // {c::std::less<p={c::rba::RBAAllocatable}>},{c::std::allocator<p={c::rba::RBAAllocatable}>}>},_o)' is recursive.
-            // 【ルールを逸脱しても問題ないことの説明】
-            //  機能として再帰呼び出しが必要なため
+            //  [Contents that deviate from the rules]
+            //   Function '::rba::RBAConstraintInfo::collectAffectedAllocatables(_,_o,&{c::std::set<p={c::rba::RBAAllocatable},
+            //   {c::std::less<p={c::rba::RBAAllocatable}>},{c::std::allocator<p={c::rba::RBAAllocatable}>}>},_o)' is recursive.
+            // 　[Reason that there is no problem if the rule is deviated]
+            //   Recursive call is required as a feature
             i->collectAffectedAllocatables(isRevert, affectAllocatables, true,
                                            forObject);
           }
         }
       } else {
-        // 奇数個の否定で修飾されてない、評価結果がFalseまたはSkipの、ANDのInfoに来た時の処理
-        // A.isXXX AND B.isXXX のとき、Aの評価結果が何であろうと、Bの評価結果がTrueにならなければ、
-        // ANDの評価結果がTrueにならないので、AはBに影響を与えない。また、BもAに影響を与えない。
-        // よって、collectingはそのままで子Infoに影響アロケータブルを探しにいく。
+        // Processing when "Info" of "AND"　in which evaluation result that 
+        // is not qualified by an odd number of "negative" is "Skip" or 
+        // evaluation reslt that is not qualified by an odd number of negative 
+        // is "True".
+        //
+        // When "A.isXXX AND B.isXXX", the evaluation result of "AND" does not 
+        // become True unless the evaluation result of B becomes True, 
+        // regardless of the evaluation result of A.　Therefore, A does not 
+        // affect B, and B does not affect A.
+        // Therefore, "collecting" is as it is, and the "child Info" is 
+        // searched for an allocable influence.
         if (!isTrue()) {
           for (auto& i : children_) {
             i->collectAffectedAllocatables(isRevert, affectAllocatables,
@@ -487,21 +569,26 @@ void RBAConstraintInfo::collectAffectedAllocatables(
     case RBAModelElementType::MaxOperator:
     case RBAModelElementType::MinOperator:
     {
-      // <集合>式がIF(A.isDisplayed) THEN {B,C} ELSE {D,E}のとき、影響エリアとしてAを抽出するために左辺を走査する
+      // When the <set> expression is "IF(A.isDisplayed) THEN {B,C} ELSE {D,E}", 
+      // scan the left side to extract A as the area of influence
       children_[0U]->collectAffectedAllocatables(false, affectAllocatables,
                                                  collecting,forObject);
-      // ラムダ式の x となった全てのオペランドがお互いに影響を与えているので、影響エリアとして抽出する必要がある
+      // All the operands that are "x" in the lambda expression affect 
+      // each other, so it is necessary to extract them as the affected Area.
       for (std::uint8_t i { 1U }; i < children_.size(); ++i) {
         children_[i]->collectAffectedAllocatables(isRevert, affectAllocatables,
                                                   true, true);
       }
       break;
     }
-    case RBAModelElementType::ImpliesOperator:  // A -> B は !A OR Bと同じ
+    // "A -> B" is the same as "!A OR B".
+    case RBAModelElementType::ImpliesOperator:
       if (!isRevert) {
         if (!isTrue()) {
-          // "A.isXXX -> B.isXXX"は"!A.isXXX OR B.isXXX"に分解できるため、ORと同じ処理を行う
-          // 上記理由により、左辺の取得対象はisRevertを反転させる。
+          // "A.isXXX -> B.isXXX" can be decomposed into "!A.isXXX OR B.isXXX", 
+          // so the same process as OR is performed
+          // For the above reason, the acquisition target on the left side 
+          // inverts isRevert.
           children_[0U]->collectAffectedAllocatables(!isRevert,
                                                      affectAllocatables, true,
                                                      forObject);
@@ -511,8 +598,9 @@ void RBAConstraintInfo::collectAffectedAllocatables(
         }
       } else {
         if (!isFalse()) {
-          // "!(A.isXXX -> B.isXXX)"は"A.isXXX OR !B.isXXX"に分解できるため、ORと同じ処理を行う
-          // 上記理由により、左辺の取得対象はisRevertを反転させる。
+          // "!(A.isXXX -> B.isXXX)" can be decomposed into "A.isXXX OR !B.isXXX"
+          // For the above reason, the acquisition target on the left side 
+          // inverts isRevert.
           children_[0U]->collectAffectedAllocatables(!isRevert,
                                                      affectAllocatables,
                                                      collecting, forObject);
@@ -522,12 +610,16 @@ void RBAConstraintInfo::collectAffectedAllocatables(
         }
       }
       break;
-    case RBAModelElementType::IfStatement:  // IF(A) THEN B ELSE C は AがTrueなら !A OR B、Falseなら A OR Cと同じ
+    case RBAModelElementType::IfStatement:
+    // "IF(A) THEN B ELSE C" is the same as "!A OR B" if A is True, 
+    // and the same as "A OR C" if A is False
       if (children_[0U]->isTrue()) {
         if (!isRevert) {
           if (!isTrue()) {
-            // "IF(A.isXXX) THEN B.isXXX ELSE C.isXXX"はAがTrueのとき、"(!A.isXXX OR B.isXXX)"に分解できる
-            // 上記理由により、左辺の取得対象はisRevertを反転させる。
+            // "IF(A.isXXX) THEN B.isXXX ELSE C.isXXX" can be decomposed into 
+            // "(!A.isXXX OR B.isXXX)" when A is True.
+            // For the above reason, the acquisition target on the left side 
+            // inverts isRevert.
             children_[0U]->collectAffectedAllocatables(!isRevert,
                                                        affectAllocatables, true,
                                                        forObject);
@@ -537,8 +629,10 @@ void RBAConstraintInfo::collectAffectedAllocatables(
           }
         } else {
           if (!isFalse()) {
-            // "!(IF(A.isXXX) THEN B.isXXX ELSE C.isXXX)"はAがTrueのとき、"(!A.isXXX OR !B.isXXX)"に分解できる
-            // 上記理由により、左辺の取得対象はisRevertを反転させる。
+            // "!(IF(A.isXXX) THEN B.isXXX ELSE C.isXXX)" can be decomposed into 
+            // "(!A.isXXX OR !B.isXXX)" when A is True.
+            // For the above reason, the acquisition target on the left side 
+            // inverts isRevert.
             children_[0U]->collectAffectedAllocatables(isRevert,
                                                        affectAllocatables, true,
                                                        forObject);
@@ -550,7 +644,8 @@ void RBAConstraintInfo::collectAffectedAllocatables(
       } else {
         if (!isRevert) {
           if (!isTrue()) {
-            // "IF(A.isXXX) THEN B.isXXX ELSE C.isXXX"はAがFalseのとき、"(A.isXXX OR C.isXXX)"に分解できる
+            // "IF(A.isXXX) THEN B.isXXX ELSE C.isXXX" can be decomposed into 
+            // "(A.isXXX OR C.isXXX)" when A is False.
             children_[0U]->collectAffectedAllocatables(isRevert,
                                                        affectAllocatables, true,
                                                        forObject);
@@ -560,7 +655,8 @@ void RBAConstraintInfo::collectAffectedAllocatables(
           }
         } else {
           if (!isFalse()) {
-            // "!(IF(A.isXXX) THEN B.isXXX ELSE C.isXXX)"はAがFalseのとき、"(A.isXXX OR !C.isXXX)"に分解できる
+            // "!(IF(A.isXXX) THEN B.isXXX ELSE C.isXXX)" can be decomposed into 
+            // "(A.isXXX OR !C.isXXX)" when A is False.
             children_[0U]->collectAffectedAllocatables(!isRevert,
                                                        affectAllocatables, true,
                                                        forObject);
@@ -571,7 +667,7 @@ void RBAConstraintInfo::collectAffectedAllocatables(
         }
       }
       break;
-    default:  //Allocatableを収集
+    default:  // Collect Allocatable
       if (collecting) {
         if (isRevert) {
           affectAllocatables.insert(trueAllocatables_.begin(),

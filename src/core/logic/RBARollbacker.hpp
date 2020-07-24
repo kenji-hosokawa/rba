@@ -1,5 +1,21 @@
 /**
- * 調停結果ロールバッククラスヘッダファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Rollbacker (rollback of arbitration results) class header
  */
 
 #ifndef RBARROLLBACKER_HPP
@@ -26,37 +42,41 @@ class RBARollbacker
   virtual ~RBARollbacker() noexcept;
 
   /**
-   * 再調停中に再調停する際に子再調停用のバックアップを登録する
-   * ロールバックするときに子のバックアップも元に戻す
+   * Register a backup for child re-arbitration when execute re-arbitration 
+   * during re-arbitration.
+   * Restore child backup when rolling back
    */
   void addChild(const std::shared_ptr<RBARollbacker> child);
 
   void removeChild(const std::shared_ptr<RBARollbacker> child);
 
   /**
-   * 調停状態と影響情報をバックアップする
-   * バックアップするのは直接再調停するAllocatableだけ
-   * 再調停中の再調停は子にバックアップさせる
-   * モデル上の全Allocatableをバックアップするのは非効率なので
-   * 再調停するものだけをバックアップする
+   * Back up arbitration status and impact information.
+   * (Only "Allocatable" that directly arbitration is backed up)
+   * Child will back up re-arbitraion during execution of re-aribitration.
+   *
+   * Backing up all "Allocatable" on a model is inefficient, 
+   * so back up only those that execute re-arbitration
    */
   void backup(std::list<const RBAAllocatable*>& backuplist);
 
   /**
-   * インスタンス生成時の状態に調停状態と影響情報をロールバックする
+   * Roll back the arbitration state and impact information to 
+   * the state when the instance was created
    */
   void rollback();
 
  private:
   /**
-   * アロケータブルの調停状態をコピーする
-   * @param from コピー元
-   * @param to コピー先
+   * @brief Copy Allocable arbitration state
+   * @param from source of copy
+   * @param to destination of copy
    */
   void copyAllocatable(const RBAAllocatable* const from, RBAAllocatable* const to);
 
   std::list<std::shared_ptr<RBARollbacker>> children_;
-  std::unordered_map<const RBAAllocatable*, std::unique_ptr<RBAAllocatable>> backupMap_; // 再調停失敗時のロールバック情報
+  // Rollback information when arbitration fails
+  std::unordered_map<const RBAAllocatable*, std::unique_ptr<RBAAllocatable>> backupMap_; 
 };
 
 }

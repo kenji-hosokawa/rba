@@ -1,5 +1,21 @@
 /**
- * リクエストキュークラスヘッダーファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+ /**
+ * RBARequestQueueMember class header 
  */
 
 #ifndef RBAREQUESTQUEMEMBER_HPP
@@ -26,14 +42,20 @@ class RBARequestQueMember {
   std::uint32_t getSyncIndex() const;
 
  private:
-  const RBAContentState* contentState_; /// 調停を要求されたコンテントステート
-  bool isOn_;                           /// 表示・出力要求、または、シーンON要求か
+  // Content state for which arbitration was requested
+  const RBAContentState* contentState_; 
+  // Whether display/output request or scene ON request
+  bool isOn_;
 
-  /// 調停同期Index
-  /// 同じ値のQueMenberは同じタイミングで調停し、値が異なる場合は、差分調停する。
-  /// execute(list,bool)の要求を受けたとき、listに含まれるコンテントはすべて同じ値になり、
-  /// setContentState(ContentState, bool)の要求を2回受けたとき、1回目の要求と2回目の要求では異なる値になる。
-  /// onRequestやonWithdrawnで作成されたときは、トリガとなった要求と同じ値になる。
+  /// Index of arbitration syntax
+  /// QueMenber with the same value will be arbitrated at the same timing, 
+  /// and if the values are different, differential arbitration is performed.
+  /// When a request for execute(list,bool) is received, the content icluded
+  /// in the list will all have the same value. 
+  /// When setContentState(ContentState, bool) request is received twice, 
+  /// the first request and the second request have different values.
+  /// When created by onRequest or onWithdrawn, 
+  /// it has the same value as the request that triggered it.
   std::uint32_t syncIndex_;
 };
 
