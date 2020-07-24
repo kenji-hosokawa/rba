@@ -1,5 +1,21 @@
 /**
- * 調停ロジッククラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+ /**
+ * Arbitrator class definition
  */
 
 #include <algorithm>
@@ -29,8 +45,9 @@ RBAArbitrator::RBAArbitrator(RBAModel* newModel, RBALogManager* logManager)
 {
   setModel(newModel);
   RBALogManager::setLogManager(logManager);
-  // 引数logManagerがnullだとしても、rba外部からsetLogManager()されている可能性があるので、
-  // 引数判定ではなく、getLogManager()で判定
+  // Even if the argument logManager is null, it may be setLogManager() 
+  // from outside the rba, so it is determined by getLogManager() instead of 
+  // the argument determination.
   if (RBALogManager::getLogManager() != nullptr) {
     setSimulationMode(true);
   }
@@ -65,7 +82,8 @@ RBAArbitrator::execute(const std::string& contextName, bool require)
 {
   const std::lock_guard<std::recursive_mutex> lock {getMutex()};
   if (isValidContext(contextName) == false) {
-    // エラーの場合は、Resultのコピーを生成してエラーフラグをセットして返す
+    // In case of error, creates a copy of "Result", 
+    // sets the error flag in it and returns
     std::unique_ptr<RBAResultImpl> result {std::make_unique<RBAResultImpl>(
         this, std::make_unique<RBAResultSet>(*getBackupResultSet()))};
     result->setStatusType(RBAResultStatusType::UNKNOWN_CONTENT_STATE);
@@ -83,7 +101,8 @@ RBAArbitrator::execute(std::list<std::string>& contexts,
 {
   const std::lock_guard<std::recursive_mutex> lock {getMutex()};
   if (isValidContext(contexts) == false) {
-    // エラーの場合は、Resultのコピーを生成してエラーフラグをセットして返す
+    // In case of error, creates a copy of "Result", 
+    // sets the error flag in it and returns
     std::unique_ptr<RBAResultImpl> result {std::make_unique<RBAResultImpl>(
         this, std::make_unique<RBAResultSet>(*getBackupResultSet()))};
     result->setStatusType(RBAResultStatusType::UNKNOWN_CONTENT_STATE);
@@ -99,9 +118,10 @@ RBAArbitrator::execute(const std::string& sceneName,
 		       std::list<std::pair<std::string,std::int32_t>>& properties)
 {
   const std::lock_guard<std::recursive_mutex> lock {getMutex()};
-  // 引数チェック
+  // Check argument
   if (isValidContext(sceneName) == false) {
-    // エラーの場合は、Resultのコピーを生成してエラーフラグをセットして返す
+    // In case of error, creates a copy of "Result", 
+    // sets the error flag in it and returns
     std::unique_ptr<RBAResultImpl> result {std::make_unique<RBAResultImpl>(
         this, std::make_unique<RBAResultSet>(*getBackupResultSet()))};
     result->setStatusType(RBAResultStatusType::UNKNOWN_CONTENT_STATE);
@@ -171,39 +191,38 @@ RBAArbitrator::setResultContentState(const std::string& allocatableName,
   getResult()->setContentState(alloc, state);
 
   // ----------------------------------------------------------
-  // 調停後処理
+  // Post processing of Arbitration
   // ----------------------------------------------------------
   postArbitrate();
 
-  // オフライン制約を動かす
+  // Excecute offline constraint
 #ifdef RBA_USE_LOG
   checkAllConstraints();
 #endif
 
   // ----------------------------------------------------------
-  // コンテントの状態を更新する
+  // Update the state of Content
   // ----------------------------------------------------------
   if (beforeContentState != nullptr) {
-    // 要求されたアロケータブルに元々割り当てられていたコンテントの状態を更新する
+    // Update the state of the Content originally assigned to 
+    // the requested Allocatable
     dynamic_cast<RBAContent*>(beforeContentState->getOwner())->updateStatus(getResultRef().get());
   }
-  // 要求されたコンテントの状態を更新する
+  // Update the state of requested Content
   dynamic_cast<RBAContent*>(state->getOwner())->updateStatus(getResultRef().get());
 
-  // コンテントのキャンセル処理
-  // C++版で追加した処理
+  // Cancel processing of Content
   checkCancelContent();
 
-  // C++版で追加した処理
-  // 表示エリア,非表示エリアの更新
+  // Update display and non-display Area
   updateResult();
 
-  // 結果を生成
+  // Generate Result
   createResultData();
 
-  // 現在の調停結果セットのバックアップを保存
+  // Store backup of current arbitration result set
   setBackupResultSet(getResult()->createBackupCurrentResultSet());
-  // 次の調停結果セットを作成
+  // Create next arbitration result set
   setNextResultSet(getResult()->createNextCurrentResultSet());
 
   return std::move(getResultRef());
@@ -303,11 +322,12 @@ RBAArbitrator::setAllocatableResult(const std::string& allocatableName,
   nextResultSet->setActive(state, true);
   prevResultSet->setActive(state, true);
 
-  ///////////////////////////
-  // コンテントの状態を更新する
-  ///////////////////////////
-  // コンテントの状態を更新は前回の状態を見て今回の遷移先を決定するので、
-  // Resultを作成して、状態を更新している
+  // ----------------------------------------------------------
+  // Update the state of Content
+  // ----------------------------------------------------------
+  // Create "result" and update state, because updating the content state 
+  // determines the transition destination this time 
+  // based on previous state.
   setResult(std::make_unique<RBAResultImpl>(
       this,
       std::make_unique<RBAResultSet>(*getBackupResultSet()),
@@ -315,10 +335,11 @@ RBAArbitrator::setAllocatableResult(const std::string& allocatableName,
   RBAContent* const content {dynamic_cast<RBAContent*>(state->getOwner())};
   content->updateRequestStatus(getResult()->getCurResultSet().get(), true);
   if (beforeContentState != nullptr) {
-    // 要求されたアロケータブルに元々割り当てられていたコンテントの状態を更新する
+    // Update the state of the content originally assigned to 
+    // the requested Allocatable
     dynamic_cast<RBAContent*>(beforeContentState->getOwner())->updateStatus(getResultRef().get());
   }
-  // 要求されたコンテントの状態を更新する
+  // Update the state of requested Content
   content->updateStatus(getResultRef().get());
 
   setBackupResultSet(std::make_unique<RBAResultSet>(*getResult()->getPreResultSet()));
@@ -335,7 +356,7 @@ RBAArbitrator::RBAArbitrator::evaluate(RBAExpression* expression)
   }
   const std::lock_guard<std::recursive_mutex> lock{getMutex()};
   RBAConstraintInfo info;
-  // 制約式の評価
+  // Constraint expression evaluation
   return expression->execute(&info, this);
 }
 
@@ -347,7 +368,7 @@ RBAArbitrator::evaluateObject(RBAExpression* expression)
   }
   const std::lock_guard<std::recursive_mutex> lock{getMutex()};
   RBAConstraintInfo info;
-  // 制約式の評価
+  // Constraint expression evaluation
   const RBARuleObject* const ruleObj
     {expression->getReferenceObject(&info, this)};
   if (ruleObj != nullptr) {
@@ -365,7 +386,7 @@ RBAArbitrator::evaluateValue(RBAExpression* expression)
   }
   const std::lock_guard<std::recursive_mutex> lock{getMutex()};
   RBAConstraintInfo info;
-  // 制約式の評価
+  // Constraint expression evaluation
   return expression->getValue(&info, this);
 }
 
@@ -384,7 +405,8 @@ RBAArbitrator::
 satisfiesConstraints() const
 {
   const std::lock_guard<std::recursive_mutex> lock{mutex_};
-  // 評価用にresult_を使うため、実際のresult_を一時保管する
+  // Temporarily store the actual result_ 
+  // because result_ is used for evaluation
   std::unique_ptr<RBAResultImpl> tmpResult {std::move(result_)};
   result_ = std::make_unique<RBAResultImpl>(
       this,
@@ -404,21 +426,24 @@ satisfiesConstraints() const
 }
 
 /**
- * 調停実行
+ * Execute arbitration
  */
 std::unique_ptr<RBAResult>
 RBAArbitrator::arbitrateMain()
 {
-  // cancelArbitration()されたときのために調停前の要求状態を保存
+  // Store request state before arbitration, 
+  // in case cancelArbitration() is executed
   reservedResultSet_ = std::make_unique<RBAResultSet>(*backupResultSet_);
 
-  // 要求毎の差分調停
+  // Differential arbitration for each request
   if (requestQue_.empty()) {
-    // differenceArbitrateで使用するのでここで、Resultを用意しておく
+    // Prepare Result here because it will be used in differenceArbitrate.
     result_ = std::make_unique<RBAResultImpl>(this,
                                               std::move(backupResultSet_),
                                               std::move(nextResultSet_));
-    // 引数なしの調停要求。この中のonDisplayedにより、requestQue_にキューイングされる可能性がある
+    // Arbitration request without arguments.
+    // there is a possibility of being queued in "requestQue_"
+    // due to "onDisplayed" in this, 
     differenceArbitrate();
   }
   if (!requestQue_.empty()) {
@@ -429,25 +454,25 @@ RBAArbitrator::arbitrateMain()
       const std::unique_ptr<RBARequestQueMember> request {std::move(requestQue_.front())};
       requestQue_.pop_front();
       result_->setActive(request->getContentState(), request->isOn());
-      // コンテントの状態を更新する
+      // Update the state of Content
       RBAContent* const content {dynamic_cast<RBAContent*>(request->getContentState()->getOwner())};
       content->updateRequestStatus(result_->getCurResultSet().get(), request->isOn());
       if (requestQue_.empty()) {
         differenceArbitrate();
         if (!requestQue_.empty()) {
-          // 次のdifferenceArbitrate()に備えて、更新しておく。
+          // Update "result_" for the next differenceArbitrate().
           result_ = std::make_unique<RBAResultImpl>(this,
                                                     std::move(backupResultSet_),
                                                     std::move(nextResultSet_));
         }
       } else if (requestQue_.front()->getSyncIndex() != request->getSyncIndex()) {
         differenceArbitrate();
-        // 次のdifferenceArbitrate()に備えて、更新しておく。
+        // Update "result_" for the next differenceArbitrate().
         result_ = std::make_unique<RBAResultImpl>(this,
                                                   std::move(backupResultSet_),
                                                   std::move(nextResultSet_));
       } else {
-        // 何もしない
+        // No Operation
       }
     } while (!requestQue_.empty());
   }
@@ -456,12 +481,10 @@ RBAArbitrator::arbitrateMain()
       this, std::make_unique<RBAResultSet>(*reservedResultSet_),
       result_->createBackupCurrentResultSet());
 
-  // コンテントのキャンセル処理
-  // C++版で追加した処理
+  // Cancel processing of Content
   checkCancelContent();
 
-  // C++版で追加した処理
-  // 表示エリア,非表示エリアの更新
+  // Update displayed and non-displayed Area
   updateResult();
 
 #ifdef RBA_USE_LOG
@@ -473,19 +496,21 @@ RBAArbitrator::arbitrateMain()
 #endif
 
   createResultData();
-  // 現在の調停結果セットのバックアップを保存
+  // Store backup of current arbitration result set
   backupResultSet_ = result_->createBackupCurrentResultSet();
-  // 次の調停結果セットを作成
+  // Create next arbitration result set
   nextResultSet_ = result_->createNextCurrentResultSet();
 
-  // 保管用にresult_を使うため、戻り値のresult_を別名にする
+  // The "result_" of the return value is changed to another name,
+  // because "result_" will be used for storing.
   auto retResult = std::move(result_);
 
-  // 調停中以外の場合で、調停結果を利用することがあるため、調停結果を保持しておく
+  // Hold the arbitration result because the arbitration result may be used 
+  // in cases other than arbitration.
   result_ = std::make_unique<RBAResultImpl>(retResult.get());
 
-  // std::unique_ptr<RBAResultImpl>をstd::unique_ptr<RBAResult>にキャストするので
-  // std::move()がないとコンパイルエラーになる
+  // A compile error occurs if std::move() is missing because 
+  // std::unique_ptr<RBAResultImpl>　is cast to std::unique_ptr<RBAResult>
   return std::move(retResult);
 }
 
@@ -520,7 +545,7 @@ isValidContext(std::list<std::string>& contexts)
 }
 
 /**
- * 入力情報を反映
+ * Reflect input information
  */
 
 bool
@@ -531,25 +556,29 @@ RBAArbitrator::setRequestData(
 {
   bool isSet {false};
   if (context != "") {
-    // コンテントステートが指定された場合
-    // contextNameがコンテント名のみの場合は、先頭のコンテントステートを取り出す
+    // When content state is specified
+    // If contextName is the only content name, pop the first content state
     const RBAContentState* state {model_->findContentState(context)};
     if (state != nullptr) {
       requestQue_.push_back( std::make_unique<RBARequestQueMember>(state, require, syncIndex));
       isSet = true;
     } else {
-      // シーンが指定された場合
+      // When Scene is specified
       const RBASceneImpl* const scene {model_->findSceneImpl(context)};
       if (scene != nullptr) {
-        nextResultSet_->setActive(scene, require); // 次の調停用
-        result_->setActive(scene, require);        // 次の調停前にResultを参照されたとき用
+        // for next arbitration
+        nextResultSet_->setActive(scene, require);
+        // For when "Result" is referenced before the next arbitration
+        result_->setActive(scene, require);
         isSet = true;
         if (properties != nullptr) {
           for (auto& p : *properties) {
             const RBAAbstractProperty* const ap {scene->getProperty(p.first)};
             if (ap != nullptr) {
-              nextResultSet_->setSceneProperty(ap, p.second); // 次の調停用
-              result_->setSceneProperty(ap, p.second);        // 次の調停前にResultを参照されたとき用
+              // for next arbitration
+              nextResultSet_->setSceneProperty(ap, p.second);
+              // For when "Result" is referenced before the next arbitration
+              result_->setSceneProperty(ap, p.second);
             }
           }
         }
@@ -585,7 +614,7 @@ void
 RBAArbitrator::setActive(const RBASceneImpl* const scene, const bool require)
 {
   if (nextResultSet_ != nullptr) {
-    // onRequest、onWithdrawnでonSceneされるときはnextResultSet_を更新する
+    // Update nextResultSet_" when onScene is done in onRequest or onWithdrawn
     nextResultSet_->setActive(scene, require);
   } else {
     result_->setActive(scene, require);
@@ -596,7 +625,7 @@ void
 RBAArbitrator::setSceneProperty(const RBAAbstractProperty* const prop, const std::int32_t value)
 {
   if (nextResultSet_ != nullptr) {
-    // onRequest、onWithdrawnでsetされるときはnextResultSet_を更新する
+    // Update nextResultSet_" when onScene is done in onRequest or onWithdrawn
     nextResultSet_->setSceneProperty(prop, value);
   } else {
     result_->getCurResultSet()->setSceneProperty(prop, value);
@@ -614,7 +643,8 @@ RBAArbitrator::setRequestData(std::list<std::string>& contexts,
 }
 
 /**
- * 含意がfalse時に再調停を行える拡張版の調停を行う
+ * @brief Execute an extended version of arbitration that allows arbitration 
+          when the "implication" is false
  * @param areas
  */
 void
@@ -628,8 +658,9 @@ arbitrate(std::list<RBAAllocatable*>& allocatables)
   for (auto& alloc : allocatables) {
     revisited = revisitedInitSet;
     // -------------------------------------------------------------------------
-    // 無限ループ対策として調停の中で対象アロケータブルに影響を与えた他アロケータブルの
-    // 登録は一回までに制限させるための情報を生成
+    // To prevent an infinite loop, generate information to limit registration 
+  　　// of other "allocable" that affected the target "allocatable" 
+    // during arbitration
     // -------------------------------------------------------------------------
     RBAAffectInfo affectInfo;
     LOG_arbitrateAreaLogLine(
@@ -642,11 +673,11 @@ arbitrate(std::list<RBAAllocatable*>& allocatables)
 }
 
 /**
- * アロケータブルの調停を再帰的に行う
- * @param allocatable 調停したいアロケータブル
- * @param revisited 再調停済のアロケータブル
- * @param nest 再調停のネスト階層（一番初めの調停は0）
- * @param affectInfo allocatableが影響を与えたアロケータブルの情報
+ * @brief Recursively arbitrate "allocatable"
+ * @param allocatable Allocatable that you want to arbitrate
+ * @param revisited Allocatable that re-arbitration is complete
+ * @param nest Re-arbitration nesting hierarchy (first arbitration is zero)
+ * @param affectInfo Allocatable information affected by "allocatable"
  */
 void RBAArbitrator::arbitrateAllocatable(
     RBAAllocatable* allocatable,
@@ -658,20 +689,22 @@ void RBAArbitrator::arbitrateAllocatable(
 #ifdef RBA_USE_LOG
   RBALogManager::setIndent(nest);
 #endif
-  // この変数が定義されるまでの再帰処理中に、今回の調停対象アロケータブルが影響を与えたアロケータブル
-  // 再調停前の状態を覚えておく
+  // "Allocable" affected by "Allocable" which is the target of this arbitration
+  // during the recursive process until this variable is defined,
   std::set<const RBAAllocatable*> affectAllocatables;
-  affectAllocatables.insert(allocatable->getAllocatablesAffectedByYou().begin(), allocatable->getAllocatablesAffectedByYou().end());
+  affectAllocatables.insert(allocatable->getAllocatablesAffectedByYou().begin(),
+                            allocatable->getAllocatablesAffectedByYou().end());
 
   const RBAContentState* const beforeState {allocatable->getState()};
 
-  // 対象アロケータブルのコンテンツ割当をチェック済とする
+  // Mark Content allocation for target Allocable" as "checked"
   allocatable->setChecked(true);
-  // 調停ポリシーでソートされたコンテンツ状態を取得(Activeな要求だけが入る)
+  // Get content status sorted by arbitration policy
+  // (only active requests)
   std::list<const RBAContentState*> contentStates;
   getSortedContentStates(allocatable, contentStates);
   for(const RBAContentState* const contentState : contentStates) {
-    // エリアにコンテンツを割り当てる
+    // Allocate Content to Area
     allocatable->setState(contentState);
 #ifdef RBA_USE_LOG
     {
@@ -693,8 +726,9 @@ void RBAArbitrator::arbitrateAllocatable(
     if (isPassed == true) {
 
       // ----------------------------------------------------------
-      // コンテンツ割り当て処理後に制約式によって自アロケータブルが隠蔽されるべきかをチェック
-      // contentValue()があるため、コンテンツ未割り当てでも確認する
+      // Check if self-allocatable should be hidden 
+      // by constraint expression after content allocation process.
+      // Check even if content is not assigned because there is contentValue()
       // ----------------------------------------------------------
 #ifdef RBA_USE_LOG
       std::string alloSymbol = allocatable->getSymbol();
@@ -707,20 +741,22 @@ void RBAArbitrator::arbitrateAllocatable(
             "  check online constraints to confirm zone muted state");
       }
 #endif
-      // 対象アロケータブルのhiddenをチェック済とする
+      // Mark "hidden" of target "Allocable" as "checked"
       allocatable->setHiddenChecked(true);
-      // 対象アロケータブルのhiddenをfalseにする
+      // Set "hidden" of target "Allocable" to false
       allocatable->setHidden(false);
       bool hiddenIsPassed {checkConstraintAndReArbitrate(
           allocatable, revisited, nest, affectInfo, parentRollbacker,
-          allocatable->getHiddenFalseCheckConstraints(), &isSkipped, !allocatable->isZone())};
+          allocatable->getHiddenFalseCheckConstraints(), &isSkipped, 
+          !allocatable->isZone())};
       if (hiddenIsPassed == false) {
         allocatable->setHidden(true);
         hiddenIsPassed = checkConstraintAndReArbitrate(
             allocatable, revisited, nest, affectInfo, parentRollbacker,
-            allocatable->getHiddenTrueCheckConstraints(), &isSkipped, !allocatable->isZone());
+            allocatable->getHiddenTrueCheckConstraints(), &isSkipped, 
+            !allocatable->isZone());
         if (hiddenIsPassed == false) {
-          // アロケータブルの隠蔽状態をクリアする
+          // Clear hiding state of Allocatable
           allocatable->setHiddenChecked(false);
         } else {
           LOG_arbitrateAreaLogLine(
@@ -730,14 +766,14 @@ void RBAArbitrator::arbitrateAllocatable(
       }
 
       // -------------------------------------
-      // ゾーンは隠蔽(ミュート)後にアッテネートを判定する
+      // For Zone, judge attenuation after hiding (mute)
       // -------------------------------------
       bool attenuateIsPassed {true};
       if (allocatable->isZone()) {
         RBAZoneImpl* const zone {dynamic_cast<RBAZoneImpl*>(allocatable)};
-        // 対象ゾーンのアッテネートをチェック済とする
+        // Mark "attenuattion" of target "Zone" as checked"
         zone->setAttenuateChecked(true);
-        // 対象ゾーンのアッテネートをfalseにする
+        // Set "attenuattion" of target "Zone" to false
         zone->setAttenuated(false);
         LOG_arbitrateAreaLogLine(
             "  check online constraints to confirm zone attenuated state");
@@ -789,25 +825,31 @@ void RBAArbitrator::arbitrateAllocatable(
     }
   }
   // ---------------------------------------------------------------------
-  // 影響を与えたアロケータブルを再調停
+  // Re-arbitration of the Allocatable　that influenced
   // ---------------------------------------------------------------------
   if ((beforeState != allocatable->getState())
           || allocatable->isHidden()
           || allocatable->isAttenuated()) {
 
-    // コンテント割当時には隠蔽ではない状態で再調停しているので、
-    // 隠蔽、アッテネート状態になった場合、コンテント割り当て時の再調停で影響を与えたアロケータブルも再調停が必要
-    // 影響を与えたエリアが増えた分を更新する
+    // Re-arbitration is performed in a state other than "hidden" 
+    // When allocating content. Therefore, if state become "hidden" or 
+    // "attenuation", re-arbitration is required for the "allocatable" 
+    // that was affected by re-arbitration during content allocation.
+    // Update the increased Area that influenced
     if (allocatable->isHidden() || allocatable->isAttenuated()) {
       for (const auto& a : allocatable->getAllocatablesAffectedByYou()) {
         static_cast<void>(affectAllocatables.insert(a));
       }
     }
 
-    // 影響エリア/ゾーンの再調停対象に、再調停元のエリア/ゾーン(再調停のネストがある場合そのすべての再調停元を含む)が、
-    // 調停中のエリア/ゾーンに影響を受けたエリア/ゾーンとなった場合は、そのエリア/ゾーンは再調停対象から除外して影響エリア/ゾーンの再調停を行う。
-    // また、影響エリア/ゾーンがその時点で、未調停アロケータブルだった場合も、
-    // 通常手番の調停時に調停すればよいため、影響エリアの再調停対象から除外する。
+    // If the re-arbitration source of Area/Zone (including any re-arbitration
+    // sources, if any reconciliation nests) becomes an Area/Zone affected by 
+    // the re-arbitration area/zone, such Area/Zone is excluded from 
+    // the re-arbitration target and the affected Area/Zone is re-arbitrated.
+    // Further, even if the affected Area/Zone is unarbitrated Allocatable
+    // at that time, it is excluded from the re-arbitration target of 
+    // the affected Area. This is because it is sufficient to arbitrate 
+    // during normal arbitration. 
     for (const auto& a : revisited) {
       if (affectAllocatables.find(a) != affectAllocatables.end()
           || (!a->isChecked())) {
@@ -823,23 +865,30 @@ void RBAArbitrator::arbitrateAllocatable(
     }
 
     for (auto& affect : sortedAllocatables) {
-      // これから再調停するアロケータブルを、調停中アロケータブルの影響を与えたアロケータブルから削除
+      // Remove Allocatable which will be re-arbitration from Allocatable 
+      // that influenced Allocable during arbitration.
       allocatable->removeAffectAllocatable(affect);
     }
-    static_cast<void>(revisited.insert(allocatable)); // 調停済みエリアに追加する
+    static_cast<void>(revisited.insert(allocatable)); // Add to arbitrated Area
     for (auto& affectAllocatable : sortedAllocatables) {
       // @Deviation (EXP55-CPP,Rule-5_2_5,A5-2-3)
-      // 【ルールに逸脱している内容】
-      // This is a 'const_cast' expression that strips away a 'const' or 'volatile' qualifier.
-      // 【ルールを逸脱しても問題ないことの説明】
-      // 設計書上、問題無いことを確認出来ており、改修にはクラス設計の見直しが必要なため、今は修正しない。
+      // [Contents that deviate from the rules]
+      //  This is a 'const_cast' expression that strips away a 'const' or 
+      //  'volatile' qualifier.
+      // [Why there is no problem if it deviate from the rules]
+    　　//  Confirmed that there is no problem from the design point of view.
+      //  We won't fix it now because we need to redesign the class, but
+      //  no much effort as of now.
       RBAAllocatable* allo {const_cast<RBAAllocatable*>(affectAllocatable)};
 
-      // これから影響アロケータブルの再調停を実施するアロケータブルのチェックフラグを初期化
-      // 影響アロケータブルを事前にまとめてクリアすると、
-      // 先に実施した影響アロケータブルの再調停中の制約式評価でスキップが発生し、
-      // その後実施した影響アロケータブルの再調停中に、再調停が動いてしまうため、
-      // 影響アロケータブルの再調停前に個別にクリアする
+      // Initialize the check flag of the Allocatable that performs the 
+      // re-arbitration of the affetcted Allocatable
+      // If the affected Allocables are cleared in advance, a skip occurred in 
+      // the constraint expression evaluation during the re-arbitration of 
+      // the affected Allocatable that was carried out earlier, after that 
+      // re-arbitration will work during re-arbitration of affected Allocatable.
+      // Therefore, clear check flag individually 
+      // before re-arbitration of affected Allocable
       allo->clearChecked();
 
       LOG_arbitrateAreaLogLine( "    " +
@@ -847,11 +896,12 @@ void RBAArbitrator::arbitrateAllocatable(
                                 + affectAllocatable->getElementName()
                                 + "] affect allocatable check start");
       // @Deviation (MEM05-CPP,Rule-7_5_4,A7-5-2)
-      // 【ルールに逸脱している内容】
-      // arbitrateAllocatable()を再帰呼び出ししている
-      // 【ルールを逸脱しても問題ないことの説明】
-      // 影響エリアの再調停に必要な処理であり、無限ループ防止処理を入れているため、
-      // スタックオーバーフローすることはなく、問題無い。
+      // [Contents that deviate from the rules]
+      //  Recursively calling arbitrateAllocatable()
+      // [Why there is no problem if it deviate from the rules]
+      //  - This process is necessary for re-arbitration of the affected Area, 
+      //  - stack overflow will not occur becasue the infinite loop 
+      //    prevention process is imeplemented.
       arbitrateAllocatable(allo, revisited, nest + 1, affectInfo,
                            parentRollbacker);
     }
@@ -861,7 +911,8 @@ void RBAArbitrator::arbitrateAllocatable(
   }
 
   // --------------------------------------------------
-  // 再調停の中での無限ループ防止用の一時的な影響情報を削除する
+  // Delete temporary affect information 
+  // to prevent infinite loop during re-arbitration
   // --------------------------------------------------
   affectInfo->removeAffectInfo(allocatable);
 #ifdef RBA_USE_LOG
@@ -870,10 +921,10 @@ void RBAArbitrator::arbitrateAllocatable(
 }
 
 /**
- * 調停ポリシーに基づいてコンテンツ状態のソートを行う
+ * @brief Sort content state based on arbitration policy
  * @param allocatable
  * @param contentStates
- * @return sort成否
+ * @return success/failure of sort
  */
 bool
 RBAArbitrator::
@@ -904,7 +955,7 @@ sortContentStates(const RBAAllocatable* const allocatable,
 }
 
 /**
- * 判定NG制約から再調停リストを取得する
+ * @brief Get re-arbitration list from judgment NG constraint
  * @param totalRevisitAllocatables
  * @param allocatable
  * @param falseConstraints
@@ -919,27 +970,29 @@ collectRevisitAllocatable(std::list<const RBAAllocatable*>* const totalRevisitAl
 {
   std::set<const RBAAllocatable*> revisitAllocatablesSet;
 
-  // 再調停をすべきかを判定NGだった制約から判断する
+　　// Determine if re-arbitration should be done based on the constraint 
+  // that the determination was NG
   for(RBAConstraintImpl*& constraint : falseConstraints) {
-    // 制約情報取得
+    // Get Contraint information
     const RBAConstraintInfo* const info {constraint->getInfo()};
-    // 再調停候補のアロケータブル
+    // Allocatable, a candidate for re-arbitration
     std::set<const RBAAllocatable*> rightFalseAllocatables;
 
     if (info->needsRearbitrationFor(allocatable)) {
       info->collectRearbitrationTargetFor(allocatable, rightFalseAllocatables, false);
     }
     if (rightFalseAllocatables.empty()) {
-      // 含意でない制約式
-      // "現在調停中のアロケータブル"がより"低優先度のアロケータブル"に調停負けしてしまうことを防ぐために、
-      // "再調停候補のアロケータブル"に"低優先度のアロケータブル"が含まれている場合は"低優先度のアロケータブル"を再調停する。
-      // 調停は優先度順に行われるので、"低優先度のアロケータブル"が"再調停候補のアロケータブル"に含まれることは通常ないが、
-      // "低優先度のアロケータブル"が調停された後の"現在調停中のアロケータブル"の再調停で含まれる。
+      // Non-implication constraint　expression
+      // To ensure that "currently arbitrated allocable" does not lose to lower 
+      // priority allocable, arbitration of low priority Allocable is performed 
+      // if low priority Allocable is included in 
+      // "re-arbitration candidate Allocable".
       info->collectFalseAllocatables(rightFalseAllocatables);
       bool isContainsLowPriorityAllocatable {false};
       for(const RBAAllocatable* const rightFalseAllocatable
 	    : rightFalseAllocatables) {
-        if(RBAAllocatable::compareIndex(allocatable,rightFalseAllocatable)) { // indexは優先度の高いアロケータブルほど小さい
+        if(RBAAllocatable::compareIndex(allocatable,rightFalseAllocatable)) { 
+        // index is smaller for higher priority allocable
           isContainsLowPriorityAllocatable = true;
           break;
         }
@@ -949,34 +1002,39 @@ collectRevisitAllocatable(std::list<const RBAAllocatable*>* const totalRevisitAl
       }
     }
 
-    // 調停中のアロケータブルを再調停対象から外す
+    // Remove Allocable during arbitration from re-arbitration target
     static_cast<void>(rightFalseAllocatables.erase(allocatable));
 
-    // 再調停候補のアロケータブルが、1つでも再調停済なら再々調停は無し。次のコンテンツの割り当てに移る
+    // If even one Allocable candidate for re-arbitration has been 
+    // re-arbitrated, re-arbitration will not be performed again.
+    // Go to next content assignment
     for(const RBAAllocatable* const rightFalseAllocatable : rightFalseAllocatables) {
       if(revisited.find(rightFalseAllocatable) != revisited.end()) {
         return;
       }
     }
 
-    // 再調停アロケータブルを設定
+    // Set re-arbitration Allocable
     for(const RBAAllocatable* const alloc : rightFalseAllocatables) {
       static_cast<void>(revisitAllocatablesSet.insert(alloc));
     }
   }
 
-  // 再調停アロケータブルがある
+  // Re-arbitration Allocatable exists
   if(!(revisitAllocatablesSet.empty())) {
-    // std::setをstd::listに詰め替え
-    static_cast<void>(totalRevisitAllocatables->insert(totalRevisitAllocatables->end(), revisitAllocatablesSet.begin(), revisitAllocatablesSet.end()));
-    // 再調停エリアを優先度に基づいて低い順にソートする
-    // モデルの並び順も考慮するのでindex比較でのソートが必要
+    // copy std::set to std::list 
+    static_cast<void>(totalRevisitAllocatables->insert(totalRevisitAllocatables->end(), 
+                      revisitAllocatablesSet.begin(), 
+                      revisitAllocatablesSet.end()));
+    // Sort re-arbitration Areas in ascending order based on priority
+    // It is necessary to sort by index comparison considering the order of models.
     totalRevisitAllocatables->sort(&RBAAllocatable::compareIndex);
   }
 }
 
 /**
- * 調停負けの要求キャンセルをするために全コンテント状態のキャンセル確認をする
+ * Confirm cancellation of all content status 
+ * to cancel Request which lost in arbitration
  */
 void
 RBAArbitrator::
@@ -1023,7 +1081,7 @@ postArbitrate()
   }
 
 #ifdef RBA_USE_LOG
-  // 要求キャンセルのカバレッジ向けログ出力
+  // Log output for coverage of request cancellation
   for(const RBAContentState* state : model_->getContentStates()) {
     std::string contentName = state->getOwner()->getElementName();
     std::string stateName = state->getElementName();
@@ -1035,8 +1093,8 @@ postArbitrate()
 }
 
 /**
- * 非表示であるコンテント状態のキャンセル情報を調停結果とキャンセルポリシーに
- * 基づいて変更する
+ * @brief Change the cancellation information of hidden Content status 
+          based on arbitration results and cancellation policy
  * @param state
  */
 void
@@ -1118,7 +1176,7 @@ checkAllConstraints()
       log += "result[" + RBALogManager::boolToString(result) + "]\n";
     }
     if (log.empty() != true ) {
-      log.erase(log.end() - 1, log.end()); //最後の改行を削除する
+      log.erase(log.end() - 1, log.end()); // Remove last line break
     }
   }
 
@@ -1144,16 +1202,16 @@ checkCancelContent() const
 }
 
 /**
- * @brief 表示アロケータブルリスト、非表示アロケータブルリストを更新する
+ * @brief Update display and non-dislay Allocatable List
  */
 void
 RBAArbitrator::
 updateResult()
 {
-  // キャンセルしたコンテントのアクティブを解除する
+  // Deactivate canceled Content
   result_->updateActiveContentStates();
 
-  // エリアの座標を更新する
+  // Update coordinates　of Area 
   for(auto& area : result_->getVisibleAreas()) {
     const RBAAreaImpl* const areaImpl {dynamic_cast<const RBAAreaImpl*>(area)};
     const auto posCont = model_->findPositionContainerImpl(area->getName());
@@ -1165,7 +1223,7 @@ updateResult()
     }
   }
 
-  // 出力コンテントステートリストを設定
+  // Set output Content state list
   std::set<const RBAContentState*> outputtingContentStateSet;
   for(auto& alloc : result_->getOutputtingAllocatables()) {
     const auto state = result_->getAllocatedContentState(alloc);
@@ -1176,7 +1234,8 @@ updateResult()
   }
   
   for(auto& state : result_->getActiveContentStates()) {
-    // 表示要求で割り当てられたエリアが表示されていなければStanbyContentに設定
+    // If the Area allocated in the display request is not displayed, 
+    // set it to "Stanby Content".
     const auto allocs = result_->getAllocatable(state);
     if(allocs.empty()) {
       result_->addStandbyContent(dynamic_cast<RBAContent*>(state->getOwner()));
@@ -1185,25 +1244,24 @@ updateResult()
 }
 
 /**
- * ### 結果情報を生成する
+ * ### Generate result information
  *
- * アニメーション情報(RBAViewAction)を生成し、RBAResultのviewActionsリスト
- * に登録する。\n
- * アニメーション情報の生成パターンは以下の通り。
- *
- * | エリアA(pre)  | エリアB(pre) | エリアA(cur) | エリアB(cur) | type            |
- * |:-:           |:-:       |:-:           |:-:          |:----              |
- * | (none)       | -        | **content**  | -           | TRANSITON_ADD      |
- * | **content**  | -        | (none)       | -           | TRANSITION_REMOVE  |
- * | **contentA** | -        | **contentB** | -           | TRANSITION_REPLACE |
- * | **content**  | (none)   | (none)       | **content** | MOVE               |
+ * Generate animation information (RBAViewAction) and register it in the 
+ * viewActions list of RBAResult.
+ * The animation information generation pattern is as follows.
+ * | Area A(pre)  | Area B(pre) | Area A(cur)  | Area B(cur) | type               |
+ * |:-:           |:-:          |:-:           |:-:          |:----               |
+ * | (none)       | -           | **content**  | -           | TRANSITON_ADD      |
+ * | **content**  | -           | (none)       | -           | TRANSITION_REMOVE  |
+ * | **contentA** | -           | **contentB** | -           | TRANSITION_REPLACE |
+ * | **content**  | (none)      | (none)       | **content** | MOVE               |
  */
 void
 RBAArbitrator::
 createResultData()
 {
   std::list<std::unique_ptr<RBAViewAction>> actions;
-  // 変化がなかったエリアはチェックしておく
+  // Check the Areas that have not changed
   std::set<const RBAArea*> stableAreas;
   for(const RBAArea* const preArea : result_->getPreVisibleAreas()) {
     if(result_->isVisible(preArea)) {
@@ -1214,64 +1272,64 @@ createResultData()
       }
     }
   }
-  // MOVEを調べる
+  // Check "MOVE"
   std::set<const RBAViewContent*> movedContents;
   for(const RBAArea* curArea : result_->getVisibleAreas()) {
-    // 今回の表示エリア
+    // Current display Area
     const RBAViewContentState* curState {result_->getContentState(curArea)};
     const RBAViewContent* const curContent {curState->getOwner()};
-    // stableなエリアをスキップ
+    // Skip stable Area
     if(stableAreas.find(curArea) != stableAreas.end()) {
       continue;
     }
     for(const RBAArea* preArea : result_->getPreVisibleAreas()) {
-      // stableエリアは変化したと見なさない
+      // Do not consider stable areas to have changed
       if (stableAreas.find(preArea) != stableAreas.end()) {
     	  continue;
       }
-      // 前回の表示エリア
+      // Previous display Area
       const RBAViewContent* const preContent {result_->getPreContentState(preArea)->getOwner()};
       if(curContent == preContent) {
-        // 一致したコンテンツがあればMOVE
+        // "MOVE" if there is matching content
         actions.push_back(std::make_unique<RBAViewMove>(preArea, curArea,
 							curState));
-        // 移動したコンテントはチェック
+        // Check moved Content
         static_cast<void>(movedContents.insert(curState->getOwner()));
       }
     }
   }
-  // REMOVEを調べる
+  // Check "REMOVE"
   for(const RBAArea* preArea : result_->getPreVisibleAreas()) {
-    // stableなエリアをスキップ
+    // Skip  stable Area
     if(stableAreas.find(preArea) != stableAreas.end()) {
       continue;
     }
     const RBAViewContentState* preState {result_->getPreContentState(preArea)};
-    // MOVEのコンテンツならスキップ
+    // Skip if Content is "MOVE"
     if(movedContents.find(preState->getOwner())
        != movedContents.end()) {
       continue;
     }
     if(!result_->isVisible(preArea)) {
-      // 前回表示されていたエリアが今回非表示ならばREMOVE
+      // If the previously displayed Area isn't displayed, it is REMOVE.
       actions.push_back(std::make_unique<RBAViewTransition>(
           RBAViewActionType::TRANSITION_REMOVE, preArea, preState));
     }
   }
-  // MOVE絡みのADD/REMOVEとREPLACEを調べる
+  // Check Examine ADD/REMOVE and REPLACE related to MOVE
   for(const RBAArea* curArea : result_->getVisibleAreas()) {
-    // 今回の表示エリア
-    // stableなエリアをスキップ
+    // Display Area at this time
+    // Skip stable Area
     if(stableAreas.find(curArea) != stableAreas.end()) {
       continue;
     }
     const RBAViewContentState* curState {result_->getContentState(curArea)};
     const RBAViewContent* const curContent {curState->getOwner()};
     const RBAViewContentState* preState {result_->getPreContentState(curArea)};
-    // MOVEのコンテンツなら
+    
     if(movedContents.find(curContent) != movedContents.end()) {
       if((preState != nullptr) && (!result_->isVisible(preState))) {
-        // 前回表示していたコンテンツが非表示ならREMOVE
+        // If the previously displayed content isn't displayed, it is REMOVE.
         actions.push_back(std::make_unique<RBAViewTransition>(
 			  RBAViewActionType::TRANSITION_REMOVE,
 			  curArea, preState));
@@ -1281,17 +1339,17 @@ createResultData()
       }
     }
     else if(result_->isPreVisible(curArea)) {
-      // 前回も表示エリアだった
-      // preがMOVEのコンテンツなら
+      // It was the display Area last time
+      // If pre is MOVE content
       const RBAViewContent* const preContent {preState->getOwner()};
       if(movedContents.find(preContent) != movedContents.end()) {
-        // 今回表示のコンテンツはADD
+        // Content at this time is ADD
         actions.push_back(std::make_unique<RBAViewTransition>(
 		          RBAViewActionType::TRANSITION_ADD,
 			  curArea, curState));
       }
       else if(curContent != preContent) {
-        // コンテントが違うのでREPLACE
+        // REPLACE because the content is different
         actions.push_back(std::make_unique<RBAViewTransition>(
 			  RBAViewActionType::TRANSITION_REPLACE,
 			  curArea, preState, curState));
@@ -1300,14 +1358,14 @@ createResultData()
       }
     }
     else {
-      // 前回は表示エリアでなかったのでADD
+      // ADD because it was not the display Area last time
       actions.push_back(std::make_unique<RBAViewTransition>(
 			RBAViewActionType::TRANSITION_ADD,
 			curArea, curState));
     }
   }
 
-  // ソートして登録
+  // Sort and register
   actions.sort(&compareViewAction);
   for(auto& action : actions) {
     result_->addViewAction(action);
@@ -1318,7 +1376,7 @@ void
 RBAArbitrator::differenceArbitrate()
 {
 #ifdef RBA_USE_LOG
-  // 要求情報をログに設定
+  // Set request information in log
   RBALogManager::setType(RBALogManager::TYPE_REQUEST);
   logRequestArbitration();
   RBALogManager::setType(RBALogManager::TYPE_PREVIOUS_RESULT);
@@ -1331,35 +1389,39 @@ RBAArbitrator::differenceArbitrate()
   }
 
   // ----------------------------------------------------------
-  // 調停
+  // Arbitration
   // ----------------------------------------------------------
-  // 優先度と後勝ち調停（価値調停は今のところ優先度調停と同じ）
+  // Priority and post-win arbitoration
+  // (Value arbitration is the same as priority arbitration)
 #ifdef RBA_USE_LOG
 RBALogManager::setType(RBALogManager::TYPE_ARBITRATE);
 #endif
   arbitrate(model_->getSortedAllocatables());
 
   // ----------------------------------------------------------
-  // 調停後処理
+  // Post processing of arbitration
   // ----------------------------------------------------------
 #ifdef RBA_USE_LOG
 RBALogManager::setType(RBALogManager::TYPE_CANCEL_REQUEST);
 #endif
-  // satisfiesConstraints()で制約式評価を行うとき、キャンセル状態がexecute()時と異なっていると、
-  // 結果がfalseになる可能性があるため、キャンセル処理前の状態を保存しておく。
-  // satisfiesConstraints()で制約式評価を行うときに、この値に戻して評価する。
+  // when the constraint expression is evaluated by satisfiesConstraints(),
+  // if the cancel state is different from the time when execute() is executed, 
+  // the result may be false. Therefore, it is necessary to store 
+  // the state before cancellation processing.
+  // When performing the constraint expression evaluation in 
+  // satisfiedConstraints(), restore to this value and evaluate.
   resultSetForSatisfiesConstraints_ = std::make_unique<RBAResultSet>(
       *result_->getCurResultSet());
   postArbitrate();
 
-  // オフライン制約を動かす
+  // Move offline Constraint
 #ifdef RBA_USE_LOG
 RBALogManager::setType(RBALogManager::TYPE_CHECK_ALL_CONSTRAINTS);
   checkAllConstraints();
 #endif
 
   // ----------------------------------------------------------
-  // コンテントの状態を更新する
+  // Update Content state
   // ----------------------------------------------------------
   for (auto& c : model_->getContents()){
     const_cast<RBAContent*>(c)->updateStatus(result_.get());
@@ -1418,21 +1480,26 @@ checkConstraintAndReArbitrate(RBAAllocatable* allocatable,
     std::list<const RBAAllocatable*> revisitAllocatables;
     collectRevisitAllocatable(&revisitAllocatables, allocatable, falseConstraints, revisited);
     if(!(revisitAllocatables.empty())) {
-      // 再調停アロケータブルが存在する
-      // 再調停失敗時のロールバック向けバックアップ情報を生成
-      // 処理速度を考え、再調停が初めて必要になった場合にのみ1回だけインスタンスを生成
-       // コンテント割り当て後にバックアップしているので、ロールバック後は割り当てたコンテントをNULLに戻す必要有り
-      std::shared_ptr<RBARollbacker> rollbacker {std::make_shared<RBARollbacker>()}; // 再調停失敗時のロールバック情報
+      // There is re-arbitration Allocatable.
+      // Generates backup information for rollback when re-arbitration fails.
+      // For efficiency, instantiate only once when re-arbitration is needed 
+      // for the first time.
+      // Since it is backed up after content allocation, 
+      // it is necessary to set NULL to the allocated content after rollback.
+
+      // Rollback information when arbitration fails
+      std::shared_ptr<RBARollbacker> rollbacker {std::make_shared<RBARollbacker>()}; 
       if (parentRollbacker != nullptr) {
         parentRollbacker->addChild(rollbacker);
       }
       rollbacker->backup(revisitAllocatables);
-      // 先に再調停するアロケータブルを全て初期化
+      // Initialize all re-arbitration Allocatable
       for (auto& a : revisitAllocatables) {
         const_cast<RBAAllocatable*>(a)->clearChecked();
       }
       // --------------------------------------------------
-      // 再調停候補リストから、再帰内で再調停済でないアロケータブルを再調停する
+      // Re-arbitrate "Allocatable" that has not been re-arbitrated 
+      // in the re-arbitration candidate list
       // --------------------------------------------------
       static_cast<void>(revisited.insert(allocatable));
       for(const RBAAllocatable* const revisitAllocatable : revisitAllocatables) {
@@ -1447,18 +1514,20 @@ checkConstraintAndReArbitrate(RBAAllocatable* allocatable,
         static_cast<void>(revisited.erase(revisitAllocatable));
       }
       // --------------------------------------------------
-      // 再調停によりコンテントの割り当てが成功するようになったかを確認する
+      // Check if content allocation succeeded as a result of re-arbitration
       // --------------------------------------------------
       falseConstraints.clear();
       static_cast<void>(checkConstraints(constraints, falseConstraints, allocatable));
       if (falseConstraints.empty()) {
-        // 再調停によってアロケータブルの割当コンテンツが確定したので、
-         // ループを抜けて次のアロケータブルへ
-        // 再帰によって自アロケータブルの再調停がされて割当コンテンツがなくなるケースも
-         // あるが、全コンテンツチェックが済のため次のアロケータブルへ
+        // The content of the allocatable allocation is fixed by re-arbitration,
+        // so exit the loop and proceed to the next allocatable.
+        // In some cases, "Allocatable" is re-arbitrated due to recursion and 
+        // allocated Content is lost, but go to the next Allocable because
+        // all contents have been checked
         isPassed = true;
       } else {
-        rollbacker->rollback(); // 調停状態と影響情報をロールバックする
+        // Roll back arbitration status and affected information
+        rollbacker->rollback(); 
         if (parentRollbacker != nullptr) {
           parentRollbacker->removeChild(rollbacker);
         }
@@ -1466,7 +1535,7 @@ checkConstraintAndReArbitrate(RBAAllocatable* allocatable,
     }
   }
   if (isPassed == false) {
-    //調停中のエリアに影響を与えたエリアを収集する
+    //Collect Areas that affected the area in arbitration status
     std::set<const RBAAllocatable*> allocatablesWhichHaveAffectedToThisAllocatable;
 
     for (const RBAConstraintImpl* const constraint : falseConstraints) {
@@ -1476,9 +1545,10 @@ checkConstraintAndReArbitrate(RBAAllocatable* allocatable,
     }
     static_cast<void>(allocatablesWhichHaveAffectedToThisAllocatable.erase(allocatable));
 
-    //調停中のエリアが影響を受けたエリアを記録する
-    //逆に言えば、調停中のエリアに影響を与えたエリアに、調停中のエリアに影響を与えたことを記録する
-    //AffectInfoには影響を与えたエリアの再調停済みのものを覚えておくので、すでに再調停済みのものは記憶しない
+    // Record fact that affected the area being arbitrated on Area that 
+    // affected Area during arbitration.
+    // The re-arbitration of the affected area is recorded in AffectInfo, 
+    // so it does not record the re-arbitrated area.
     for (const RBAAllocatable* const a : allocatablesWhichHaveAffectedToThisAllocatable) {
       if (!(affectInfo->alreadyKnowsThatFormerHasAffectedToLatter(a,
                                                                   allocatable))) {
@@ -1527,7 +1597,7 @@ getSortedContentStates(const RBAAllocatable* const allocatable,
     }
   }
   static_cast<void>(sortContentStates(allocatable, contentStates));
-  // 未割り当て時の制約式評価をするため、最後にnullを追加
+  // Add null at the end, to evaluate constraint expression when unassigned
   contentStates.push_back(nullptr);
 }
 
@@ -1638,7 +1708,7 @@ std::deque<std::unique_ptr<RBARequestQueMember>>& RBAArbitrator::getRequestQue()
 
 #ifdef RBA_USE_LOG
 /**
- * ログビュー向けにリクエスト情報を出力する
+ * Output request information for log view
  */
 void
 RBAArbitrator::logRequestArbitration()
@@ -1701,7 +1771,7 @@ RBAArbitrator::logRequestArbitration()
 }
 
 /**
- * ログビュー向けに前回調停結果を出力する
+ * Output previous arbitration result for log view
  */
 void
 RBAArbitrator::logPreResultArbitration()
@@ -1768,7 +1838,7 @@ RBAArbitrator::logPreResultArbitration()
 }
 
 /**
- * ログビュー向けに今回調停結果を出力する
+ * Output current arbitration result for log view
  */
 void
 RBAArbitrator::logResultArbitration()
@@ -1841,7 +1911,7 @@ RBAArbitrator::logResultArbitration()
 }
 
 /**
- * カバレッジ向け：要求情報を出力する
+ * For coverage: Output request information
  */
 void
 RBAArbitrator::logRequestForCoverage()
@@ -1882,7 +1952,7 @@ RBAArbitrator::logRequestForCoverage()
 }
 
 /**
- * カバレッジ向け：結果情報を出力する
+ * For coverage: Output result information
  */
 void
 RBAArbitrator::logResultForCoverage()
