@@ -1,7 +1,20 @@
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 /// @file  RBAContentStateMaker.cpp
-/// @brief ContentStateオブジェクト生成抽象クラス定義ファイル
-///
-/// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
+/// @brief ContentState object generator abstract class
 
 #include "RBAContentStateMaker.hpp"
 #include "RBAContentState.hpp"
@@ -30,11 +43,11 @@ RBAContentStateMaker::getInstance(RBAModelImpl* model,
   const auto uniqueName = content->getUniqueName() + "/" + name;
 
   const auto element = model->findModelElement(uniqueName);
-  // modelに存在する場合
+  // exists in model
   if(element != nullptr) {
     ret = const_cast<RBAModelElement*>(element);
   }
-  // modelに存在しない場合
+  // not exists in modelmodel
   else {
     std::unique_ptr<RBAModelElement> inst {createInstance(name)};
     const auto contentState = dynamic_cast<RBAContentState*>(inst.get());

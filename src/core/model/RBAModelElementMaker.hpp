@@ -1,7 +1,20 @@
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 /// @file  RBAModelElementMaker.hpp
-/// @brief モデルオブジェクト生成の抽象クラスヘッダファイル
-///
-/// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
+/// @brief ModelElement object genartor abstract class header
 
 #ifndef RBAMODELELEMENTMAKER_HPP
 #define RBAMODELELEMENTMAKER_HPP
@@ -18,13 +31,13 @@ class RBAModelElement;
 class RBAJsonElement;
 class RBAModelImpl;
 
-/// @brief ModelElementMakerオブジェクト生成クラス
+/// @brief  ModelElement object genartor abstract class
 class DLL_EXPORT RBAModelElementMaker
 {
 public:
-  /// @brief ラベルを指定コンストラクタ
-  /// @details ラベルを設定して生成する
-  /// @param[in] label 設定するラベル
+  /// @brief Constructor that specifies the label
+  /// @details Set label and generate
+  /// @param[in] label labe to set
   RBAModelElementMaker()=default;
   explicit RBAModelElementMaker(const std::string& label);
   virtual ~RBAModelElementMaker()=default;
@@ -32,79 +45,84 @@ public:
 protected:
   RBAModelElementMaker(const RBAModelElementMaker& maker)=delete;
   RBAModelElementMaker& operator=(const RBAModelElementMaker& maker)=delete;
-  // RBAAbstractModelTable::addMaker()でmoveを使用
+  // Use "move" in RBAAbstractModelTable::addMaker()
   RBAModelElementMaker(RBAModelElementMaker&&)=default;
   RBAModelElementMaker& operator=(RBAModelElementMaker&&)=default;
 
 public:
-  /// @brief モデルファクトリを設定する
-  /// @param[in] モデルファクトリ
+  /// @brief Set model factory
+  /// @param[in] factory model factory
   void setFactory(RBAModelFactory* const factory);
 
-  /// @brief ラベルの取得
-  /// @details 対応するJSONエレメントのラベルを返す
-  /// @return ラベルの文字列
+  /// @brief Get label
+  /// @details Returns the label of the corresponding JSON element
+  /// @return Label string
   const std::string& getLabel() const;
 
-  /// @brief ModelElementオブジェクト生成
-  /// @details ModelElementオブジェクトを生成して、unique_ptrをmodelに登録する。
-  /// @param[in] jsonElem ModelElementのJSONエレメント
-  /// @param[in] model 生成したオブジェクトを保存するモデル
-  /// @param[in,out] owner 親オブジェクト（未使用）
-  /// @return ModelElementオブジェクト
+  /// @brief Create ModelElement object
+  /// @details create ModelElement object and register unique_ptr to model
+  /// @param[in] jsonElem JSON element of ModelElement
+  /// @param[in] model The moder to store created object
+  /// @param[in,out] owner Parent object (Not in use)
+  /// @return ModelElement object
   virtual RBAModelElement* create(const RBAJsonElement* jsonElem,
                                   RBAModelImpl* model,
                                   RBAModelElement* owner=nullptr);
 
-  /// @brief インスタンス取得
-  /// @details modelからnameに該当するelementを取得する。名前なしまたはmodelにない場合はインスタンスを生成しmodelに登録する。
-  /// @return ModelElementオブジェクト
+  /// @brief Get instance
+  /// @details Get the element corresponding to name from model.
+  ///          If there is no name or it is not in model, 
+  ///          create an instance and register it in model.
+  /// @return ModelElement object
   virtual RBAModelElement* getInstance(RBAModelImpl* model,
                                        const std::string& name="",
                                        RBAModelElement* owner=nullptr);
 
-  /// @brief Maker登録
-  /// @details JSONで使われるクラス名と対応するMakerをマップに登録する
-  /// @return なし
-  static void addMaker(const std::string& typeName, std::unique_ptr<RBAModelElementMaker> maker);
+  /// @brief Register Maker
+  /// @details Register the Maker corresponding to the class name 
+  ///          used in JSON in the map
+  /// @return void
+  static void addMaker(const std::string& typeName, 
+                        std::unique_ptr<RBAModelElementMaker> maker);
 
-  /// @brief Maker取得
-  /// @details クラス名に対応するMakerをマップから取得する
-  /// @return 対応するMaker。存在しない場合はnullを返す。
+  /// @brief Get Maker
+  /// @details Get the Maker corresponding to the class name from the map
+  /// @return Corresponding Maker. If it doesn't exist, return null.
   static RBAModelElementMaker* getMaker(const std::string& typeName);
 
 protected:
-  /// @brief 空のインスタンス生成
-  /// @details 派生クラスでunique_ptrの空のインスタンスを生成する。
-  /// @return インスタンスのunique_ptr
+  /// @brief Create an empty instance
+  /// @details Create an empty instance of unique_ptr in derived class
+  /// @return unique_ptr for instance
   virtual std::unique_ptr<RBAModelElement> createInstance(const std::string& name="")=0;
 
-  /// @brief 派生クラスごとにモデルエレメントの属性をセットする
-  /// @param[in] jsonElem ModelElementのJSONエレメント
-  /// @param[in] model 生成したオブジェクトを保存するモデル
-  /// @param[in,out] owner 親オブジェクト（未使用）
+  /// @brief Set model element attributes for each derived class
+  /// @param[in] jsonElem JSON element of ModelElement
+  /// @param[in] model The model to store generated RBARuleObjectMaker
+  /// @param[in,out] owner Parent object (Not in use)
   virtual RBAModelElement* setProperty(RBAModelElement* element,
                                        const RBAJsonElement* jsonElem,
                                        RBAModelImpl* model,
                                        RBAModelElement* owner=nullptr)=0;
 
-  /// @brief モデルファクトリ取得
-  /// @details モデルファクトリを取得する
-  /// @return モデルファクトリ
+  /// @brief Get model factory
+  /// @details Get model factory
+  /// @return model factory
   RBAModelFactory* getFactory() const;
 
 private:
-  /// @brief Expressionオブジェクト再帰的にオブジェクト生成を行うためのファクトリ
+  /// @brief Factory for recursively generating objects
   RBAModelFactory* factory_;
 
 #ifdef _MSC_VER
 #pragma warning(push)
 #pragma warning(disable:4251)
 #endif
-  /// @brief 対応するJSONエレメントのラベル
+  /// @brief Label of corresponding JSON element
   const std::string label_;
 
-  /// @brief JSONで使われるクラスを表す文字列と各Makerの対応表
+  /// @brief Correspondence map of each Maker and the character string that 
+  ///        represents the class used in JSON
   static std::unordered_map<std::string, std::unique_ptr<RBAModelElementMaker>> makerMap_;
 #ifdef _MSC_VER
 #pragma warning(pop)
