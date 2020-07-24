@@ -1,5 +1,21 @@
 /**
- * アロケータブルクラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Allocatable class implementation
  */
 
 #include <algorithm>
@@ -125,15 +141,17 @@ RBAAllocatable::setIndex(const std::int32_t newIndex)
 }
 
 bool
-RBAAllocatable::compare(const RBAAllocatable* const arg0, const RBAAllocatable* const arg1)
+RBAAllocatable::compare(const RBAAllocatable* const arg0, 
+                        const RBAAllocatable* const arg1)
 {
   const std::int32_t visibility0 {arg0->getVisibility()};
   const std::int32_t visibility1 {arg1->getVisibility()};
-  // 前要素が後要素よりも視認性が高いので入れ替えない
+  // Do not swap because the front element is more visible than the rear element
   if(visibility0 > visibility1) {
     return true;
   }
-  // 前要素と後要素の視認性が同じなのでZオーダーを比較する
+  // Compare the Z orders because the front element and the rear element
+  // have the same visibility.
   else if(visibility0 == visibility1) {
     std::int32_t zorder0{0};
     std::int32_t zorder1{0};
@@ -145,20 +163,24 @@ RBAAllocatable::compare(const RBAAllocatable* const arg0, const RBAAllocatable* 
       zorder0 = ZONE_ZORDER;
       zorder1 = ZONE_ZORDER;
     }
-    // 前要素が後要素よりもZオーダーが大きいので入れ替えない
+    // Do not swap because the front element has a larger Z order than 
+    // the rear element.
     if(zorder0 > zorder1) {
       return true;
     }
-    // 前要素と後要素のZオーダーが同じなので入れ替えない
+    // Do not swap because the Z order of the front element and the rear element 
+    // is the same
     else if(zorder0 == zorder1) {
       return false;
     }
-    // 前要素が後要素よりもZオーダーが小さいので入れ替える
+    // Swap because the front element has a smaller Z order than 
+    // the rear element.
     else {
       return false;
     }
   }
-  // 前要素が後要素よりも視認性が低いので入れ替える
+  // Replace because the front element is less visible than 
+  // the rear element.
   else {
     return false;
   }
@@ -307,14 +329,16 @@ RBAAllocatable::setState(const RBAContentState* const state)
 std::string
 RBAAllocatable::getSymbol() const
 {
-  // 派生クラスの関数がコールされるので、この関数がコールされることはない
+  // This function is never called because the function of the derived class 
+  // is called.
   return "Allocatable";
 }
 
 std::string
 RBAAllocatable::getHiddenSymbol() const
 {
-  // 派生クラスの関数がコールされるので、この関数がコールされることはない
+  // This function is never called because the function of the derived class 
+  // is called.
   return "Allocatable: Unsuppored operation exception";
 }
 
