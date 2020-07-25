@@ -1,5 +1,20 @@
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 /// @file  RBAModelmpl.cpp
-/// @brief モデル実装クラス定義ファイル
+/// @brief Model implementation class 
 
 #include "RBAModelImpl.hpp"
 #include "RBAConstraintImpl.hpp"
@@ -85,11 +100,12 @@ const std::list<const RBAArea*>&
 RBAModelImpl::getAreas() const
 {
   // @Deviation (A5-2-4)
-  // 【ルールに逸脱している内容】
-  // reinterpret_cast shall not be used.
-  // 【ルールを逸脱しても問題ないことの説明】
-  // RBAAreaがRBAAreaImplの基底クラスであるため問題ない。
-  // 変換処理はコストがかかるため、内部の構造を隠蔽するため、逸脱する。
+  // [Contents that deviate from the rules]
+  //  reinterpret_cast shall not be used.
+  // [Reason that there is no problem if the rule is deviated]
+  //  There is no problem because RBAArea is the base class of RBAAreaImpl.
+  //  Since the conversion process is costly, it deviates because it hides 
+  //  the internal structure.
   return reinterpret_cast<const std::list<const RBAArea*>&>(getAreaImpls());
 }
 
@@ -97,11 +113,13 @@ const std::list<const RBAViewContent*>&
 RBAModelImpl::getViewContents() const
 {
   // @Deviation (A5-2-4)
-  // 【ルールに逸脱している内容】
-  // reinterpret_cast shall not be used.
-  // 【ルールを逸脱しても問題ないことの説明】
-  // RBAViewContentがRBAViewContentImplの基底クラスであるため問題ない。
-  // 変換処理はコストがかかるため、内部の構造を隠蔽するため、逸脱する。
+  // [Contents that deviate from the rules]
+  //  reinterpret_cast shall not be used.
+  // [Reason that there is no problem if the rule is deviated]
+  //  There is no problem because RBAViewContent is the base class of 
+  //  RBAViewContentImpl.
+  //  Since the conversion process is costly, it deviates because it hides 
+  //  the internal structure.
   return reinterpret_cast<const std::list<const RBAViewContent*>&>(getViewContentImpls());
 }
   
@@ -109,11 +127,13 @@ const std::list<const RBAViewContentState*>&
 RBAModelImpl::getViewContentStates() const
 {
   // @Deviation (A5-2-4)
-  // 【ルールに逸脱している内容】
-  // reinterpret_cast shall not be used.
-  // 【ルールを逸脱しても問題ないことの説明】
-  // RBAViewContentStateがRBAViewContentStateImplの基底クラスであるため問題ない。
-  // 変換処理はコストがかかるため、内部の構造を隠蔽するため、逸脱する。
+  // [Contents that deviate from the rules]
+  //  reinterpret_cast shall not be used.
+  // [Reason that there is no problem if the rule is deviated]
+  //  There is no problem because RBAViewContentState is the base class of 
+  //  RBAViewContentStateImpl.
+  //  Since the conversion process is costly, it deviates because it hides 
+  //  the internal structure.
   return reinterpret_cast<const std::list<const RBAViewContentState*>&>(getViewContentStateImpls());
 }
   
@@ -121,11 +141,12 @@ const std::list<const RBASize*>&
 RBAModelImpl::getSizes() const
 {
   // @Deviation (A5-2-4)
-  // 【ルールに逸脱している内容】
-  // reinterpret_cast shall not be used.
-  // 【ルールを逸脱しても問題ないことの説明】
-  // RBASizeがRBASizeImplの基底クラスであるため問題ない。
-  // 変換処理はコストがかかるため、内部の構造を隠蔽するため、逸脱する。
+  // [Contents that deviate from the rules]
+  //  reinterpret_cast shall not be used.
+  // [Reason that there is no problem if the rule is deviated]
+  //  There is no problem because RBASize is the base class of RBASizeImpl.
+  //  Since the conversion process is costly, it deviates because it hides 
+  //  the internal structure.
   return reinterpret_cast<const std::list<const RBASize*>&>(getSizeImpls());
 }
 
@@ -133,11 +154,12 @@ const std::list<const RBAZone*>&
 RBAModelImpl::getZones() const
 {
   // @Deviation (A5-2-4)
-  // 【ルールに逸脱している内容】
-  // reinterpret_cast shall not be used.
-  // 【ルールを逸脱しても問題ないことの説明】
-  // RBAZoneがRBAZoneImplの基底クラスであるため問題ない。
-  // 変換処理はコストがかかるため、内部の構造を隠蔽するため、逸脱する。
+  // [Contents that deviate from the rules]
+  //  reinterpret_cast shall not be used.
+  // [Reason that there is no problem if the rule is deviated]
+  //  There is no problem because RBAZone is the base class of RBAZoneImpl.
+  //  Since the conversion process is costly, it deviates because it hides 
+  //  the internal structure.
   return reinterpret_cast<const std::list<const RBAZone*>&>(getZoneImpls());
 }
 
@@ -145,11 +167,13 @@ const std::list<const RBASoundContent*>&
 RBAModelImpl::getSoundContents() const
 {
   // @Deviation (A5-2-4)
-  // 【ルールに逸脱している内容】
-  // reinterpret_cast shall not be used.
-  // 【ルールを逸脱しても問題ないことの説明】
-  // RBASoundContentがRBASoundContentImplの基底クラスであるため問題ない。
-  // 変換処理はコストがかかるため、内部の構造を隠蔽するため、逸脱する。
+  // [Contents that deviate from the rules]
+  //  reinterpret_cast shall not be used.
+  // [Reason that there is no problem if the rule is deviated]
+  //  There is no problem because RBASoundContent is the base class of 
+  //  RBASoundContentImpl.
+  //  Since the conversion process is costly, it deviates because it hides 
+  //  the internal structure.
   return reinterpret_cast<const std::list<const RBASoundContent*>&>(getSoundContentImpls());
 }
   
@@ -157,11 +181,13 @@ const std::list<const RBASoundContentState*>&
 RBAModelImpl::getSoundContentStates() const
 {
   // @Deviation (A5-2-4)
-  // 【ルールに逸脱している内容】
-  // reinterpret_cast shall not be used.
-  // 【ルールを逸脱しても問題ないことの説明】
-  // RBASoundContentStateがRBASoundContentStateImplの基底クラスであるため問題ない。
-  // 変換処理はコストがかかるため、内部の構造を隠蔽するため、逸脱する。
+  // [Contents that deviate from the rules]
+  //  reinterpret_cast shall not be used.
+  // [Reason that there is no problem if the rule is deviated]
+  //  There is no problem because RBASoundContentState is the base class of 
+  //  RBASoundContentStateImpl.
+  //  Since the conversion process is costly, it deviates because it hides 
+  //  the internal structure.
   return reinterpret_cast<const std::list<const RBASoundContentState*>&>(getSoundContentStateImpls());
 }
   
@@ -169,11 +195,13 @@ const std::list<const RBAScene*>&
 RBAModelImpl::getScenes() const
 {
   // @Deviation (A5-2-4)
-  // 【ルールに逸脱している内容】
-  // reinterpret_cast shall not be used.
-  // 【ルールを逸脱しても問題ないことの説明】
-  // RBASceneがRBASceneImplの基底クラスであるため問題ない。
-  // 変換処理はコストがかかるため、内部の構造を隠蔽するため、逸脱する。
+  // [Contents that deviate from the rules]
+  //  reinterpret_cast shall not be used.
+  // [Reason that there is no problem if the rule is deviated]
+  //  There is no problem because RBAScene is the base class of 
+  //  RBASceneImpl.
+  //  Since the conversion process is costly, it deviates because it hides 
+  //  the internal structure.
   return reinterpret_cast<const std::list<const RBAScene*>&>(getSceneImpls());
 }
 
@@ -205,11 +233,13 @@ const std::list<const RBAPositionContainer*>&
 RBAModelImpl::getPositionContainers() const
 {
   // @Deviation (A5-2-4)
-  // 【ルールに逸脱している内容】
-  // reinterpret_cast shall not be used.
-  // 【ルールを逸脱しても問題ないことの説明】
-  // RBAPositionContainerがRBAPositionContainerImplの基底クラスであるため問題ない。
-  // 変換処理はコストがかかるため、内部の構造を隠蔽するため、逸脱する。
+  // [Contents that deviate from the rules]
+  //  reinterpret_cast shall not be used.
+  // [Reason that there is no problem if the rule is deviated]
+  //  There is no problem because RBAPositionContainer is the base class of 
+  //  RBAPositionContainerImpl.
+  //  Since the conversion process is costly, it deviates because it hides 
+  //  the internal structure.
   return reinterpret_cast<const std::list<const RBAPositionContainer*>&>(getPositionContainerImpls());
 }
 
@@ -217,11 +247,12 @@ const std::list<const RBADisplay*>&
 RBAModelImpl::getDisplays() const
 {
   // @Deviation (A5-2-4)
-  // 【ルールに逸脱している内容】
-  // reinterpret_cast shall not be used.
-  // 【ルールを逸脱しても問題ないことの説明】
-  // RBADisplayがRBADisplayImplの基底クラスであるため問題ない。
-  // 変換処理はコストがかかるため、内部の構造を隠蔽するため、逸脱する。
+  // [Contents that deviate from the rules]
+  //  reinterpret_cast shall not be used.
+  // [Reason that there is no problem if the rule is deviated]
+  //  There is no problem because RBADisplay is the base class of RBADisplayImpl. 
+  //  Since the conversion process is costly, it deviates because it hides 
+  //  the internal structure.
   return reinterpret_cast<const std::list<const RBADisplay*>&>(getDisplayImpls());
 }
 
@@ -229,11 +260,13 @@ std::list<RBAConstraint*>&
 RBAModelImpl::getConstraints()
 {
   // @Deviation (A5-2-4)
-  // 【ルールに逸脱している内容】
-  // reinterpret_cast shall not be used.
-  // 【ルールを逸脱しても問題ないことの説明】
-  // RBAConstraintがRBAConstraintImplの基底クラスであるため問題ない。
-  // 変換処理はコストがかかるため、内部の構造を隠蔽するため、逸脱する。
+  // [Contents that deviate from the rules]
+  //  reinterpret_cast shall not be used.
+  // [Reason that there is no problem if the rule is deviated]
+  //  There is no problem because RBAConstraint is the base class of 
+  //  RBAConstraintImpl. 
+  //  Since the conversion process is costly, it deviates because it hides 
+  //  the internal structure.
   return reinterpret_cast<std::list<RBAConstraint*>&>(getConstraintImpls());
 }
 
