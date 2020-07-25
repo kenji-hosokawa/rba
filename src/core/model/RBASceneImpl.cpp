@@ -1,5 +1,20 @@
 /**
- * シーン実装クラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Scene implementation class
  */
 
 #include "RBASceneImpl.hpp"
@@ -45,11 +60,11 @@ RBASceneImpl::getPropertyValue(const std::string& propertyName) const
 {
   const RBAAbstractProperty* const prop {getProperty(propertyName)};
   if(prop == nullptr) {
-    // 未登録のプロパティならば-1を返す
+    // Returns "-1" if the property is not registered
     return -1;
   }
 
-  // デフォルト値を返す
+  // Returns default value
   return prop->getValue();
 }
 
@@ -63,7 +78,7 @@ RBASceneImpl::getProperty(const std::string& propertyName) const
 {
   auto p = nameToProperty_.find(propertyName);
   if(p == nameToProperty_.end()) {
-    // 未登録のプロパティならばnullptrを返す
+    // Returns nullptr if the property is not registered
     return nullptr;
   }
 
@@ -81,11 +96,11 @@ RBASceneImpl::addProperty(const std::string& newName, std::int32_t newValue)
 {
   auto p = nameToProperty_.find(newName);
   if(p != nameToProperty_.end()) {
-    // 登録済みのプロパティならば何もしない
+    // No operation if the property is registered
     return p->second;
   }
 
-  // 登録
+  // Registration
   properties_.push_back(std::make_unique<RBAIntegerProperty>(this,
                                                              newName,
                                                              newValue));

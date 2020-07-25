@@ -1,7 +1,20 @@
-//
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 /// @file  RBAModelImplhpp
-/// @brief モデル実装クラスヘッダファイル
-///
+/// @brief Model implementaion class header
 
 #ifndef RBAMODELIMPL_HPP
 #define RBAMODELIMPL_HPP
@@ -111,7 +124,8 @@ public:
   virtual const std::list<const RBAZoneSet*>& getZoneSetImpls() const;
   virtual const std::list<const RBAViewContentSet*>& getViewContentSetImpls() const;
   virtual const std::list<const RBASoundContentSet*>& getSoundContentSetImpls() const;
-  // 調停処理で内部状態を変更するため、constにしない
+  // Do not set to const because the internal state is changed by arbitration 
+  // processing
   virtual std::list<RBAAllocatable*>& getSortedAllocatables();
 
   virtual RBAModelElement* addModelElement(std::unique_ptr<RBAModelElement> newElement);
@@ -130,24 +144,24 @@ public:
   virtual void addScene(const RBASceneImpl* newScene);
   virtual void addPositionContainer(const RBAPositionContainerImpl* newPositionContainer);
   virtual void addDisplay(const RBADisplayImpl* newDisplay);
-  /// ラベル付きエレメントの追加
+  /// Add element with label
   virtual void addLabeledElement(const std::string& label,
                                  RBAModelElement* element);
-  /// ラベル付き制約式の追加
+  /// Add constraint expression with label
   virtual void addLabeledConstraint(const std::string& label,
                                     RBAAbstractConstraint* constraint);
 
-  /// ラベル付きエレメントリストの取得
+  /// Add element list with label
   virtual const std::list<const RBAModelElement*> getLabeledElements(const std::string& label) const;
-  /// ラベル付き制約式リストの取得
+  /// Add constraint expression list with label
   virtual const std::list<RBAAbstractConstraint*> getLabeledConstraints(const std::string& label) const;
-  /// ラベル付きエレメントの検索
+  /// Search element with label
   virtual const RBAModelElement* findLabeledElement(const std::string& label,
                                                     const std::string& name) const;
 
-  // アロケータブルマップへの追加
+  // Add to Allcatable map
   void addAffectedAllocsMap(const RBAModelElement* const owner, RBAAllocatable* const alloc);
-  // 影響するアロケータブルリストの取得
+  // Get affected Allocatable list
   const std::list<RBAAllocatable*>* getAffectedAllocs(const RBAModelElement* const owner);
   
 
@@ -175,24 +189,25 @@ private:
   std::list<const RBAPositionContainerImpl*> positionContainers_;
   std::list<const RBADisplayImpl*> displays_;
 
-  // 調停処理で内部状態を変更するため、constにしない
+  // Do not set to const because the internal state is changed by arbitration 
+  // processing
   std::list<RBAAllocatable*> sortedAllocatables_;
 
-  // 名前で管理しないオブジェクトの保管用
-  // expression, variableが該当する。
+  // For storing objects not managed by name
+  // expression, variable are applicable.
   std::list<std::unique_ptr<RBAModelElement>> unnamedObjects_;
 
-  // RBARuleObjectとRBASizeの管理
+  // Managing RBARuleObject and RBASize
   std::unordered_map<std::string, std::unique_ptr<RBAModelElement>> nameToObject_;
-  // ポジションコンテナはエリア名と対でmapで管理
+  // Position container is managed by map paired with Area name
   std::unordered_map<std::string, const RBAPositionContainerImpl*> areaNameToPositionContainer_;
 
-  // 拡張用ラベル付きエレメントモデル管理
+  // Managing Labeled element model for extensions
   std::unordered_map<std::string, std::list<const RBAModelElement*>> labelToElements_;
-  // 拡張用ラベル付き制約式管理
+  // Managing Labeled Constraint Expressions for extensions
   std::unordered_map<std::string, std::list<RBAAbstractConstraint*>> labelToConstraints_;
 
-  // アロケータブルマップ
+  // Allocatable map
   std::unordered_map<const RBAModelElement*, std::list<RBAAllocatable*>> affectedAllocsMap_; 
 
 #ifdef _MSC_VER
