@@ -24,7 +24,7 @@
 namespace rba
 {
 
-/// @brief ZoneSetオブジェクト生成クラス
+/// @brief ZoneSet　object generator class
 class RBAZoneSetMaker : public RBAAllocatableSetMaker
 {
 public:
