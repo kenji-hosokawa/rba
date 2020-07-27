@@ -1,7 +1,20 @@
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 /// @file  RBASoundContentMaker.hpp
-/// @brief SoundContentオブジェクト生成クラスヘッダファイル
-///
-/// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
+/// @brief SoundContent object generator class header
 
 #ifndef RBASOUNDCONTENTMAKER_HPP
 #define RBASOUNDCONTENTMAKER_HPP
@@ -15,7 +28,7 @@ class RBAModelElement;
 class RBAJsonElement;
 class RBAModelImpl;
 
-/// @brief SoundContentオブジェクト生成クラス
+/// @brief SoundContent object generator class
 class RBASoundContentMaker : public RBAContentMaker
 {
 public:
@@ -27,15 +40,15 @@ public:
   virtual ~RBASoundContentMaker()=default;
 
 protected:
-  /// @brief 空のインスタンス生成
-  /// @details 派生クラスでunique_ptrの空のインスタンスを生成する。
-  /// @return インスタンスのunique_ptr
+  /// @brief Empty instanciation
+  /// @details Create an empty instance of unique_ptr in a derived class
+  /// @return unique_ptr for instance
   std::unique_ptr<RBAModelElement> createInstance(const std::string& name="") override;
 
-  /// @brief 派生クラスごとにモデルエレメントの属性をセットする
-  /// @param[in] jsonElem ModelElementのJSONエレメント
-  /// @param[in] model 生成したオブジェクトを保存するモデル
-  /// @param[in,out] owner 親オブジェクト（未使用）
+  /// @brief Set model element attributes for each derived class
+  /// @param[in] jsonElem JSON element of ModelElement
+  /// @param[in] model The model to store generated RBARuleObjectMaker
+  /// @param[in,out] owner Parent object (Not in use)
   RBAModelElement* setProperty(RBAModelElement* element,
                                const RBAJsonElement* jsonElem,
                                RBAModelImpl* model,

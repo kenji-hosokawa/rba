@@ -1,5 +1,21 @@
 /**
- * ゾーンの全インスタンスクラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * AllInstanceOfZone class
  */
 
 #include "RBAAllInstanceOfZone.hpp"
@@ -15,9 +31,10 @@ namespace rba
 void
 RBAAllInstanceOfZone::accept(RBAExpressionVisitor& visitor)
 {
-  // 現時点で唯一存在するvistorであるRBASceneAllocatableCollectorは、
-  // For-All,Existsの集合にacceptしないのでこのパスを通ることはない。
-  // 将来、別のvisitorがacceptするかもしれないので、残しておく。
+  // RBASceneAllocatableCollector, the only existing visitor at this time,
+  // does not accept this set of "For-All", "Exists", so it does not pass 
+  // this path. 
+  // It is implemented because another visitor may accept it in the future.
   visitor.visit(*this);
 }
 
