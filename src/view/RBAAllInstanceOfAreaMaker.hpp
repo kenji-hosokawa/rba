@@ -16,8 +16,6 @@
 
 /// @file  RBAAllInstanceOfAreaMaker.hpp
 /// @brief AllInstanceOfArea object generation class header file
-///
-/// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 
 #ifndef RBAALLINSTANCEOFAREAMAKER_HPP
 #define RBAALLINSTANCEOFAREAMAKER_HPP

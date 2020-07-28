@@ -1,5 +1,20 @@
 /**
- * エリア実装クラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Area imeplementation class
  */
 
 #include "RBAAreaImpl.hpp"
@@ -89,13 +104,15 @@ RBAAreaImpl::getAllViewContentsRecursive(const RBAAllocatable* const alloc) cons
       const RBAAllocatable* const a {dynamic_cast<const RBAAllocatable*>(content)};
       if(a != nullptr) {
         // @Deviation (MEM05-CPP,Rule-7_5_4,A7-5-2)
-        // 【ルールに逸脱している内容】
-        // getAllViewContentsRecursive()を再帰呼び出ししている
-        // 【ルールを逸脱しても問題ないことの説明】
-        // CyclicContentが紐づいているAreaに対して、getAllViewContentsRecursive()したときは、
-        // CyclicContentに紐づいているViewContentを含めて応答する動きになっている
-        // CyclicContent に CyclicContent が割り当たる場合など、複数の再帰呼び出しが行われる可能性があるが、
-        // ルールモデルの定義は有限であり、スタックオーバーフローすることはなく、問題無い
+        // [Contents that deviate from the rules]
+        //  Recursively calling getAllViewContentsRecursive()
+        // [Why there is no problem if it deviate from the rules]
+        //  When getAllViewContentsRecursive() is performed for Area associated 
+        //  with CyclicContent, it responds including ViewContent associated 
+        //  with CyclicContent.
+        //  Multiple recursive calls may be made, such as when CyclicContent 
+        //  is assigned to CyclicContent, but the rule model definition 
+        //  is finite and stack overflow does not occur, so there is no problem.
 	for(const RBAViewContent* const c : getAllViewContentsRecursive(a)) {
 	  contents.push_back(c);
 	}

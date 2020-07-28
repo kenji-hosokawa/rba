@@ -1,4 +1,19 @@
-/// Displayedチェッククラス定義ファイル
+/**
+ * Copyright (c) 2019 DENSO CORPORATION.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/// IsDisplayed class
 
 #include "RBAIsDisplayed.hpp"
 
@@ -34,7 +49,7 @@ RBAIsDisplayed::executeCore(RBAConstraintInfo* info,
                             RBAArbitrator* arb) const
 {
   bool isPassed {false};
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add itself to the constraint hierarchy for coverage.
   LOG_addHierarchy(LOG_getSymbol());
   RBAConstraintInfo* const leftInfo {info->getChild(0U)};
   const RBARuleObject* const ruleObj {getLhsOperand()->getReferenceObject(leftInfo,
@@ -72,8 +87,10 @@ RBAIsDisplayed::executeCore(RBAConstraintInfo* info,
   std::string lhsName;
   const RBAAllocatable* allocatable = nullptr;
   if (ruleObj == nullptr) {
-    // 現時点では、Allocatableとしてnullを返す式はないので、このパスを通ることはない
-    // 将来、nullを返す式が追加されるかもしれないので残しておく
+    // At the moment, there is no expression that returns null as Allocatable, 
+    // so it will not go through this path.
+    // but in the future, an expression that returns null may be added 
+    // so this is implemented.
     lhsName = "NULL";
   } else {
     allocatable = dynamic_cast<const RBAAllocatable*>(ruleObj->getRawObject());
@@ -107,7 +124,7 @@ RBAIsDisplayed::executeCore(RBAConstraintInfo* info,
                                         RBAExecuteResult::FALSE);
   }
 #endif
-  // カバレッジ向けの制約階層構造から自分を削除
+  // Remove itself from the constraint hierarchy for coverage.
   LOG_removeHierarchy();
   return isPassed;
 }
