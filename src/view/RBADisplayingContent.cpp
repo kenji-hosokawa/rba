@@ -1,5 +1,20 @@
 /**
- * ディスプレイングコンテントクラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Displaying content class
  */
 
 #include "RBADisplayingContent.hpp"
@@ -20,9 +35,9 @@ namespace rba
 void 
 RBADisplayingContent::accept(RBAExpressionVisitor& visitor)
 {
-  // 現時点で唯一存在するvistorであるRBASceneAllocatableCollectorは、
-  // コンテントにacceptしないのでこのパスを通ることはない。
-  // 将来、別のvisitorがacceptするかもしれないので、残しておく。
+  // RBASceneAllocatableCollector, the only existing visitor at this time,
+  // does not accept Content, so it does not pass this path.
+  // This is implemented because another visitor may accept it in the future.
   visitor.visit(*this);
 }
 
@@ -36,7 +51,7 @@ const RBARuleObject*
 RBADisplayingContent::getReferenceObjectCore(RBAConstraintInfo* info,
                                              RBAArbitrator* arb) const
 {
-  const RBARuleObject* object {nullptr};  // 戻り値
+  const RBARuleObject* object {nullptr};
   const auto leftInfo = info->getChild(0U);
   const auto ruleObj = getLhsOperand()->getReferenceObject(leftInfo, arb);
   if (!leftInfo->isExceptionBeforeArbitrate()) {
@@ -53,14 +68,16 @@ RBADisplayingContent::getReferenceObjectCore(RBAConstraintInfo* info,
         if (!alloc->isChecked()) {
           info->setExceptionBeforeArbitrate(true);
         }
-        // Hidden判定未実施、または、Hidden判定済みでHiddenがfalseのとき、
-        // allocatableに割り当たっているcontentStateを取得する
+        // When "Hidden" judgment is not executed, or when "Hidden" is already 
+        // judged and "Hidden" is false, contentState assigned to allocatable 
+        // is acquired.
         else if (!alloc->isHiddenChecked() || !alloc->isHidden()) {
           const auto contentState = alloc->getState();
           if (contentState != nullptr) {
             object = contentState->getOwner();
           }
-          // この時点では制約式がFalseになるかTrueになるか不明なので、両方に入れておく
+          // At this point, it is unknown whether the constraint expression 
+          // will be False or True, so put it in both.
           info->addFalseAllocatable(alloc);
           info->addTrueAllocatable(alloc);
         } else {

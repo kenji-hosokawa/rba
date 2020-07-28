@@ -15,8 +15,6 @@
  */
 /// @file  RBAAllInstanceOfViewContentMaker.hpp
 /// @brief AllInstanceOfViewContent object generation class header file
-///
-/// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 
 #ifndef RBAALLINSTANCEOFVIEWCONTENTMAKER_HPP
 #define RBAALLINSTANCEOFVIEWCONTENTMAKER_HPP
@@ -42,7 +40,7 @@ public:
   virtual ~RBAAllInstanceOfViewContentMaker()=default;
 
 protected:
-  /// @brief create emply instance
+  /// @brief create empty instance
   /// @details Create an empty instance of unique_ptr in your derived class.
   /// @return instance of unique_ptr
   std::unique_ptr<RBAModelElement> createInstance(const std::string& name="") override;

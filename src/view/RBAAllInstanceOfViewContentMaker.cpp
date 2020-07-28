@@ -16,8 +16,6 @@
 
 /// @file  RBAAllInstanceOfViewContentMaker.cpp
 /// @brief AllInstanceOfViewContenta object generation class definition file
-///
-/// Copyright (c) 2019 DENSO CORPORATION. All rights reserved.
 
 #include <iostream>
 #include "RBAAllInstanceOfViewContentMaker.hpp"
