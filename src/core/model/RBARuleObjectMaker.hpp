@@ -24,7 +24,7 @@
 namespace rba
 {
 
-/// @brief ルールオブジェクト生成クラス
+/// @brief RuleObject generator class header
 class DLL_EXPORT RBARuleObjectMaker : public RBAModelElementMaker
 {
 public:

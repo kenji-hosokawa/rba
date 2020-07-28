@@ -24,7 +24,7 @@
 namespace rba
 {
 
-/// @brief Sceneオブジェクト生成クラス
+/// @brief Scene　object generator class
 class RBASceneMaker : public RBARuleObjectMaker
 {
 public:

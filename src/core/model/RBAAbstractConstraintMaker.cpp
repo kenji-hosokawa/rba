@@ -15,7 +15,7 @@
  */
 
 /// @file  RBAAbstractConstraintMaker.cpp
-/// @brief AbstractConstraint generator class implementation
+/// @brief Abstract Constraint expresion generator class
 
 #include "RBAAbstractConstraintMaker.hpp"
 #include "RBAAbstractConstraint.hpp"
