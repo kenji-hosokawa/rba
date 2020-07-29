@@ -25,7 +25,7 @@
 namespace rba
 {
 
-/// @brief AllocatedContentオブジェクト生成クラス
+/// @brief AllocatedContent object maker class
 class RBAAllocatedContentMaker : public RBAOperatorMaker
 {
 public:
@@ -39,7 +39,7 @@ public:
 protected:
   /// @brief Empty instanciation
   /// @details Create an empty instance of unique_ptr in a derived class
-  /// @return unique_ptr of instance
+  /// @return unique_ptr for instance
   std::unique_ptr<RBAModelElement> createInstance(const std::string& name="") override;
 
 };

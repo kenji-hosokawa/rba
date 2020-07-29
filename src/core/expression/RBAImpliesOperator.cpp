@@ -44,7 +44,7 @@ RBAImpliesOperator::executeCore(RBAConstraintInfo* info,
                                 RBAArbitrator* arb) const
 {
   bool isPassed {false};
-  // Add own to the constraint hierarchy for coverage
+  // Add itself to the constraint hierarchy for coverage
   LOG_addHierarchy(LOG_getSymbol());
   RBAConstraintInfo* const leftInfo {info->getChild(0U)};
   // Add "left-hand side formula" to the constraint hierarchy for coverage
@@ -101,7 +101,7 @@ RBAImpliesOperator::executeCore(RBAConstraintInfo* info,
                                         RBAExecuteResult::FALSE);
   }
 #endif
-  // Remove own from the constraint hierarchy for coverage
+  // Remove itself from the constraint hierarchy for coverage
   LOG_removeHierarchy();
   return isPassed;
 }
@@ -119,7 +119,7 @@ RBAImpliesOperator::createHierarchy()
   RBAExpression* exprLhs = getLhsOperand();
   RBAExpression* exprRhs = getRhsOperand();
 
-  // Add own to the constraint hierarchy for coverage
+  // Add itself to the constraint hierarchy for coverage
   LOG_addHierarchy(getSymbol());
   RBALogManager::coverageHierarchyOfConstraintExpressionLog(getCoverageExpressionText(), this);
 
@@ -137,7 +137,7 @@ RBAImpliesOperator::createHierarchy()
   //  the constraint hierarchy for coverage
   LOG_removeHierarchy();
 
-  // Remove own from the constraint hierarchy for coverage
+  // Remove itself from the constraint hierarchy for coverage
   LOG_removeHierarchy();
 }
 #endif

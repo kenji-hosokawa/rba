@@ -44,7 +44,7 @@ RBAOrOperator::executeCore(RBAConstraintInfo* info,
                            RBAArbitrator* arb) const
 {
   bool isPassed {false};
-  // Add own to Constraint hierarchy for coverage
+  // Add itself to Constraint hierarchy for coverage
   LOG_addHierarchy(LOG_getSymbol());
   std::uint32_t index {0U};
   for (const RBAExpression* const ope : getOperand()) {

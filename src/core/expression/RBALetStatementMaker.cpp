@@ -51,9 +51,10 @@ RBALetStatementMaker::setProperty(RBAModelElement* element,
   RBAVariable* const var
     {dynamic_cast<RBAVariable*>(getFactory()->createElement("Variable",
                                                          varElement))};
-  letStmt->setVariable(var);
-  // Set Body
-  getFactory()->pushVariable(var); // popVariable()は本関数の呼び出し元で実行する
+  letStmt->setVariable(var); // Set Body
+  
+  // popVariable() is executed by the caller of this function
+  getFactory()->pushVariable(var); 
   const RBAJsonElement* const body {jsonElem->findChildren("body")};
   RBAExpression* const expr
     {dynamic_cast<RBAExpression*>(getFactory()->createElement(body->getClassName(),

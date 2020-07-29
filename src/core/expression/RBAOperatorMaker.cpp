@@ -15,7 +15,7 @@
  */
 
 /// @file  RBAOperatorMaker.cpp
-/// @brief Operator object generator class definition
+/// @brief Operator object generator abstract class
 
 #include "RBAOperatorMaker.hpp"
 #include "RBAOperator.hpp"

@@ -228,7 +228,7 @@ RBAIfStatement::getCoverageExpressionText() const
 void
 RBAIfStatement::createHierarchy()
 {
-  // Add own to the constraint hierarchy for coverage
+  // Add itself to the constraint hierarchy for coverage
   LOG_addHierarchy("IF");
   RBALogManager::coverageHierarchyOfConstraintExpressionLog(getCoverageExpressionText(),
 						 this);
@@ -255,7 +255,7 @@ RBAIfStatement::createHierarchy()
     LOG_removeHierarchy();
   }
 
-  // Remove own from the constraint hierarchy for coverage
+  // Remove itself from the constraint hierarchy for coverage
   LOG_removeHierarchy();
 }
 

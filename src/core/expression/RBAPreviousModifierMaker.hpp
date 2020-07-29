@@ -25,7 +25,7 @@
 namespace rba
 {
 
-/// @brief PreviousModifierオブジェクト生成クラス
+/// @brief PreviousModifier object generator class
 class RBAPreviousModifierMaker : public RBAExpressionMaker
 {
 public:

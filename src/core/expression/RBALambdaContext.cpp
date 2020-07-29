@@ -47,7 +47,7 @@ void
 RBALambdaContext::createHierarchy()
 {
   lambda_->getX()->clearRuleObj();
-  // Add own to Constraint hierarchy for coverage
+  // Add itself to Constraint hierarchy for coverage
   LOG_addHierarchy(getSymbol());
   RBALogManager::coverageHierarchyOfConstraintExpressionLog(getCoverageExpressionText(), this);
 

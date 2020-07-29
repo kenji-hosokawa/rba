@@ -47,7 +47,7 @@ RBAIsOn::executeCore(RBAConstraintInfo* info,
                      RBAArbitrator* arb) const
 {
   bool isPassed {false};
-  // Add own to Constraint hierarchy for coverage
+  // Add itself to Constraint hierarchy for coverage
   LOG_addHierarchy(LOG_getSymbol());
   RBAConstraintInfo* const leftInfo {info->getChild(0U)};
   const RBARuleObject* const ruleObj
@@ -99,7 +99,7 @@ RBAIsOn::executeCore(RBAConstraintInfo* info,
                                         RBAExecuteResult::FALSE);
   }
 #endif
-  // Remove own from Constraint hierarchy for coverage
+  // Remove itself from Constraint hierarchy for coverage
   LOG_removeHierarchy();
   return isPassed;
 }

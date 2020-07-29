@@ -107,7 +107,7 @@ RBASetOfOperator::getReferenceObjectCore(RBAConstraintInfo* info,
 void
 RBASetOfOperator::doActionCore(RBAConstraintInfo* info, RBAArbitrator* arb)
 {
-  // Add own to Constraint hierarchy for coverage
+  // Add itself to Constraint hierarchy for coverage
   LOG_addHierarchy("SetOf");
 
   std::uint32_t i {0U};
@@ -122,7 +122,7 @@ RBASetOfOperator::doActionCore(RBAConstraintInfo* info, RBAArbitrator* arb)
     // Remove number of element from Constraint hierarchy for coverage
     LOG_removeHierarchy();
   }
-  // Remove own from Constraint hierarchy for coverage
+  // Remove itself from Constraint hierarchy for coverage
   LOG_removeHierarchy();
 
   return;
@@ -168,7 +168,7 @@ RBASetOfOperator::getCoverageExpressionText() const
 void
 RBASetOfOperator::createHierarchy()
 {
-  // Add own to Constraint hierarchy for coverage
+  // Add itself to Constraint hierarchy for coverage
   LOG_addHierarchy("SetOf");
   RBALogManager::coverageHierarchyOfConstraintExpressionLog(getCoverageExpressionText(), this);
   uint32_t idx=0;
@@ -177,11 +177,10 @@ RBASetOfOperator::createHierarchy()
     LOG_addHierarchy("#"+std::to_string(idx)+":");
     expr->createHierarchy();
     // Remove number of element from Constraint hierarchy for coverage
-    // カバレッジ向けの制約階層構造から要素番号を削除
     LOG_removeHierarchy();
     idx++;
   }
-  // Remove own from Constraint hierarchy for coverage
+  // Remove itself from Constraint hierarchy for coverage
   LOG_removeHierarchy();
 }
 

@@ -13,11 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/// IsLowerThanOperator class
-
 /// @file  RBAIsLowerThanOperatorMaker.cpp
-/// @brief IsLowerThanOperator object gerneation class definition file
+/// @brief IsLowerThanOperator object gerneation class
 
 #include "RBAIsLowerThanOperatorMaker.hpp"
 #include "RBAIsLowerThanOperator.hpp"

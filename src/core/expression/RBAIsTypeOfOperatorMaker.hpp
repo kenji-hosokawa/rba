@@ -25,7 +25,7 @@
 namespace rba
 {
 
-/// @brief ObjectCompareオブジェクト生成クラス
+/// @brief IsTypeOf object geneation class
 class RBAIsTypeOfOperatorMaker : public RBAOperatorMaker
 {
 public:

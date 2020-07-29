@@ -25,7 +25,7 @@
 namespace rba
 {
 
-/// @brief Operatorオブジェクト生成抽象クラス
+/// @brief Operator object generator abstract class
 class DLL_EXPORT RBAOperatorMaker : public RBAExpressionMaker
 {
 public:

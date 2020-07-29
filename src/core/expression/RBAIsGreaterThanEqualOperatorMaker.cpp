@@ -15,7 +15,7 @@
  */
 
 /// @file  RBAIsGreaterThanEqualOperatorMaker.cpp
-/// @brief IsGreaterThanEqualOperator object generation class definition file
+/// @brief IsGreaterThanEqualOperator object generation class
 
 #include "RBAIsGreaterThanEqualOperatorMaker.hpp"
 #include "RBAIsGreaterThanEqualOperator.hpp"

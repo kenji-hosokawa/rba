@@ -15,7 +15,7 @@
  */
 
 /// @file  RBASetOfOperatorMaker.cpp
-/// @brief SetOfOperator object generator class definition
+/// @brief SetOfOperator object generator class
 
 #include "RBASetOfOperatorMaker.hpp"
 #include "RBASetOfOperator.hpp"

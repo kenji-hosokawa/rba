@@ -25,7 +25,7 @@
 namespace rba
 {
 
-/// @brief StateValueオブジェクト生成クラス
+/// @brief StateValue object generator class
 class RBAStateValueMaker : public RBAOperatorMaker
 {
 public:

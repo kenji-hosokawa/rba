@@ -25,7 +25,7 @@
 namespace rba
 {
 
-/// @brief IsLowerThanOperatorオブジェクト生成クラス
+/// @brief sLowerThanOperator object gerneation class
 class RBAIsLowerThanOperatorMaker : public RBAOperatorMaker
 {
 public:

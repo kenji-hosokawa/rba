@@ -15,7 +15,7 @@
  */
 
 /// @file  RBAStateValueMaker.cpp
-/// @brief StateValue object generator class definition
+/// @brief StateValue object generator class
 
 #include "RBAStateValueMaker.hpp"
 #include "RBAStateValue.hpp"

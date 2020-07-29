@@ -15,7 +15,7 @@
  */
 
 /// @file  RBAIsTypeOfOperatorMaker.cpp
-/// @brief IsTypeOf object generation class definition file
+/// @brief IsTypeOf object generation class
 
 #include "RBAIsTypeOfOperatorMaker.hpp"
 #include "RBAJsonElement.hpp"

@@ -46,7 +46,7 @@ RBAObjectCompare::executeCore(RBAConstraintInfo* info,
                               RBAArbitrator* arb) const
 {
   bool isPassed {false};
-  // Add own to Constraint hierarchy for coverage
+  // Add itself to Constraint hierarchy for coverage
   LOG_addHierarchy(LOG_getSymbol());
   RBAConstraintInfo* const leftInfo {info->getChild(0U)};
   const RBAExpression* const lhs {getLhsOperand()};
@@ -103,7 +103,7 @@ RBAObjectCompare::executeCore(RBAConstraintInfo* info,
                                         RBAExecuteResult::FALSE);
   }
 #endif
-  // Remove own from Constraint hierarchy for coverage
+  // Remove itself from Constraint hierarchy for coverage
   LOG_removeHierarchy();
   return isPassed;
 }
@@ -132,7 +132,7 @@ RBAObjectCompare::getCoverageExpressionText() const
 void
 RBAObjectCompare::createHierarchy()
 {
-  // Add own to Constraint hierarchy for coverage
+  // Add itself to Constraint hierarchy for coverage
   LOG_addHierarchy(getSymbol());
   RBALogManager::coverageHierarchyOfConstraintExpressionLog(getCoverageExpressionText(), this);
 
@@ -151,7 +151,7 @@ RBAObjectCompare::createHierarchy()
   // Remove right hand side expression from Constraint hierarchy for coverage
   LOG_removeHierarchy();
 
-  // Remove own from Constraint hierarchy for coverage
+  // Remove itself from Constraint hierarchy for coverage
   LOG_removeHierarchy();
 }
 

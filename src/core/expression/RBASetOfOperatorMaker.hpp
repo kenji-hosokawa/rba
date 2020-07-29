@@ -25,7 +25,7 @@
 namespace rba
 {
 
-/// @brief SetOfOperatorオブジェクト生成クラス
+/// @brief SetOfOperator object generator class
 class RBASetOfOperatorMaker : public RBAOperatorMaker
 {
 public:

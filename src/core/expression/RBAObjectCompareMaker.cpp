@@ -15,7 +15,7 @@
  */
 
 /// @file  RBAObjectCompareMaker.cpp
-/// @brief ObjectCompare object generator class definittion
+/// @brief ObjectCompare object generator class
 
 #include "RBAObjectCompareMaker.hpp"
 #include "RBAObjectCompare.hpp"

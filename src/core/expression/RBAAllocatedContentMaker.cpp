@@ -15,8 +15,7 @@
  */
 
 /// @file  RBAAllocatedContentMaker.cpp
-/// @brief AllocatedContent object maker class definition
-///
+/// @brief AllocatedContent object maker class
 
 #include "RBAAllocatedContentMaker.hpp"
 #include "RBAAllocatedContent.hpp"

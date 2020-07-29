@@ -15,7 +15,7 @@
  */
 
 /**
- * ForAll operator class definitno file
+ * ForAll operator class
  */
 
 #include "RBAForAllOperator.hpp"
@@ -53,7 +53,7 @@ RBAForAllOperator::executeCore(RBAConstraintInfo* info,
   const RBAExpression* const setObj {getLhsOperand()};
   RBALambdaExpression* const lambda {getLambda()};
 
-  // Add own to the constraint hierarchy for coverage
+  // Add itself to the constraint hierarchy for coverage
   LOG_addHierarchy(LOG_getSymbol());
 
   // get Rule object and loop
@@ -67,7 +67,7 @@ RBAForAllOperator::executeCore(RBAConstraintInfo* info,
   }
 
   if(leftInfo->isExceptionBeforeArbitrate() || (objset == nullptr)) {
-    // Remove own from the constraint hierarchy for coverage
+    // Remove itself from the constraint hierarchy for coverage
     LOG_removeHierarchy();
 
     info->setExceptionBeforeArbitrate(true);
