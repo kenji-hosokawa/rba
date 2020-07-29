@@ -15,7 +15,7 @@
  */
 
 /// @file  RBAAbstractConstraintMaker.hpp
-/// @brief AbstractConstraint generator class header
+/// @brief Abstract Constraint expresion generator class header
 
 #ifndef RBAABSTRACTCONSTRAINTMAKER_HPP
 #define RBAABSTRACTCONSTRAINTMAKER_HPP
@@ -25,7 +25,7 @@
 namespace rba
 {
 
-/// @brief 抽象制約式オブジェクト生成クラス
+/// @brief Abstract Constraint expresion generator class
 class DLL_EXPORT RBAAbstractConstraintMaker
   : public RBAModelElementMaker
 {

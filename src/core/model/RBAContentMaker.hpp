@@ -15,7 +15,7 @@
  */
 
 /// @file  RBAContentMaker.hpp
-/// @brief Content obecjt generator abstract class header
+/// @brief Content obecjt generator class header
 
 #ifndef RBACONTENTMAKER_HPP
 #define RBACONTENTMAKER_HPP
@@ -25,7 +25,7 @@
 namespace rba
 {
 
-/// @brief Contentオブジェクト生成クラス
+/// @brief Content obecjt generator class
 class DLL_EXPORT RBAContentMaker : public RBAAbstractContentMaker
 {
 public:

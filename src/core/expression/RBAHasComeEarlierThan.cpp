@@ -1,5 +1,21 @@
 /**
- * 先行要求判定クラス定義ファイル
+ * Copyright (c) 2019 DENSO CORPORATION.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * HasComeEarlierThan class
  */
 
 #include "RBAHasComeEarlierThan.hpp"
@@ -29,11 +45,11 @@ bool
 RBAHasComeEarlierThan::executeCore(RBAConstraintInfo* info,
 				       RBAArbitrator* arb) const
 {
-  // カバレッジ向けの制約階層構造に自分を追加
+  // Add itself to the constraint hierarchy for coverage
   LOG_addHierarchy(LOG_getSymbol());
 
   bool isResult {false};
-  // 左辺のコンテントを取り出す
+  // Get content in left side　of the expression
   RBAConstraintInfo* const leftInfo {info->getChild(0U)};
   const RBARuleObject* ruleObj {getLhsOperand()->getReferenceObject(leftInfo, arb)};
   const RBAContent* contentLhs {nullptr};
@@ -41,7 +57,7 @@ RBAHasComeEarlierThan::executeCore(RBAConstraintInfo* info,
     contentLhs = dynamic_cast<const RBAContent*>(ruleObj->getRawObject());
   }
 
-  // 右辺のコンテントを取り出す
+  // Get content in right hand side　of the expression
   RBAConstraintInfo* const rightInfo {info->getChild(1U)};
   ruleObj = getRhsOperand()->getReferenceObject(rightInfo, arb);
   const RBAContent* contentRhs {nullptr};
@@ -95,7 +111,7 @@ RBAHasComeEarlierThan::executeCore(RBAConstraintInfo* info,
   LOG_arbitrateConstraintLogicLogLine(
       "      Content[" + lhsName + "] has come earlier than Content[" + rhsName + "] " + resultText);
 #endif
-  // カバレッジ向けの制約階層構造から自分を削除
+  // Remove itself from constraint hierarchy for coverage
   LOG_removeHierarchy();
   return isResult;
 }
