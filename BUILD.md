@@ -16,7 +16,6 @@ This document describes build of Rule Based Arbitrator
 | rba/lib/rba.dll | Arbitrator DLL<br>（on Windows） |
 | rba/unittest/ | for unit test |
 | rba/doc/ | Documents |
-| rba/CMakeLists.txt | cmake |
 | rba/script/ | include script file |
 | rba/script/make_dll_x64.bat | for creation of DLL |
 

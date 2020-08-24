@@ -1,6 +1,0 @@
-C,ON,コンテンツB2,NORMAL
-execute
-
-Assert,A,ゾーンA,NULL
-Assert,A,ゾーンB,コンテンツB2
-Assert,A,ゾーンC,NULL

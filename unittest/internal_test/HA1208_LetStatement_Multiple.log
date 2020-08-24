@@ -1,9 +1,0 @@
-#HierarchyOfConstraint#START,HA1208_LetStatement_Multiple,t,Constraint
-#HierarchyOfConstraint#EXPRESSION	->	((IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue()) -> For All x1Allo { x |x.isHidden()})	boolean
-#HierarchyOfConstraint#EXPRESSION	->#left>	(IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue() > D1.stateValue())	boolean
-#HierarchyOfConstraint#EXPRESSION	->#left>#0.stateValue()	IF(aContent == a1Content) THEN bContent ELSE cContent.stateValue()	unknown
-#HierarchyOfConstraint#EXPRESSION	->#left>#0.stateValue()#IF	IF(aContent == a1Content) THEN bContent ELSE cContent	unknown
-#HierarchyOfConstraint#EXPRESSION	->#left>#0.stateValue()#IF#condition:==	aContent == a1Content	boolean
-#HierarchyOfConstraint#EXPRESSION	->#left>#1.stateValue()	D1.stateValue()	unknown
-#HierarchyOfConstraint#EXPRESSION	->#rightFor All	For All x1Allo { x |x.isHidden()}	boolean
-#HierarchyOfConstraint#END,HA1208_LetStatement_Multiple

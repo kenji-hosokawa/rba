@@ -1,8 +1,0 @@
-#start 1
-CL
-C,on,A1,NORMAL
-C,on,B2,NORMAL
-C,on,C1,NORMAL
-Assert,A,A,
-Assert,A,B,B2
-Assert,A,C,C1

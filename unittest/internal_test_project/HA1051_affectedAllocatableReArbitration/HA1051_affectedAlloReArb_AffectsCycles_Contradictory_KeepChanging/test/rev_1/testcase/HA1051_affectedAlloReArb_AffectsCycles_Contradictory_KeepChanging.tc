@@ -1,6 +1,0 @@
-#start 1 無限ループにならないことを確認
-CL
-C,on,A1,NORMAL,continue
-C,on,B1,NORMAL,continue
-C,on,C1,NORMAL,continue
-C,on,D1,NORMAL

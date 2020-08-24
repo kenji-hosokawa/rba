@@ -1,7 +1,0 @@
-C,ON,InterruptContent,HIGH
-C,ON,UserContent,HIGH
-C,ON,InterruptContent,LOW
-C,ON,UserContent,LOW
-execute
-Assert,A,InterruptArea,InterruptContent
-Assert,A,UserArea,NULL

@@ -1,9 +1,0 @@
-#start 1
-CL
-C,on,コンテンツA1,NORMAL
-C,on,コンテンツB1,NORMAL
-Assert,A,エリアA,コンテンツA1
-Assert,A,エリアB,コンテンツB1
-Assert,A,エリアC,
-Assert,A,エリアD,
-Assert,A,エリアE,

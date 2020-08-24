@@ -1,8 +1,0 @@
-C,ON,コンテンツD1,NORMAL
-execute
-
-Assert,A,エリアA,NULL
-Assert,A,エリアB,NULL
-Assert,A,エリアC,NULL
-Assert,A,エリアD,コンテンツD1
-Assert,A,エリアE,NULL

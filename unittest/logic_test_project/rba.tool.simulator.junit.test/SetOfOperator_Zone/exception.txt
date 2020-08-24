@@ -1,9 +1,0 @@
-C,ON,コンテンツA1,NORMAL
-C,ON,コンテンツE1,NORMAL
-execute
-
-Assert,A,ゾーンA,コンテンツA1
-Assert,A,ゾーンB,NULL
-Assert,A,ゾーンC,NULL
-Assert,A,ゾーンD,NULL
-Assert,A,ゾーンE,コンテンツE1

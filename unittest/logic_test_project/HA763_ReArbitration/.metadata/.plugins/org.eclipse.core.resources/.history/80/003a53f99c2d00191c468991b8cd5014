@@ -1,5 +1,0 @@
-#start 1
-Assert,OK,7,A,A1,A1
-Assert,OK,8,B,B1,B1
-Assert,OK,9,C,,
-Assert,OK,10,D,,

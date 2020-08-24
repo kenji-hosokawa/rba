@@ -1,4 +1,0 @@
-C,ON,UserContent,LOW
-execute
-Assert,A,InterruptArea,NULL
-Assert,A,UserArea,UserContent

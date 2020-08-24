@@ -1,5 +1,0 @@
-C,ON,ContentA1,NORMAL
-execute
-
-Assert,A,AllocatableA,ContentA1
-Assert,A,AllocatableB,ContentA1

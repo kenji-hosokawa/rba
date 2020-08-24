@@ -1,3 +1,0 @@
-C,ON,a2,NORMAL
-execute
-Assert,A,A,a2

@@ -1,4 +1,0 @@
-#start 1
-CL
-C,on,A1,NORMAL
-Assert,A,A,

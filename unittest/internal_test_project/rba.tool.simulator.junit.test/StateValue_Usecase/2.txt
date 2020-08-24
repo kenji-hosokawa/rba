@@ -1,6 +1,0 @@
-// 待機一つ目を作る。特に意味はない。
-C,ON,Winner,HIGH
-C,ON,a1,NORMAL
-execute
-Assert,A,A,Winner
-Assert,CANCEL,a1,NORMAL,false

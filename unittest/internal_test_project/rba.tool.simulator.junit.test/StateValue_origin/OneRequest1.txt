@@ -1,6 +1,0 @@
-C,ON,a1,NORMAL
-execute
-Assert,A,A,a1
-Assert,A,B,NULL
-Assert,CANCEL,a1,NORMAL,false
-Assert,CANCEL,b1,NORMAL,false
