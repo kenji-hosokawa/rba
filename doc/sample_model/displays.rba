@@ -1,0 +1,92 @@
+//
+// Copyright (c) 2019 DENSO CORPORATION.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+Package SampleDisplays {
+	Display Sample_METER {
+		Size Sample_METER_FULLSCREEN {
+			width: 500
+			height: 400
+		}
+		CompositeArea Sample_METER_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 100
+					y: 100
+					basePoint: LEFT_TOP
+					areaReference: SpeedMeterArea
+				}
+				PositionContainer {
+					x: 300
+					y: 0
+					basePoint: LEFT_TOP
+					areaReference: TachometerArea
+				}
+				PositionContainer {
+					x: 50
+					y: 250
+					basePoint: LEFT_TOP
+					areaReference: IntMessageArea
+				}
+				PositionContainer {
+					x: 50
+					y: 50
+					basePoint: LEFT_TOP
+					areaReference: OutsideTemperatureArea
+				}			
+				PositionContainer {
+					x: 100
+					y: 300
+					basePoint: LEFT_TOP
+					areaReference: AudioArea
+				}			
+			}
+		}
+	}
+	Display Sample_HUD {
+		Size Sample_HUD_FULLSCREEN {
+			width: 500
+			height: 150
+		}
+		CompositeArea Sample_HUD_Root {
+			layout: FixedPositionLayout {
+				PositionContainer {
+					x: 50
+					y: 50
+					basePoint: LEFT_TOP
+					areaReference: HUD_SpeedMeterArea
+				}
+				PositionContainer {
+					x: 225
+					y: 50
+					basePoint: LEFT_TOP
+					areaReference: HUD_TachometerArea
+				}
+				PositionContainer {
+					x: 350
+					y: 50
+					basePoint: LEFT_TOP
+					areaReference: HUD_OutsideTemperatureArea
+				}
+				PositionContainer {
+					x: 50
+					y: 75
+					basePoint: LEFT_TOP
+					areaReference: HUD_IntMessageArea
+				}
+			}
+		}
+	}
+}

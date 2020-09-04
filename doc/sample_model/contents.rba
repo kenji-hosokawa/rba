@@ -1,0 +1,128 @@
+//
+// Copyright (c) 2020 DENSO CORPORATION.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+Package Contents {
+	ViewContent SpeedMeter {
+		allocatable: [
+			SpeedMeterAreaGroup
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: SpeedMeterSize
+		sizeReference: HUD_SpeedMeterSize
+	}
+	ViewContent Tachometer {
+		allocatable:[
+			TachometerAreaGroup
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: TachometerSize
+		sizeReference: HUD_TachometerSize
+	}
+	
+	ViewContent OutsideTemperature {
+		allocatable: [
+			OutsideTemperatureAreaGroup
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: OutsideTemperatureSize
+		sizeReference: HUD_OutsideTemperatureSize
+	}
+	ViewContent RoadFreezing {
+		allocatable:[
+			OutsideTemperatureArea
+		]
+		State Caution {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: OutsideTemperatureSize
+	}
+	
+	ViewContent PCS {
+		State BrakeWarning {
+			priority: > That-of PCS.BrakeCaution
+		}
+		State BrakeCaution {
+			priority: > That-of TEL.IncomingCall
+		}
+		sizeReference: IntMessageSize
+	}
+	
+	ViewContent TEL {
+		State IncomingCall {
+			priority: > That-of InfraCoordination.EncounterCaution
+		}
+		sizeReference: IntMessageSize
+	}
+	
+	ViewContent InfraCoordination {
+		loserType: GOOD_LOSER
+		State EncounterCaution {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: IntMessageSize
+	}
+
+	ViewContent WeatherForecast {
+		loserType: DO_NOT_GIVEUP_UNTIL_WIN
+		State Vicinity {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: IntMessageSize
+	}
+
+	ViewContent Audio {
+		allocatable: [
+			AudioArea
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+		sizeReference: AudioSize
+	}
+	
+	SoundContent GuideVoice {
+		State NORMAL {
+			priority: > That-of Music.NORMAL
+		}
+	}
+	
+	SoundContent Music {
+		allocatable: [
+			BaseSoundZone
+		]
+		State NORMAL {
+			priority: STANDARD_VALUE
+		}
+	}
+		
+	SoundContent Ringtone {
+		State NORMAL {
+			priority: > That-of 案内音声.NORMAL
+		}
+	}
+
+	SoundContent AlertSound {
+		State NORMAL {
+			priority: MAX_VALUE
+		}
+	}
+}

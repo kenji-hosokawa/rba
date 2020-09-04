@@ -1,0 +1,79 @@
+//
+// Copyright (c) 2019 DENSO CORPORATION.
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+//     http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+Package Constraints {
+	Constraint Hidden_area_for_PCS_interrupts {
+		description: "Hide other areas when there is a PCS interrupt message."
+		runtime: true
+		PCS.isVisible() -> For-All OtherArea { x | x.isHidden() }
+	}
+	
+	Constraint Duplicate_display_of_outside_temperatures {
+		description: "If the meter shows the outside temperature, it won't show up on the HUD."
+		runtime: true
+		OutsideTemperatureArea.isDisplayed() -> HUD_OutsideTemperatureArea.isHidden()
+	}
+	
+	Constraint Hidden_HUD_when_HUD_is_power_off {
+		description: "Will not display anything on HUD when HUD is off."
+		runtime: true
+		HUDoffScene.isOn() -> For-All AllHUDArea { x | x.isHidden() }
+	}
+	
+	Constraint PCS_is_not_displayed_while_TEL_is_displayed {
+		description: "PCS is not displayed while TEL is displayed."
+		runtime: true
+		(pre)TEL.isVisible() -> !PCS.isVisible()
+	}
+
+
+	Constraint Attenauteナビ音声・着信音優先制約 {
+		description: "ナビ・着信音が再生されているならば、音楽再生は減衰させる"
+		runtime: true
+		案内音声.isSounding() OR 着信音.isSounding()-> 基本音声出力ゾーン.isAttenuated()
+	}
+
+	Constraint 警告音最優先制約 {
+		description: "警告音が再生されているならば、音楽再生はミュート"
+		runtime: true
+		警告音.isSounding()-> 基本音声出力ゾーン.isMuted()
+	}
+
+	Constraint 表示と音の同期制約 {
+		description: "オーディオが表示されていたら音楽再生する"
+		runtime: true
+		オーディオ.isVisible() -> 音楽.isSounding()
+	}
+
+	PostConstraint インフラ協調を待機させる後処理制約 {
+		description: "インフラ協調は、TELに調停負けした場合は待機する"
+		インフラ協調.isDefeatedBy(TEL) -> !インフラ協調.isCanceled()
+	}
+
+	Constraint 意図しない振舞を検出するオフライン制約 {
+		description: "前回非表示のコンテンツが今回表示されて良いかチェックする"
+		runtime: false
+		For-All ALL_VIEWCONTENTS { x |
+			((!(pre)x.isVisible() AND x.isVisible())
+				-> (!(pre)x.isActive() OR
+					Exists x.allocatables() { a | ((a.displayingContent() == x) AND (
+						((pre)a.isDisplayed() AND !(pre)a.displayingContent().isActive()) OR (pre)a.isHidden()
+					))}
+				)
+			)
+		}
+	}
+}
