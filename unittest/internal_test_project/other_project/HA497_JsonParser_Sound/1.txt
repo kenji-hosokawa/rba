@@ -1,6 +1,0 @@
-C,ON,A1,NORMAL
-execute
-
-Assert,A,ASound,A1
-Assert,A,A,NULL
-Assert,A,CSound,NULL

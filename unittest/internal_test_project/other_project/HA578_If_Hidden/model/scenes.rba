@@ -1,4 +1,0 @@
-Package Scenes {
-	Scene 自動運転シーン{}
-	Scene HUDオフシーン{}
-}

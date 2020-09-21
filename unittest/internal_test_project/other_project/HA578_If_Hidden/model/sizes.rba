@@ -1,8 +1,0 @@
-Package MET_Sizes {
-	description: "MET用のサイズ定義"
-	Size スピードメーターサイズ {
-		width:100
-		height:100
-	}
-}
-

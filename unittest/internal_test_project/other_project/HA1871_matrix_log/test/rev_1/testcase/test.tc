@@ -1,5 +1,0 @@
-#start 1 matrix_log
-CL
-SET,A,AreaA,VContentB
-SET,A,ZoneA,SContentA
-C,on,VContentA,NORMAL

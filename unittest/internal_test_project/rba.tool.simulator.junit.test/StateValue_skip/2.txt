@@ -1,6 +1,0 @@
-// sceneは有効だが、a1が出ていないのでSKIPされ、b1は隠されない
-S,ON,scene
-C,ON,b1,NORMAL
-execute
-Assert,A,A,NULL
-Assert,A,B,b1

@@ -1,8 +1,0 @@
-// 調停順が調停に影響を与える
-// 調停順序が早い方に優先度の高い(後から要求された)コンテントが割り当たる
-C,ON,Content1,NORMAL
-C,ON,Content2,NORMAL
-execute
-Assert,A,A,Content2
-Assert,A,B,Content1
-

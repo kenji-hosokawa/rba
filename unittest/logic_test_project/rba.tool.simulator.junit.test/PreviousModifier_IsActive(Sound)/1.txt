@@ -1,8 +1,0 @@
-// 前回要求はないので、制約により割り当てできない
-C,ON,ContentA1,NORMAL
-execute
-Assert,A,AllocatableA,NULL
-
-C,ON,ContentA1,NORMAL
-execute
-Assert,A,AllocatableA,ContentA1

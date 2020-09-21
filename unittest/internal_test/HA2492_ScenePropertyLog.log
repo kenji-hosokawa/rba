@@ -1,6 +1,0 @@
-#HierarchyOfConstraint#START,Con1,t,Constraint
-#HierarchyOfConstraint#EXPRESSION	->	((s3.get() = 111) -> A.isHidden())	boolean
-#HierarchyOfConstraint#EXPRESSION	->#left=	(s3.get() = 111)	boolean
-#HierarchyOfConstraint#EXPRESSION	->#left=#0.get()	s3.get()	unknown
-#HierarchyOfConstraint#EXPRESSION	->#right.isHidden()	A.isHidden()	boolean
-#HierarchyOfConstraint#END,Con1

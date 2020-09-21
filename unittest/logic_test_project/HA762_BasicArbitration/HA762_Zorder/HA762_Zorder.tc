@@ -1,8 +1,0 @@
-#start 1
-CL
-C,on,Content1,NORMAL
-C,on,Content2,NORMAL
-Assert,A,A,Content2
-Assert,A,B,Content1
-Assert,C,isCanceled,Content1,false
-Assert,C,isCanceled,Content2,false

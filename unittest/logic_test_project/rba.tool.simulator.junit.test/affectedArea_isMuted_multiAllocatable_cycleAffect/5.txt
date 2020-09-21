@@ -1,7 +1,0 @@
-S,ON,S
-C,ON,A1,NORMAL
-execute
-
-Assert,A,A,NULL
-Assert,A,B,NULL
-Assert,A,C,A1
